@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SD Android</string>
+    <string name="welcome">Welcome</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="onboarding_title">Manage Your Subscriptions</string>
+    <string name="onboarding_description">Track and manage all your subscriptions in one place. Get insights into your spending and never miss a payment.</string>
+    <string name="get_started">Get Started</string>
+    <string name="my_subscriptions">My Subscriptions</string>
+    <string name="total_monthly_cost">Total Monthly Cost</string>
+    <string name="active_subscriptions">Active Subscriptions</string>
+    <string name="add_subscription">Add Subscription</string>
+    <string name="view_all">View All</string>
+    <string name="recent_subscriptions">Recent Subscriptions</string>
+    <string name="monthly">Monthly</string>
+    <string name="yearly">Yearly</string>
+</resources>
