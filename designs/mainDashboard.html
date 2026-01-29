@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Design - SD Android</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #F5F5F5;
+        }
+        .phone-frame {
+            max-width: 375px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+        .screen {
+            padding: 24px;
+            background: #F5F5F5;
+            min-height: 667px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: bold;
+            color: #212121;
+            margin: 0 0 8px 0;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #757575;
+            margin-bottom: 24px;
+        }
+        .stats-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            flex: 1;
+            background: white;
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .stat-card.primary {
+            background: #2196F3;
+            color: white;
+        }
+        .stat-card.success {
+            background: #4CAF50;
+            color: white;
+        }
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #212121;
+        }
+        .view-all {
+            color: #2196F3;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .subscription-card {
+            background: white;
+            padding: 16px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        .subscription-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 8px;
+        }
+        .subscription-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #212121;
+        }
+        .subscription-cycle {
+            font-size: 14px;
+            color: #757575;
+        }
+        .subscription-cost {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2196F3;
+            text-align: right;
+        }
+        .subscription-date {
+            font-size: 12px;
+            color: #757575;
+            text-align: right;
+        }
+        .category-badge {
+            display: inline-block;
+            background: #E3F2FD;
+            color: #2196F3;
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        .fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            width: 56px;
+            height: 56px;
+            background: #2196F3;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="phone-frame">
+        <div class="screen">
+            <h1>Dashboard</h1>
+            <div class="subtitle">My Subscriptions</div>
+            
+            <div class="stats-container">
+                <div class="stat-card primary">
+                    <div class="stat-label">Total Monthly Cost</div>
+                    <div class="stat-value">$80.97</div>
+                </div>
+                <div class="stat-card success">
+                    <div class="stat-label">Active Subscriptions</div>
+                    <div class="stat-value">3</div>
+                </div>
+            </div>
+            
+            <div class="section-header">
+                <div class="section-title">Recent Subscriptions</div>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            
+            <div class="subscription-card">
+                <div class="subscription-header">
+                    <div>
+                        <div class="subscription-name">Netflix</div>
+                        <div class="subscription-cycle">Monthly</div>
+                    </div>
+                    <div>
+                        <div class="subscription-cost">$15.99</div>
+                        <div class="subscription-date">Next: 2024-02-15</div>
+                    </div>
+                </div>
+                <span class="category-badge">Entertainment</span>
+            </div>
+            
+            <div class="subscription-card">
+                <div class="subscription-header">
+                    <div>
+                        <div class="subscription-name">Spotify</div>
+                        <div class="subscription-cycle">Monthly</div>
+                    </div>
+                    <div>
+                        <div class="subscription-cost">$9.99</div>
+                        <div class="subscription-date">Next: 2024-02-10</div>
+                    </div>
+                </div>
+                <span class="category-badge">Music</span>
+            </div>
+            
+            <div class="subscription-card">
+                <div class="subscription-header">
+                    <div>
+                        <div class="subscription-name">Adobe Creative Cloud</div>
+                        <div class="subscription-cycle">Monthly</div>
+                    </div>
+                    <div>
+                        <div class="subscription-cost">$54.99</div>
+                        <div class="subscription-date">Next: 2024-02-20</div>
+                    </div>
+                </div>
+                <span class="category-badge">Productivity</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="fab">+</div>
+</body>
+</html>

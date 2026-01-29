@@ -1,0 +1,422 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Subscription Management API",
+    "version": "1.0.0",
+    "description": "API for managing user subscriptions"
+  },
+  "servers": [
+    {
+      "url": "https://api.example.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/api/subscriptions": {
+      "get": {
+        "summary": "Get all subscriptions",
+        "description": "Retrieve a list of all subscriptions for the authenticated user",
+        "tags": ["Subscriptions"],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Subscription"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new subscription",
+        "description": "Add a new subscription for the authenticated user",
+        "tags": ["Subscriptions"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscription"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Subscription created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscription"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/subscriptions/{id}": {
+      "get": {
+        "summary": "Get subscription by ID",
+        "description": "Retrieve details of a specific subscription",
+        "tags": ["Subscriptions"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Subscription ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscription"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Subscription not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a subscription",
+        "description": "Update details of an existing subscription",
+        "tags": ["Subscriptions"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Subscription ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Subscription"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Subscription updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Subscription"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Subscription not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a subscription",
+        "description": "Remove a subscription from the user's account",
+        "tags": ["Subscriptions"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Subscription ID"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Subscription deleted successfully"
+          },
+          "404": {
+            "description": "Subscription not found"
+          }
+        }
+      }
+    },
+    "/api/subscriptions/stats": {
+      "get": {
+        "summary": "Get subscription statistics",
+        "description": "Retrieve aggregated statistics about user's subscriptions",
+        "tags": ["Subscriptions"],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubscriptionStats"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "summary": "User login",
+        "description": "Authenticate user and return access token",
+        "tags": ["Authentication"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials"
+          }
+        }
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "summary": "User registration",
+        "description": "Create a new user account",
+        "tags": ["Authentication"],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Registration successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request or user already exists"
+          }
+        }
+      }
+    },
+    "/api/auth/logout": {
+      "post": {
+        "summary": "User logout",
+        "description": "Invalidate the current session",
+        "tags": ["Authentication"],
+        "responses": {
+          "204": {
+            "description": "Logout successful"
+          }
+        }
+      }
+    },
+    "/api/auth/me": {
+      "get": {
+        "summary": "Get current user",
+        "description": "Retrieve information about the authenticated user",
+        "tags": ["Authentication"],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Subscription": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique subscription identifier"
+          },
+          "name": {
+            "type": "string",
+            "description": "Subscription service name"
+          },
+          "description": {
+            "type": "string",
+            "description": "Optional description"
+          },
+          "cost": {
+            "type": "number",
+            "format": "double",
+            "description": "Subscription cost"
+          },
+          "currency": {
+            "type": "string",
+            "default": "USD",
+            "description": "Currency code"
+          },
+          "billingCycle": {
+            "type": "string",
+            "enum": ["MONTHLY", "YEARLY", "WEEKLY", "QUARTERLY"],
+            "description": "Billing cycle type"
+          },
+          "nextBillingDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Next billing date"
+          },
+          "category": {
+            "type": "string",
+            "description": "Subscription category"
+          },
+          "iconUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to service icon"
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "description": "Subscription active status"
+          }
+        },
+        "required": ["name", "cost", "billingCycle"]
+      },
+      "SubscriptionStats": {
+        "type": "object",
+        "properties": {
+          "totalMonthlyCost": {
+            "type": "number",
+            "format": "double",
+            "description": "Total monthly cost across all subscriptions"
+          },
+          "totalYearlyCost": {
+            "type": "number",
+            "format": "double",
+            "description": "Total yearly cost across all subscriptions"
+          },
+          "activeCount": {
+            "type": "integer",
+            "description": "Number of active subscriptions"
+          },
+          "currency": {
+            "type": "string",
+            "default": "USD",
+            "description": "Currency code"
+          }
+        }
+      },
+      "AuthRequest": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email address"
+          },
+          "password": {
+            "type": "string",
+            "format": "password",
+            "description": "User password"
+          }
+        },
+        "required": ["email", "password"]
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "token": {
+            "type": "string",
+            "description": "JWT access token"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique user identifier"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "User email address"
+          },
+          "name": {
+            "type": "string",
+            "description": "User full name"
+          },
+          "token": {
+            "type": "string",
+            "description": "JWT access token"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
+}
