@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Детектор Подписок</string>
+    
+    <!-- Common -->
+    <string name="back">Назад</string>
+    <string name="save">Сохранить</string>
+    <string name="cancel">Отмена</string>
+    <string name="skip">Пропустить</string>
+    <string name="continue_btn">Продолжить</string>
+    <string name="get_started">Начать</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Отслеживайте Подписки</string>
+    <string name="onboarding_desc_1">Просматривайте и контролируйте все ваши подписки в одном месте. Никогда не пропускайте платеж.</string>
+    <string name="onboarding_title_2">Автоматическая Фиксация Платежей</string>
+    <string name="onboarding_desc_2">Сканирует ваши SMS и уведомления, чтобы перечислить ваши подписки за секунды.</string>
+    <string name="onboarding_security">Сквозное шифрование и безопасность</string>
+    <string name="onboarding_title_3">Конец Лишним Расходам</string>
+    <string name="onboarding_desc_3">Отмените забытые подписки, получайте уведомления перед датами платежа.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Панель</string>
+    <string name="hello_user">Привет, %s</string>
+    <string name="total_monthly">Всего в Этом Месяце</string>
+    <string name="vs_last_month">по сравнению с прошлым месяцем</string>
+    <string name="suspicious_subscriptions">Подозрительные Подписки</string>
+    <string name="transactions_pending">%d транзакций ожидают проверки</string>
+    <string name="most_expensive">Самые Дорогие Подписки</string>
+    <string name="view_all">Все</string>
+    <string name="view_all_subscriptions">Посмотреть Все Подписки</string>
+    
+    <!-- Settings -->
+    <string name="settings">Настройки</string>
+    <string name="account">АККАУНТ</string>
+    <string name="application">ПРИЛОЖЕНИЕ</string>
+    <string name="support">ПОДДЕРЖКА</string>
+    <string name="membership_type">Тип Членства</string>
+    <string name="free_plan">Бесплатный План</string>
+    <string name="notifications">Уведомления</string>
+    <string name="currency">Валюта</string>
+    <string name="dark_mode">Темный Режим</string>
+    <string name="language">Язык</string>
+    <string name="help_center">Центр Помощи</string>
+    <string name="privacy_policy">Политика Конфиденциальности</string>
+    <string name="logout">Выйти</string>
+    <string name="version_info">Версия %1$s (Сборка %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Обновить до Premium</string>
+    <string name="premium_desc">Автоматически сканируйте все ваши подписки и экономьте на 30%% больше.</string>
+    <string name="upgrade">Обновить</string>
+    
+    <!-- Search -->
+    <string name="search">Поиск</string>
+    <string name="search_placeholder">Поиск подписок или транзакций</string>
+    <string name="recent_searches">НЕДАВНИЕ ПОИСКИ</string>
+    <string name="results_found">НАЙДЕНО РЕЗУЛЬТАТОВ (%d)</string>
+    <string name="subscriptions">Подписки</string>
+    <string name="transactions">Транзакции</string>
+    <string name="looking_for_else">Ищете что-то еще?</string>
+    <string name="search_tip">Попробуйте искать по названию продавца или конкретным суммам транзакций.</string>
+    <string name="clear_search">Очистить Поиск</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Активный</string>
+    <string name="suspicious">Подозрительный</string>
+    <string name="cancelled">Отменен</string>
+    <string name="monthly">ЕЖЕМЕСЯЧНО</string>
+    <string name="yearly">ЕЖЕГОДНО</string>
+    <string name="one_time">РАЗОВЫЙ</string>
+    <string name="renews">Обновляется %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Панель</string>
+    <string name="nav_search">Поиск</string>
+    <string name="nav_settings">Настройки</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+</resources>

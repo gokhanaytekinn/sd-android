@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premium Analytics Report</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#359EFF", "background-light": "#f5f7f8", "background-dark": "#0f1923", "chart-purple": "#a78bfa", "chart-teal": "#2dd4bf"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Custom scrollbar hiding */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen text-slate-900 dark:text-white selection:bg-primary selection:text-black">
+<!-- Top App Bar -->
+<header class="sticky top-0 z-20 flex items-center justify-between px-4 py-3 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-transparent dark:border-white/5 transition-all">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold tracking-tight">Premium Analytics</h1>
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors relative">
+<span class="material-symbols-outlined text-slate-900 dark:text-white">calendar_month</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full border border-background-light dark:border-background-dark"></span>
+</button>
+</header>
+<!-- Main Scrollable Content -->
+<main class="flex flex-col w-full max-w-lg mx-auto pb-10">
+<!-- Date Filters (Chips) -->
+<div class="w-full overflow-x-auto no-scrollbar pt-4 pb-2 px-4">
+<div class="flex gap-3">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 shadow-[0_0_15px_rgba(19,236,19,0.3)] transition-transform active:scale-95">
+<p class="text-black text-sm font-bold leading-normal">This Month</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#1a2e1a] border border-slate-200 dark:border-[#2a402a] px-5 transition-colors hover:bg-slate-50 dark:hover:bg-[#253d25]">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Last 3 Months</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-white dark:bg-[#1a2e1a] border border-slate-200 dark:border-[#2a402a] px-5 transition-colors hover:bg-slate-50 dark:hover:bg-[#253d25]">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">YTD</p>
+</button>
+</div>
+</div>
+<!-- Hero Card: Total Savings -->
+<div class="p-4 w-full">
+<div class="group relative flex flex-col items-stretch justify-center rounded-2xl overflow-hidden shadow-lg bg-[#1c271c] border border-[#2a402a] min-h-[160px]">
+<!-- Abstract Background Pattern -->
+<div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat opacity-20"></div>
+<div class="absolute -right-10 -top-10 h-48 w-48 bg-primary/20 blur-[60px] rounded-full"></div>
+<div class="absolute -left-10 -bottom-10 h-32 w-32 bg-primary/10 blur-[40px] rounded-full"></div>
+<div class="relative z-10 flex w-full flex-col items-start justify-center gap-1 p-6">
+<div class="flex items-center gap-2 mb-1">
+<div class="p-1.5 rounded-lg bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-[20px]">savings</span>
+</div>
+<p class="text-[#9db99d] text-sm font-semibold tracking-wide uppercase">Toplam Tasarruf</p>
+</div>
+<p class="text-white text-[40px] font-bold leading-tight tracking-[-0.03em] mt-2">₺1,250.00</p>
+<div class="flex items-center gap-2 mt-2">
+<span class="flex items-center gap-1 text-black bg-primary px-2 py-0.5 rounded text-xs font-bold">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+                            12%
+                        </span>
+<p class="text-[#9db99d] text-sm font-normal leading-normal">vs last month</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Line Chart: Spending Trends -->
+<div class="px-4 py-2 w-full">
+<div class="flex flex-col gap-2 rounded-2xl border border-slate-200 dark:border-[#2a402a] bg-white dark:bg-[#162616] p-6 shadow-sm">
+<div class="flex justify-between items-start mb-4">
+<div>
+<p class="text-slate-500 dark:text-[#9db99d] text-sm font-medium leading-normal mb-1">Spending Trends</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-3xl font-bold leading-tight">₺3,450</p>
+</div>
+<div class="text-right">
+<p class="text-primary text-base font-bold leading-normal flex items-center justify-end">
+                            +5% <span class="material-symbols-outlined text-sm ml-1 font-bold">north_east</span>
+</p>
+<p class="text-slate-400 text-xs font-medium">Last 6 Months</p>
+</div>
+</div>
+<div class="flex flex-col h-[200px] w-full">
+<!-- Chart SVG -->
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 478 150">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#13ec13" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#13ec13" stop-opacity="0"></stop>
+</lineargradient>
+<filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="coloredBlur" stddeviation="3"></fegaussianblur>
+<femerge>
+<femergenode in="coloredBlur"></femergenode>
+<femergenode in="SourceGraphic"></femergenode>
+</femerge>
+</filter>
+</defs>
+<!-- Area Fill -->
+<path d="M0 109C18 109 18 21 36 21C54 21 54 41 72 41C90 41 90 93 108 93C127 93 127 33 145 33C163 33 163 101 181 101C199 101 199 61 217 61C236 61 236 45 254 45C272 45 272 121 290 121C308 121 308 149 326 149C344 149 344 1 363 1C381 1 381 81 399 81C417 81 417 129 435 129C453 129 453 25 472 25V150H0V109Z" fill="url(#chartGradient)"></path>
+<!-- Line Stroke -->
+<path d="M0 109C18 109 18 21 36 21C54 21 54 41 72 41C90 41 90 93 108 93C127 93 127 33 145 33C163 33 163 101 181 101C199 101 199 61 217 61C236 61 236 45 254 45C272 45 272 121 290 121C308 121 308 149 326 149C344 149 344 1 363 1C381 1 381 81 399 81C417 81 417 129 435 129C453 129 453 25 472 25" fill="none" filter="url(#glow)" stroke="#13ec13" stroke-linecap="round" stroke-width="3"></path>
+<!-- Interactive Dots (Simulated) -->
+<circle cx="217" cy="61" fill="#111811" r="5" stroke="#13ec13" stroke-width="2"></circle>
+<circle cx="363" cy="1" fill="#111811" r="5" stroke="#13ec13" stroke-width="2"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between mt-2 px-1">
+<p class="text-slate-400 dark:text-[#5e755e] text-[11px] font-bold uppercase tracking-wider">May</p>
+<p class="text-slate-400 dark:text-[#5e755e] text-[11px] font-bold uppercase tracking-wider">Jun</p>
+<p class="text-slate-400 dark:text-[#5e755e] text-[11px] font-bold uppercase tracking-wider">Jul</p>
+<p class="text-slate-400 dark:text-[#5e755e] text-[11px] font-bold uppercase tracking-wider">Aug</p>
+<p class="text-slate-400 dark:text-[#5e755e] text-[11px] font-bold uppercase tracking-wider">Sep</p>
+<p class="text-slate-400 dark:text-[#5e755e] text-[11px] font-bold uppercase tracking-wider">Oct</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Headline: Kategori Dağılımı -->
+<h2 class="text-slate-900 dark:text-white tracking-tight text-[22px] font-bold leading-tight px-4 text-left pb-3 pt-6">Kategori Dağılımı</h2>
+<!-- Pie Chart + Breakdown Section -->
+<div class="px-4">
+<div class="flex flex-col gap-6 rounded-2xl border border-slate-200 dark:border-[#2a402a] bg-white dark:bg-[#162616] p-6 shadow-sm">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<!-- CSS Donut Chart -->
+<div class="relative w-44 h-44 shrink-0">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background ring -->
+<path class="text-slate-100 dark:text-[#2a402a]" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<!-- Segment 1: Entertainment (Purple) -->
+<path class="text-chart-purple" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="40, 100" stroke-linecap="round" stroke-width="3"></path>
+<!-- Segment 2: Utilities (Teal) -->
+<path class="text-chart-teal" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="35, 100" stroke-dashoffset="-42" stroke-linecap="round" stroke-width="3"></path>
+<!-- Segment 3: Other (Green) -->
+<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="20, 100" stroke-dashoffset="-80" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<!-- Center Label -->
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<span class="text-slate-400 text-xs font-medium uppercase tracking-wide">Total</span>
+<span class="text-slate-900 dark:text-white text-xl font-bold">₺3.4k</span>
+</div>
+</div>
+<!-- List Breakdown -->
+<div class="flex flex-col w-full gap-4">
+<!-- Item 1 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="h-3 w-3 rounded-full bg-chart-purple shadow-[0_0_8px_rgba(167,139,250,0.5)]"></div>
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Entertainment</p>
+<p class="text-[11px] text-slate-500">Netflix, Spotify, HBO</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-white">₺1,380</p>
+<p class="text-[11px] text-slate-400">40%</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="h-3 w-3 rounded-full bg-chart-teal shadow-[0_0_8px_rgba(45,212,191,0.5)]"></div>
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Utilities</p>
+<p class="text-[11px] text-slate-500">Internet, iCloud</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-white">₺1,200</p>
+<p class="text-[11px] text-slate-400">35%</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center justify-between group cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="h-3 w-3 rounded-full bg-primary shadow-[0_0_8px_rgba(19,236,19,0.5)]"></div>
+<div class="flex flex-col">
+<p class="text-sm font-semibold text-slate-900 dark:text-white">Software</p>
+<p class="text-[11px] text-slate-500">Adobe, Figma</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-white">₺870</p>
+<p class="text-[11px] text-slate-400">25%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Action -->
+<div class="p-4 mt-2">
+<button class="flex w-full cursor-pointer items-center justify-center gap-2 overflow-hidden rounded-xl h-14 bg-white dark:bg-[#162616] border border-slate-200 dark:border-[#2a402a] text-slate-900 dark:text-white text-sm font-bold leading-normal hover:bg-slate-50 dark:hover:bg-[#1f331f] transition-all">
+<span class="material-symbols-outlined text-xl">download</span>
+                Download PDF Report
+            </button>
+</div>
+<div class="h-5"></div>
+</main>
+</body></html>

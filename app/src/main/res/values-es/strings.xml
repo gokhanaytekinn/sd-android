@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Detector de Suscripciones</string>
+    
+    <!-- Common -->
+    <string name="back">Atrás</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="skip">Saltar</string>
+    <string name="continue_btn">Continuar</string>
+    <string name="get_started">Empezar</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Rastrea tus Suscripciones</string>
+    <string name="onboarding_desc_1">Ver y controlar todas tus suscripciones en un solo lugar. Nunca pierdas un pago.</string>
+    <string name="onboarding_title_2">Captura Automática de Pagos</string>
+    <string name="onboarding_desc_2">Escanea tus SMS y notificaciones para listar tus suscripciones en segundos.</string>
+    <string name="onboarding_security">Cifrado de extremo a extremo y seguro</string>
+    <string name="onboarding_title_3">Fin a los Gastos Innecesarios</string>
+    <string name="onboarding_desc_3">Cancela suscripciones olvidadas, recibe notificaciones antes de las fechas de pago.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Panel</string>
+    <string name="hello_user">Hola, %s</string>
+    <string name="total_monthly">Total Este Mes</string>
+    <string name="vs_last_month">vs mes pasado</string>
+    <string name="suspicious_subscriptions">Suscripciones Sospechosas</string>
+    <string name="transactions_pending">%d transacciones pendientes de revisión</string>
+    <string name="most_expensive">Suscripciones Más Caras</string>
+    <string name="view_all">Ver Todo</string>
+    <string name="view_all_subscriptions">Ver Todas las Suscripciones</string>
+    
+    <!-- Settings -->
+    <string name="settings">Ajustes</string>
+    <string name="account">CUENTA</string>
+    <string name="application">APLICACIÓN</string>
+    <string name="support">SOPORTE</string>
+    <string name="membership_type">Tipo de Membresía</string>
+    <string name="free_plan">Plan Gratuito</string>
+    <string name="notifications">Notificaciones</string>
+    <string name="currency">Moneda</string>
+    <string name="dark_mode">Modo Oscuro</string>
+    <string name="language">Idioma</string>
+    <string name="help_center">Centro de Ayuda</string>
+    <string name="privacy_policy">Política de Privacidad</string>
+    <string name="logout">Cerrar Sesión</string>
+    <string name="version_info">Versión %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Actualizar a Premium</string>
+    <string name="premium_desc">Escanea automáticamente todas tus suscripciones y ahorra un 30%% más.</string>
+    <string name="upgrade">Actualizar</string>
+    
+    <!-- Search -->
+    <string name="search">Buscar</string>
+    <string name="search_placeholder">Buscar suscripciones o transacciones</string>
+    <string name="recent_searches">BÚSQUEDAS RECIENTES</string>
+    <string name="results_found">RESULTADOS ENCONTRADOS (%d)</string>
+    <string name="subscriptions">Suscripciones</string>
+    <string name="transactions">Transacciones</string>
+    <string name="looking_for_else">¿Buscas algo más?</string>
+    <string name="search_tip">Intenta buscar por nombre del comerciante o montos de transacciones específicas.</string>
+    <string name="clear_search">Limpiar Búsqueda</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Activo</string>
+    <string name="suspicious">Sospechoso</string>
+    <string name="cancelled">Cancelado</string>
+    <string name="monthly">MENSUAL</string>
+    <string name="yearly">ANUAL</string>
+    <string name="one_time">UNA VEZ</string>
+    <string name="renews">Renova %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Panel</string>
+    <string name="nav_search">Buscar</string>
+    <string name="nav_settings">Ajustes</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+</resources>

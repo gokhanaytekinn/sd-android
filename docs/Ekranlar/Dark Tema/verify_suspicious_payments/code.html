@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Verify Suspicious Payments</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Theme Configuration -->
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#359EFF", "background-light": "#f5f7f8", "background-dark": "#0f1923", "surface-light": "#ffffff", "surface-dark": "#162616"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white min-h-screen flex justify-center">
+<div class="w-full max-w-md h-full min-h-screen flex flex-col relative overflow-hidden bg-background-light dark:bg-background-dark">
+<!-- Header -->
+<header class="flex items-center p-4 pb-2 justify-between sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm">
+<button class="text-slate-900 dark:text-white flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pr-10">Şüpheli Ödemeler</h2>
+</header>
+<!-- Progress Section -->
+<div class="px-4 py-2 mt-2">
+<div class="flex flex-col gap-3">
+<div class="flex justify-between items-end">
+<p class="text-slate-900 dark:text-white text-sm font-medium leading-normal">3 şüpheli işlem kaldı</p>
+<p class="text-slate-500 dark:text-[#9db99d] text-xs font-normal leading-normal">Adım 1 / 3</p>
+</div>
+<div class="h-2 w-full rounded-full bg-slate-200 dark:bg-[#2c422c] overflow-hidden">
+<div class="h-full rounded-full bg-primary transition-all duration-500 ease-out" style="width: 33%;"></div>
+</div>
+</div>
+</div>
+<!-- Explainer Text -->
+<div class="px-4 py-4">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-normal leading-relaxed">
+                Aşağıdaki işlemler düzenli abonelik ödemesi gibi görünüyor. Lütfen bu harcamaları doğrulayın.
+            </p>
+</div>
+<!-- Transaction List -->
+<main class="flex-1 flex flex-col gap-4 px-4 pb-8 overflow-y-auto">
+<!-- Card 1: Netflix -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-white/5 flex flex-col gap-4">
+<!-- Transaction Info -->
+<div class="flex justify-between items-start gap-3">
+<div class="flex gap-4 items-center">
+<div class="shrink-0 size-14 rounded-xl bg-black flex items-center justify-center overflow-hidden" style="background-image: linear-gradient(135deg, #000000 0%, #221f1f 100%);">
+<!-- Placeholder for Netflix Logo -->
+<span class="text-primary font-bold text-xs" data-alt="Netflix 'N' logo stylized">N</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Netflix</h3>
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium mt-1">24 Ekim • Eğlence</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-slate-900 dark:text-white text-base font-bold">-129.99 ₺</span>
+</div>
+</div>
+<div class="h-px bg-slate-100 dark:bg-white/5 w-full"></div>
+<!-- Action Area -->
+<div class="flex items-center justify-between pt-1">
+<p class="text-slate-600 dark:text-[#9db99d] text-sm font-medium">Abonelik mi?</p>
+<div class="flex gap-3">
+<button class="flex items-center justify-center px-4 h-9 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus:scale-95 duration-100">
+                            Hayır
+                        </button>
+<button class="flex items-center justify-center px-6 h-9 rounded-lg bg-primary text-[#102210] text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors focus:scale-95 duration-100">
+                            Evet
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 2: Spotify -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-white/5 flex flex-col gap-4">
+<!-- Transaction Info -->
+<div class="flex justify-between items-start gap-3">
+<div class="flex gap-4 items-center">
+<div class="shrink-0 size-14 rounded-xl bg-[#1DB954] flex items-center justify-center overflow-hidden" data-alt="Spotify logo green background">
+<span class="material-symbols-outlined text-black" style="font-size: 32px;">graphic_eq</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Spotify</h3>
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium mt-1">22 Ekim • Müzik</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-slate-900 dark:text-white text-base font-bold">-39.99 ₺</span>
+</div>
+</div>
+<div class="h-px bg-slate-100 dark:bg-white/5 w-full"></div>
+<!-- Action Area -->
+<div class="flex items-center justify-between pt-1">
+<p class="text-slate-600 dark:text-[#9db99d] text-sm font-medium">Abonelik mi?</p>
+<div class="flex gap-3">
+<button class="flex items-center justify-center px-4 h-9 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus:scale-95 duration-100">
+                            Hayır
+                        </button>
+<button class="flex items-center justify-center px-6 h-9 rounded-lg bg-primary text-[#102210] text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors focus:scale-95 duration-100">
+                            Evet
+                        </button>
+</div>
+</div>
+</div>
+<!-- Card 3: Adobe -->
+<div class="bg-surface-light dark:bg-surface-dark rounded-2xl p-5 shadow-sm border border-slate-200 dark:border-white/5 flex flex-col gap-4">
+<!-- Transaction Info -->
+<div class="flex justify-between items-start gap-3">
+<div class="flex gap-4 items-center">
+<div class="shrink-0 size-14 rounded-xl bg-[#FF0000] flex items-center justify-center overflow-hidden relative" data-alt="Adobe creative cloud red abstract pattern">
+<div class="absolute inset-0 bg-gradient-to-br from-red-600 to-red-900"></div>
+<span class="relative text-white font-bold text-lg">Ae</span>
+</div>
+<div class="flex flex-col">
+<h3 class="text-slate-900 dark:text-white text-base font-bold leading-tight">Adobe Inc.</h3>
+<span class="text-slate-500 dark:text-slate-400 text-xs font-medium mt-1">15 Ekim • Yazılım</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-slate-900 dark:text-white text-base font-bold">-350.00 ₺</span>
+</div>
+</div>
+<div class="h-px bg-slate-100 dark:bg-white/5 w-full"></div>
+<!-- Action Area -->
+<div class="flex items-center justify-between pt-1">
+<p class="text-slate-600 dark:text-[#9db99d] text-sm font-medium">Abonelik mi?</p>
+<div class="flex gap-3">
+<button class="flex items-center justify-center px-4 h-9 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 text-sm font-semibold hover:bg-slate-100 dark:hover:bg-white/5 transition-colors focus:scale-95 duration-100">
+                            Hayır
+                        </button>
+<button class="flex items-center justify-center px-6 h-9 rounded-lg bg-primary text-[#102210] text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors focus:scale-95 duration-100">
+                            Evet
+                        </button>
+</div>
+</div>
+</div>
+<!-- Info Note -->
+<div class="mt-4 flex gap-3 p-4 rounded-xl bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-800/30">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 shrink-0">info</span>
+<p class="text-xs text-blue-800 dark:text-blue-200 leading-relaxed">
+                    Onaylanan abonelikler "Aboneliklerim" listesine eklenir ve gelecek ödemeler için hatırlatıcılar oluşturulur.
+                </p>
+</div>
+</main>
+<!-- Bottom Gradient Fade (Optional for scroll effect) -->
+<div class="pointer-events-none absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent"></div>
+</div>
+</body></html>

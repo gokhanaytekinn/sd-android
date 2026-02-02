@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html class="" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Transaction History</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#359EFF", "background-light": "#f5f7f8", "background-dark": "#0f1923", "surface-dark": "#162816", "surface-light": "#ffffff"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        /* Custom scrollbar hiding for clean UI */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-white antialiased transition-colors duration-200">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto overflow-hidden pb-24 shadow-2xl dark:shadow-none">
+<!-- Header -->
+<header class="flex items-center px-4 pt-6 pb-2 justify-between sticky top-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-black/5 dark:hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-slate-800 dark:text-white" style="font-size: 24px;">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-10">Transaction History</h1>
+</header>
+<!-- Search Bar -->
+<div class="px-4 py-2 sticky top-[60px] z-20 bg-background-light dark:bg-background-dark">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full shadow-sm">
+<div class="flex border-none bg-surface-light dark:bg-surface-dark items-center justify-center pl-4 rounded-l-xl border-r-0 text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined" style="font-size: 24px;">search</span>
+</div>
+<input class="flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl rounded-l-none border-none bg-surface-light dark:bg-surface-dark focus:ring-1 focus:ring-primary focus:outline-0 h-full placeholder:text-slate-400 dark:placeholder:text-slate-500 px-3 text-base font-normal leading-normal transition-all" placeholder="Search for Netflix, Spotify..." value=""/>
+</div>
+</label>
+</div>
+<!-- Filter Chips -->
+<div class="flex gap-3 px-4 py-3 overflow-x-auto hide-scrollbar sticky top-[120px] z-10 bg-background-light dark:bg-background-dark mask-image-gradient">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-primary px-5 transition-transform active:scale-95 shadow-lg shadow-primary/20">
+<p class="text-black text-sm font-semibold leading-normal">All</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-600 px-5 transition-all active:scale-95">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Subscriptions</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-600 px-5 transition-all active:scale-95">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Income</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-surface-light dark:bg-surface-dark border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-600 px-5 transition-all active:scale-95">
+<p class="text-slate-600 dark:text-slate-300 text-sm font-medium leading-normal">Recurring</p>
+</button>
+</div>
+<!-- Transaction List -->
+<div class="flex flex-col px-4 mt-2 space-y-6">
+<!-- Group: Today -->
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-normal pb-3 px-1 uppercase tracking-wider text-xs">Today</p>
+<div class="flex flex-col space-y-3">
+<!-- Item 1 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-12" data-alt="Spotify green logo icon" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBMUo_V09grmj7zYrL8LPlayGku1XC9H78JO1DAuDW_KKFsSacwxrK2_AFXvd5e2jBSF8PuEspwr7nwdVwTiok3JOQ3SkLt73bSSkdDg21tBOMJWT8YReW5_h8dKzjt7rljwgnlGyULLgkrMa3XuuCc3wbg2CQRLx_uuqdJSxFBWVBGdBeBNryj5_wS5cLN8uriPvwYrSHvyFbgs67k7LzpLDtgjy17Y6NHhDUkbavUtJoaAL576XApdRnf-s1XSuML8myi6zJsYTxL");'></div>
+<div class="absolute -bottom-1 -right-1 bg-black rounded-full p-0.5 border border-surface-dark">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-size: 14px;">autorenew</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight line-clamp-1">Spotify Premium</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal line-clamp-1">Entertainment • Monthly</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">-$16.99</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-12 bg-orange-100 flex items-center justify-center" data-alt="Shopping bag icon abstract">
+<span class="material-symbols-outlined text-orange-600" style="font-size: 24px;">shopping_bag</span>
+</div>
+<div class="flex flex-col flex-1 justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight line-clamp-1">Whole Foods Market</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal line-clamp-1">Groceries</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">-$84.20</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Group: Yesterday -->
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-normal pb-3 px-1 uppercase tracking-wider text-xs">Yesterday</p>
+<div class="flex flex-col space-y-3">
+<!-- Item 3 (Income) -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-12 bg-primary/20 flex items-center justify-center" data-alt="Upward arrow graph icon">
+<span class="material-symbols-outlined text-primary" style="font-size: 24px;">trending_up</span>
+</div>
+<div class="flex flex-col flex-1 justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight line-clamp-1">Freelance Payment</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal line-clamp-1">Income • Wire Transfer</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-primary text-base font-bold leading-normal">+$1,250.00</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative shrink-0">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-12" data-alt="Netflix red N logo" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQ1LN_rC-_uxS7EC-Xozgbk360mZjzu36b2d-_Ni5pDCuNnIMc3wXF_oJYdrZvLBTfkuaKdw2Y2LYp7zBQUpf_PA2D8GV5PsK7cn0R4li_yfJttFPgcGlQFM0xxb6FUemJx-z4i2QauCafZ9PbigIfIxQnNUJMZ523brmQyDtL5P32DEvMDyiT5dNz0IcIuhxjZo2Zxg007NxFhIy7EHyefdR8TFfW28YI0fp3fZVH_lBZHnyA59oPDu03KlNb4L1emsqgpqn_bWmu");'></div>
+<div class="absolute -bottom-1 -right-1 bg-black rounded-full p-0.5 border border-surface-dark">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-size: 14px;">autorenew</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight line-clamp-1">Netflix</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal line-clamp-1">Entertainment • Monthly</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">-$19.99</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Group: Dec 12 -->
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-normal pb-3 px-1 uppercase tracking-wider text-xs">Dec 12</p>
+<div class="flex flex-col space-y-3">
+<!-- Item 5 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/30 transition-all cursor-pointer">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-12 bg-blue-100 flex items-center justify-center" data-alt="Water drop utility icon">
+<span class="material-symbols-outlined text-blue-600" style="font-size: 24px;">water_drop</span>
+</div>
+<div class="flex flex-col flex-1 justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight line-clamp-1">City Water</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal leading-normal line-clamp-1">Utilities</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-normal">-$45.00</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="flex items-center gap-4 bg-surface-light dark:bg-surface-dark p-3 rounded-2xl shadow-sm border border-transparent hover:border-primary/30 transition-all cursor-pointer opacity-70">
+<div class="bg-center bg-no-repeat bg-cover rounded-xl size-12 bg-purple-100 flex items-center justify-center" data-alt="Controller gaming icon">
+<span class="material-symbols-outlined text-purple-600" style="font-size: 24px;">sports_esports</span>
+</div>
+<div class="flex flex-col flex-1 justify-center min-w-0">
+<p class="text-slate-900 dark:text-white text-base font-semibold leading-tight line-clamp-1 line-through decoration-slate-500">PlayStation Plus</p>
+<p class="text-primary text-sm font-medium leading-normal line-clamp-1">Subscription Cancelled</p>
+</div>
+<div class="shrink-0 text-right">
+<p class="text-slate-400 dark:text-slate-500 text-base font-semibold leading-normal">-$0.00</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- FAB -->
+<div class="fixed bottom-6 right-6 z-50">
+<button class="flex items-center justify-center size-14 rounded-full bg-primary text-black shadow-[0_0_20px_rgba(19,236,19,0.4)] hover:shadow-[0_0_30px_rgba(19,236,19,0.6)] hover:scale-105 transition-all duration-300 active:scale-95 group">
+<span class="material-symbols-outlined transition-transform group-hover:rotate-90" style="font-size: 28px;">add</span>
+<span class="sr-only">Manuel İşlem Ekle</span>
+</button>
+</div>
+<!-- Bottom Blur Gradient for aesthetic -->
+<div class="fixed bottom-0 left-0 w-full h-24 bg-gradient-to-t from-background-light dark:from-background-dark to-transparent pointer-events-none z-10"></div>
+</div>
+</body></html>

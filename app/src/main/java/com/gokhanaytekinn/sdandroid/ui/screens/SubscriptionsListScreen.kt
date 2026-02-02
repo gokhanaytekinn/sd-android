@@ -1,0 +1,340 @@
+package com.gokhanaytekinn.sdandroid.ui.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.gokhanaytekinn.sdandroid.data.model.Subscription
+import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
+import com.gokhanaytekinn.sdandroid.ui.theme.*
+import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
+import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
+
+@Composable
+fun SubscriptionsListScreen(
+    onSubscriptionClick: (String) -> Unit = {},
+    onNavigateToDashboard: () -> Unit = {},
+    onNavigateToSearch: () -> Unit = {},
+    onNavigateToSettings: () -> Unit = {},
+    onNavigateToAddSubscription: () -> Unit = {}
+) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val application = context.applicationContext as android.app.Application
+    val viewModel: DashboardViewModel = remember { DashboardViewModel(application) }
+    val currencyPreferences = remember { CurrencyPreferences(context) }
+    
+    val subscriptions by viewModel.subscriptions.collectAsState()
+    val stats by viewModel.stats.collectAsState()
+    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
+    
+    var selectedTab by remember { mutableStateOf(0) }
+    
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(BackgroundDark)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            // Header
+            Surface(
+                modifier = Modifier.fillMaxWidth(),
+                color = BackgroundDark.copy(alpha = 0.95f),
+                tonalElevation = 1.dp
+            ) {
+                Column {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(20.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = "Abonelikler",
+                            fontSize = 24.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                        
+                        IconButton(
+                            onClick = onNavigateToAddSubscription,
+                            modifier = Modifier
+                                .size(40.dp)
+                                .clip(CircleShape)
+                                .background(PrimaryBlue.copy(alpha = 0.1f))
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Add,
+                                contentDescription = "Add",
+                                tint = PrimaryBlue
+                            )
+                        }
+                    }
+                    
+                    // Tabs
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 20.dp)
+                            .padding(bottom = 16.dp)
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(CardDark)
+                            .padding(4.dp)
+                    ) {
+                        TabItem(
+                            text = "Aktif",
+                            selected = selectedTab == 0,
+                            onClick = { selectedTab = 0 },
+                            modifier = Modifier.weight(1f)
+                        )
+                        TabItem(
+                            text = "Şüpheli",
+                            selected = selectedTab == 1,
+                            onClick = { selectedTab = 1 },
+                            modifier = Modifier.weight(1f)
+                        )
+                        TabItem(
+                            text = "İptal",
+                            selected = selectedTab == 2,
+                            onClick = { selectedTab = 2 },
+                            modifier = Modifier.weight(1f)
+                        )
+                    }
+                }
+            }
+            
+            // Content
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f),
+                contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 100.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                // Summary Card
+                item {
+                    Surface(
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        color = SurfaceDark
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column {
+                                Text(
+                                    text = "TOPLAM AYLIK",
+                                    fontSize = 10.sp,
+                                    fontWeight = FontWeight.Medium,
+                                    color = Color(0xFF9CA3AF),
+                                    letterSpacing = 1.sp
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
+                                    fontSize = 24.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = Color.White
+                                )
+                            }
+                            
+                            Box(
+                                modifier = Modifier
+                                    .size(40.dp)
+                                    .clip(CircleShape)
+                                    .background(PrimaryBlue.copy(alpha = 0.2f)),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Analytics,
+                                    contentDescription = null,
+                                    tint = PrimaryBlue
+                                )
+                            }
+                        }
+                    }
+                }
+                
+                // Section Header
+                item {
+                    Text(
+                        text = "BU AY",
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        color = Color(0xFF6B7280),
+                        letterSpacing = 1.5.sp
+                    )
+                }
+                
+                // Subscription items
+                items(subscriptions) { subscription ->
+                    SubscriptionListItemDetailed(
+                        subscription = subscription,
+                        currency = selectedCurrency,
+                        onClick = { onSubscriptionClick(subscription.id) }
+                    )
+                }
+            }
+        }
+        
+        // Bottom Navigation
+        BottomNavigationBar(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            selectedTab = 1,
+            onDashboardClick = onNavigateToDashboard,
+            onSearchClick = onNavigateToSearch,
+            onSettingsClick = onNavigateToSettings
+        )
+    }
+}
+
+@Composable
+fun TabItem(
+    text: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(6.dp))
+            .background(if (selected) SuccessColor else Color.Transparent)
+            .clickable(onClick = onClick)
+            .padding(vertical = 8.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = text,
+            fontSize = 14.sp,
+            fontWeight = FontWeight.SemiBold,
+            color = if (selected) BackgroundDark else Color(0xFF9CA3AF)
+        )
+    }
+}
+
+@Composable
+fun SubscriptionListItemDetailed(
+    subscription: Subscription,
+    currency: String = "TRY",
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit = {}
+) {
+    Surface(
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(0.dp),
+        color = Color.Transparent
+    ) {
+        Column {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 12.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    // Icon with gradient
+                    val iconBg = when (subscription.name) {
+                        "Netflix Premium" -> NetflixRed
+                        "Spotify Duo" -> SpotifyGreen
+                        "Adobe Creative Cloud" -> AdobeRed
+                        "iCloud+ 200GB" -> Color(0xFF007AFF)
+                        "Amazon Prime" -> Color(0xFF00A8E1)
+                        else -> Color.White.copy(alpha = 0.1f)
+                    }
+                    
+                    Box(
+                        modifier = Modifier
+                            .size(48.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .background(iconBg),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = when (subscription.name) {
+                                "Netflix Premium" -> "N"
+                                "Spotify Duo" -> "🎵"
+                                "Adobe Creative Cloud" -> "Ae"
+                                "iCloud+ 200GB" -> "☁️"
+                                "Amazon Prime" -> "📦"
+                                else -> subscription.name.take(1)
+                            },
+                            fontSize = if (subscription.name.contains("Spotify") || 
+                                         subscription.name.contains("iCloud") ||
+                                         subscription.name.contains("Amazon")) 24.sp else 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = Color.White
+                        )
+                    }
+                    
+                    Column {
+                        Text(
+                            text = subscription.name,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color.White
+                        )
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Row {
+                            Text(
+                                text = "${subscription.category} • ${subscription.billingCycle.name.lowercase().capitalize()}",
+                                fontSize = 14.sp,
+                                color = Color(0xFF9CA3AF)
+                            )
+                        }
+                    }
+                }
+                
+                Column(
+                    horizontalAlignment = Alignment.End
+                ) {
+                    Text(
+                        text = CurrencyFormatter.formatAmount(subscription.cost, currency),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White
+                    )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text(
+                        text = subscription.nextBillingDate ?: "",
+                        fontSize = 12.sp,
+                        color = Color(0xFF6B7280),
+                        fontWeight = FontWeight.Medium
+                    )
+                }
+            }
+            
+            Divider(
+                color = Color.White.copy(alpha = 0.05f),
+                thickness = 1.dp
+            )
+        }
+    }
+}

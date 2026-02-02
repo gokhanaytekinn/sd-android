@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Details</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#359EFF", "background-light": "#f5f7f8", "background-dark": "#0f1923", "surface-dark": "#1a2e1a"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary selection:text-black">
+<div class="relative flex h-full min-h-screen w-full flex-col max-w-md mx-auto overflow-x-hidden shadow-2xl">
+<!-- Top App Bar -->
+<div class="flex items-center px-4 py-4 justify-between sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm">
+<button class="text-white flex size-10 items-center justify-center rounded-full hover:bg-white/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<h2 class="text-white text-base font-semibold leading-tight tracking-wide uppercase opacity-0 transition-opacity duration-300">Netflix</h2>
+<button class="flex items-center justify-end px-2">
+<p class="text-primary text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-80 transition-opacity">Düzenle</p>
+</button>
+</div>
+<!-- Hero Section -->
+<div class="flex flex-col items-center pt-2 pb-6 px-4">
+<!-- Logo with glow effect -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-green-600/20 rounded-xl blur opacity-25 group-hover:opacity-50 transition duration-500"></div>
+<div class="relative w-28 h-28 bg-black rounded-xl flex items-center justify-center border border-white/10 shadow-xl overflow-hidden">
+<img alt="Netflix red logo on black background" class="w-full h-full object-cover scale-110" data-alt="Netflix red logo on black background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAEUoDoPl96oiiRpSq9sQjs-8aCgs-XKZKK8yv7oKYnzBPN6glVUB8Y532EIJB8RMzNPo7L9TfhB4iHVdMUy6kLFZi_uweiCC3Lax1F04y9U3n4Q19P99O8d4mxcu-QUwkLfVxEdW8w2hnZP4vXx6CvTxduVPWZPZA9nP-3hceaGb3ztmfU4yfePPuPZWg1rZiBZGt7atlJWfW2tX-ZfKeDo_NA_bWu13ki0d1EH2LTyr7GS1Ixcu0Z5zdQLCsRekitLcVkxIbSwjV"/>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center mt-6 gap-1">
+<h1 class="text-white text-2xl font-bold tracking-tight">Netflix Premium</h1>
+<p class="text-primary text-3xl font-bold tracking-tight">₺149.99 <span class="text-lg font-medium text-gray-400">/ ay</span></p>
+</div>
+</div>
+<!-- Stats / Renewal Badge -->
+<div class="px-4 mb-6">
+<div class="flex flex-col gap-4">
+<!-- Main Renewal Card -->
+<div class="bg-surface-dark border border-white/5 rounded-xl p-5 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-6xl text-primary">update</span>
+</div>
+<p class="text-gray-400 text-sm font-medium mb-1">Tahmini Yenileme</p>
+<div class="flex items-baseline gap-2">
+<p class="text-white text-2xl font-bold">24 Ekim</p>
+<span class="inline-flex items-center rounded-md bg-primary/20 px-2 py-1 text-xs font-bold text-primary ring-1 ring-inset ring-primary/30">5 gün kaldı</span>
+</div>
+<!-- Progress bar visual -->
+<div class="w-full bg-white/10 rounded-full h-1.5 mt-4 overflow-hidden">
+<div class="bg-primary h-1.5 rounded-full" style="width: 85%"></div>
+</div>
+</div>
+<!-- Secondary Stats Grid -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-dark border border-white/5 rounded-xl p-4">
+<p class="text-gray-400 text-xs font-medium mb-1">Toplam Harcama</p>
+<p class="text-white text-lg font-bold">₺1,499.90</p>
+</div>
+<div class="bg-surface-dark border border-white/5 rounded-xl p-4">
+<p class="text-gray-400 text-xs font-medium mb-1">Başlangıç</p>
+<p class="text-white text-lg font-bold">Ocak 2023</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="px-4 mb-8">
+<div class="grid grid-cols-2 gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-4 bg-primary text-background-dark hover:bg-green-400 active:scale-95 transition-all shadow-[0_0_15px_rgba(19,236,19,0.3)]">
+<span class="material-symbols-outlined text-[20px] font-bold">notifications_active</span>
+<span class="text-sm font-bold tracking-wide">Hatırlatıcı Kur</span>
+</button>
+<button class="flex items-center justify-center gap-2 rounded-lg h-12 px-4 bg-white/5 border border-white/10 text-white hover:bg-white/10 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+<span class="text-sm font-medium tracking-wide">Planı Düzenle</span>
+</button>
+</div>
+</div>
+<!-- Payment Timeline -->
+<div class="flex-1 px-4 pb-8">
+<h3 class="text-white text-lg font-bold tracking-tight mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-gray-400 text-[20px]">history</span>
+                Ödeme Geçmişi
+            </h3>
+<div class="relative pl-2">
+<!-- Vertical Line -->
+<div class="absolute left-[9px] top-2 bottom-4 w-[2px] bg-white/10"></div>
+<div class="flex flex-col gap-6">
+<!-- Item 1 (Active/Latest) -->
+<div class="relative flex items-center justify-between pl-6 group">
+<div class="absolute left-0 size-[20px] rounded-full bg-background-dark border-4 border-primary shadow-[0_0_10px_rgba(19,236,19,0.5)] z-10"></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-semibold">24 Eylül 2023</span>
+<span class="text-gray-500 text-xs">Kredi Kartı •••• 4242</span>
+</div>
+<span class="text-white font-medium">₺149.99</span>
+</div>
+<!-- Item 2 -->
+<div class="relative flex items-center justify-between pl-6 opacity-70">
+<div class="absolute left-[3px] size-[14px] rounded-full bg-gray-600 border-2 border-background-dark z-10"></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium">24 Ağustos 2023</span>
+</div>
+<span class="text-gray-300 font-medium">₺149.99</span>
+</div>
+<!-- Item 3 -->
+<div class="relative flex items-center justify-between pl-6 opacity-50">
+<div class="absolute left-[3px] size-[14px] rounded-full bg-gray-700 border-2 border-background-dark z-10"></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium">24 Temmuz 2023</span>
+</div>
+<span class="text-gray-400 font-medium">₺149.99</span>
+</div>
+<!-- Item 4 -->
+<div class="relative flex items-center justify-between pl-6 opacity-30">
+<div class="absolute left-[3px] size-[14px] rounded-full bg-gray-800 border-2 border-background-dark z-10"></div>
+<div class="flex flex-col">
+<span class="text-white text-sm font-medium">24 Haziran 2023</span>
+</div>
+<span class="text-gray-400 font-medium">₺149.99</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="p-6 mt-auto border-t border-white/5 bg-background-dark">
+<button class="w-full group flex flex-col items-center justify-center gap-1">
+<span class="text-gray-400 text-sm group-hover:text-white transition-colors">Bu abonelikten vaz mı geçtin?</span>
+<span class="text-white text-sm font-medium underline decoration-gray-600 underline-offset-4 group-hover:decoration-primary group-hover:text-primary transition-all">
+                    Nasıl İptal Edilir?
+                </span>
+</button>
+</div>
+</div>
+</body></html>

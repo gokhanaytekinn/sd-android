@@ -17,23 +17,32 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = BackgroundLight,
     surface = CardBackground,
-    onPrimary = CardBackground,
-    onSecondary = CardBackground,
-    onTertiary = CardBackground,
+    onPrimary = TextWhite,
+    onSecondary = TextWhite,
+    onTertiary = TextWhite,
     onBackground = TextPrimary,
     onSurface = TextPrimary,
     error = ErrorColor
 )
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = PrimaryBlue,
+    secondary = AccentColor,
+    tertiary = SuccessColor,
+    background = BackgroundDark,
+    surface = SurfaceDark,
+    onPrimary = BackgroundDark,
+    onSecondary = TextWhite,
+    onTertiary = TextWhite,
+    onBackground = TextWhite,
+    onSurface = TextWhite,
+    error = ErrorColor,
+    surfaceVariant = CardDark
 )
 
 @Composable
 fun SDAndroidTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = true, // Dark theme as default
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -45,7 +54,7 @@ fun SDAndroidTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = colorScheme.primary.toArgb()
+            window.statusBarColor = colorScheme.background.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }

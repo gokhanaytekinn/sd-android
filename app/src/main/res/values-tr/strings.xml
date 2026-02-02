@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Abonelik Dedektifi</string>
+    
+    <!-- Common -->
+    <string name="back">Geri</string>
+    <string name="save">Kaydet</string>
+    <string name="cancel">İptal</string>
+    <string name="skip">Geç</string>
+    <string name="continue_btn">Devam Et</string>
+    <string name="get_started">Hadi Başlayalım</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Aboneliklerini Takip Et</string>
+    <string name="onboarding_desc_1">Tüm aboneliklerini tek bir yerde görüntüle ve kontrol et. Bir daha hiçbir ödemeyi kaçırma.</string>
+    <string name="onboarding_title_2">Ödemelerini Otomatik Yakalar</string>
+    <string name="onboarding_desc_2">SMS ve bildirimlerini tarayarak aboneliklerini saniyeler içinde listeler.</string>
+    <string name="onboarding_security">Uçtan uca şifreli ve güvenli</string>
+    <string name="onboarding_title_3">Gereksiz Harcamalara Son</string>
+    <string name="onboarding_desc_3">Unuttuğun abonelikleri iptal et, ödeme günlerinden önce bildirim al.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Özet</string>
+    <string name="hello_user">Merhaba, %s</string>
+    <string name="total_monthly">Bu Ay Toplam</string>
+    <string name="vs_last_month">Geçen aya göre</string>
+    <string name="suspicious_subscriptions">Şüpheli Abonelikler</string>
+    <string name="transactions_pending">%d işlem inceleme bekliyor</string>
+    <string name="most_expensive">En Pahalı Abonelikler</string>
+    <string name="view_all">Tümü</string>
+    <string name="view_all_subscriptions">Tüm Abonelikleri Gör</string>
+    
+    <!-- Settings -->
+    <string name="settings">Ayarlar</string>
+    <string name="account">HESAP</string>
+    <string name="application">UYGULAMA</string>
+    <string name="support">DESTEK</string>
+    <string name="membership_type">Üyelik Tipi</string>
+    <string name="free_plan">Ücretsiz Plan</string>
+    <string name="notifications">Bildirimler</string>
+    <string name="currency">Para Birimi</string>
+    <string name="dark_mode">Karanlık Mod</string>
+    <string name="language">Dil</string>
+    <string name="help_center">Yardım Merkezi</string>
+    <string name="privacy_policy">Gizlilik Politikası</string>
+    <string name="logout">Çıkış Yap</string>
+    <string name="version_info">Versiyon %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Premium\'a Yükselt</string>
+    <string name="premium_desc">Tüm aboneliklerini otomatik tara ve %%30 daha fazla tasarruf et.</string>
+    <string name="upgrade">Yükselt</string>
+    
+    <!-- Search -->
+    <string name="search">Ara</string>
+    <string name="search_placeholder">Abonelik veya işlem ara</string>
+    <string name="recent_searches">SON ARAMALAR</string>
+    <string name="results_found">SONUÇ BULUNDU (%d)</string>
+    <string name="subscriptions">Abonelikler</string>
+    <string name="transactions">İşlemler</string>
+    <string name="looking_for_else">Başka bir şey mi arıyorsun?</string>
+    <string name="search_tip">Satıcı adı veya belirli işlem tutarlarına göre aramayı dene.</string>
+    <string name="clear_search">Aramayı Temizle</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Aktif</string>
+    <string name="suspicious">Şüpheli</string>
+    <string name="cancelled">İptal Edildi</string>
+    <string name="monthly">AYLIK</string>
+    <string name="yearly">YILLIK</string>
+    <string name="one_time">TEK SEFERLIK</string>
+    <string name="renews">Yenilenir: %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Özet</string>
+    <string name="nav_search">Ara</string>
+    <string name="nav_settings">Ayarlar</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+    <string name="select_language">Dil Seçin</string>
+    <string name="select_currency">Para Birimi Seçin</string>
+    <string name="close">Kapat</string>
+    
+    <!-- Auth -->
+    <string name="login">Giriş Yap</string>
+    <string name="register">Kayıt Ol</string>
+    <string name="email">E-posta</string>
+    <string name="password">Şifre</string>
+    <string name="name">İsim</string>
+    <string name="full_name">Tam İsim</string>
+    <string name="forgot_password">Şifremi Unuttum?</string>
+    <string name="no_account">Hesabınız yok mu?</string>
+    <string name="have_account">Zaten hesabınız var mı?</string>
+    <string name="sign_in">Giriş Yap</string>
+    <string name="sign_up">Kayıt Ol</string>
+    <string name="create_account">Hesap Oluştur</string>
+    <string name="welcome_back">Tekrar Hoşgeldin</string>
+    <string name="start_tracking">Aboneliklerini takip etmeye başla</string>
+    <string name="join_us">Bize Katıl</string>
+    <string name="manage_subscriptions">Aboneliklerini kolayca yönet</string>
+    <string name="guest_user">Misafir Kullanıcı</string>
+    <string name="not_logged_in">Giriş yapılmadı</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Şüpheli Ödemeler</string>
+    <string name="transactions_to_review">İncelenecek İşlemler</string>
+    <string name="swipe_to_review">Reddetmek için sola, abonelik olarak onaylamak için sağa kaydırın</string>
+    <string name="confirm">Onayla</string>
+    <string name="reject">Reddet</string>
+    <string name="all_done">Hepsi Tamam!</string>
+    <string name="no_suspicious">Şüpheli işlem bulunamadı</string>
+    <string name="reviewing_transactions">İşlemler İnceleniyor</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Tüm Abonelikler</string>
+    <string name="no_subscriptions">Henüz abonelik yok</string>
+    <string name="add_subscription">Abonelik Ekle</string>
+    <string name="subscription_details">Abonelik Detayları</string>
+    <string name="next_payment">Sonraki Ödeme</string>
+    <string name="billing_cycle">Fatura Döngüsü</string>
+    <string name="category">Kategori</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Premium Al</string>
+    <string name="premium_features">Premium Özellikler</string>
+    <string name="unlimited_subscriptions">Sınırsız Abonelik</string>
+    <string name="advanced_analytics">Gelişmiş Analitik</string>
+    <string name="priority_support">Öncelikli Destek</string>
+    <string name="ad_free">Reklamsız Deneyim</string>
+    <string name="choose_plan">Planını Seç</string>
+    <string name="monthly_plan">Aylık Plan</string>
+    <string name="yearly_plan">Yıllık Plan</string>
+    <string name="save_percent">%%d Tasarruf</string>
+    <string name="per_month">/ay</string>
+    <string name="per_year">/yıl</string>
+    <string name="billed_monthly">Aylık faturalandırılır</string>
+    <string name="billed_yearly">Yıllık faturalandırılır</string>
+    <string name="start_trial">Ücretsiz Denemeyi Başlat</string>
+    <string name="restore_purchase">Satın Almayı Geri Yükle</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Analitik</string>
+    <string name="spending_overview">Harcama Özeti</string>
+    <string name="monthly_trend">Aylık Trend</string>
+    <string name="category_breakdown">Kategori Dağılımı</string>
+    <string name="top_subscriptions">En Çok Harcanan</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">İşlem Geçmişi</string>
+    <string name="all_transactions">Tüm İşlemler</string>
+    <string name="filter">Filtrele</string>
+    <string name="sort_by">Sırala</string>
+    <string name="date">Tarih</string>
+    <string name="amount">Tutar</string>
+    <string name="merchant">Satıcı</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Tüm Abonelikler</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Ekle</string>
+    <string name="edit">Düzenle</string>
+    <string name="delete">Sil</string>
+    <string name="done">Tamam</string>
+    <string name="next">İleri</string>
+    <string name="previous">Geri</string>
+    <string name="finish">Bitir</string>
+    
+    <!-- Messages -->
+    <string name="loading">Yükleniyor…</string>
+    <string name="error">Hata</string>
+    <string name="success">Başarılı</string>
+    <string name="try_again">Tekrar Dene</string>
+    <string name="no_results">Sonuç bulunamadı</string>
+</resources>

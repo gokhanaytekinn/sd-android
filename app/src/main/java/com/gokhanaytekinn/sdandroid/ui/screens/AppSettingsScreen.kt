@@ -1,0 +1,748 @@
+package com.gokhanaytekinn.sdandroid.ui.screens
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.gokhanaytekinn.sdandroid.R
+import com.gokhanaytekinn.sdandroid.ui.theme.*
+import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import kotlinx.coroutines.launch
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import com.gokhanaytekinn.sdandroid.data.preferences.settingsDataStore
+
+@Composable
+fun AppSettingsScreen(
+    onBackClick: () -> Unit = {},
+    onProfileClick: () -> Unit = {},
+    onUpgradeClick: () -> Unit = {},
+    onCurrencyClick: () -> Unit = {},
+    onHelpClick: () -> Unit = {},
+    onPrivacyClick: () -> Unit = {},
+    onLogoutClick: () -> Unit = {}
+) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val scope = rememberCoroutineScope()
+    
+    // ViewModels
+    val authViewModel: AuthViewModel = remember { AuthViewModel(context) }
+    val authState by authViewModel.authState.collectAsState()
+    
+    // Preferences
+    val themePreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.ThemePreferences(context) }
+    val languagePreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences(context) }
+    val currencyPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences(context) }
+    
+    // States
+    var notificationsEnabled by remember { mutableStateOf(true) }
+    val darkModeEnabled by themePreferences.isDarkMode.collectAsState(initial = true)
+    
+    // Language state - use local state for immediate UI feedback
+    var currentLanguage by remember { mutableStateOf(
+        if (AppCompatDelegate.getApplicationLocales().toLanguageTags().isEmpty()) "tr" 
+        else AppCompatDelegate.getApplicationLocales().toLanguageTags().substring(0, 2)
+    ) }
+    
+    // Currency state - load from preferences
+    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
+    
+    // Dialog states
+    var showLanguageDialog by remember { mutableStateOf(false) }
+    var showCurrencyDialog by remember { mutableStateOf(false) }
+    
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        // Top App Bar
+        Surface(
+            modifier = Modifier.fillMaxWidth(),
+            color = Color(0xFF101922).copy(alpha = 0.9f),
+            tonalElevation = 1.dp
+        ) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = onBackClick) {
+                    Icon(
+                        imageVector = Icons.Filled.ArrowBack,
+                        contentDescription = "Back",
+                        tint = Color.White
+                    )
+                }
+                
+                Text(
+                    text = stringResource(R.string.settings),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurface
+                )
+                
+                Spacer(modifier = Modifier.width(48.dp))
+            }
+        }
+        
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(bottom = 16.dp)
+        ) {
+            // Premium Upgrade Card
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(16.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    shadowElevation = 2.dp,
+                    onClick = onUpgradeClick
+                ) {
+                    Column(
+                        modifier = Modifier.background(
+                            brush = Brush.horizontalGradient(
+                                colors = listOf(
+                                    Color(0xFF389cfa),
+                                    Color(0xFF1e4f8a)
+                                )
+                            )
+                        )
+                    ) {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(120.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.AutoAwesome,
+                                contentDescription = null,
+                                tint = Color.White,
+                                modifier = Modifier.size(48.dp)
+                            )
+                        }
+                        
+                        Column(
+                            modifier = Modifier.padding(16.dp)
+                        ) {
+                            Text(
+                                text = stringResource(R.string.upgrade_to_premium),
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            )
+                            Spacer(modifier = Modifier.height(8.dp))
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.premium_desc),
+                                    fontSize = 14.sp,
+                                    color = Color.White.copy(alpha = 0.9f),
+                                    modifier = Modifier.weight(1f)
+                                )
+                                Spacer(modifier = Modifier.width(12.dp))
+                                Button(
+                                    onClick = onUpgradeClick,
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = Color.White,
+                                        contentColor = PrimaryBlue
+                                    ),
+                                    shape = RoundedCornerShape(8.dp)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.upgrade),
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Section: Hesap
+            item {
+                Text(
+                    text = stringResource(R.string.account),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.White.copy(alpha = 0.6f),
+                    letterSpacing = 1.5.sp,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+                )
+            }
+            
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    color = MaterialTheme.colorScheme.surface,
+                    onClick = onProfileClick
+                ) {
+                    Column {
+                        // Profile Item
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(48.dp)
+                                        .clip(CircleShape)
+                                        .background(PrimaryBlue.copy(alpha = 0.2f)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "CD",
+                                        fontSize = 18.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = PrimaryBlue
+                                    )
+                                }
+                                
+                                Column {
+                                    Text(
+                                        text = authState.userName ?: "Misafir Kullanıcı",
+                                        fontSize = 16.sp,
+                                        fontWeight = FontWeight.SemiBold,
+                                        color = Color.White
+                                    )
+                                    Text(
+                                        text = authState.userEmail ?: "Giriş yapılmadı",
+                                        fontSize = 12.sp,
+                                        color = Color(0xFF94A3B8)
+                                    )
+                                }
+                            }
+                            
+                            Icon(
+                                imageVector = Icons.Filled.ChevronRight,
+                                contentDescription = null,
+                                tint = Color(0xFF9CA3AF)
+                            )
+                        }
+                        
+                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        
+                        // Membership Status
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Row(
+                                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .clip(RoundedCornerShape(8.dp))
+                                        .background(PrimaryBlue.copy(alpha = 0.1f)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Filled.WorkspacePremium,
+                                        contentDescription = null,
+                                        tint = PrimaryBlue,
+                                        modifier = Modifier.size(20.dp)
+                                    )
+                                }
+                                
+                                Text(
+                                    text = "Üyelik Tipi",
+                                    fontSize = 16.sp,
+                                    fontWeight = FontWeight.Medium,
+                                    color = Color.White
+                                )
+                            }
+                            
+                            Surface(
+                                shape = RoundedCornerShape(50),
+                                color = PrimaryBlue.copy(alpha = 0.1f)
+                            ) {
+                                Text(
+                                    text = "Ücretsiz Plan",
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.SemiBold,
+                                    color = PrimaryBlue,
+                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+            
+            // Section: Uygulama
+            item {
+                Text(
+                    text = stringResource(R.string.application),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.White.copy(alpha = 0.6f),
+                    letterSpacing = 1.5.sp,
+                    modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 12.dp)
+                )
+            }
+            
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    color = Color(0xFF1E293B)
+                ) {
+                    Column {
+                        // Notifications Toggle
+                        SettingsToggleItem(
+                            icon = Icons.Filled.Notifications,
+                            title = stringResource(R.string.notifications),
+                            checked = notificationsEnabled,
+                            onCheckedChange = { notificationsEnabled = it }
+                        )
+                        
+                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        
+                        // Currency Selection
+                        SettingsNavigationItem(
+                            icon = Icons.Filled.Payments,
+                            title = stringResource(R.string.currency),
+                            value = "$selectedCurrency (${getCurrencySymbol(selectedCurrency)})",
+                            onClick = { showCurrencyDialog = true }
+                        )
+                        
+                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        
+                        // Dark Mode Toggle
+                        SettingsToggleItem(
+                            icon = Icons.Filled.DarkMode,
+                            title = stringResource(R.string.dark_mode),
+                            checked = darkModeEnabled,
+                            onCheckedChange = { 
+                                scope.launch {
+                                    themePreferences.toggleDarkMode()
+                                }
+                            }
+                        )
+                        
+                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        
+                        // Language Selection
+                        SettingsNavigationItem(
+                            icon = Icons.Filled.Language,
+                            title = stringResource(R.string.language),
+                            value = getLanguageName(currentLanguage),
+                            onClick = { showLanguageDialog = true }
+                        )
+                    }
+                }
+            }
+            
+            // Section: Destek
+            item {
+                Text(
+                    text = stringResource(R.string.support),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = Color.White.copy(alpha = 0.6f),
+                    letterSpacing = 1.5.sp,
+                    modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 12.dp)
+                )
+            }
+            
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    color = Color(0xFF1E293B)
+                ) {
+                    Column {
+                        // Help Center
+                        SettingsNavigationItem(
+                            icon = Icons.Filled.Help,
+                            title = stringResource(R.string.help_center),
+                            onClick = onHelpClick
+                        )
+                        
+                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        
+                        // Privacy Policy
+                        SettingsNavigationItem(
+                            icon = Icons.Filled.Policy,
+                            title = stringResource(R.string.privacy_policy),
+                            onClick = onPrivacyClick
+                        )
+                    }
+                }
+            }
+            
+            // Logout Button
+            item {
+                Spacer(modifier = Modifier.height(32.dp))
+                Button(
+                    onClick = {
+                        scope.launch {
+                            authViewModel.logout()
+                            onLogoutClick()
+                        }
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                        .height(48.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = Color(0xFFFEF2F2),
+                        contentColor = Color(0xFFEF4444)
+                    ),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Filled.Logout,
+                        contentDescription = null
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Text(
+                        text = stringResource(R.string.logout),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.SemiBold
+                    )
+                }
+                
+                Text(
+                    text = "Versiyon 2.4.0 (Build 892)",
+                    fontSize = 12.sp,
+                    color = Color(0xFF9CA3AF),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 16.dp),
+                    textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                )
+            }
+        }
+    }
+    
+    // Language Selection Dialog
+    if (showLanguageDialog) {
+        AlertDialog(
+            onDismissRequest = { showLanguageDialog = false },
+            title = { Text(stringResource(R.string.select_language)) },
+            text = {
+                Column {
+                    LanguageOption("tr", "Türkçe", currentLanguage) { 
+                        scope.launch {
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("tr")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                            languagePreferences.setLanguage("tr")
+                            currentLanguage = "tr"
+                            showLanguageDialog = false
+                        }
+                    }
+                    LanguageOption("en", "English", currentLanguage) {
+                        scope.launch {
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                            languagePreferences.setLanguage("en")
+                            currentLanguage = "en"
+                            showLanguageDialog = false
+                        }
+                    }
+                    LanguageOption("es", "Español", currentLanguage) {
+                        scope.launch {
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("es")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                            languagePreferences.setLanguage("es")
+                            currentLanguage = "es"
+                            showLanguageDialog = false
+                        }
+                    }
+                    LanguageOption("ru", "Русский", currentLanguage) {
+                        scope.launch {
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("ru")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                            languagePreferences.setLanguage("ru")
+                            currentLanguage = "ru"
+                            showLanguageDialog = false
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showLanguageDialog = false }) {
+                    Text(stringResource(R.string.close))
+                }
+            }
+        )
+    }
+
+     if (showCurrencyDialog) {
+        AlertDialog(
+            onDismissRequest = { showCurrencyDialog = false },
+            title = { Text(stringResource(R.string.select_currency)) },
+            text = {
+                Column {
+                    CurrencyOption("TRY", "₺", selectedCurrency) {
+                        scope.launch {
+                            currencyPreferences.setCurrency("TRY")
+                            showCurrencyDialog = false
+                        }
+                    }
+                    CurrencyOption("USD", "$", selectedCurrency) {
+                         scope.launch {
+                            currencyPreferences.setCurrency("USD")
+                            showCurrencyDialog = false
+                        }
+                    }
+                    CurrencyOption("EUR", "€", selectedCurrency) {
+                         scope.launch {
+                            currencyPreferences.setCurrency("EUR")
+                            showCurrencyDialog = false
+                        }
+                    }
+                    CurrencyOption("GBP", "£", selectedCurrency) {
+                         scope.launch {
+                            currencyPreferences.setCurrency("GBP")
+                            showCurrencyDialog = false
+                        }
+                    }
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showCurrencyDialog = false }) {
+                    Text("Kapat")
+                }
+            }
+        )
+    }
+}
+
+@Composable
+fun LanguageOption(
+    code: String,
+    name: String,
+    selectedCode: String,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 12.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(name, fontSize = 16.sp)
+        if (code == selectedCode) {
+            Icon(
+                imageVector = Icons.Filled.Check,
+                contentDescription = null,
+                tint = PrimaryBlue
+            )
+        }
+    }
+}
+
+@Composable
+fun CurrencyOption(
+    code: String,
+    symbol: String,
+    selectedCode: String,
+    onClick: () -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(vertical = 12.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text("$code ($symbol)", fontSize = 16.sp)
+        if (code == selectedCode) {
+            Icon(
+                imageVector = Icons.Filled.Check,
+                contentDescription = null,
+                tint = PrimaryBlue
+            )
+        }
+    }
+}
+
+fun getCurrencySymbol(currency: String): String {
+    return when(currency) {
+        "TRY" -> "₺"
+        "USD" -> "$"
+        "EUR" -> "€"
+        "GBP" -> "£"
+        else -> currency
+    }
+}
+
+fun getLanguageName(code: String): String {
+    return when(code) {
+        "tr" -> "Türkçe"
+        "en" -> "English"
+        "es" -> "Español"
+        "ru" -> "Русский"
+        else -> code
+    }
+}
+
+@Composable
+fun SettingsToggleItem(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    title: String,
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(16.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(36.dp)
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(PrimaryBlue.copy(alpha = 0.1f)),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = PrimaryBlue,
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+            
+            Text(
+                text = title,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Medium,
+                color = Color.White
+            )
+        }
+        
+        Switch(
+            checked = checked,
+            onCheckedChange = onCheckedChange,
+            colors = SwitchDefaults.colors(
+                checkedThumbColor = Color.White,
+                checkedTrackColor = PrimaryBlue,
+                uncheckedThumbColor = Color.White,
+                uncheckedTrackColor = Color(0xFFE2E8F0)
+            )
+        )
+    }
+}
+
+@Composable
+fun SettingsNavigationItem(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    title: String,
+    value: String? = null,
+    onClick: () -> Unit
+) {
+    Surface(
+        onClick = onClick,
+        color = Color.Transparent
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(
+                    modifier = Modifier
+                        .size(36.dp)
+                        .clip(RoundedCornerShape(8.dp))
+                        .background(PrimaryBlue.copy(alpha = 0.1f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = icon,
+                        contentDescription = null,
+                        tint = PrimaryBlue,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+                
+                Text(
+                    text = title,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = Color.White
+                )
+            }
+            
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                if (value != null) {
+                    Text(
+                        text = value,
+                        fontSize = 14.sp,
+                        color = Color(0xFF64748B)
+                    )
+                }
+                Icon(
+                    imageVector = Icons.Filled.ChevronRight,
+                    contentDescription = null,
+                    tint = Color(0xFF9CA3AF),
+                    modifier = Modifier.size(20.dp)
+                )
+            }
+        }
+    }
+}

@@ -1,17 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SD Android</string>
-    <string name="welcome">Welcome</string>
-    <string name="dashboard">Dashboard</string>
-    <string name="onboarding_title">Manage Your Subscriptions</string>
-    <string name="onboarding_description">Track and manage all your subscriptions in one place. Get insights into your spending and never miss a payment.</string>
+    <!-- App Name -->
+    <string name="app_name">Subscription Detector</string>
+    
+    <!-- Common -->
+    <string name="back">Back</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="skip">Skip</string>
+    <string name="continue_btn">Continue</string>
     <string name="get_started">Get Started</string>
-    <string name="my_subscriptions">My Subscriptions</string>
-    <string name="total_monthly_cost">Total Monthly Cost</string>
-    <string name="active_subscriptions">Active Subscriptions</string>
-    <string name="add_subscription">Add Subscription</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Track Your Subscriptions</string>
+    <string name="onboarding_desc_1">View and control all your subscriptions in one place. Never miss a payment again.</string>
+    <string name="onboarding_title_2">Auto-Capture Payments</string>
+    <string name="onboarding_desc_2">Scans your SMS and notifications to list your subscriptions in seconds.</string>
+    <string name="onboarding_security">End-to-end encrypted and secure</string>
+    <string name="onboarding_title_3">End Unnecessary Expenses</string>
+    <string name="onboarding_desc_3">Cancel forgotten subscriptions, get notified before payment dates.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="hello_user">Hello, %s</string>
+    <string name="total_monthly">Total This Month</string>
+    <string name="vs_last_month">vs last month</string>
+    <string name="suspicious_subscriptions">Suspicious Subscriptions</string>
+    <string name="transactions_pending">%d transactions pending review</string>
+    <string name="most_expensive">Most Expensive Subscriptions</string>
     <string name="view_all">View All</string>
-    <string name="recent_subscriptions">Recent Subscriptions</string>
-    <string name="monthly">Monthly</string>
-    <string name="yearly">Yearly</string>
+    <string name="view_all_subscriptions">View All Subscriptions</string>
+    
+    <!-- Settings -->
+    <string name="settings">Settings</string>
+    <string name="account">ACCOUNT</string>
+    <string name="application">APPLICATION</string>
+    <string name="support">SUPPORT</string>
+    <string name="membership_type">Membership Type</string>
+    <string name="free_plan">Free Plan</string>
+    <string name="notifications">Notifications</string>
+    <string name="currency">Currency</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="help_center">Help Center</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="logout">Logout</string>
+    <string name="version_info">Version %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Upgrade to Premium</string>
+    <string name="premium_desc">Auto-scan all your subscriptions and save 30%% more.</string>
+    <string name="upgrade">Upgrade</string>
+    
+    <!-- Search -->
+    <string name="search">Search</string>
+    <string name="search_placeholder">Search subscriptions or transactions</string>
+    <string name="recent_searches">RECENT SEARCHES</string>
+    <string name="results_found">RESULTS FOUND (%d)</string>
+    <string name="subscriptions">Subscriptions</string>
+    <string name="transactions">Transactions</string>
+    <string name="looking_for_else">Looking for something else?</string>
+    <string name="search_tip">Try searching by merchant name or specific transaction amounts.</string>
+    <string name="clear_search">Clear Search</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Active</string>
+    <string name="suspicious">Suspicious</string>
+    <string name="cancelled">Cancelled</string>
+    <string name="monthly">MONTHLY</string>
+    <string name="yearly">YEARLY</string>
+    <string name="one_time">ONE-TIME</string>
+    <string name="renews">Renews %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_search">Search</string>
+    <string name="nav_settings">Settings</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+    <string name="select_language">Select Language</string>
+    <string name="select_currency">Select Currency</string>
+    <string name="close">Close</string>
+    
+    <!-- Auth -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="name">Name</string>
+    <string name="full_name">Full Name</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="no_account">Don\'t have an account?</string>
+    <string name="have_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="start_tracking">Start tracking your subscriptions</string>
+    <string name="join_us">Join us</string>
+    <string name="manage_subscriptions">Manage your subscriptions easily</string>
+    <string name="guest_user">Guest User</string>
+    <string name="not_logged_in">Not logged in</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Suspicious Payments</string>
+    <string name="transactions_to_review">Transactions to Review</string>
+    <string name="swipe_to_review">Swipe left to reject or right to confirm as subscription</string>
+    <string name="confirm">Confirm</string>
+    <string name="reject">Reject</string>
+    <string name="all_done">All Done!</string>
+    <string name="no_suspicious">No suspicious transactions found</string>
+    <string name="reviewing_transactions">Reviewing Transactions</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">All Subscriptions</string>
+    <string name="no_subscriptions">No subscriptions yet</string>
+    <string name="add_subscription">Add Subscription</string>
+    <string name="subscription_details">Subscription Details</string>
+    <string name="next_payment">Next Payment</string>
+    <string name="billing_cycle">Billing Cycle</string>
+    <string name="category">Category</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Get Premium</string>
+    <string name="premium_features">Premium Features</string>
+    <string name="unlimited_subscriptions">Unlimited Subscriptions</string>
+    <string name="advanced_analytics">Advanced Analytics</string>
+    <string name="priority_support">Priority Support</string>
+    <string name="ad_free">Ad Free Experience</string>
+    <string name="choose_plan">Choose Your Plan</string>
+    <string name="monthly_plan">Monthly Plan</string>
+    <string name="yearly_plan">Yearly Plan</string>
+    <string name="save_percent">Save %d%%</string>
+    <string name="per_month">/month</string>
+    <string name="per_year">/year</string>
+    <string name="billed_monthly">Billed monthly</string>
+    <string name="billed_yearly">Billed yearly</string>
+    <string name="start_trial">Start Free Trial</string>
+    <string name="restore_purchase">Restore Purchase</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Analytics</string>
+    <string name="spending_overview">Spending Overview</string>
+    <string name="monthly_trend">Monthly Trend</string>
+    <string name="category_breakdown">Category Breakdown</string>
+    <string name="top_subscriptions">Top Subscriptions</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">Transaction History</string>
+    <string name="all_transactions">All Transactions</string>
+    <string name="filter">Filter</string>
+    <string name="sort_by">Sort By</string>
+    <string name="date">Date</string>
+    <string name="amount">Amount</string>
+    <string name="merchant">Merchant</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">All Subscriptions</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="done">Done</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="finish">Finish</string>
+    
+    <!-- Messages -->
+    <string name="loading">Loading…</string>
+    <string name="error">Error</string>
+    <string name="success">Success</string>
+    <string name="try_again">Try Again</string>
+    <string name="no_results">No results found</string>
 </resources>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Abonelik Dedektifi - Tasarruf ve Hatırlatıcılar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1383ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center">
+<div class="relative flex h-[844px] w-[390px] flex-col bg-white dark:bg-background-dark overflow-hidden shadow-2xl rounded-[3rem] border-[8px] border-gray-100 dark:border-gray-800">
+<!-- Top App Bar / Back Navigation -->
+<div class="flex items-center bg-transparent p-6 pb-2 justify-between w-full">
+<button class="text-[#111518] dark:text-white flex size-10 items-center justify-center rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+</button>
+<div class="size-10"></div> <!-- Spacer for symmetry -->
+</div>
+<!-- Hero Illustration Area -->
+<div class="flex w-full grow flex-col items-center justify-center px-8">
+<div class="relative w-full aspect-square flex items-center justify-center">
+<!-- Decorative background elements -->
+<div class="absolute w-64 h-64 bg-primary/5 dark:bg-primary/10 rounded-full"></div>
+<!-- Minimalist Illustration Container -->
+<div class="relative z-10 flex flex-col items-center gap-6">
+<!-- Bell Icon (Notification) -->
+<div class="flex items-center justify-center w-24 h-24 bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-50 dark:border-gray-700">
+<span class="material-symbols-outlined text-primary text-[48px]">notifications_active</span>
+</div>
+<!-- Piggy Bank (Savings) -->
+<div class="flex items-center justify-center w-24 h-24 bg-primary rounded-3xl shadow-xl ml-12 -mt-8">
+<span class="material-symbols-outlined text-white text-[48px]">savings</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex flex-col items-center px-8 pb-12">
+<!-- Headline -->
+<h1 class="text-[#111518] dark:text-white tracking-tight text-[32px] font-bold leading-tight text-center pb-3 pt-2 font-display">
+                Gereksiz Harcamalara Son
+            </h1>
+<!-- Body Text -->
+<p class="text-[#4F5B67] dark:text-gray-400 text-base font-normal leading-relaxed text-center px-2">
+                Unuttuğun abonelikleri iptal et, ödeme günlerinden önce bildirim al.
+            </p>
+<!-- Page Indicators -->
+<div class="flex w-full flex-row items-center justify-center gap-2 py-8">
+<div class="h-1.5 w-1.5 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+<div class="h-1.5 w-6 rounded-full bg-primary"></div>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 px-6 rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-primary/25">
+                Hadi Başlayalım
+            </button>
+<!-- Safe Area Spacer (iOS style) -->
+<div class="h-6"></div>
+</div>
+</div>
+<!-- Background Decoration for context -->
+<div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_50%_50%,_rgba(19,131,236,0.05)_0%,_transparent_50%)]"></div>
+</body></html>

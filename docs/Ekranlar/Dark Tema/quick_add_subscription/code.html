@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quick Add Subscription</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1383ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-10 bg-white dark:bg-background-dark/95 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+<div class="flex items-center px-4 h-14 justify-between">
+<div class="w-10">
+<span class="material-symbols-outlined text-[#111518] dark:text-white cursor-pointer">arrow_back_ios</span>
+</div>
+<h1 class="text-[#111518] dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Manuel Abonelik Ekle</h1>
+<div class="w-10"></div> <!-- Placeholder for symmetry -->
+</div>
+</header>
+<main class="flex-1 flex flex-col">
+<!-- Category Segmented Control -->
+<div class="px-4 pt-6 pb-2">
+<label class="block text-xs font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500 mb-3 px-1">Kategori</label>
+<div class="flex h-11 w-full items-center justify-center rounded-xl bg-gray-200/50 dark:bg-gray-800 p-1">
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111518] dark:has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium transition-all">
+<span class="truncate">Eğlence</span>
+<input checked="" class="invisible w-0" name="category" type="radio" value="Entertainment"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111518] dark:has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium transition-all">
+<span class="truncate">Yazılım</span>
+<input class="invisible w-0" name="category" type="radio" value="Software"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111518] dark:has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium transition-all">
+<span class="truncate">Sağlık</span>
+<input class="invisible w-0" name="category" type="radio" value="Health"/>
+</label>
+<label class="flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-700 has-[:checked]:shadow-sm has-[:checked]:text-[#111518] dark:has-[:checked]:text-white text-gray-500 dark:text-gray-400 text-sm font-medium transition-all">
+<span class="truncate">Diğer</span>
+<input class="invisible w-0" name="category" type="radio" value="Other"/>
+</label>
+</div>
+</div>
+<!-- Input Section -->
+<div class="mt-4 bg-white dark:bg-gray-900 border-y border-gray-100 dark:border-gray-800">
+<!-- Name Input Row -->
+<div class="flex items-center gap-4 px-4 min-h-[56px] justify-between border-b border-gray-100 dark:border-gray-800">
+<p class="text-[#111518] dark:text-white text-base font-medium flex-1">İsim</p>
+<div class="shrink-0">
+<input class="text-right border-none focus:ring-0 p-0 text-[#111518] dark:text-white bg-transparent placeholder-gray-300 dark:placeholder-gray-600 text-base" placeholder="Netflix" type="text"/>
+</div>
+</div>
+<!-- Price Input Row -->
+<div class="flex items-center gap-4 px-4 min-h-[56px] justify-between border-b border-gray-100 dark:border-gray-800">
+<p class="text-[#111518] dark:text-white text-base font-medium flex-1">Ücret</p>
+<div class="shrink-0">
+<input class="text-right border-none focus:ring-0 p-0 text-[#111518] dark:text-white bg-transparent placeholder-gray-300 dark:placeholder-gray-600 text-base" placeholder="₺0,00" type="text"/>
+</div>
+</div>
+<!-- Reminder Toggle Row -->
+<div class="flex items-center gap-4 px-4 min-h-[56px] justify-between">
+<p class="text-[#111518] dark:text-white text-base font-medium flex-1">Hatırlatıcı kur</p>
+<div class="shrink-0">
+<label class="relative flex h-[31px] w-[51px] cursor-pointer items-center rounded-full border-none bg-gray-200 dark:bg-gray-700 p-0.5 transition-colors has-[:checked]:justify-end has-[:checked]:bg-primary">
+<div class="h-full w-[27px] rounded-full bg-white shadow-sm"></div>
+<input class="invisible absolute peer" type="checkbox"/>
+</label>
+</div>
+</div>
+</div>
+<!-- Detail Note -->
+<div class="px-4 py-4">
+<p class="text-xs text-gray-400 dark:text-gray-500 leading-relaxed">
+                Aboneliğinizi ekledikten sonra yenileme tarihlerini ve geçmiş ödemeleri detaylı olarak görebilirsiniz.
+            </p>
+</div>
+</main>
+<!-- Fixed Bottom Button -->
+<footer class="p-4 pb-8 bg-background-light dark:bg-background-dark border-t border-gray-100 dark:border-gray-800">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 rounded-xl transition-all shadow-md active:scale-[0.98]">
+            Ekle
+        </button>
+</footer>
+</body></html>

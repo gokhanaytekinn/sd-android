@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Search Subscriptions &amp; Transactions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1383ec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'WHT' 300, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+<div class="max-w-[430px] mx-auto bg-white dark:bg-[#0d151b] min-h-screen flex flex-col shadow-xl">
+<!-- Top App Bar (iOS style) -->
+<div class="sticky top-0 z-10 bg-white/80 dark:bg-[#0d151b]/80 backdrop-blur-md">
+<div class="flex items-center px-4 py-4 justify-between">
+<div class="text-[#0d151b] dark:text-white flex size-10 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined">arrow_back_ios</span>
+</div>
+<h2 class="text-[#0d151b] dark:text-white text-lg font-bold leading-tight tracking-tight flex-1 text-center">Search</h2>
+<div class="flex w-10 items-center justify-end">
+<button class="flex items-center justify-center text-[#0d151b] dark:text-white">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+</div>
+<!-- Search Bar Component -->
+<div class="px-4 pb-4">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-xl h-full overflow-hidden">
+<div class="text-[#4c749a] flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pl-4">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden text-[#0d151b] dark:text-white focus:outline-0 focus:ring-0 border-none bg-slate-100 dark:bg-slate-800 placeholder:text-[#4c749a] px-4 pl-2 text-base font-normal leading-normal" placeholder="Search subscriptions or transactions" value="Netfl"/>
+<div class="text-[#4c749a] flex border-none bg-slate-100 dark:bg-slate-800 items-center justify-center pr-4 cursor-pointer">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</div>
+</div>
+</label>
+</div>
+<!-- Tabs Component -->
+<div class="pb-1">
+<div class="flex border-b border-slate-100 dark:border-slate-800 px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-[2px] border-primary text-[#0d151b] dark:text-white pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-wide">Subscriptions</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[2px] border-transparent text-[#4c749a] pb-3 pt-2" href="#">
+<p class="text-sm font-bold leading-normal tracking-wide">Transactions</p>
+</a>
+</div>
+</div>
+</div>
+<!-- Content Area -->
+<div class="flex-1 overflow-y-auto">
+<!-- Section Header: Recent -->
+<h3 class="text-[#0d151b] dark:text-white text-sm font-bold uppercase tracking-widest px-4 pb-2 pt-6 opacity-60">Recent Searches</h3>
+<!-- Chips Component -->
+<div class="flex gap-2 p-4 flex-wrap">
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 cursor-pointer hover:bg-slate-200 transition-colors">
+<p class="text-[#0d151b] dark:text-white text-sm font-medium">Netflix</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 cursor-pointer hover:bg-slate-200 transition-colors">
+<p class="text-[#0d151b] dark:text-white text-sm font-medium">Gym</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 cursor-pointer hover:bg-slate-200 transition-colors">
+<p class="text-[#0d151b] dark:text-white text-sm font-medium">Spotify</p>
+</div>
+<div class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-full bg-slate-100 dark:bg-slate-800 px-4 cursor-pointer hover:bg-slate-200 transition-colors">
+<p class="text-[#0d151b] dark:text-white text-sm font-medium">iCloud</p>
+</div>
+</div>
+<!-- Section Header: Results -->
+<h3 class="text-[#0d151b] dark:text-white text-sm font-bold uppercase tracking-widest px-4 pb-2 pt-4 opacity-60">Results Found (2)</h3>
+<!-- Subscription Result Item -->
+<div class="px-4 py-3 flex items-center justify-between border-b border-slate-50 dark:border-slate-800/50 cursor-pointer active:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-red-600 flex items-center justify-center overflow-hidden">
+<!-- Placeholder for Netflix-like Logo -->
+<div class="w-full h-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center" data-alt="Netflix logo aesthetic red gradient">
+<span class="text-white font-bold text-xl">N</span>
+</div>
+</div>
+<div>
+<p class="text-[#0d151b] dark:text-white font-semibold">Netflix Premium</p>
+<p class="text-[#4c749a] text-xs">Renews Oct 24, 2023</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[#0d151b] dark:text-white font-bold">$19.99</p>
+<p class="text-[#4c749a] text-[10px] uppercase font-bold tracking-tighter">Monthly</p>
+</div>
+</div>
+<!-- Transaction Result Item -->
+<div class="px-4 py-3 flex items-center justify-between border-b border-slate-50 dark:border-slate-800/50 cursor-pointer active:bg-slate-50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-[#4c749a]">receipt_long</span>
+</div>
+<div>
+<p class="text-[#0d151b] dark:text-white font-semibold">Netflix Gift Card</p>
+<p class="text-[#4c749a] text-xs">Sep 12, 2023 • Best Buy</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[#0d151b] dark:text-white font-bold">$25.00</p>
+<p class="text-[#4c749a] text-[10px] uppercase font-bold tracking-tighter">One-time</p>
+</div>
+</div>
+<!-- Suggestion Footer -->
+<div class="p-8 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">lightbulb</span>
+</div>
+<p class="text-[#0d151b] dark:text-white font-medium">Looking for something else?</p>
+<p class="text-[#4c749a] text-sm mt-1">Try searching by merchant name or specific transaction amounts.</p>
+<button class="mt-4 text-primary font-bold text-sm">Clear Search</button>
+</div>
+</div>
+<!-- Bottom Navigation Spacer (iOS safe area) -->
+<div class="h-8 bg-white dark:bg-[#0d151b]"></div>
+</div>
+</body></html>

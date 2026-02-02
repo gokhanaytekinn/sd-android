@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiClient {
     
-    private const val BASE_URL = "https://api.example.com/"
+    private const val BASE_URL = "http://10.0.2.2:8080/api"  // Android emulator localhost
     
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY

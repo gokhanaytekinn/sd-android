@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription List</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {primary: "#359EFF", "background-light": "#f5f7f8", "background-dark": "#0f1923", "card-dark": "#162b16"}, fontFamily: {display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col relative">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm border-b border-gray-200 dark:border-white/5">
+<div class="flex items-center justify-between px-5 py-4">
+<h2 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Abonelikler</h2>
+<button class="group flex items-center justify-center size-10 rounded-full bg-primary/10 hover:bg-primary/20 active:scale-95 transition-all cursor-pointer">
+<span class="material-symbols-outlined text-primary group-hover:text-primary transition-colors">add</span>
+</button>
+</div>
+<!-- Tabs -->
+<div class="px-5 pb-4">
+<div class="flex h-10 w-full items-center justify-center rounded-lg bg-gray-200 dark:bg-[#1c331c] p-1">
+<label class="relative z-10 flex cursor-pointer h-full grow items-center justify-center rounded-md px-2 transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-[#13ec13] has-[:checked]:shadow-sm">
+<span class="truncate text-sm font-semibold text-gray-600 dark:text-gray-400 peer-checked:text-gray-900 dark:peer-checked:text-black">Aktif</span>
+<input checked="" class="peer invisible w-0 absolute" name="status-tabs" type="radio" value="Aktif"/>
+</label>
+<label class="relative z-10 flex cursor-pointer h-full grow items-center justify-center rounded-md px-2 transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-[#13ec13] has-[:checked]:shadow-sm">
+<span class="truncate text-sm font-semibold text-gray-600 dark:text-gray-400 peer-checked:text-gray-900 dark:peer-checked:text-black">Şüpheli</span>
+<input class="peer invisible w-0 absolute" name="status-tabs" type="radio" value="Şüpheli"/>
+</label>
+<label class="relative z-10 flex cursor-pointer h-full grow items-center justify-center rounded-md px-2 transition-all has-[:checked]:bg-white dark:has-[:checked]:bg-[#13ec13] has-[:checked]:shadow-sm">
+<span class="truncate text-sm font-semibold text-gray-600 dark:text-gray-400 peer-checked:text-gray-900 dark:peer-checked:text-black">İptal</span>
+<input class="peer invisible w-0 absolute" name="status-tabs" type="radio" value="İptal"/>
+</label>
+</div>
+</div>
+</header>
+<!-- Content List -->
+<main class="flex-1 flex flex-col w-full pb-24">
+<!-- Summary Card (Optional Context) -->
+<div class="px-5 py-4">
+<div class="flex items-center justify-between rounded-xl bg-card-dark border border-white/5 p-4 shadow-sm">
+<div>
+<p class="text-xs font-medium text-gray-400 uppercase tracking-wider">Toplam Aylık</p>
+<p class="text-2xl font-bold text-white mt-1">₺2,739.98</p>
+</div>
+<div class="size-10 rounded-full bg-primary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+</div>
+</div>
+<div class="px-5 pb-2 text-xs font-semibold text-gray-500 uppercase tracking-wider mt-2">Bu Ay</div>
+<!-- List Items -->
+<div class="flex flex-col space-y-1">
+<!-- Item 1: Netflix -->
+<div class="group flex items-center gap-4 px-5 py-3 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer border-b border-gray-100 dark:border-white/5 last:border-0">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-red-600 to-red-900 shadow-inner" data-alt="Netflix red logo background">
+<span class="text-white font-bold text-xl">N</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-base font-semibold text-gray-900 dark:text-white truncate">Netflix Premium</p>
+<p class="text-base font-bold text-gray-900 dark:text-white">₺149.99</p>
+</div>
+<div class="flex items-center justify-between mt-0.5">
+<p class="text-sm text-gray-500 dark:text-gray-400">Eğlence • Aylık</p>
+<p class="text-xs font-medium text-gray-400 dark:text-gray-500">22 Eki</p>
+</div>
+</div>
+</div>
+<!-- Item 2: Spotify -->
+<div class="group flex items-center gap-4 px-5 py-3 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer border-b border-gray-100 dark:border-white/5 last:border-0">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-green-400 to-green-700 shadow-inner" data-alt="Spotify green logo background">
+<span class="material-symbols-outlined text-white" style="font-size: 28px;">music_note</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-base font-semibold text-gray-900 dark:text-white truncate">Spotify Duo</p>
+<p class="text-base font-bold text-gray-900 dark:text-white">₺39.99</p>
+</div>
+<div class="flex items-center justify-between mt-0.5">
+<p class="text-sm text-gray-500 dark:text-gray-400">Müzik • Aylık</p>
+<p class="text-xs font-medium text-gray-400 dark:text-gray-500">25 Eki</p>
+</div>
+</div>
+</div>
+<!-- Item 3: Adobe -->
+<div class="group flex items-center gap-4 px-5 py-3 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer border-b border-gray-100 dark:border-white/5 last:border-0">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-[#FF0000] to-[#990000] shadow-inner" data-alt="Adobe creative cloud logo background">
+<span class="text-white font-bold text-lg">Ae</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-base font-semibold text-gray-900 dark:text-white truncate">Adobe Creative Cloud</p>
+<p class="text-base font-bold text-gray-900 dark:text-white">₺2,500.00</p>
+</div>
+<div class="flex items-center justify-between mt-0.5">
+<p class="text-sm text-gray-500 dark:text-gray-400">Yazılım • Yıllık</p>
+<p class="text-xs font-medium text-gray-400 dark:text-gray-500">1 Kas</p>
+</div>
+</div>
+</div>
+<!-- Item 4: iCloud -->
+<div class="group flex items-center gap-4 px-5 py-3 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer border-b border-gray-100 dark:border-white/5 last:border-0">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 shadow-inner" data-alt="Apple iCloud blue cloud background">
+<span class="material-symbols-outlined text-white" style="font-size: 26px;">cloud</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-base font-semibold text-gray-900 dark:text-white truncate">iCloud+ 200GB</p>
+<p class="text-base font-bold text-gray-900 dark:text-white">₺39.99</p>
+</div>
+<div class="flex items-center justify-between mt-0.5">
+<p class="text-sm text-gray-500 dark:text-gray-400">Veri • Aylık</p>
+<p class="text-xs font-medium text-gray-400 dark:text-gray-500">12 Kas</p>
+</div>
+</div>
+</div>
+<!-- Item 5: Amazon Prime -->
+<div class="group flex items-center gap-4 px-5 py-3 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer border-b border-gray-100 dark:border-white/5 last:border-0">
+<div class="relative shrink-0">
+<div class="flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-[#00A8E1] to-[#007EA8] shadow-inner" data-alt="Amazon Prime blue logo background">
+<span class="material-symbols-outlined text-white" style="font-size: 26px;">local_shipping</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<p class="text-base font-semibold text-gray-900 dark:text-white truncate">Amazon Prime</p>
+<p class="text-base font-bold text-gray-900 dark:text-white">₺39.00</p>
+</div>
+<div class="flex items-center justify-between mt-0.5">
+<p class="text-sm text-gray-500 dark:text-gray-400">Alışveriş • Aylık</p>
+<p class="text-xs font-medium text-gray-400 dark:text-gray-500">15 Kas</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Sticky Footer Status -->
+<div class="fixed bottom-0 left-0 right-0 p-5 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-white/10 z-40 pb-8">
+<div class="flex flex-col gap-2 max-w-md mx-auto">
+<div class="flex justify-between items-end">
+<div>
+<p class="text-sm font-bold text-gray-900 dark:text-white">Ücretsiz Plan</p>
+<p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Daha fazla takip için yükseltin</p>
+</div>
+<p class="text-sm font-bold text-primary">3/5 <span class="text-gray-500 dark:text-gray-400 font-normal text-xs">abonelik</span></p>
+</div>
+<div class="relative h-2 w-full bg-gray-200 dark:bg-white/10 rounded-full overflow-hidden mt-1">
+<div class="absolute top-0 left-0 h-full w-[60%] bg-primary rounded-full shadow-[0_0_10px_rgba(19,236,19,0.5)]"></div>
+</div>
+</div>
+</div>
+</body></html>
