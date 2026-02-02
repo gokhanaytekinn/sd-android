@@ -1,5 +1,7 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -21,9 +23,13 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
+import com.gokhanaytekinn.sdandroid.ui.components.ScanningDialog
+import com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionsDialog
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
+import com.gokhanaytekinn.sdandroid.util.PermissionManager
+import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
 
 @Composable
 fun SubscriptionsListScreen(
@@ -41,8 +47,38 @@ fun SubscriptionsListScreen(
     val subscriptions by viewModel.subscriptions.collectAsState()
     val stats by viewModel.stats.collectAsState()
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
+    val isScanning by viewModel.isScanning.collectAsState()
+    val scanProgress by viewModel.scanProgress.collectAsState()
+    val detectedSubscriptions by viewModel.detectedSubscriptions.collectAsState()
     
     var selectedTab by remember { mutableStateOf(0) }
+    var showScanDialog by remember { mutableStateOf(false) }
+    var showResultsDialog by remember { mutableStateOf(false) }
+    var showPermissionRationale by remember { mutableStateOf(false) }
+    
+    val permissionManager = remember { PermissionManager(context) }
+    
+    // İzin launcher'ı
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        val allGranted = permissions.values.all { it }
+        if (allGranted) {
+            viewModel.scanDeviceForSubscriptions()
+            showScanDialog = true
+        } else {
+            // İzin verilmedi
+            showPermissionRationale = true
+        }
+    }
+    
+    // Tarama tamamlandığında sonuç dialog'u göster
+    LaunchedEffect(detectedSubscriptions) {
+        if (detectedSubscriptions.isNotEmpty() && !isScanning) {
+            showScanDialog = false
+            showResultsDialog = true
+        }
+    }
     
     Box(
         modifier = Modifier
@@ -74,18 +110,46 @@ fun SubscriptionsListScreen(
                             color = Color.White
                         )
                         
-                        IconButton(
-                            onClick = onNavigateToAddSubscription,
-                            modifier = Modifier
-                                .size(40.dp)
-                                .clip(CircleShape)
-                                .background(PrimaryBlue.copy(alpha = 0.1f))
+                        Row(
+                            horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
-                            Icon(
-                                imageVector = Icons.Default.Add,
-                                contentDescription = "Add",
-                                tint = PrimaryBlue
-                            )
+                            // Scan button
+                            IconButton(
+                                onClick = {
+                                    val missingPermissions = permissionManager.getMissingPermissions()
+                                    if (missingPermissions.isEmpty()) {
+                                        viewModel.scanDeviceForSubscriptions()
+                                        showScanDialog = true
+                                    } else {
+                                        permissionLauncher.launch(missingPermissions)
+                                    }
+                                },
+                                modifier = Modifier
+                                    .size(40.dp)
+                                    .clip(CircleShape)
+                                    .background(SuccessColor.copy(alpha = 0.1f))
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Scanner,
+                                    contentDescription = "Cihazı Tara",
+                                    tint = SuccessColor
+                                )
+                            }
+                            
+                            // Add button
+                            IconButton(
+                                onClick = onNavigateToAddSubscription,
+                                modifier = Modifier
+                                    .size(40.dp)
+                                    .clip(CircleShape)
+                                    .background(PrimaryBlue.copy(alpha = 0.1f))
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.Add,
+                                    contentDescription = "Add",
+                                    tint = PrimaryBlue
+                                )
+                            }
                         }
                     }
                     
@@ -206,6 +270,54 @@ fun SubscriptionsListScreen(
             onDashboardClick = onNavigateToDashboard,
             onSearchClick = onNavigateToSearch,
             onSettingsClick = onNavigateToSettings
+        )
+    }
+    
+    // Tarama Dialog'u
+    if (showScanDialog) {
+        ScanningDialog(
+            isScanning = isScanning,
+            progress = scanProgress,
+            onDismiss = { 
+                showScanDialog = false
+                viewModel.clearDetectedSubscriptions()
+            }
+        )
+    }
+    
+    // Sonuç Dialog'u
+    if (showResultsDialog) {
+        DetectedSubscriptionsDialog(
+            detectedSubscriptions = detectedSubscriptions,
+            onConfirm = { subscription ->
+                viewModel.confirmDetectedSubscription(subscription)
+            },
+            onReject = { subscription ->
+                viewModel.rejectDetectedSubscription(subscription)
+            },
+            onDismiss = {
+                showResultsDialog = false
+                viewModel.clearDetectedSubscriptions()
+            },
+            currency = selectedCurrency
+        )
+    }
+    
+    // İzin Açıklama Dialog'u
+    if (showPermissionRationale) {
+        AlertDialog(
+            onDismissRequest = { showPermissionRationale = false },
+            title = { Text("İzin Gerekli") },
+            text = { 
+                Text(
+                    "${PermissionManager.SMS_PERMISSION_RATIONALE}\n\n${PermissionManager.STORAGE_PERMISSION_RATIONALE}"
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { showPermissionRationale = false }) {
+                    Text("Tamam")
+                }
+            }
         )
     }
 }
