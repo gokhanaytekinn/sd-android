@@ -3,6 +3,7 @@ package com.gokhanaytekinn.sdandroid.ui.screens
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -27,8 +29,10 @@ import com.gokhanaytekinn.sdandroid.ui.components.ScanningDialog
 import com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionsDialog
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
+import com.gokhanaytekinn.sdandroid.ui.screens.DashboardViewModel
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 import com.gokhanaytekinn.sdandroid.util.PermissionManager
+import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
 
 @Composable
@@ -104,7 +108,7 @@ fun SubscriptionsListScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "Abonelikler",
+                            text = stringResource(R.string.subscriptions),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White
@@ -159,24 +163,29 @@ fun SubscriptionsListScreen(
                             .fillMaxWidth()
                             .padding(horizontal = 20.dp)
                             .padding(bottom = 16.dp)
+                            .border(
+                                width = 1.dp,
+                                color = Color.White.copy(alpha = 0.1f),
+                                shape = RoundedCornerShape(8.dp)
+                            )
                             .clip(RoundedCornerShape(8.dp))
-                            .background(CardDark)
+                            .background(Color.Transparent)
                             .padding(4.dp)
                     ) {
                         TabItem(
-                            text = "Aktif",
+                            text = stringResource(R.string.active),
                             selected = selectedTab == 0,
                             onClick = { selectedTab = 0 },
                             modifier = Modifier.weight(1f)
                         )
                         TabItem(
-                            text = "Şüpheli",
+                            text = stringResource(R.string.suspicious),
                             selected = selectedTab == 1,
                             onClick = { selectedTab = 1 },
                             modifier = Modifier.weight(1f)
                         )
                         TabItem(
-                            text = "İptal",
+                            text = stringResource(R.string.cancelled),
                             selected = selectedTab == 2,
                             onClick = { selectedTab = 2 },
                             modifier = Modifier.weight(1f)
@@ -196,9 +205,15 @@ fun SubscriptionsListScreen(
                 // Summary Card
                 item {
                     Surface(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .border(
+                                width = 1.dp,
+                                color = Color.White.copy(alpha = 0.1f),
+                                shape = RoundedCornerShape(12.dp)
+                            ),
                         shape = RoundedCornerShape(12.dp),
-                        color = SurfaceDark
+                        color = Color.Transparent
                     ) {
                         Row(
                             modifier = Modifier

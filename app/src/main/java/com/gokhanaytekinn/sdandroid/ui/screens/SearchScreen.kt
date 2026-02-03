@@ -1,6 +1,7 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -16,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gokhanaytekinn.sdandroid.ui.theme.*
@@ -23,6 +25,7 @@ import com.gokhanaytekinn.sdandroid.ui.viewmodel.SearchViewModel
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
+import com.gokhanaytekinn.sdandroid.R
 
 @Composable
 fun SearchScreen(
@@ -57,7 +60,7 @@ fun SearchScreen(
         // Top App Bar
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f)
+            color = MaterialTheme.colorScheme.background
         ) {
             Row(
                 modifier = Modifier
@@ -75,7 +78,7 @@ fun SearchScreen(
                 }
                 
                 Text(
-                    text = "Ara",
+                    text = stringResource(R.string.search),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurface,
@@ -91,10 +94,9 @@ fun SearchScreen(
                     )
                 }
             }
-            
-            // Search Bar
-            
         }
+        
+        Spacer(modifier = Modifier.height(8.dp))
         
         // Search Input
         OutlinedTextField(
@@ -103,9 +105,14 @@ fun SearchScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
-                .padding(bottom = 16.dp),
+                .padding(top = 8.dp, bottom = 16.dp)
+                .border(
+                    width = 1.dp,
+                    color = Color.White.copy(alpha = 0.1f),
+                    shape = RoundedCornerShape(12.dp)
+                ),
             placeholder = {
-                Text("Abonelik veya işlem ara")
+                Text(stringResource(R.string.search_placeholder))
             },
             leadingIcon = {
                 Icon(
@@ -127,8 +134,8 @@ fun SearchScreen(
                 }
             },
             colors = TextFieldDefaults.colors(
-                focusedContainerColor = MaterialTheme.colorScheme.surface,
-                unfocusedContainerColor = MaterialTheme.colorScheme.surface,
+                focusedContainerColor = Color.Transparent,
+                unfocusedContainerColor = Color.Transparent,
                 focusedIndicatorColor = Color.Transparent,
                 unfocusedIndicatorColor = Color.Transparent,
                 focusedTextColor = MaterialTheme.colorScheme.onSurface,

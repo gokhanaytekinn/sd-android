@@ -7,6 +7,7 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
@@ -17,12 +18,15 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
     background = BackgroundLight,
     surface = CardBackground,
+    surfaceVariant = Color(0xFFE8E8E8),
     onPrimary = TextWhite,
     onSecondary = TextWhite,
     onTertiary = TextWhite,
     onBackground = TextPrimary,
     onSurface = TextPrimary,
-    error = ErrorColor
+    onSurfaceVariant = TextSecondary,
+    error = ErrorColor,
+    outline = Color(0xFFE0E0E0)
 )
 
 private val DarkColorScheme = darkColorScheme(

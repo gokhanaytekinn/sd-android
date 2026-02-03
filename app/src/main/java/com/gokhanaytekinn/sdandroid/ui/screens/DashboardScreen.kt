@@ -125,7 +125,7 @@ fun DashboardScreen(
                                 .padding(24.dp)
                         ) {
                             Text(
-                                text = "Bu Ay Toplam",
+                                text = stringResource(R.string.total_monthly),
                                 fontSize = 14.sp,
                                 color = Color(0xFF9CA3AF),
                                 fontWeight = FontWeight.Medium

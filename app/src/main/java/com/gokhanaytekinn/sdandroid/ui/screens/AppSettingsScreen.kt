@@ -44,6 +44,7 @@ fun AppSettingsScreen(
     onNavigateToSearch: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
+    val activity = context as? android.app.Activity
     val scope = rememberCoroutineScope()
     
     // ViewModels
@@ -59,11 +60,8 @@ fun AppSettingsScreen(
     var notificationsEnabled by remember { mutableStateOf(true) }
     val darkModeEnabled by themePreferences.isDarkMode.collectAsState(initial = true)
     
-    // Language state - use local state for immediate UI feedback
-    var currentLanguage by remember { mutableStateOf(
-        if (AppCompatDelegate.getApplicationLocales().toLanguageTags().isEmpty()) "tr" 
-        else AppCompatDelegate.getApplicationLocales().toLanguageTags().substring(0, 2)
-    ) }
+    // Language state - read from saved preferences (not system locale)
+    val currentLanguage by languagePreferences.selectedLanguage.collectAsState(initial = "tr")
     
     // Currency state - load from preferences
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
@@ -489,38 +487,42 @@ fun AppSettingsScreen(
                 Column {
                     LanguageOption("tr", "Türkçe", currentLanguage) { 
                         scope.launch {
+                            languagePreferences.setLanguage("tr")
+                            showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("tr")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            languagePreferences.setLanguage("tr")
-                            currentLanguage = "tr"
-                            showLanguageDialog = false
+                            // Recreate activity to apply language change immediately
+                            activity?.recreate()
                         }
                     }
                     LanguageOption("en", "English", currentLanguage) {
                         scope.launch {
+                            languagePreferences.setLanguage("en")
+                            showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            languagePreferences.setLanguage("en")
-                            currentLanguage = "en"
-                            showLanguageDialog = false
+                            // Recreate activity to apply language change immediately
+                            activity?.recreate()
                         }
                     }
                     LanguageOption("es", "Español", currentLanguage) {
                         scope.launch {
+                            languagePreferences.setLanguage("es")
+                            showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("es")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            languagePreferences.setLanguage("es")
-                            currentLanguage = "es"
-                            showLanguageDialog = false
+                            // Recreate activity to apply language change immediately
+                            activity?.recreate()
                         }
                     }
                     LanguageOption("ru", "Русский", currentLanguage) {
                         scope.launch {
+                            languagePreferences.setLanguage("ru")
+                            showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("ru")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            languagePreferences.setLanguage("ru")
-                            currentLanguage = "ru"
-                            showLanguageDialog = false
+                            // Recreate activity to apply language change immediately
+                            activity?.recreate()
                         }
                     }
                 }

@@ -17,6 +17,12 @@ import androidx.navigation.compose.rememberNavController
 import com.gokhanaytekinn.sdandroid.data.preferences.ThemePreferences
 import com.gokhanaytekinn.sdandroid.ui.navigation.NavGraph
 import com.gokhanaytekinn.sdandroid.ui.theme.SDAndroidTheme
+import com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +31,14 @@ class MainActivity : ComponentActivity() {
         val themePreferences = ThemePreferences(this)
         val onboardingPreferences = com.gokhanaytekinn.sdandroid.data.preferences.OnboardingPreferences(this)
         val tokenManager = com.gokhanaytekinn.sdandroid.data.local.TokenManager(this)
+        val languagePreferences = LanguagePreferences(this)
+        
+        // Restore saved language preference on app startup
+        lifecycleScope.launch {
+            val savedLanguage = languagePreferences.selectedLanguage.first()
+            val appLocale = LocaleListCompat.forLanguageTags(savedLanguage)
+            AppCompatDelegate.setApplicationLocales(appLocale)
+        }
         
         setContent {
             val isDarkMode by themePreferences.isDarkMode.collectAsState(initial = true)

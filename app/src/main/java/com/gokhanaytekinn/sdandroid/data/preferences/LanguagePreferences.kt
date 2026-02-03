@@ -19,7 +19,7 @@ class LanguagePreferences(private val context: Context) {
     
     companion object {
         private val LANGUAGE_KEY = stringPreferencesKey("selected_language")
-        const val DEFAULT_LANGUAGE = "en"
+        const val DEFAULT_LANGUAGE = "tr"
     }
     
     val selectedLanguage: Flow<String> = context.dataStore.data.map { preferences ->
