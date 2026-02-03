@@ -133,6 +133,14 @@ fun NavGraph(
                 )
             }
             
+            composable(Screen.AddSubscription.route) {
+                AddSubscriptionScreen(
+                    onBackClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+            
             composable(Screen.SuspiciousPayments.route) {
                 SuspiciousPaymentsScreen(
                     onBackClick = {
