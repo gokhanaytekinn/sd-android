@@ -163,7 +163,7 @@ fun SearchScreen(
                 modifier = Modifier.padding(vertical = 12.dp)
             ) {
                 Text(
-                    text = "Subscriptions",
+                    text = stringResource(R.string.subscriptions),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = if (selectedTab == 0) Color.White else Color(0xFF94A3B8)
@@ -175,7 +175,7 @@ fun SearchScreen(
                 modifier = Modifier.padding(vertical = 12.dp)
             ) {
                 Text(
-                    text = "Transactions",
+                    text = stringResource(R.string.transactions),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Bold,
                     color = if (selectedTab == 1) Color.White else Color(0xFF94A3B8)
@@ -194,7 +194,7 @@ fun SearchScreen(
             if (searchQuery.isEmpty()) {
             item {
                 Text(
-                    text = "SON ARAMALAR",
+                    text = stringResource(R.string.recent_searches),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
@@ -231,7 +231,7 @@ fun SearchScreen(
             if (searchResults.isNotEmpty()) {
             item {
                 Text(
-                    text = "SONUÇLAR (${searchResults.size})",
+                    text = stringResource(R.string.results_found, searchResults.size),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
@@ -280,14 +280,14 @@ fun SearchScreen(
                         Spacer(modifier = Modifier.height(16.dp))
                         
                         Text(
-                            text = "Sonuç bulunamadı",
+                            text = stringResource(R.string.no_results),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                         
                         Text(
-                            text = "Başka bir arama terimi deneyin",
+                            text = stringResource(R.string.search_tip),
                             fontSize = 14.sp,
                             color = Color(0xFF94A3B8),
                             textAlign = androidx.compose.ui.text.style.TextAlign.Center,

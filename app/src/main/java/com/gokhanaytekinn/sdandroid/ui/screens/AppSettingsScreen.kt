@@ -242,13 +242,13 @@ fun AppSettingsScreen(
                                 
                                 Column {
                                     Text(
-                                        text = authState.userName ?: "Misafir Kullanıcı",
+                                        text = authState.userName ?: stringResource(R.string.guest_user),
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.SemiBold,
                                         color = Color.White
                                     )
                                     Text(
-                                        text = authState.userEmail ?: "Giriş yapılmadı",
+                                        text = authState.userEmail ?: stringResource(R.string.not_logged_in),
                                         fontSize = 12.sp,
                                         color = Color(0xFF94A3B8)
                                     )
@@ -292,7 +292,7 @@ fun AppSettingsScreen(
                                 }
                                 
                                 Text(
-                                    text = "Üyelik Tipi",
+                                    text = stringResource(R.string.membership_type),
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Medium,
                                     color = Color.White
@@ -304,7 +304,7 @@ fun AppSettingsScreen(
                                 color = PrimaryBlue.copy(alpha = 0.1f)
                             ) {
                                 Text(
-                                    text = "Ücretsiz Plan",
+                                    text = stringResource(R.string.free_plan),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = PrimaryBlue,
@@ -455,7 +455,7 @@ fun AppSettingsScreen(
                 }
                 
                 Text(
-                    text = "Versiyon 2.4.0 (Build 892)",
+                    text = stringResource(R.string.version_info, "2.4.0", 892),
                     fontSize = 12.sp,
                     color = Color(0xFF9CA3AF),
                     modifier = Modifier
@@ -561,7 +561,7 @@ fun AppSettingsScreen(
             },
             confirmButton = {
                 TextButton(onClick = { showCurrencyDialog = false }) {
-                    Text("Kapat")
+                    Text(stringResource(R.string.close))
                 }
             }
         )

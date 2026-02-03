@@ -73,7 +73,7 @@ fun DashboardScreen(
             ) {
                 Column {
                     Text(
-                        text = "Merhaba, ${authState.userName ?: "Kullanıcı"}",
+                        text = stringResource(R.string.hello_user, authState.userName ?: stringResource(R.string.guest_user)),
                         fontSize = 14.sp,
                         color = Color(0xFF9CA3AF),
                         fontWeight = FontWeight.Medium
@@ -180,14 +180,14 @@ fun DashboardScreen(
                                 
                                 Column {
                                     Text(
-                                        text = "Şüpheli Abonelikler",
+                                        text = stringResource(R.string.suspicious_subscriptions),
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = Color(0xFFFFE7D6)
                                     )
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
-                                        text = "${suspiciousCount} işlem inceleme bekliyor",
+                                        text = stringResource(R.string.transactions_pending, suspiciousCount),
                                         fontSize = 12.sp,
                                         color = Color(0xFFFFE7D6).copy(alpha = 0.6f),
                                         fontWeight = FontWeight.Medium
@@ -213,14 +213,14 @@ fun DashboardScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Text(
-                            text = "İçinde En Pahalı Abonelikler",
+                            text = stringResource(R.string.most_expensive),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                         TextButton(onClick = onNavigateToAllSubscriptions) {
                             Text(
-                                text = "Tümü",
+                                text = stringResource(R.string.view_all),
                                 fontSize = 12.sp,
                                 fontWeight = FontWeight.SemiBold,
                                 color = PrimaryBlue
@@ -251,7 +251,7 @@ fun DashboardScreen(
                         shape = RoundedCornerShape(16.dp)
                     ) {
                         Text(
-                            text = "Tüm Abonelikleri Gör",
+                            text = stringResource(R.string.view_all_subscriptions),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -319,9 +319,9 @@ fun SubscriptionListItem(
                 }
                 
                 val icon = when (subscription.category) {
-                    "Spor & Sağlık" -> Icons.Default.FitnessCenter
-                    "Eğlence" -> Icons.Default.Movie
-                    "Müzik" -> Icons.Default.MusicNote
+                    "Spor & Sağlık", "Sports & Health" -> Icons.Default.FitnessCenter
+                    "Eğlence", "Entertainment" -> Icons.Default.Movie
+                    "Müzik", "Music" -> Icons.Default.MusicNote
                     else -> Icons.Default.Star
                 }
                 
@@ -348,8 +348,14 @@ fun SubscriptionListItem(
                         color = MaterialTheme.colorScheme.onSurface
                     )
                     Spacer(modifier = Modifier.height(4.dp))
+                    val localizedCategory = when (subscription.category) {
+                        "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
+                        "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
+                        "Müzik", "Music" -> stringResource(R.string.category_music)
+                        else -> subscription.category ?: stringResource(R.string.category_other)
+                    }
                     Text(
-                        text = subscription.category ?: "",
+                        text = localizedCategory,
                         fontSize = 12.sp,
                         color = Color(0xFF9CA3AF),
                         fontWeight = FontWeight.Medium

@@ -82,4 +82,10 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
     <string name="language_russian">Русский</string>
+    
+    <!-- Categorías -->
+    <string name="category_entertainment">Entretenimiento</string>
+    <string name="category_music">Música</string>
+    <string name="category_sports">Deportes y Salud</string>
+    <string name="category_other">Otro</string>
 </resources>

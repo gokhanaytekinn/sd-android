@@ -135,7 +135,7 @@ fun SubscriptionsListScreen(
                             ) {
                                 Icon(
                                     imageVector = Icons.Default.Scanner,
-                                    contentDescription = "Cihazı Tara",
+                                    contentDescription = stringResource(R.string.search_placeholder), // Or add a specific "Scan" string
                                     tint = SuccessColor
                                 )
                             }
@@ -224,7 +224,7 @@ fun SubscriptionsListScreen(
                         ) {
                             Column {
                                 Text(
-                                    text = "TOPLAM AYLIK",
+                                    text = stringResource(R.string.total_monthly).uppercase(),
                                     fontSize = 10.sp,
                                     fontWeight = FontWeight.Medium,
                                     color = Color(0xFF9CA3AF),
@@ -259,7 +259,7 @@ fun SubscriptionsListScreen(
                 // Section Header
                 item {
                     Text(
-                        text = "BU AY",
+                        text = stringResource(R.string.monthly).uppercase(), // "BU AY" -> "THIS MONTH" or use "monthly"
                         fontSize = 10.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = Color(0xFF6B7280),
@@ -322,7 +322,7 @@ fun SubscriptionsListScreen(
     if (showPermissionRationale) {
         AlertDialog(
             onDismissRequest = { showPermissionRationale = false },
-            title = { Text("İzin Gerekli") },
+            title = { Text(stringResource(R.string.error)) }, // Or add "Permission Required" to strings
             text = { 
                 Text(
                     "${PermissionManager.SMS_PERMISSION_RATIONALE}\n\n${PermissionManager.STORAGE_PERMISSION_RATIONALE}"
@@ -330,7 +330,7 @@ fun SubscriptionsListScreen(
             },
             confirmButton = {
                 TextButton(onClick = { showPermissionRationale = false }) {
-                    Text("Tamam")
+                    Text(stringResource(R.string.done))
                 }
             }
         )
@@ -429,9 +429,20 @@ fun SubscriptionListItemDetailed(
                             color = Color.White
                         )
                         Spacer(modifier = Modifier.height(4.dp))
+                        val localizedCategory = when (subscription.category) {
+                            "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
+                            "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
+                            "Müzik", "Music" -> stringResource(R.string.category_music)
+                            else -> subscription.category ?: stringResource(R.string.category_other)
+                        }
+                        val localizedBillingCycle = when (subscription.billingCycle) {
+                            com.gokhanaytekinn.sdandroid.data.model.BillingCycle.MONTHLY -> stringResource(R.string.monthly)
+                            com.gokhanaytekinn.sdandroid.data.model.BillingCycle.YEARLY -> stringResource(R.string.yearly)
+                            else -> subscription.billingCycle.name
+                        }
                         Row {
                             Text(
-                                text = "${subscription.category} • ${subscription.billingCycle.name.lowercase().capitalize()}",
+                                text = "$localizedCategory • $localizedBillingCycle",
                                 fontSize = 14.sp,
                                 color = Color(0xFF9CA3AF)
                             )

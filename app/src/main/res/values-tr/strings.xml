@@ -143,6 +143,12 @@
     <string name="start_trial">Ücretsiz Denemeyi Başlat</string>
     <string name="restore_purchase">Satın Almayı Geri Yükle</string>
     
+    <!-- Kategoriler -->
+    <string name="category_entertainment">Eğlence</string>
+    <string name="category_music">Müzik</string>
+    <string name="category_sports">Spor &amp; Sağlık</string>
+    <string name="category_other">Diğer</string>
+    
     <!-- Analytics -->
     <string name="analytics">Analitik</string>
     <string name="spending_overview">Harcama Özeti</string>
