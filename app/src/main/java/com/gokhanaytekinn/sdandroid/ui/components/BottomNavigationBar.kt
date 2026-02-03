@@ -21,18 +21,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.ui.navigation.Screen
 
 @Composable
 fun BottomNavigationBar(
-    modifier: Modifier = Modifier,
-    selectedTab: Int = 0,
-    onDashboardClick: () -> Unit = {},
-    onSubscriptionsClick: () -> Unit = {},
-    onSearchClick: () -> Unit = {},
-    onSettingsClick: () -> Unit = {}
+    currentRoute: String?,
+    onNavigate: (String) -> Unit
 ) {
     Surface(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxWidth()
             .background(Color.Transparent)
             .border(
@@ -40,39 +37,39 @@ fun BottomNavigationBar(
                 color = Color.White.copy(alpha = 0.1f),
                 shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
             ),
-        color = Color.Transparent,
-        tonalElevation = 0.dp
+        color = Color(0xFF0d151b).copy(alpha = 0.95f), // Arka planı biraz daha belirgin yapalım
+        tonalElevation = 8.dp
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 20.dp, vertical = 12.dp)
-                .padding(bottom = 16.dp),
+                .padding(bottom = 8.dp), // Padding'i biraz azalttık
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             BottomNavItem(
                 icon = Icons.Default.Dashboard,
                 label = stringResource(R.string.nav_dashboard),
-                selected = selectedTab == 0,
-                onClick = onDashboardClick
+                selected = currentRoute == Screen.Dashboard.route,
+                onClick = { onNavigate(Screen.Dashboard.route) }
             )
             BottomNavItem(
                 icon = Icons.Default.List,
-                label = "Abonelikler", // Hardcoded for now if string resource doesn't exist, or we can add it
-                selected = selectedTab == 1,
-                onClick = onSubscriptionsClick
+                label = stringResource(R.string.subscriptions),
+                selected = currentRoute == Screen.SubscriptionsList.route,
+                onClick = { onNavigate(Screen.SubscriptionsList.route) }
             )
             BottomNavItem(
                 icon = Icons.Default.Search,
                 label = stringResource(R.string.nav_search),
-                selected = selectedTab == 2,
-                onClick = onSearchClick
+                selected = currentRoute == Screen.Search.route,
+                onClick = { onNavigate(Screen.Search.route) }
             )
             BottomNavItem(
                 icon = Icons.Default.Settings,
                 label = stringResource(R.string.nav_settings),
-                selected = selectedTab == 3,
-                onClick = onSettingsClick
+                selected = currentRoute == Screen.AppSettings.route,
+                onClick = { onNavigate(Screen.AppSettings.route) }
             )
         }
     }

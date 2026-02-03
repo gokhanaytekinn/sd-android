@@ -263,23 +263,11 @@ fun DashboardScreen(
                     }
                 }
                 
-                // Bottom spacing for nav bar
-                item {
-                    Spacer(modifier = Modifier.height(80.dp))
                 }
             }
         }
-        
-        // Bottom Navigation
-        BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            selectedTab = 0,
-            onSubscriptionsClick = onNavigateToAllSubscriptions,
-            onSearchClick = onNavigateToSearch,
-            onSettingsClick = onNavigateToSettings
-        )
     }
-}
+
 
 @Composable
 fun SubscriptionListItem(

@@ -114,7 +114,7 @@ fun AppSettingsScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .weight(1f),
-            contentPadding = PaddingValues(bottom = 96.dp)
+            contentPadding = PaddingValues(bottom = 16.dp)
         ) {
             // Premium Upgrade Card
             item {
@@ -466,16 +466,6 @@ fun AppSettingsScreen(
             }
         }
         }
-        
-        // Bottom Navigation
-        BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            selectedTab = 3,
-            onDashboardClick = onNavigateToDashboard,
-            onSubscriptionsClick = onNavigateToSubscriptions,
-            onSearchClick = onNavigateToSearch,
-            onSettingsClick = {} // Already on settings
-        )
     }
     
     // Language Selection Dialog

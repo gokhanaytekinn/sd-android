@@ -188,7 +188,7 @@ fun SearchScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .weight(1f),
-            contentPadding = PaddingValues(bottom = 80.dp)
+            contentPadding = PaddingValues(bottom = 16.dp)
         ) {
             // Recent Searches - Only show when search query is empty
             if (searchQuery.isEmpty()) {
@@ -299,15 +299,5 @@ fun SearchScreen(
 
         }
         }
-        
-        // Bottom Navigation
-        BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            selectedTab = 2,
-            onDashboardClick = onNavigateToDashboard,
-            onSubscriptionsClick = onNavigateToSubscriptions,
-            onSearchClick = {}, // Already on search
-            onSettingsClick = onNavigateToSettings
-        )
     }
 }

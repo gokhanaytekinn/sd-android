@@ -199,7 +199,7 @@ fun SubscriptionsListScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .weight(1f),
-                contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 100.dp),
+                contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // Summary Card
@@ -277,15 +277,6 @@ fun SubscriptionsListScreen(
                 }
             }
         }
-        
-        // Bottom Navigation
-        BottomNavigationBar(
-            modifier = Modifier.align(Alignment.BottomCenter),
-            selectedTab = 1,
-            onDashboardClick = onNavigateToDashboard,
-            onSearchClick = onNavigateToSearch,
-            onSettingsClick = onNavigateToSettings
-        )
     }
     
     // Tarama Dialog'u
