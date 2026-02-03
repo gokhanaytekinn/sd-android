@@ -22,12 +22,16 @@ import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.SearchViewModel
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
+import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
 
 @Composable
 fun SearchScreen(
     onBackClick: () -> Unit = {},
     onFilterClick: () -> Unit = {},
-    onResultClick: (String) -> Unit = {}
+    onResultClick: (String) -> Unit = {},
+    onNavigateToDashboard: () -> Unit = {},
+    onNavigateToSubscriptions: () -> Unit = {},
+    onNavigateToSettings: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val application = context.applicationContext as android.app.Application
@@ -42,11 +46,14 @@ fun SearchScreen(
     
     var selectedTab by remember { mutableStateOf(0) } // 0=Subscriptions, 1=Transactions
     
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
         // Top App Bar
         Surface(
             modifier = Modifier.fillMaxWidth(),
@@ -171,7 +178,10 @@ fun SearchScreen(
         
         // Content
         LazyColumn(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f),
+            contentPadding = PaddingValues(bottom = 80.dp)
         ) {
             // Recent Searches - Only show when search query is empty
             if (searchQuery.isEmpty()) {
@@ -281,5 +291,16 @@ fun SearchScreen(
             }
 
         }
+        }
+        
+        // Bottom Navigation
+        BottomNavigationBar(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            selectedTab = 2,
+            onDashboardClick = onNavigateToDashboard,
+            onSubscriptionsClick = onNavigateToSubscriptions,
+            onSearchClick = {}, // Already on search
+            onSettingsClick = onNavigateToSettings
+        )
     }
 }

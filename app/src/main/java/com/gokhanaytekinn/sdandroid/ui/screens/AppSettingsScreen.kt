@@ -28,6 +28,7 @@ import kotlinx.coroutines.launch
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.gokhanaytekinn.sdandroid.data.preferences.settingsDataStore
+import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
 
 @Composable
 fun AppSettingsScreen(
@@ -37,7 +38,10 @@ fun AppSettingsScreen(
     onCurrencyClick: () -> Unit = {},
     onHelpClick: () -> Unit = {},
     onPrivacyClick: () -> Unit = {},
-    onLogoutClick: () -> Unit = {}
+    onLogoutClick: () -> Unit = {},
+    onNavigateToDashboard: () -> Unit = {},
+    onNavigateToSubscriptions: () -> Unit = {},
+    onNavigateToSearch: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val scope = rememberCoroutineScope()
@@ -68,11 +72,14 @@ fun AppSettingsScreen(
     var showLanguageDialog by remember { mutableStateOf(false) }
     var showCurrencyDialog by remember { mutableStateOf(false) }
     
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
     ) {
+        Column(
+            modifier = Modifier.fillMaxSize()
+        ) {
         // Top App Bar
         Surface(
             modifier = Modifier.fillMaxWidth(),
@@ -106,8 +113,10 @@ fun AppSettingsScreen(
         }
         
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(bottom = 16.dp)
+            modifier = Modifier
+                .fillMaxSize()
+                .weight(1f),
+            contentPadding = PaddingValues(bottom = 96.dp)
         ) {
             // Premium Upgrade Card
             item {
@@ -458,6 +467,17 @@ fun AppSettingsScreen(
                 )
             }
         }
+        }
+        
+        // Bottom Navigation
+        BottomNavigationBar(
+            modifier = Modifier.align(Alignment.BottomCenter),
+            selectedTab = 3,
+            onDashboardClick = onNavigateToDashboard,
+            onSubscriptionsClick = onNavigateToSubscriptions,
+            onSearchClick = onNavigateToSearch,
+            onSettingsClick = {} // Already on settings
+        )
     }
     
     // Language Selection Dialog

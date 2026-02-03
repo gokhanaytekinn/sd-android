@@ -1,6 +1,7 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -107,10 +108,16 @@ fun DashboardScreen(
                 // Hero Card - Total Spend
                 item {
                     Surface(
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .border(
+                                width = 1.dp,
+                                color = Color.White.copy(alpha = 0.1f),
+                                shape = RoundedCornerShape(16.dp)
+                            ),
                         shape = RoundedCornerShape(16.dp),
-                        color = MaterialTheme.colorScheme.surface,
-                        tonalElevation = 2.dp
+                        color = Color.Transparent,
+                        tonalElevation = 0.dp
                     ) {
                         Column(
                             modifier = Modifier
