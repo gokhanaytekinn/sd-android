@@ -491,8 +491,6 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("tr")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            // Recreate activity to apply language change immediately
-                            activity?.recreate()
                         }
                     }
                     LanguageOption("en", "English", currentLanguage) {
@@ -501,8 +499,6 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            // Recreate activity to apply language change immediately
-                            activity?.recreate()
                         }
                     }
                     LanguageOption("es", "Español", currentLanguage) {
@@ -511,8 +507,6 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("es")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            // Recreate activity to apply language change immediately
-                            activity?.recreate()
                         }
                     }
                     LanguageOption("ru", "Русский", currentLanguage) {
@@ -521,8 +515,6 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("ru")
                             AppCompatDelegate.setApplicationLocales(appLocale)
-                            // Recreate activity to apply language change immediately
-                            activity?.recreate()
                         }
                     }
                 }
