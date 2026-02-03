@@ -23,6 +23,34 @@ class AuthViewModel(context: Context) : ViewModel() {
     
     private val _authState = MutableStateFlow(AuthState())
     val authState: StateFlow<AuthState> = _authState.asStateFlow()
+
+    init {
+        restoreSession()
+    }
+
+    private fun restoreSession() {
+        viewModelScope.launch {
+            if (repository.isLoggedIn()) {
+                _authState.value = _authState.value.copy(isLoading = true)
+                val result = repository.getCurrentUser()
+                if (result.isSuccess) {
+                    val user = result.getOrNull()
+                    _authState.value = _authState.value.copy(
+                        isLoading = false,
+                        isAuthenticated = true,
+                        userName = user?.name,
+                        userEmail = user?.email
+                    )
+                } else {
+                    // Token invalid or network error, but we treat it as not authenticated for safety
+                    _authState.value = _authState.value.copy(
+                        isLoading = false,
+                        isAuthenticated = false
+                    )
+                }
+            }
+        }
+    }
     
     fun login(email: String, password: String, onSuccess: () -> Unit) {
         viewModelScope.launch {
