@@ -42,17 +42,10 @@ class SuspiciousPaymentsViewModel(context: Context) : ViewModel() {
                 id = UUID.randomUUID().toString(),
                 name = transaction.name,
                 cost = transaction.amount,
-                currency = "TRY", // Defaulting to TRY based on mock data
-                billingCycle = com.gokhanaytekinn.sdandroid.data.model.BillingCycle.MONTHLY, // Assumption
-                nextBillingDate = transaction.date, // Mapping date to nextBillingDate as that's the closest field
-                category = transaction.category,
-                icon = transaction.icon,
-                backgroundColor = if (transaction.backgroundColor == com.gokhanaytekinn.sdandroid.ui.theme.NetflixRed) "#E50914" 
-                                 else if (transaction.backgroundColor == com.gokhanaytekinn.sdandroid.ui.theme.SpotifyGreen) "#1DB954"
-                                 else "#FF0000" // Default or logic to convert Color to Hex string needed if we want to persist color. 
-                                 // For now, let's just pass null or a safe default if we can't easily convert Color to Hex here without a helper.
-                                 // Actually, Subscription has `backgroundColor: String?`. SuspiciousTransaction has `color: Color`.
-                                 // I should probably skip mapping color for now or add a helper, but to fix the build, I will omit `backgroundColor` for now or pass null to keep it simple and safe.
+                currency = "TRY",
+                billingCycle = com.gokhanaytekinn.sdandroid.data.model.BillingCycle.MONTHLY,
+                nextBillingDate = transaction.date,
+                icon = transaction.icon
             )
             repository.createSubscription(newSubscription)
             

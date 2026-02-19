@@ -75,18 +75,43 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = SubscriptionRequest(
                 name = subscription.name,
-                icon = subscription.iconUrl ?: subscription.icon, // Prefer iconUrl if available
-                tier = null, // Subscription model doesn't have tier yet, so null
+                icon = subscription.iconUrl ?: subscription.icon,
+                tier = subscription.tier,
                 amount = subscription.cost,
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.name,
-                startDate = subscription.nextBillingDate ?: "" // Should be handled better if null, but request requires string
+                startDate = subscription.startDate ?: subscription.nextBillingDate ?: ""
             )
             val response = apiService.createSubscription(request)
             if (response.isSuccessful && response.body() != null) {
                 Result.success(response.body()!!.toSubscription())
             } else {
                 Result.failure(Exception("Failed to create subscription"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    
+    suspend fun updateSubscription(id: String, subscription: Subscription): Result<Subscription> {
+        return try {
+            if (apiService == null) {
+                return Result.failure(Exception("API not available"))
+            }
+            val request = com.gokhanaytekinn.sdandroid.data.model.request.SubscriptionUpdateRequest(
+                name = subscription.name,
+                icon = subscription.iconUrl ?: subscription.icon,
+                tier = subscription.tier,
+                amount = subscription.cost,
+                currency = subscription.currency,
+                billingCycle = subscription.billingCycle.name,
+                startDate = subscription.startDate ?: subscription.nextBillingDate ?: ""
+            )
+            val response = apiService.updateSubscription(id, request)
+            if (response.isSuccessful && response.body() != null) {
+                Result.success(response.body()!!.toSubscription())
+            } else {
+                Result.failure(Exception("Failed to update subscription"))
             }
         } catch (e: Exception) {
             Result.failure(e)
@@ -109,12 +134,12 @@ class SubscriptionRepository(context: Context? = null) {
         }
     }
     
-    suspend fun flagAsSuspicious(id: String, isSuspicious: Boolean, reason: String? = null): Result<Subscription> {
+    suspend fun flagAsSuspicious(id: String, reason: String): Result<Subscription> {
         return try {
             if (apiService == null) {
                 return Result.failure(Exception("API not available"))
             }
-            val request = FlagSuspiciousRequest(isSuspicious, reason)
+            val request = FlagSuspiciousRequest(reason)
             val response = apiService.flagAsSuspicious(id, request)
             if (response.isSuccessful && response.body() != null) {
                 Result.success(response.body()!!.toSubscription())
@@ -147,20 +172,20 @@ class SubscriptionRepository(context: Context? = null) {
         return Subscription(
             id = id,
             name = name,
-            description = description,
-            cost = cost,
+            cost = amount,
             currency = currency,
             billingCycle = try {
                 BillingCycle.valueOf(billingCycle)
             } catch (e: Exception) {
                 BillingCycle.MONTHLY
             },
-            nextBillingDate = nextBillingDate,
-            category = category,
+            nextBillingDate = renewalDate,
+            startDate = startDate,
             isActive = status == "ACTIVE",
             isSuspicious = isSuspicious,
             icon = icon,
-            backgroundColor = backgroundColor
+            status = status,
+            tier = tier
         )
     }
 }

@@ -158,18 +158,15 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
                 
                 // Subscription objesi oluştur
                 val subscription = Subscription(
-                    id = "", // API tarafından atanacak
+                    id = "",
                     name = detected.serviceName,
-                    description = "Cihaz taramasından tespit edildi",
                     cost = detected.amount,
                     currency = "TRY",
                     billingCycle = billingCycle,
                     nextBillingDate = null,
-                    category = "Diğer",
                     isActive = true,
                     isSuspicious = false,
-                    icon = null,
-                    backgroundColor = null
+                    icon = null
                 )
                 
                 // API'ye ekle

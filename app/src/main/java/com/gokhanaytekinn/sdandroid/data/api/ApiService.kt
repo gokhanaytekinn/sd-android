@@ -32,6 +32,12 @@ interface ApiService {
     @GET("api/subscriptions/{id}")
     suspend fun getSubscription(@Path("id") id: String): Response<SubscriptionResponse>
     
+    @PUT("api/subscriptions/{id}")
+    suspend fun updateSubscription(
+        @Path("id") id: String,
+        @Body request: SubscriptionUpdateRequest
+    ): Response<SubscriptionResponse>
+    
     @GET("api/subscriptions/suspicious")
     suspend fun getSuspiciousSubscriptions(): Response<List<SubscriptionResponse>>
     

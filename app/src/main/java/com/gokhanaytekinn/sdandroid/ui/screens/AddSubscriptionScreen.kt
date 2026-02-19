@@ -38,6 +38,7 @@ import java.util.Calendar
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AddSubscriptionScreen(
+    subscriptionId: String? = null,
     onBackClick: () -> Unit = {}
 ) {
     val context = LocalContext.current
@@ -53,6 +54,16 @@ fun AddSubscriptionScreen(
     val isLoading by viewModel.isLoading.collectAsState()
     val error by viewModel.error.collectAsState()
     val isSuccess by viewModel.isSuccess.collectAsState()
+    val isEditMode by viewModel.isEditMode.collectAsState()
+    
+    // Load subscription if editing
+    LaunchedEffect(subscriptionId) {
+        if (subscriptionId != null) {
+            viewModel.loadSubscription(subscriptionId)
+        } else {
+            viewModel.resetState()
+        }
+    }
     
     // Date Picker Context
     val calendar = Calendar.getInstance()
@@ -107,7 +118,7 @@ fun AddSubscriptionScreen(
                 }
                 
                 Text(
-                    text = "Abonelik Ekle",
+                    text = if (isEditMode) "Aboneliği Düzenle" else "Abonelik Ekle",
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -411,7 +422,7 @@ fun AddSubscriptionScreen(
                      CircularProgressIndicator(color = Color.White, modifier = Modifier.size(24.dp))
                  } else {
                      Text(
-                        text = "Kaydet",
+                        text = if (isEditMode) "Güncelle" else "Kaydet",
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
                     )

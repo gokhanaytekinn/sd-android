@@ -81,7 +81,7 @@ fun AppSettingsScreen(
         // Top App Bar
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            color = Color(0xFF101922).copy(alpha = 0.9f),
+            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
             tonalElevation = 1.dp
         ) {
             Row(
@@ -95,7 +95,7 @@ fun AppSettingsScreen(
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
                         contentDescription = "Back",
-                        tint = Color.White
+                        tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
                 
@@ -197,7 +197,7 @@ fun AppSettingsScreen(
                     text = stringResource(R.string.account),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color.White.copy(alpha = 0.6f),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     letterSpacing = 1.5.sp,
                     modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
                 )
@@ -245,12 +245,12 @@ fun AppSettingsScreen(
                                         text = authState.userName ?: stringResource(R.string.guest_user),
                                         fontSize = 16.sp,
                                         fontWeight = FontWeight.SemiBold,
-                                        color = Color.White
+                                        color = MaterialTheme.colorScheme.onSurface
                                     )
                                     Text(
                                         text = authState.userEmail ?: stringResource(R.string.not_logged_in),
                                         fontSize = 12.sp,
-                                        color = Color(0xFF94A3B8)
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
                             }
@@ -258,11 +258,11 @@ fun AppSettingsScreen(
                             Icon(
                                 imageVector = Icons.Filled.ChevronRight,
                                 contentDescription = null,
-                                tint = Color(0xFF9CA3AF)
+                                tint = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
                         
-                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
                         
                         // Membership Status
                         Row(
@@ -295,7 +295,7 @@ fun AppSettingsScreen(
                                     text = stringResource(R.string.membership_type),
                                     fontSize = 16.sp,
                                     fontWeight = FontWeight.Medium,
-                                    color = Color.White
+                                    color = MaterialTheme.colorScheme.onSurface
                                 )
                             }
                             
@@ -322,7 +322,7 @@ fun AppSettingsScreen(
                     text = stringResource(R.string.application),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color.White.copy(alpha = 0.6f),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     letterSpacing = 1.5.sp,
                     modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 12.dp)
                 )
@@ -334,7 +334,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
-                    color = Color(0xFF1E293B)
+                    color = MaterialTheme.colorScheme.surface
                 ) {
                     Column {
                         // Notifications Toggle
@@ -345,7 +345,7 @@ fun AppSettingsScreen(
                             onCheckedChange = { notificationsEnabled = it }
                         )
                         
-                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
                         
                         // Currency Selection
                         SettingsNavigationItem(
@@ -355,7 +355,7 @@ fun AppSettingsScreen(
                             onClick = { showCurrencyDialog = true }
                         )
                         
-                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
                         
                         // Dark Mode Toggle
                         SettingsToggleItem(
@@ -369,7 +369,7 @@ fun AppSettingsScreen(
                             }
                         )
                         
-                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
                         
                         // Language Selection
                         SettingsNavigationItem(
@@ -400,7 +400,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
-                    color = Color(0xFF1E293B)
+                    color = MaterialTheme.colorScheme.surface
                 ) {
                     Column {
                         // Help Center
@@ -410,7 +410,7 @@ fun AppSettingsScreen(
                             onClick = onHelpClick
                         )
                         
-                        Divider(color = Color(0xFF334155), modifier = Modifier.padding(horizontal = 16.dp))
+                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
                         
                         // Privacy Policy
                         SettingsNavigationItem(
@@ -457,7 +457,7 @@ fun AppSettingsScreen(
                 Text(
                     text = stringResource(R.string.version_info, "2.4.0", 892),
                     fontSize = 12.sp,
-                    color = Color(0xFF9CA3AF),
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 16.dp),

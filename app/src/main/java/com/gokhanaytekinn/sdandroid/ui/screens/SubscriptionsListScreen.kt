@@ -84,10 +84,15 @@ fun SubscriptionsListScreen(
         }
     }
     
+    // Refresh subscriptions when screen is shown
+    LaunchedEffect(Unit) {
+        viewModel.loadSubscriptions()
+    }
+    
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundDark)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier
@@ -96,7 +101,7 @@ fun SubscriptionsListScreen(
             // Header
             Surface(
                 modifier = Modifier.fillMaxWidth(),
-                color = BackgroundDark.copy(alpha = 0.95f),
+                color = MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
                 tonalElevation = 1.dp
             ) {
                 Column {
@@ -267,13 +272,114 @@ fun SubscriptionsListScreen(
                     )
                 }
                 
-                // Subscription items
-                items(subscriptions) { subscription ->
-                    SubscriptionListItemDetailed(
-                        subscription = subscription,
-                        currency = selectedCurrency,
-                        onClick = { onSubscriptionClick(subscription.id) }
-                    )
+                // Filtered Content based on selectedTab
+                when (selectedTab) {
+                    0 -> { // Active
+                        val activeSubs = subscriptions.filter { it.isActive && !it.isSuspicious }
+                        if (activeSubs.isEmpty()) {
+                            item {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "Aktif abonelik bulunmuyor",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        } else {
+                            items(activeSubs) { subscription ->
+                                SubscriptionListItemDetailed(
+                                    subscription = subscription,
+                                    currency = selectedCurrency,
+                                    onClick = { onSubscriptionClick(subscription.id) }
+                                )
+                            }
+                        }
+                    }
+                    1 -> { // Suspicious
+                        val suspiciousSubs = subscriptions.filter { it.isSuspicious }
+                        // Show detected subscriptions that haven't been added yet
+                        
+                        if (suspiciousSubs.isEmpty() && detectedSubscriptions.isEmpty()) {
+                            item {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "Şüpheli abonelik bulunmuyor",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        } else {
+                            if (detectedSubscriptions.isNotEmpty()) {
+                                item { 
+                                    Text(
+                                        text = "Tespit Edilenler (${detectedSubscriptions.size})",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = WarningColor,
+                                        modifier = Modifier.padding(bottom = 8.dp)
+                                    ) 
+                                }
+                                items(detectedSubscriptions) { subscription ->
+                                    com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionItem(
+                                        subscription = subscription,
+                                        currency = selectedCurrency,
+                                        onConfirm = { viewModel.confirmDetectedSubscription(subscription) },
+                                        onReject = { viewModel.rejectDetectedSubscription(subscription) }
+                                    )
+                                }
+                                item { Spacer(modifier = Modifier.height(16.dp)) }
+                            }
+                            
+                            if (suspiciousSubs.isNotEmpty()) {
+                                item { 
+                                    Text(
+                                        text = "İşaretlenenler (${suspiciousSubs.size})",
+                                        fontSize = 14.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onSurface,
+                                        modifier = Modifier.padding(bottom = 8.dp)
+                                    ) 
+                                }
+                                items(suspiciousSubs) { subscription ->
+                                    SubscriptionListItemDetailed(
+                                        subscription = subscription,
+                                        currency = selectedCurrency,
+                                        onClick = { onSubscriptionClick(subscription.id) }
+                                    )
+                                }
+                            }
+                        }
+                    }
+                    2 -> { // Cancelled
+                        val cancelledSubs = subscriptions.filter { !it.isActive }
+                        if (cancelledSubs.isEmpty()) {
+                            item {
+                                Box(
+                                    modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(
+                                        text = "İptal edilen abonelik bulunmuyor",
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                            }
+                        } else {
+                            items(cancelledSubs) { subscription ->
+                                SubscriptionListItemDetailed(
+                                    subscription = subscription,
+                                    currency = selectedCurrency,
+                                    onClick = { onSubscriptionClick(subscription.id) }
+                                )
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -286,7 +392,7 @@ fun SubscriptionsListScreen(
             progress = scanProgress,
             onDismiss = { 
                 showScanDialog = false
-                viewModel.clearDetectedSubscriptions()
+                // Do not clear detected subscriptions here, they go to the Suspicious tab
             }
         )
     }
@@ -303,7 +409,7 @@ fun SubscriptionsListScreen(
             },
             onDismiss = {
                 showResultsDialog = false
-                viewModel.clearDetectedSubscriptions()
+                // Do not clear detected subscriptions here, they go to the Suspicious tab
             },
             currency = selectedCurrency
         )
@@ -347,7 +453,7 @@ fun TabItem(
             text = text,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold,
-            color = if (selected) BackgroundDark else Color(0xFF9CA3AF)
+            color = if (selected) MaterialTheme.colorScheme.background else Color(0xFF9CA3AF)
         )
     }
 }

@@ -28,7 +28,7 @@ fun PremiumAnalyticsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundDark)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         // Header
         Row(
@@ -183,14 +183,14 @@ fun PremiumAnalyticsScreen(
                                         Icon(
                                             imageVector = Icons.Filled.TrendingUp,
                                             contentDescription = null,
-                                            tint = BackgroundDark,
+                                            tint = MaterialTheme.colorScheme.background,
                                             modifier = Modifier.size(16.dp)
                                         )
                                         Text(
                                             text = "12%",
                                             fontSize = 12.sp,
                                             fontWeight = FontWeight.Bold,
-                                            color = BackgroundDark
+                                            color = MaterialTheme.colorScheme.background
                                         )
                                     }
                                 }
@@ -210,7 +210,7 @@ fun PremiumAnalyticsScreen(
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
-                    color = SurfaceDark
+                    color = MaterialTheme.colorScheme.surface
                 ) {
                     Column(
                         modifier = Modifier.padding(24.dp)
@@ -315,7 +315,7 @@ fun PremiumAnalyticsScreen(
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(16.dp),
-                    color = SurfaceDark
+                    color = MaterialTheme.colorScheme.surface
                 ) {
                     Column(
                         modifier = Modifier.padding(24.dp),
@@ -362,7 +362,7 @@ fun PremiumAnalyticsScreen(
                         .fillMaxWidth()
                         .height(56.dp),
                     colors = ButtonDefaults.buttonColors(
-                        containerColor = SurfaceDark,
+                        containerColor = MaterialTheme.colorScheme.surface,
                         contentColor = Color.White
                     ),
                     shape = RoundedCornerShape(12.dp)
@@ -398,7 +398,7 @@ fun FilterChip(
             text = text,
             fontSize = 14.sp,
             fontWeight = if (selected) FontWeight.Bold else FontWeight.Medium,
-            color = if (selected) BackgroundDark else Color(0xFF9CA3AF),
+            color = if (selected) MaterialTheme.colorScheme.background else Color(0xFF9CA3AF),
             modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)
         )
     }

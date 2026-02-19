@@ -133,8 +133,19 @@ fun NavGraph(
                 )
             }
             
-            composable(Screen.AddSubscription.route) {
+            composable(
+                route = Screen.AddSubscription.route,
+                arguments = listOf(
+                    androidx.navigation.navArgument("id") {
+                        type = androidx.navigation.NavType.StringType
+                        nullable = true
+                        defaultValue = null
+                    }
+                )
+            ) { backStackEntry ->
+                val subscriptionId = backStackEntry.arguments?.getString("id")
                 AddSubscriptionScreen(
+                    subscriptionId = subscriptionId,
                     onBackClick = {
                         navController.popBackStack()
                     }
@@ -179,8 +190,15 @@ fun NavGraph(
             ) { backStackEntry ->
                 val subscriptionId = backStackEntry.arguments?.getString("id") ?: ""
                 SubscriptionDetailsScreen(
+                    subscriptionId = subscriptionId,
                     onBackClick = {
                         navController.popBackStack()
+                    },
+                    onEditPlanClick = {
+                        navController.navigate(Screen.AddSubscription.createRoute(subscriptionId))
+                    },
+                    onCancelClick = {
+                         // Handled inside the screen
                     }
                 )
             }

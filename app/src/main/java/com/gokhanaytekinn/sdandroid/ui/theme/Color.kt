@@ -2,15 +2,7 @@ package com.gokhanaytekinn.sdandroid.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
-
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
-
-// Custom theme colors - Updated for new design system
+// Primary
 val PrimaryBlue = Color(0xFF359EFF)
 val PrimaryDark = Color(0xFF1976D2)
 val AccentColor = Color(0xFF4CAF50)
@@ -19,21 +11,24 @@ val AccentColor = Color(0xFF4CAF50)
 val BackgroundLight = Color(0xFFF5F7F8)
 val BackgroundDark = Color(0xFF0f1923)
 
-// Surface/Card colors
+// Surface/Card colors - Dark
+val SurfaceDark = Color(0xFF1E293B)     // Proper blue-gray, matching HTML docs
+val CardDark = Color(0xFF1E293B)
+
+// Surface/Card colors - Light
 val CardBackground = Color(0xFFFFFFFF)
-val SurfaceDark = Color(0xFF162616)
-val CardDark = Color(0xFF1c331c)
+val SurfaceLight = Color(0xFFFFFFFF)
 
 // Text colors
-val TextPrimary = Color(0xFF212121)
-val TextSecondary = Color(0xFF757575)
+val TextPrimary = Color(0xFF0F172A)     // slate-900
+val TextSecondary = Color(0xFF64748B)   // slate-500
 val TextWhite = Color(0xFFFFFFFF)
-val TextGray = Color(0xFF9db99d)
+val TextGray = Color(0xFF94A3B8)        // slate-400
 
 // Semantic colors
-val ErrorColor = Color(0xFFF44336)
-val SuccessColor = Color(0xFF4CAF50)
-val WarningColor = Color(0xFFFF9800)
+val ErrorColor = Color(0xFFEF4444)
+val SuccessColor = Color(0xFF22C55E)
+val WarningColor = Color(0xFFF97316)
 val OrangeDark = Color(0xFF1E1510)
 
 // Brand colors for subscriptions

@@ -112,7 +112,7 @@ fun DashboardScreen(
                             .fillMaxWidth()
                             .border(
                                 width = 1.dp,
-                                color = Color.White.copy(alpha = 0.1f),
+                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
                                 shape = RoundedCornerShape(16.dp)
                             ),
                         shape = RoundedCornerShape(16.dp),
@@ -246,7 +246,7 @@ fun DashboardScreen(
                             .height(56.dp),
                         colors = ButtonDefaults.buttonColors(
                             containerColor = PrimaryBlue,
-                            contentColor = BackgroundDark
+                            contentColor = MaterialTheme.colorScheme.onPrimary
                         ),
                         shape = RoundedCornerShape(16.dp)
                     ) {
@@ -296,14 +296,14 @@ fun SubscriptionListItem(
                     "MacFit Gym" -> Color(0xFF10FFFFFF)
                     "Netflix" -> NetflixRed.copy(alpha = 0.2f)
                     "Spotify" -> SpotifyGreen.copy(alpha = 0.2f)
-                    else -> Color.White.copy(alpha = 0.1f)
+                    else -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
                 }
                 
                 val iconColor = when (subscription.name) {
-                    "MacFit Gym" -> Color.White
+                    "MacFit Gym" -> MaterialTheme.colorScheme.onSurface
                     "Netflix" -> NetflixRed
                     "Spotify" -> SpotifyGreen
-                    else -> Color.White
+                    else -> MaterialTheme.colorScheme.onSurface
                 }
                 
                 val icon = when (subscription.category) {

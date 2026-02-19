@@ -38,7 +38,8 @@ fun TransactionHistoryScreen(
     onBackClick: () -> Unit = {},
     onAddTransaction: () -> Unit = {}
 ) {
-    var selectedFilter by remember { mutableStateOf(0) } // 0=All, 1=Subscriptions, 2=Income, 3=Recurring
+    val colorScheme = MaterialTheme.colorScheme
+    var selectedFilter by remember { mutableStateOf(0) }
     var searchQuery by remember { mutableStateOf("") }
     
     val transactions = remember {
@@ -107,7 +108,7 @@ fun TransactionHistoryScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundDark)
+            .background(colorScheme.background)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -127,7 +128,7 @@ fun TransactionHistoryScreen(
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
                         contentDescription = "Back",
-                        tint = Color.White
+                        tint = colorScheme.onBackground
                     )
                 }
                 
@@ -135,7 +136,7 @@ fun TransactionHistoryScreen(
                     text = "Transaction History",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White,
+                    color = colorScheme.onBackground,
                     modifier = Modifier.weight(1f).padding(end = 40.dp),
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center
                 )
@@ -151,23 +152,23 @@ fun TransactionHistoryScreen(
                 placeholder = {
                     Text(
                         text = "Search for Netflix, Spotify...",
-                        color = Color.Gray
+                        color = colorScheme.onSurfaceVariant
                     )
                 },
                 leadingIcon = {
                     Icon(
                         imageVector = Icons.Filled.Search,
                         contentDescription = null,
-                        tint = Color.Gray
+                        tint = colorScheme.onSurfaceVariant
                     )
                 },
                 colors = TextFieldDefaults.colors(
-                    focusedContainerColor = SurfaceDark,
-                    unfocusedContainerColor = SurfaceDark,
-                    focusedIndicatorColor = PrimaryBlue,
+                    focusedContainerColor = colorScheme.surface,
+                    unfocusedContainerColor = colorScheme.surface,
+                    focusedIndicatorColor = colorScheme.primary,
                     unfocusedIndicatorColor = Color.Transparent,
-                    focusedTextColor = Color.White,
-                    unfocusedTextColor = Color.White
+                    focusedTextColor = colorScheme.onSurface,
+                    unfocusedTextColor = colorScheme.onSurface
                 ),
                 shape = RoundedCornerShape(12.dp),
                 singleLine = true
@@ -204,7 +205,7 @@ fun TransactionHistoryScreen(
                             text = group.uppercase(),
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium,
-                            color = Color.Gray,
+                            color = colorScheme.onSurfaceVariant,
                             letterSpacing = 1.sp,
                             modifier = Modifier.padding(vertical = 12.dp)
                         )
@@ -224,8 +225,8 @@ fun TransactionHistoryScreen(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(24.dp),
-            containerColor = PrimaryBlue,
-            contentColor = BackgroundDark
+            containerColor = colorScheme.primary,
+            contentColor = colorScheme.onPrimary
         ) {
             Icon(
                 imageVector = Icons.Filled.Add,
@@ -238,10 +239,11 @@ fun TransactionHistoryScreen(
 
 @Composable
 fun TransactionItem(transaction: Transaction) {
+    val colorScheme = MaterialTheme.colorScheme
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        color = SurfaceDark,
+        color = colorScheme.surface,
         tonalElevation = 2.dp
     ) {
         Row(
@@ -274,13 +276,13 @@ fun TransactionItem(transaction: Transaction) {
                         modifier = Modifier
                             .align(Alignment.BottomEnd)
                             .size(18.dp)
-                            .background(BackgroundDark, CircleShape),
+                            .background(colorScheme.background, CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
                             imageVector = Icons.Filled.Autorenew,
                             contentDescription = null,
-                            tint = PrimaryBlue,
+                            tint = colorScheme.primary,
                             modifier = Modifier.size(14.dp)
                         )
                     }
@@ -295,13 +297,13 @@ fun TransactionItem(transaction: Transaction) {
                     text = transaction.name,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color.White,
+                    color = colorScheme.onSurface,
                     textDecoration = if (transaction.isCancelled) TextDecoration.LineThrough else null
                 )
                 Text(
                     text = transaction.category,
                     fontSize = 14.sp,
-                    color = if (transaction.isCancelled) PrimaryBlue else Color.Gray
+                    color = if (transaction.isCancelled) colorScheme.primary else colorScheme.onSurfaceVariant
                 )
             }
             
@@ -311,9 +313,9 @@ fun TransactionItem(transaction: Transaction) {
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = when {
-                    transaction.isCancelled -> Color.Gray
-                    transaction.isIncome -> PrimaryBlue
-                    else -> Color.White
+                    transaction.isCancelled -> colorScheme.onSurfaceVariant
+                    transaction.isIncome -> colorScheme.primary
+                    else -> colorScheme.onSurface
                 }
             )
         }

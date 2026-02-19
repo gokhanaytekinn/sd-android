@@ -30,7 +30,7 @@ fun PremiumUpgradeScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundDark)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -212,8 +212,8 @@ fun PremiumUpgradeScreen(
                     brush = androidx.compose.ui.graphics.Brush.verticalGradient(
                         colors = listOf(
                             Color.Transparent,
-                            BackgroundDark,
-                            BackgroundDark
+                            MaterialTheme.colorScheme.background,
+                            MaterialTheme.colorScheme.background
                         )
                     )
                 )
@@ -233,13 +233,13 @@ fun PremiumUpgradeScreen(
                     text = "Premium'a Geç",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Black,
-                    color = BackgroundDark
+                    color = MaterialTheme.colorScheme.background
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Icon(
                     imageVector = Icons.Filled.ArrowForward,
                     contentDescription = null,
-                    tint = BackgroundDark
+                    tint = MaterialTheme.colorScheme.background
                 )
             }
             
@@ -372,7 +372,7 @@ fun PricingCard(
                         text = badge,
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
-                        color = BackgroundDark,
+                        color = MaterialTheme.colorScheme.background,
                         letterSpacing = 1.sp
                     )
                 }
@@ -425,7 +425,7 @@ fun PricingCard(
                             Icon(
                                 imageVector = Icons.Filled.Check,
                                 contentDescription = null,
-                                tint = BackgroundDark,
+                                tint = MaterialTheme.colorScheme.background,
                                 modifier = Modifier.size(14.dp)
                             )
                         }

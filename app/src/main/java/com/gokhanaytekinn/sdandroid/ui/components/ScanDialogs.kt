@@ -34,7 +34,7 @@ fun ScanningDialog(
                 .fillMaxWidth()
                 .padding(16.dp),
             shape = RoundedCornerShape(16.dp),
-            color = CardDark
+            color = MaterialTheme.colorScheme.surfaceVariant
         ) {
             Column(
                 modifier = Modifier.padding(24.dp),
@@ -131,7 +131,7 @@ fun DetectedSubscriptionsDialog(
                 .fillMaxHeight(0.8f)
                 .padding(16.dp),
             shape = RoundedCornerShape(16.dp),
-            color = CardDark
+            color = MaterialTheme.colorScheme.surfaceVariant
         ) {
             Column(
                 modifier = Modifier.fillMaxSize()
@@ -202,7 +202,7 @@ fun DetectedSubscriptionItem(
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        color = SurfaceDark
+        color = MaterialTheme.colorScheme.surface
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
@@ -287,7 +287,7 @@ fun DetectedSubscriptionItem(
                     modifier = Modifier.weight(1f),
                     colors = ButtonDefaults.buttonColors(
                         containerColor = SuccessColor,
-                        contentColor = BackgroundDark
+                        contentColor = MaterialTheme.colorScheme.background
                     )
                 ) {
                     Icon(

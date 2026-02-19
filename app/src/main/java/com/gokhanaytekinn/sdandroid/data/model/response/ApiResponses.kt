@@ -11,35 +11,44 @@ data class UserResponse(
     val id: String,
     val email: String,
     val name: String?,
-    val planType: String?, // FREE, PREMIUM_MONTHLY, PREMIUM_YEARLY
+    val tier: String?, // FREE, PREMIUM
     val createdAt: String?
 )
 
 data class SubscriptionResponse(
     val id: String,
     val name: String,
-    val description: String?,
-    val cost: Double,
+    val icon: String?,
+    val tier: String?,
+    val amount: Double,
     val currency: String,
     val billingCycle: String,
-    val nextBillingDate: String?,
-    val category: String?,
+    val startDate: String?,
+    val endDate: String?,
+    val renewalDate: String?,
     val status: String, // ACTIVE, SUSPENDED, CANCELLED, PENDING_APPROVAL
     val isSuspicious: Boolean = false,
-    val icon: String?,
-    val backgroundColor: String?,
+    val suspiciousReason: String?,
+    val isApproved: Boolean = false,
+    val approvedAt: String?,
+    val approvedBy: String?,
+    val userId: String?,
     val createdAt: String?,
-    val userId: String?
+    val updatedAt: String?
 )
 
 data class TransactionResponse(
     val id: String,
     val subscriptionId: String?,
+    val userId: String?,
     val amount: Double,
+    val currency: String?,
     val type: String,
     val status: String,
     val description: String?,
-    val createdAt: String
+    val metadata: Map<String, Any>?,
+    val createdAt: String,
+    val updatedAt: String?
 )
 
 data class PageTransactionResponse(
@@ -52,12 +61,16 @@ data class PageTransactionResponse(
 
 data class ReminderResponse(
     val id: String,
-    val subscriptionId: String,
+    val userId: String?,
+    val title: String?,
     val type: String,
     val message: String,
-    val scheduledDate: String,
+    val scheduledAt: String,
+    val sentAt: String?,
     val isRead: Boolean,
-    val createdAt: String
+    val metadata: Map<String, Any>?,
+    val createdAt: String,
+    val updatedAt: String?
 )
 
 data class AnalyticsResponse(

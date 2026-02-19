@@ -21,7 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.gokhanaytekinn.sdandroid.ui.theme.BackgroundDark
+
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
 
 @Composable
@@ -31,7 +31,7 @@ fun OnboardingScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundDark)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier
@@ -144,7 +144,7 @@ fun OnboardingScreen(
                     .height(56.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = PrimaryBlue,
-                    contentColor = BackgroundDark
+                    contentColor = MaterialTheme.colorScheme.onPrimary
                 ),
                 shape = RoundedCornerShape(12.dp)
             ) {
@@ -158,7 +158,7 @@ fun OnboardingScreen(
                 Icon(
                     imageVector = Icons.Filled.ArrowForward,
                     contentDescription = null,
-                    tint = BackgroundDark
+                    tint = MaterialTheme.colorScheme.onPrimary
                 )
             }
             

@@ -15,33 +15,37 @@ import androidx.core.view.WindowCompat
 private val LightColorScheme = lightColorScheme(
     primary = PrimaryBlue,
     secondary = AccentColor,
-    tertiary = Pink40,
+    tertiary = WarningColor,
     background = BackgroundLight,
-    surface = CardBackground,
-    surfaceVariant = Color(0xFFE8E8E8),
+    surface = SurfaceLight,
+    surfaceVariant = Color(0xFFF1F5F9), // slate-100
     onPrimary = TextWhite,
     onSecondary = TextWhite,
     onTertiary = TextWhite,
-    onBackground = TextPrimary,
-    onSurface = TextPrimary,
-    onSurfaceVariant = TextSecondary,
+    onBackground = TextPrimary,         // slate-900
+    onSurface = TextPrimary,            // slate-900
+    onSurfaceVariant = TextSecondary,   // slate-500
     error = ErrorColor,
-    outline = Color(0xFFE0E0E0)
+    outline = Color(0xFFE2E8F0),        // slate-200
+    outlineVariant = Color(0xFFCBD5E1)  // slate-300
 )
 
 private val DarkColorScheme = darkColorScheme(
     primary = PrimaryBlue,
     secondary = AccentColor,
-    tertiary = SuccessColor,
+    tertiary = WarningColor,
     background = BackgroundDark,
-    surface = SurfaceDark,
+    surface = SurfaceDark,              // #1E293B
+    surfaceVariant = Color(0xFF273549), // slightly lighter than surface
     onPrimary = BackgroundDark,
     onSecondary = TextWhite,
     onTertiary = TextWhite,
     onBackground = TextWhite,
     onSurface = TextWhite,
+    onSurfaceVariant = TextGray,        // slate-400
     error = ErrorColor,
-    surfaceVariant = CardDark
+    outline = Color(0xFF334155),        // slate-700
+    outlineVariant = Color(0xFF475569)  // slate-600
 )
 
 @Composable

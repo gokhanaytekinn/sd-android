@@ -44,7 +44,7 @@ fun SuspiciousPaymentsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(BackgroundDark)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         // Header
         Row(
@@ -202,7 +202,7 @@ fun SuspiciousTransactionCard(
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        color = SurfaceDark
+        color = MaterialTheme.colorScheme.surface
     ) {
         Column(
             modifier = Modifier
@@ -306,7 +306,7 @@ fun SuspiciousTransactionCard(
                             modifier = Modifier.height(36.dp),
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = PrimaryBlue,
-                                contentColor = BackgroundDark
+                                contentColor = MaterialTheme.colorScheme.onPrimary
                             ),
                             shape = RoundedCornerShape(8.dp)
                         ) {
