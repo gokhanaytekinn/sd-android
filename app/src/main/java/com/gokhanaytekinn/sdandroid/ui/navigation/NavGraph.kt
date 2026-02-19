@@ -225,6 +225,9 @@ fun NavGraph(
                     onHelpClick = {
                         navController.navigate(Screen.HelpCenter.route)
                     },
+                    onPrivacyClick = {
+                        navController.navigate(Screen.PrivacyPolicy.route)
+                    },
                     onLogoutClick = {
                         navController.navigate(Screen.Login.route) {
                             popUpTo(0) { inclusive = true }
@@ -250,6 +253,14 @@ fun NavGraph(
 
             composable(Screen.HelpCenter.route) {
                 HelpCenterScreen(
+                    onBackClick = {
+                        navController.popBackStack()
+                    }
+                )
+            }
+            
+            composable(Screen.PrivacyPolicy.route) {
+                PrivacyPolicyScreen(
                     onBackClick = {
                         navController.popBackStack()
                     }

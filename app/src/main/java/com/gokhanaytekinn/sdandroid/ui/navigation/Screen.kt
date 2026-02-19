@@ -14,6 +14,7 @@ sealed class Screen(val route: String) {
     }
     object TransactionHistory : Screen("transaction_history")
     object HelpCenter : Screen("help_center")
+    object PrivacyPolicy : Screen("privacy_policy")
     object AppSettings : Screen("app_settings")
     object OnboardingAutomaticTracking : Screen("onboarding_automatic_tracking")
     object OnboardingSavings : Screen("onboarding_savings")
