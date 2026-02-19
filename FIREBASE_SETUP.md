@@ -17,7 +17,21 @@ Backend servisinin Google Firebase sunucularıyla konuşabilmesi için bu yetki 
 
 ---
 
-## 2. Frontend (Android) Entegrasyonu
+## 2. google-services.json Dosyasını Alma (Android İçin)
+
+Android uygulamasının Firebase servislerine (FCM, Analytics vb.) bağlanabilmesi için bu dosyaya ihtiyacı vardır.
+
+1.  [Firebase Console](https://console.firebase.google.com/) adresine gidin.
+2.  Projenizi seçin.
+3.  Sol menüdeki **Dişli Çark (Ayarlar)** simgesine tıklayın ve **Project settings**'e gidin.
+4.  **General** (Genel) sekmesinde aşağı kaydırarak **Your apps** (Uygulamalarınız) bölümünü bulun.
+5.  Listeden Android uygulamanızı (`com.gokhanaytekinn.sdandroid`) seçin.
+6.  **google-services.json** butonuna tıklayarak dosyayı indirin.
+7.  İndirdiğiniz dosyayı projenizdeki `app/` klasörünün içine kopyalayın (mevcut taslak dosyanın üzerine yazın).
+
+---
+
+## 3. Frontend (Android) Entegrasyonu
 
 Kullanıcının telefonuna bildirim gönderebilmek için telefonun **FCM Token** (Firebase Cloud Messaging Token) bilgisini alıp Backend'e göndermemiz gerekiyor.
 
@@ -82,6 +96,26 @@ fun sendTokenToBackend(token: String) {
 
 ---
 
+---
+
+## 4. Test Bildirimi Gönderme
+
+Entegrasyonu doğrulamak için Firebase Console üzerinden test bildirimi gönderebilirsiniz:
+
+1.  [Firebase Console](https://console.firebase.google.com/)'a gidin ve projenizi seçin.
+2.  Sol menüde **Engage** (Etkileşim) başlığı altındaki **Messaging** (Mesajlaşma) sekmesine tıklayın.
+3.  **Create your first campaign** (İlk kampanyanızı oluşturun) butonuna basın ve **Firebase Device Highlights** (eskiden Firebase Cloud Messaging) seçeneğini işaretleyip **Create** deyin.
+4.  **Notification title** ve **Notification text** kısımlarına test mesajınızı yazın.
+5.  Sağ taraftaki **Send test message** (Test mesajı gönder) butonuna tıklayın.
+6.  Sizden bir **FCM registration token** isteyecektir.
+    - Android Studio'daki **Logcat** sekmesini açın.
+    - Arama kısmına `FCM` veya `Token:` yazın. 
+    - Uygulama açıldığında loglanan token değerini kopyalayıp Firebase Console'daki alana yapıştırın.
+7.  **Test** butonuna basın. Telefonunuza (veya emülatöre) bildirim gelecektir.
+
+---
+
 ## Özet
 1.  **Backend** için `serviceAccountKey.json` dosyasını indirin.
-2.  **Frontend** uygulamasında FCM kütüphanesini ekleyin ve yukarıdaki kod ile token'ı alıp Backend'e gönderin.
+2.  **google-services.json** dosyasını `app/` dizinine koyun.
+3.  **Frontend** uygulamasını çalıştırın, Logcat'ten token'ı alıp Firebase Console üzerinden test edin.

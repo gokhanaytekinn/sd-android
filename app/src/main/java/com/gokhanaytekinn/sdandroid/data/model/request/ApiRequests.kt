@@ -63,3 +63,7 @@ data class ConversionRequest(
     val currency: String,
     val billingCycle: String
 )
+
+data class FcmTokenRequest(
+    val token: String
+)

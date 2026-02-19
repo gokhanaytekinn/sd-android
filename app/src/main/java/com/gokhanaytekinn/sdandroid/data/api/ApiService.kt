@@ -18,6 +18,11 @@ interface ApiService {
     @GET("api/auth/me")
     suspend fun getCurrentUser(): Response<UserResponse>
     
+    // ============ USERS ============
+    
+    @PATCH("api/users/fcm-token")
+    suspend fun updateFcmToken(@Body request: FcmTokenRequest): Response<Unit>
+    
     // ============ SUBSCRIPTIONS ============
     
     @GET("api/subscriptions")

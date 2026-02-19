@@ -4,6 +4,7 @@ import android.content.Context
 import com.gokhanaytekinn.sdandroid.data.api.ApiService
 import com.gokhanaytekinn.sdandroid.data.api.RetrofitClient
 import com.gokhanaytekinn.sdandroid.data.local.TokenManager
+import com.gokhanaytekinn.sdandroid.data.model.request.FcmTokenRequest
 import com.gokhanaytekinn.sdandroid.data.model.request.LoginRequest
 import com.gokhanaytekinn.sdandroid.data.model.request.RegisterRequest
 import com.gokhanaytekinn.sdandroid.data.model.response.AuthResponse
@@ -102,6 +103,19 @@ class AuthRepository(context: Context) {
     
     suspend fun logout() {
         tokenManager.clearToken()
+    }
+
+    suspend fun updateFcmToken(token: String): Result<Unit> {
+        return try {
+            val response = apiService.updateFcmToken(FcmTokenRequest(token))
+            if (response.isSuccessful) {
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Failed to update FCM token"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
     }
     
     suspend fun isLoggedIn(): Boolean {

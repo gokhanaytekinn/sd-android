@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "511347263387",
+    "project_id": "sd-app-6ecbc",
+    "storage_bucket": "sd-app-6ecbc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511347263387:android:07b75f64d9e70803f2433e",
+        "android_client_info": {
+          "package_name": "com.gokhanaytekinn.sdandroid"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgj7GS3kLv8HZlGdroPCxB_VGG3xvqcmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

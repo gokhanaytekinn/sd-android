@@ -21,10 +21,15 @@ import com.gokhanaytekinn.sdandroid.ui.theme.SDAndroidTheme
 import com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
+import com.google.firebase.messaging.FirebaseMessaging
+import android.util.Log
+import androidx.lifecycle.lifecycleScope
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        
+        getAndSendFCMToken()
         
         val themePreferences = ThemePreferences(this)
         val onboardingPreferences = com.gokhanaytekinn.sdandroid.data.preferences.OnboardingPreferences(this)
@@ -58,6 +63,40 @@ class MainActivity : AppCompatActivity() {
                         NavGraph(navController = navController, startDestination = startDestination!!)
                     }
                 }
+            }
+        }
+    }
+
+    private fun getAndSendFCMToken() {
+        FirebaseMessaging.getInstance().token.addOnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w("FCM", "Fetching FCM registration token failed", task.exception)
+                return@addOnCompleteListener
+            }
+
+            // 1. Token'ı al
+            val token = task.result
+            Log.d("FCM", "Token: $token")
+
+            // 2. Token'ı Backend'e gönder
+            sendTokenToBackend(token)
+        }
+    }
+
+    private fun sendTokenToBackend(token: String) {
+        val authRepository = com.gokhanaytekinn.sdandroid.data.repository.AuthRepository(this)
+        
+        // Launch in lifecycle scope to handle the suspend function
+        lifecycleScope.launchWhenStarted {
+            if (authRepository.isLoggedIn()) {
+                val result = authRepository.updateFcmToken(token)
+                if (result.isSuccess) {
+                    Log.d("FCM", "Token successfully updated on backend")
+                } else {
+                    Log.e("FCM", "Failed to update token on backend: ${result.exceptionOrNull()?.message}")
+                }
+            } else {
+                Log.d("FCM", "User not logged in, skipping token update")
             }
         }
     }
