@@ -55,6 +55,11 @@ fun DashboardScreen(
     val suspiciousCount by viewModel.suspiciousCount.collectAsState()
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
     
+    // Calculate expensive subscriptions outside of LazyColumn items
+    val expensiveSubscriptions = remember(subscriptions) {
+        subscriptions.sortedByDescending { it.cost }.take(3)
+    }
+    
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -212,34 +217,39 @@ fun DashboardScreen(
                 
                 // Expensive Subscriptions List
                 item {
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Text(
-                            text = stringResource(R.string.most_expensive),
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-                        TextButton(onClick = onNavigateToAllSubscriptions) {
+                    Text(
+                        text = stringResource(R.string.most_expensive),
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 12.dp)
+                    )
+                }
+                
+                if (expensiveSubscriptions.isEmpty()) {
+                    item {
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(vertical = 16.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
                             Text(
-                                text = stringResource(R.string.view_all),
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.SemiBold,
-                                color = PrimaryBlue
+                                text = "Henüz abonelik eklenmemiş",
+                                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                                fontSize = 14.sp
                             )
                         }
                     }
-                }
-                
-                // Subscription items
-                items(subscriptions.take(3)) { subscription ->
-                    SubscriptionListItem(
-                        subscription = subscription,
-                        currency = selectedCurrency
-                    )
+                } else {
+                    items(expensiveSubscriptions) { subscription ->
+                        SubscriptionListItem(
+                            subscription = subscription,
+                            currency = selectedCurrency
+                        )
+                    }
                 }
                 
                 // Main Action Button

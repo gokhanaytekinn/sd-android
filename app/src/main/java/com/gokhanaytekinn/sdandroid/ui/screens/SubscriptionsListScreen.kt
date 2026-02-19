@@ -41,7 +41,8 @@ fun SubscriptionsListScreen(
     onNavigateToDashboard: () -> Unit = {},
     onNavigateToSearch: () -> Unit = {},
     onNavigateToSettings: () -> Unit = {},
-    onNavigateToAddSubscription: () -> Unit = {}
+    onNavigateToAddSubscription: () -> Unit = {},
+    onNavigateToAnalytics: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val application = context.applicationContext as android.app.Application
@@ -249,7 +250,8 @@ fun SubscriptionsListScreen(
                                     modifier = Modifier
                                         .size(40.dp)
                                         .clip(CircleShape)
-                                        .background(PrimaryBlue.copy(alpha = 0.2f)),
+                                        .background(PrimaryBlue.copy(alpha = 0.2f))
+                                        .clickable { onNavigateToAnalytics() }, // Add navigation here
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Icon(
