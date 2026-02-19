@@ -9,9 +9,6 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
     
-    // Android emulator için localhost
-    private const val BASE_URL = "http://10.0.2.2:8080/"
-    
     private fun createOkHttpClient(tokenManager: TokenManager): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
@@ -28,7 +25,7 @@ object RetrofitClient {
     
     fun createApiService(tokenManager: TokenManager): ApiService {
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(NetworkConfig.BASE_URL)
             .client(createOkHttpClient(tokenManager))
             .addConverterFactory(GsonConverterFactory.create())
             .build()
