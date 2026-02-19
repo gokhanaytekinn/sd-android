@@ -14,7 +14,7 @@ interface SubscriptionApiService {
     suspend fun getSubscription(@Path("id") id: String): Response<Subscription>
     
     @POST("/api/subscriptions")
-    suspend fun createSubscription(@Body subscription: Subscription): Response<Subscription>
+    suspend fun createSubscription(@Body subscription: com.gokhanaytekinn.sdandroid.data.model.request.SubscriptionRequest): Response<Subscription>
     
     @PUT("/api/subscriptions/{id}")
     suspend fun updateSubscription(

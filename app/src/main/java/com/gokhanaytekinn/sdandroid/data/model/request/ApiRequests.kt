@@ -13,14 +13,12 @@ data class RegisterRequest(
 
 data class SubscriptionRequest(
     val name: String,
-    val description: String? = null,
-    val cost: Double,
-    val currency: String = "TRY",
-    val billingCycle: String, // MONTHLY, YEARLY, WEEKLY, QUARTERLY
-    val nextBillingDate: String? = null,
-    val category: String? = null,
-    val icon: String? = null,
-    val backgroundColor: String? = null
+    val icon: String?,
+    val tier: String? = null,
+    val amount: Double,
+    val currency: String,
+    val billingCycle: String,
+    val startDate: String
 )
 
 data class FlagSuspiciousRequest(

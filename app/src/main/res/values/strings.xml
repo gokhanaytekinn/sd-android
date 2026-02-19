@@ -183,4 +183,5 @@
     <string name="success">Success</string>
     <string name="try_again">Try Again</string>
     <string name="no_results">No results found</string>
+    <string name="date_placeholder">YYYY-MM-DD</string>
 </resources>

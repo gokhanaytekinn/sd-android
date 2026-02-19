@@ -75,14 +75,12 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = SubscriptionRequest(
                 name = subscription.name,
-                description = subscription.description,
-                cost = subscription.cost,
+                icon = subscription.iconUrl ?: subscription.icon, // Prefer iconUrl if available
+                tier = null, // Subscription model doesn't have tier yet, so null
+                amount = subscription.cost,
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.name,
-                nextBillingDate = subscription.nextBillingDate,
-                category = subscription.category,
-                icon = subscription.icon,
-                backgroundColor = subscription.backgroundColor
+                startDate = subscription.nextBillingDate ?: "" // Should be handled better if null, but request requires string
             )
             val response = apiService.createSubscription(request)
             if (response.isSuccessful && response.body() != null) {
