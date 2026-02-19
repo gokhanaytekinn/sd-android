@@ -86,13 +86,7 @@ fun SearchScreen(
                     textAlign = androidx.compose.ui.text.style.TextAlign.Center
                 )
                 
-                IconButton(onClick = onFilterClick) {
-                    Icon(
-                        imageVector = Icons.Filled.Tune,
-                        contentDescription = "Filter",
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
-                }
+                Spacer(modifier = Modifier.size(48.dp)) // Balance header
             }
         }
         
@@ -148,40 +142,7 @@ fun SearchScreen(
             singleLine = true
         )
         
-        TabRow(
-            selectedTabIndex = selectedTab,
-            modifier = Modifier.fillMaxWidth(),
-            containerColor = Color(0xFF0d151b),
-            contentColor = PrimaryBlue,
-            divider = {
-                Divider(color = Color(0xFF334155))
-            }
-        ) {
-            Tab(
-                selected = selectedTab == 0,
-                onClick = { selectedTab = 0 },
-                modifier = Modifier.padding(vertical = 12.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.subscriptions),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = if (selectedTab == 0) Color.White else Color(0xFF94A3B8)
-                )
-            }
-            Tab(
-                selected = selectedTab == 1,
-                onClick = { selectedTab = 1 },
-                modifier = Modifier.padding(vertical = 12.dp)
-            ) {
-                Text(
-                    text = stringResource(R.string.transactions),
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = if (selectedTab == 1) Color.White else Color(0xFF94A3B8)
-                )
-            }
-        }
+
         
         // Content
         LazyColumn(
