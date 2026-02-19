@@ -392,25 +392,42 @@ fun SubscriptionDetailsScreen(
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
                         Button(
-                            onClick = onSetReminderClick,
+                            onClick = {
+                                if (!isLoading) {
+                                    scope.launch {
+                                        isLoading = true
+                                        val newStatus = !sub.reminderEnabled
+                                        val updatedSubscription = sub.copy(reminderEnabled = newStatus)
+                                        val result = repository.updateSubscription(subscriptionId, updatedSubscription)
+                                        if (result.isSuccess) {
+                                            subscription = result.getOrNull()
+                                        } else {
+                                            error = result.exceptionOrNull()?.message
+                                        }
+                                        isLoading = false
+                                    }
+                                }
+                            },
                             modifier = Modifier
                                 .weight(1f)
                                 .height(48.dp),
                             colors = ButtonDefaults.buttonColors(
-                                containerColor = colorScheme.primary
+                                containerColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.surfaceVariant else colorScheme.primary,
+                                contentColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.onSurfaceVariant else colorScheme.onPrimary
                             ),
                             shape = RoundedCornerShape(8.dp)
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.NotificationsActive,
+                                imageVector = if (sub.reminderEnabled) Icons.Default.NotificationsOff else Icons.Default.NotificationsActive,
                                 contentDescription = null,
                                 modifier = Modifier.size(20.dp)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Hatırlatıcı Kur",
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold
+                                text = if (sub.reminderEnabled) "Hatırlatıcıyı Kapat" else "Hatırlatıcı Kur",
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.Bold,
+                                maxLines = 1
                             )
                         }
 
