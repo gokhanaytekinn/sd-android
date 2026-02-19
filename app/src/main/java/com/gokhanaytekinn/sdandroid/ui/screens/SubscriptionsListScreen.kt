@@ -117,7 +117,7 @@ fun SubscriptionsListScreen(
                             text = stringResource(R.string.subscriptions),
                             fontSize = 24.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onBackground
                         )
                         
                         Row(
@@ -171,7 +171,7 @@ fun SubscriptionsListScreen(
                             .padding(bottom = 16.dp)
                             .border(
                                 width = 1.dp,
-                                color = Color.White.copy(alpha = 0.1f),
+                                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
                                 shape = RoundedCornerShape(8.dp)
                             )
                             .clip(RoundedCornerShape(8.dp))
@@ -495,7 +495,7 @@ fun SubscriptionListItemDetailed(
                         "Adobe Creative Cloud" -> AdobeRed
                         "iCloud+ 200GB" -> Color(0xFF007AFF)
                         "Amazon Prime" -> Color(0xFF00A8E1)
-                        else -> Color.White.copy(alpha = 0.1f)
+                        else -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
                     }
                     
                     Box(
@@ -527,7 +527,7 @@ fun SubscriptionListItemDetailed(
                             text = subscription.name,
                             fontSize = 16.sp,
                             fontWeight = FontWeight.SemiBold,
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         val localizedCategory = when (subscription.category) {
@@ -558,7 +558,7 @@ fun SubscriptionListItemDetailed(
                         text = CurrencyFormatter.formatAmount(subscription.cost, currency),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.White
+                        color = MaterialTheme.colorScheme.onSurface
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
@@ -571,7 +571,7 @@ fun SubscriptionListItemDetailed(
             }
             
             Divider(
-                color = Color.White.copy(alpha = 0.05f),
+                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
                 thickness = 1.dp
             )
         }
