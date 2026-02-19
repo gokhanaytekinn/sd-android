@@ -87,7 +87,8 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     _amount.value = it.cost.toString()
                     _currency.value = it.currency
                     _billingCycle.value = it.billingCycle
-                    _nextBillingDate.value = it.nextBillingDate ?: it.startDate ?: ""
+                    val rawDate = it.nextBillingDate ?: it.startDate ?: ""
+                    _nextBillingDate.value = formatDateForUi(rawDate)
                     _isReminderEnabled.value = it.reminderEnabled
                 }
             } else {
@@ -108,16 +109,16 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
             _error.value = null
             
             try {
+                val apiDate = formatDateForApi(_nextBillingDate.value)
                 val subscription = Subscription(
                     id = _subscriptionId ?: UUID.randomUUID().toString(),
                     name = _name.value,
                     cost = _amount.value.toDoubleOrNull() ?: 0.0,
                     currency = _currency.value,
                     billingCycle = _billingCycle.value,
-                    nextBillingDate = _nextBillingDate.value.ifBlank { null },
+                    nextBillingDate = apiDate,
                     isActive = true,
-
-                    startDate = if (_isEditMode.value) null else _nextBillingDate.value.ifBlank { null },
+                    startDate = if (_isEditMode.value) null else apiDate,
                     reminderEnabled = _isReminderEnabled.value
                 )
 
@@ -153,5 +154,34 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         _nextBillingDate.value = ""
         _subscriptionId = null
         _isEditMode.value = false
+        _isReminderEnabled.value = false
+    }
+
+    private fun formatDateForApi(uiDate: String): String? {
+        if (uiDate.isBlank()) return null
+        return try {
+            val parts = uiDate.split(".")
+            if (parts.size == 3) {
+                "${parts[2]}-${parts[1]}-${parts[0]}"
+            } else {
+                uiDate
+            }
+        } catch (e: Exception) {
+            uiDate
+        }
+    }
+
+    private fun formatDateForUi(apiDate: String): String {
+        if (apiDate.isBlank()) return ""
+        return try {
+            val parts = apiDate.split("-")
+            if (parts.size == 3) {
+                "${parts[2]}.${parts[1]}.${parts[0]}"
+            } else {
+                apiDate
+            }
+        } catch (e: Exception) {
+            apiDate
+        }
     }
 }

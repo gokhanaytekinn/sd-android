@@ -151,14 +151,7 @@ fun SubscriptionDetailsScreen(
                             color = colorScheme.onBackground.copy(alpha = 0f)
                         )
 
-                        TextButton(onClick = onEditClick) {
-                            Text(
-                                text = "Düzenle",
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = colorScheme.primary
-                            )
-                        }
+
                     }
                 }
 
