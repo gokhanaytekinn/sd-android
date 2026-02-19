@@ -222,6 +222,9 @@ fun NavGraph(
                     onUpgradeClick = {
                         navController.navigate(Screen.PremiumUpgrade.route)
                     },
+                    onHelpClick = {
+                        navController.navigate(Screen.HelpCenter.route)
+                    },
                     onLogoutClick = {
                         navController.navigate(Screen.Login.route) {
                             popUpTo(0) { inclusive = true }
@@ -241,6 +244,14 @@ fun NavGraph(
                         navController.navigate(Screen.Search.route) {
                             popUpTo(Screen.Dashboard.route)
                         }
+                    }
+                )
+            }
+
+            composable(Screen.HelpCenter.route) {
+                HelpCenterScreen(
+                    onBackClick = {
+                        navController.popBackStack()
                     }
                 )
             }

@@ -13,6 +13,7 @@ sealed class Screen(val route: String) {
         fun createRoute(id: String) = "subscription_details/$id"
     }
     object TransactionHistory : Screen("transaction_history")
+    object HelpCenter : Screen("help_center")
     object AppSettings : Screen("app_settings")
     object OnboardingAutomaticTracking : Screen("onboarding_automatic_tracking")
     object OnboardingSavings : Screen("onboarding_savings")
