@@ -115,7 +115,7 @@ fun PrivacyPolicyScreen(
             
             PolicySection(
                 title = "6. İletişim",
-                content = "Gizlilik politikamızla ilgili sorularınız için bizimle iletişime geçebilirsiniz:\ndestek@abonelikdedektifi.com"
+                content = "Gizlilik politikamızla ilgili sorularınız için bizimle iletişime geçebilirsiniz:\ngokhanaytekinn@yandex.com"
             )
             
             Spacer(modifier = Modifier.height(48.dp))
