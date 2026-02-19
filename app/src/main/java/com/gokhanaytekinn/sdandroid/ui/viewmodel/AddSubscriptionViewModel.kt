@@ -88,7 +88,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     _currency.value = it.currency
                     _billingCycle.value = it.billingCycle
                     _nextBillingDate.value = it.nextBillingDate ?: it.startDate ?: ""
-                    // TODO: Load reminder preference if available
+                    _isReminderEnabled.value = it.reminderEnabled
                 }
             } else {
                 _error.value = "Abonelik bilgileri yüklenemedi: ${result.exceptionOrNull()?.message}"
@@ -116,7 +116,9 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     billingCycle = _billingCycle.value,
                     nextBillingDate = _nextBillingDate.value.ifBlank { null },
                     isActive = true,
-                    startDate = if (_isEditMode.value) null else _nextBillingDate.value.ifBlank { null }
+
+                    startDate = if (_isEditMode.value) null else _nextBillingDate.value.ifBlank { null },
+                    reminderEnabled = _isReminderEnabled.value
                 )
 
                 val result = if (_isEditMode.value && _subscriptionId != null) {

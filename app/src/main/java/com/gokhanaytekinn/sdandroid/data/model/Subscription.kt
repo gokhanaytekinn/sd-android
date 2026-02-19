@@ -14,7 +14,8 @@ data class Subscription(
     val isSuspicious: Boolean = false,
     val icon: String? = null,
     val status: String? = null,
-    val tier: String? = null
+    val tier: String? = null,
+    val reminderEnabled: Boolean = false
 )
 
 enum class BillingCycle {

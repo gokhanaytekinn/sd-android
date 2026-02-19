@@ -30,6 +30,7 @@ data class SubscriptionResponse(
     val isSuspicious: Boolean = false,
     val suspiciousReason: String?,
     val isApproved: Boolean = false,
+    val reminderEnabled: Boolean = false,
     val approvedAt: String?,
     val approvedBy: String?,
     val userId: String?,

@@ -18,7 +18,8 @@ data class SubscriptionRequest(
     val amount: Double,
     val currency: String,
     val billingCycle: String,
-    val startDate: String
+    val startDate: String,
+    val reminderEnabled: Boolean = false
 )
 
 data class SubscriptionUpdateRequest(
@@ -28,7 +29,8 @@ data class SubscriptionUpdateRequest(
     val amount: Double? = null,
     val currency: String? = null,
     val billingCycle: String? = null,
-    val startDate: String? = null
+    val startDate: String? = null,
+    val reminderEnabled: Boolean? = null
 )
 
 data class FlagSuspiciousRequest(

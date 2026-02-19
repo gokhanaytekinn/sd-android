@@ -80,7 +80,8 @@ class SubscriptionRepository(context: Context? = null) {
                 amount = subscription.cost,
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.name,
-                startDate = subscription.startDate ?: subscription.nextBillingDate ?: ""
+                startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
+                reminderEnabled = subscription.reminderEnabled
             )
             val response = apiService.createSubscription(request)
             if (response.isSuccessful && response.body() != null) {
@@ -105,7 +106,8 @@ class SubscriptionRepository(context: Context? = null) {
                 amount = subscription.cost,
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.name,
-                startDate = subscription.startDate ?: subscription.nextBillingDate ?: ""
+                startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
+                reminderEnabled = subscription.reminderEnabled
             )
             val response = apiService.updateSubscription(id, request)
             if (response.isSuccessful && response.body() != null) {
@@ -185,7 +187,8 @@ class SubscriptionRepository(context: Context? = null) {
             isSuspicious = isSuspicious,
             icon = icon,
             status = status,
-            tier = tier
+            tier = tier,
+            reminderEnabled = reminderEnabled
         )
     }
 }
