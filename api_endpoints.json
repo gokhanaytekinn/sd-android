@@ -219,6 +219,10 @@
                 "type": "String"
               },
               {
+                "name": "reminderEnabled",
+                "type": "Boolean"
+              },
+              {
                 "name": "createdAt",
                 "type": "LocalDateTime"
               },
@@ -306,6 +310,16 @@
                 "rules": [
                   "required"
                 ]
+              },
+              {
+                "name": "reminderEnabled",
+                "type": "Boolean",
+                "default": false
+              },
+              {
+                "name": "reminderEnabled",
+                "type": "Boolean",
+                "default": false
               }
             ]
           },
@@ -359,6 +373,10 @@
               {
                 "name": "startDate",
                 "type": "LocalDate"
+              },
+              {
+                "name": "reminderEnabled",
+                "type": "Boolean"
               }
             ]
           },

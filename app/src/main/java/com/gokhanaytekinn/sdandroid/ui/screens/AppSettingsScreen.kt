@@ -1,5 +1,6 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -210,6 +211,7 @@ fun AppSettingsScreen(
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
                     color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f)),
                     onClick = onProfileClick
                 ) {
                     Column {
@@ -334,7 +336,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surface
+                    color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
                 ) {
                     Column {
                         // Notifications Toggle
@@ -388,7 +391,8 @@ fun AppSettingsScreen(
                     text = stringResource(R.string.support),
                     fontSize = 12.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = Color.White.copy(alpha = 0.6f),
+
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     letterSpacing = 1.5.sp,
                     modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 12.dp)
                 )
@@ -400,7 +404,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surface
+                    color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
                 ) {
                     Column {
                         // Help Center
@@ -667,7 +672,7 @@ fun SettingsToggleItem(
                 text = title,
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Medium,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
         
@@ -725,7 +730,7 @@ fun SettingsNavigationItem(
                     text = title,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
             
@@ -737,13 +742,13 @@ fun SettingsNavigationItem(
                     Text(
                         text = value,
                         fontSize = 14.sp,
-                        color = Color(0xFF64748B)
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
                     )
                 }
                 Icon(
                     imageVector = Icons.Filled.ChevronRight,
                     contentDescription = null,
-                    tint = Color(0xFF9CA3AF),
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier.size(20.dp)
                 )
             }

@@ -1,8 +1,10 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -150,7 +152,9 @@ fun DashboardScreen(
                             .fillMaxWidth()
                             .clickable { onNavigateToSuspicious() },
                         shape = RoundedCornerShape(12.dp),
-                        color = Color(0xFF1E1510)
+
+                        color = if (isSystemInDarkTheme()) Color(0xFF1E1510) else MaterialTheme.colorScheme.errorContainer,
+                        border = if (!isSystemInDarkTheme()) BorderStroke(1.dp, MaterialTheme.colorScheme.error) else null
                     ) {
                         Row(
                             modifier = Modifier
@@ -182,14 +186,15 @@ fun DashboardScreen(
                                     Text(
                                         text = stringResource(R.string.suspicious_subscriptions),
                                         fontSize = 16.sp,
+
                                         fontWeight = FontWeight.Bold,
-                                        color = Color(0xFFFFE7D6)
+                                        color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6) else MaterialTheme.colorScheme.onErrorContainer
                                     )
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         text = stringResource(R.string.transactions_pending, suspiciousCount),
                                         fontSize = 12.sp,
-                                        color = Color(0xFFFFE7D6).copy(alpha = 0.6f),
+                                        color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6).copy(alpha = 0.6f) else MaterialTheme.colorScheme.onErrorContainer.copy(alpha = 0.8f),
                                         fontWeight = FontWeight.Medium
                                     )
                                 }
@@ -278,7 +283,8 @@ fun SubscriptionListItem(
     Surface(
         modifier = modifier.fillMaxWidth(),
         shape = RoundedCornerShape(12.dp),
-        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f)
+        color = MaterialTheme.colorScheme.surface.copy(alpha = 0.5f),
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
     ) {
         Row(
             modifier = Modifier

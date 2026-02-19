@@ -410,42 +410,82 @@ fun SubscriptionDetailsScreen(
                     
                     Spacer(modifier = Modifier.height(12.dp))
                     
-                    OutlinedButton(
-                        onClick = {
-                            if (!isLoading) {
-                                scope.launch {
-                                    isLoading = true
-                                    val result = repository.cancelSubscription(subscriptionId)
-                                    if (result.isSuccess) {
-                                        onBackClick()
-                                    } else {
-                                        error = result.exceptionOrNull()?.message
+                    if (sub.status == "CANCELLED") {
+                        Button(
+                            onClick = {
+                                if (!isLoading) {
+                                    scope.launch {
+                                        isLoading = true
+                                        val result = repository.approveSubscription(subscriptionId)
+                                        if (result.isSuccess) {
+                                            // Update local state with the new subscription data
+                                            subscription = result.getOrNull()
+                                        } else {
+                                            error = result.exceptionOrNull()?.message
+                                        }
                                         isLoading = false
                                     }
                                 }
-                            }
-                        },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp)
-                            .height(48.dp),
-                        colors = ButtonDefaults.outlinedButtonColors(
-                            contentColor = colorScheme.error
-                        ),
-                        border = androidx.compose.foundation.BorderStroke(1.dp, colorScheme.error),
-                        shape = RoundedCornerShape(8.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Cancel,
-                            contentDescription = null,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Aboneliği İptal Et",
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium
-                        )
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp)
+                                .height(48.dp),
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = AccentColor
+                            ),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.CheckCircle,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Aboneliği Tekrar Aktif Et",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Medium
+                            )
+                        }
+                    } else {
+                        OutlinedButton(
+                            onClick = {
+                                if (!isLoading) {
+                                    scope.launch {
+                                        isLoading = true
+                                        val result = repository.cancelSubscription(subscriptionId)
+                                        if (result.isSuccess) {
+                                            onBackClick()
+                                        } else {
+                                            error = result.exceptionOrNull()?.message
+                                            isLoading = false
+                                        }
+                                    }
+                                }
+                            },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp)
+                                .height(48.dp),
+                            colors = ButtonDefaults.outlinedButtonColors(
+                                contentColor = colorScheme.error
+                            ),
+                            border = androidx.compose.foundation.BorderStroke(1.dp, colorScheme.error),
+                            shape = RoundedCornerShape(8.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Filled.Cancel,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = "Aboneliği İptal Et",
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.Medium
+                            )
+                        }
                     }
                 }
 

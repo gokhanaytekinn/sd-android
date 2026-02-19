@@ -1,5 +1,6 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -63,15 +64,16 @@ fun SuspiciousPaymentsScreen(
                 Icon(
                     imageVector = Icons.Filled.ArrowBack,
                     contentDescription = "Back",
-                    tint = Color.White
+                    tint = MaterialTheme.colorScheme.onBackground
                 )
             }
             
             Text(
                 text = "Şüpheli Ödemeler",
                 fontSize = 18.sp,
+
                 fontWeight = FontWeight.Bold,
-                color = Color.White,
+                color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.weight(1f).padding(horizontal = 16.dp),
                 textAlign = androidx.compose.ui.text.style.TextAlign.Center
             )
@@ -93,8 +95,9 @@ fun SuspiciousPaymentsScreen(
                 Text(
                     text = "${totalSteps - currentStep + 1} şüpheli işlem kaldı",
                     fontSize = 14.sp,
+
                     fontWeight = FontWeight.Medium,
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onBackground
                 )
                 Text(
                     text = "Adım $currentStep / $totalSteps",
@@ -127,7 +130,7 @@ fun SuspiciousPaymentsScreen(
         Text(
             text = "Aşağıdaki işlemler düzenli abonelik ödemesi gibi görünüyor. Lütfen bu harcamaları doğrulayın.",
             fontSize = 14.sp,
-            color = Color(0xFFD1D5DB),
+            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
             modifier = Modifier.padding(16.dp),
             lineHeight = 20.sp
         )
@@ -202,7 +205,8 @@ fun SuspiciousTransactionCard(
     Surface(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(16.dp),
-        color = MaterialTheme.colorScheme.surface
+        color = MaterialTheme.colorScheme.surface,
+        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
     ) {
         Column(
             modifier = Modifier
@@ -239,7 +243,7 @@ fun SuspiciousTransactionCard(
                             text = transaction.name,
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold,
-                            color = Color.White
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
@@ -255,13 +259,13 @@ fun SuspiciousTransactionCard(
                     text = "-${String.format("%.2f", transaction.amount)} ₺",
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
-                    color = Color.White
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
             
             Divider(
                 modifier = Modifier.padding(vertical = 16.dp),
-                color = Color.White.copy(alpha = 0.05f),
+                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
                 thickness = 1.dp
             )
             

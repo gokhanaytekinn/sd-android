@@ -74,7 +74,7 @@ fun AddSubscriptionScreen(
     val datePickerDialog = DatePickerDialog(
         context,
         { _: DatePicker, selectedYear: Int, selectedMonth: Int, selectedDay: Int ->
-            val formattedDate = "$selectedYear-${(selectedMonth + 1).toString().padStart(2, '0')}-${selectedDay.toString().padStart(2, '0')}"
+            val formattedDate = "${selectedDay.toString().padStart(2, '0')}.${(selectedMonth + 1).toString().padStart(2, '0')}.$selectedYear"
             viewModel.updateNextBillingDate(formattedDate)
         }, year, month, day
     )
@@ -170,7 +170,8 @@ fun AddSubscriptionScreen(
                         Triple("Netflix", NetflixRed, "N"),
                         Triple("Spotify", SpotifyGreen, "S"),
                         Triple("YouTube", Color(0xFFFF0000), "Y"),
-                        Triple("Amazon", Color(0xFF00A8E1), "A")
+                        Triple("Amazon", Color(0xFF00A8E1), "A"),
+                        Triple("HBO Max", Color(0xFF5A2E81), "H")
                     )
                     
                     items(suggestions) { (appName, color, initial) ->

@@ -120,7 +120,7 @@ fun SubscriptionsListScreen(
                         )
                         
                         Row(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            horizontalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
                             // Scan button
                             IconButton(
@@ -208,54 +208,56 @@ fun SubscriptionsListScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 // Summary Card
-                item {
-                    Surface(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .border(
-                                width = 1.dp,
-                                color = Color.White.copy(alpha = 0.1f),
-                                shape = RoundedCornerShape(12.dp)
-                            ),
-                        shape = RoundedCornerShape(12.dp),
-                        color = Color.Transparent
-                    ) {
-                        Row(
+                if (selectedTab == 0) {
+                    item {
+                        Surface(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
+                                .border(
+                                    width = 1.dp,
+                                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
+                                    shape = RoundedCornerShape(12.dp)
+                                ),
+                            shape = RoundedCornerShape(12.dp),
+                            color = Color.Transparent
                         ) {
-                            Column {
-                                Text(
-                                    text = stringResource(R.string.total_monthly).uppercase(),
-                                    fontSize = 10.sp,
-                                    fontWeight = FontWeight.Medium,
-                                    color = Color(0xFF9CA3AF),
-                                    letterSpacing = 1.sp
-                                )
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Text(
-                                    text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
-                                    fontSize = 24.sp,
-                                    fontWeight = FontWeight.Bold,
-                                    color = Color.White
-                                )
-                            }
-                            
-                            Box(
+                            Row(
                                 modifier = Modifier
-                                    .size(40.dp)
-                                    .clip(CircleShape)
-                                    .background(PrimaryBlue.copy(alpha = 0.2f)),
-                                contentAlignment = Alignment.Center
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Icon(
-                                    imageVector = Icons.Default.Analytics,
-                                    contentDescription = null,
-                                    tint = PrimaryBlue
-                                )
+                                Column {
+                                    Text(
+                                        text = stringResource(R.string.total_monthly).uppercase(),
+                                        fontSize = 10.sp,
+                                        fontWeight = FontWeight.Medium,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        letterSpacing = 1.sp
+                                    )
+                                    Spacer(modifier = Modifier.height(8.dp))
+                                    Text(
+                                        text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
+                                        fontSize = 24.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onBackground
+                                    )
+                                }
+                                
+                                Box(
+                                    modifier = Modifier
+                                        .size(40.dp)
+                                        .clip(CircleShape)
+                                        .background(PrimaryBlue.copy(alpha = 0.2f)),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.Analytics,
+                                        contentDescription = null,
+                                        tint = PrimaryBlue
+                                    )
+                                }
                             }
                         }
                     }
