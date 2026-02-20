@@ -183,4 +183,15 @@
     <string name="success">Başarılı</string>
     <string name="try_again">Tekrar Dene</string>
     <string name="no_results">Sonuç bulunamadı</string>
+
+    <!-- Validasyonlar -->
+    <string name="error_name_required">İsim alanı zorunludur</string>
+    <string name="error_amount_required">Tutar alanı zorunludur</string>
+    <string name="error_amount_invalid">Lütfen geçerli bir tutar girin</string>
+    <string name="error_currency_required">Para birimi seçimi zorunludur</string>
+    <string name="error_date_required">Tarih seçimi zorunludur</string>
+    <string name="error_email_required">E-posta alanı zorunludur</string>
+    <string name="error_email_invalid">Lütfen geçerli bir e-posta adresi girin</string>
+    <string name="error_password_required">Şifre alanı zorunludur</string>
+    <string name="error_password_short">Şifre en az 6 karakter olmalıdır</string>
 </resources>

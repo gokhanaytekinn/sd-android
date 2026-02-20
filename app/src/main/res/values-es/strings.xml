@@ -88,4 +88,15 @@
     <string name="category_music">Música</string>
     <string name="category_sports">Deportes y Salud</string>
     <string name="category_other">Otro</string>
+
+    <!-- Validaciones -->
+    <string name="error_name_required">El nombre es obligatorio</string>
+    <string name="error_amount_required">El importe es obligatorio</string>
+    <string name="error_amount_invalid">Por favor introduce un importe válido</string>
+    <string name="error_currency_required">La moneda es obligatoria</string>
+    <string name="error_date_required">La fecha es obligatoria</string>
+    <string name="error_email_required">El correo electrónico es obligatorio</string>
+    <string name="error_email_invalid">Por favor introduce un correo electrónico válido</string>
+    <string name="error_password_required">La contraseña es obligatoria</string>
+    <string name="error_password_short">La contraseña debe tener mínimo 6 caracteres</string>
 </resources>
