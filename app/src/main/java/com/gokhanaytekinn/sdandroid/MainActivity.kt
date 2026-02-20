@@ -24,9 +24,18 @@ import androidx.core.os.LocaleListCompat
 import com.google.firebase.messaging.FirebaseMessaging
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.flow.first
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        // Kaydedilmiş dil tercihini uygulama açılmadan ÖNCE uygula
+        val languagePreferences = LanguagePreferences(this)
+        val savedLanguage = kotlinx.coroutines.runBlocking {
+            languagePreferences.selectedLanguage.first()
+        }
+        val appLocale = LocaleListCompat.forLanguageTags(savedLanguage)
+        AppCompatDelegate.setApplicationLocales(appLocale)
+
         super.onCreate(savedInstanceState)
         
         getAndSendFCMToken()
@@ -34,7 +43,6 @@ class MainActivity : AppCompatActivity() {
         val themePreferences = ThemePreferences(this)
         val onboardingPreferences = com.gokhanaytekinn.sdandroid.data.preferences.OnboardingPreferences(this)
         val tokenManager = com.gokhanaytekinn.sdandroid.data.local.TokenManager(this)
-        val languagePreferences = LanguagePreferences(this)
         
         setContent {
             val isDarkMode by themePreferences.isDarkMode.collectAsState(initial = true)
