@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
@@ -111,22 +112,30 @@ fun RegisterScreen(
                 )
                 OutlinedTextField(
                     value = fullName,
-                    onValueChange = { fullName = it },
+                    onValueChange = { 
+                        fullName = it
+                        viewModel.clearError() 
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(56.dp),
+                        .height(if (authState.nameError != null) 76.dp else 56.dp),
                     placeholder = { Text("Örn: Ahmet Yılmaz") },
+                    isError = authState.nameError != null,
+                    supportingText = if (authState.nameError != null) {
+                        { Text(stringResource(authState.nameError!!)) }
+                    } else null,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     singleLine = true,
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = PrimaryBlue,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f)
+                        unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f),
+                        errorBorderColor = MaterialTheme.colorScheme.error
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )
             }
             
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(if (authState.nameError != null) 32.dp else 16.dp))
             
             // Email Field
             Column {
@@ -139,22 +148,30 @@ fun RegisterScreen(
                 )
                 OutlinedTextField(
                     value = email,
-                    onValueChange = { email = it },
+                    onValueChange = { 
+                        email = it
+                        viewModel.clearError()
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(56.dp),
+                        .height(if (authState.emailError != null) 76.dp else 56.dp),
                     placeholder = { Text("örnek@mail.com") },
+                    isError = authState.emailError != null,
+                    supportingText = if (authState.emailError != null) {
+                        { Text(stringResource(authState.emailError!!)) }
+                    } else null,
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     singleLine = true,
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = PrimaryBlue,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f)
+                        unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f),
+                        errorBorderColor = MaterialTheme.colorScheme.error
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )
             }
             
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(if (authState.emailError != null) 32.dp else 16.dp))
             
             // Password Field
             Column {
@@ -167,11 +184,18 @@ fun RegisterScreen(
                 )
                 OutlinedTextField(
                     value = password,
-                    onValueChange = { password = it },
+                    onValueChange = { 
+                        password = it
+                        viewModel.clearError()
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(56.dp),
+                        .height(if (authState.passwordError != null) 76.dp else 56.dp),
                     placeholder = { Text("••••••••") },
+                    isError = authState.passwordError != null,
+                    supportingText = if (authState.passwordError != null) {
+                        { Text(stringResource(authState.passwordError!!)) }
+                    } else null,
                     visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     singleLine = true,
@@ -186,7 +210,8 @@ fun RegisterScreen(
                     },
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = PrimaryBlue,
-                        unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f)
+                        unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f),
+                        errorBorderColor = MaterialTheme.colorScheme.error
                     ),
                     shape = RoundedCornerShape(12.dp)
                 )

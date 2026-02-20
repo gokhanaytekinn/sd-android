@@ -1,7 +1,6 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -99,12 +98,7 @@ fun SearchScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
-                .padding(top = 8.dp, bottom = 16.dp)
-                .border(
-                    width = 1.dp,
-                    color = Color.White.copy(alpha = 0.1f),
-                    shape = RoundedCornerShape(12.dp)
-                ),
+                .padding(top = 8.dp, bottom = 16.dp),
             placeholder = {
                 Text(stringResource(R.string.search_placeholder))
             },
@@ -141,8 +135,6 @@ fun SearchScreen(
             shape = RoundedCornerShape(12.dp),
             singleLine = true
         )
-        
-
         
         // Content
         LazyColumn(

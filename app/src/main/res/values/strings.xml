@@ -184,4 +184,15 @@
     <string name="try_again">Try Again</string>
     <string name="no_results">No results found</string>
     <string name="date_placeholder">YYYY-MM-DD</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">Name is required</string>
+    <string name="error_amount_required">Amount is required</string>
+    <string name="error_amount_invalid">Please enter a valid amount</string>
+    <string name="error_currency_required">Currency is required</string>
+    <string name="error_date_required">Date is required</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_email_invalid">Please enter a valid email</string>
+    <string name="error_password_required">Password is required</string>
+    <string name="error_password_short">Password must be at least 6 characters</string>
 </resources>

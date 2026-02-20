@@ -49,16 +49,32 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _isReminderEnabled = MutableStateFlow(false)
     val isReminderEnabled: StateFlow<Boolean> = _isReminderEnabled.asStateFlow()
 
+    // Validation States
+    private val _nameError = MutableStateFlow<Int?>(null)
+    val nameError: StateFlow<Int?> = _nameError.asStateFlow()
+    
+    private val _amountError = MutableStateFlow<Int?>(null)
+    val amountError: StateFlow<Int?> = _amountError.asStateFlow()
+    
+    private val _currencyError = MutableStateFlow<Int?>(null)
+    val currencyError: StateFlow<Int?> = _currencyError.asStateFlow()
+    
+    private val _dateError = MutableStateFlow<Int?>(null)
+    val dateError: StateFlow<Int?> = _dateError.asStateFlow()
+
     fun updateName(value: String) {
         _name.value = value
+        if (value.isNotBlank()) _nameError.value = null
     }
     
     fun updateAmount(value: String) {
         _amount.value = value
+        if (value.isNotBlank()) _amountError.value = null
     }
     
     fun updateCurrency(value: String) {
         _currency.value = value
+        _currencyError.value = null
     }
     
     fun updateBillingCycle(value: BillingCycle) {
@@ -67,10 +83,40 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     
     fun updateNextBillingDate(value: String) {
         _nextBillingDate.value = value
+        if (value.isNotBlank()) _dateError.value = null
     }
     
     fun updateIsReminderEnabled(value: Boolean) {
         _isReminderEnabled.value = value
+    }
+
+    private fun validate(): Boolean {
+        var isValid = true
+        
+        if (_name.value.isBlank()) {
+            _nameError.value = com.gokhanaytekinn.sdandroid.R.string.error_name_required
+            isValid = false
+        }
+        
+        if (_amount.value.isBlank()) {
+            _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_required
+            isValid = false
+        } else if (_amount.value.toDoubleOrNull() == null || (_amount.value.toDoubleOrNull() ?: 0.0) <= 0.0) {
+            _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_invalid
+            isValid = false
+        }
+        
+        if (_currency.value.isBlank()) {
+            _currencyError.value = com.gokhanaytekinn.sdandroid.R.string.error_currency_required
+            isValid = false
+        }
+        
+        if (_nextBillingDate.value.isBlank()) {
+            _dateError.value = com.gokhanaytekinn.sdandroid.R.string.error_date_required
+            isValid = false
+        }
+        
+        return isValid
     }
 
     fun loadSubscription(id: String) {
@@ -99,10 +145,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     }
 
     fun saveSubscription() {
-        if (_name.value.isBlank() || _amount.value.isBlank()) {
-            _error.value = "Lütfen alanları doldurunuz."
-            return
-        }
+        if (!validate()) return
 
         viewModelScope.launch {
             _isLoading.value = true
@@ -129,7 +172,6 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 }
                 
                 if (result.isSuccess) {
-                    // TODO: Handle reminder creation/update if enabled
                     _isSuccess.value = true
                 } else {
                     _error.value = result.exceptionOrNull()?.message ?: "Bir hata oluştu"
@@ -142,13 +184,13 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         }
     }
     
-
-    
     fun resetState() {
         _isSuccess.value = false
         _error.value = null
-        _name.value = ""
-        _amount.value = ""
+        _nameError.value = null
+        _amountError.value = null
+        _currencyError.value = null
+        _dateError.value = null
         _name.value = ""
         _amount.value = ""
         _nextBillingDate.value = ""

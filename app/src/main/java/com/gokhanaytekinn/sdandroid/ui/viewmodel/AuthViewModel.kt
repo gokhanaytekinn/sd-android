@@ -12,6 +12,9 @@ import kotlinx.coroutines.launch
 data class AuthState(
     val isLoading: Boolean = false,
     val error: String? = null,
+    val nameError: Int? = null,
+    val emailError: Int? = null,
+    val passwordError: Int? = null,
     val isAuthenticated: Boolean = false,
     val userName: String? = null,
     val userEmail: String? = null
@@ -20,6 +23,7 @@ data class AuthState(
 class AuthViewModel(context: Context) : ViewModel() {
     
     private val repository = AuthRepository(context)
+    private val appContext = context.applicationContext
     
     private val _authState = MutableStateFlow(AuthState())
     val authState: StateFlow<AuthState> = _authState.asStateFlow()
@@ -42,7 +46,6 @@ class AuthViewModel(context: Context) : ViewModel() {
                         userEmail = user?.email
                     )
                 } else {
-                    // Token invalid or network error, but we treat it as not authenticated for safety
                     _authState.value = _authState.value.copy(
                         isLoading = false,
                         isAuthenticated = false
@@ -53,6 +56,8 @@ class AuthViewModel(context: Context) : ViewModel() {
     }
     
     fun login(email: String, password: String, onSuccess: () -> Unit) {
+        if (!validateLogin(email, password)) return
+        
         viewModelScope.launch {
             _authState.value = _authState.value.copy(isLoading = true, error = null)
             
@@ -77,6 +82,8 @@ class AuthViewModel(context: Context) : ViewModel() {
     }
     
     fun register(name: String, email: String, password: String, onSuccess: () -> Unit) {
+        if (!validateRegister(name, email, password)) return
+        
         viewModelScope.launch {
             _authState.value = _authState.value.copy(isLoading = true, error = null)
             
@@ -100,8 +107,67 @@ class AuthViewModel(context: Context) : ViewModel() {
         }
     }
     
+    private fun validateLogin(email: String, password: String): Boolean {
+        var isValid = true
+        var emailErr: Int? = null
+        var passErr: Int? = null
+        
+        if (email.isBlank()) {
+            emailErr = com.gokhanaytekinn.sdandroid.R.string.error_email_required
+            isValid = false
+        }
+        
+        if (password.isBlank()) {
+            passErr = com.gokhanaytekinn.sdandroid.R.string.error_password_required
+            isValid = false
+        }
+        
+        _authState.value = _authState.value.copy(emailError = emailErr, passwordError = passErr)
+        return isValid
+    }
+    
+    private fun validateRegister(name: String, email: String, password: String): Boolean {
+        var isValid = true
+        var nameErr: Int? = null
+        var emailErr: Int? = null
+        var passErr: Int? = null
+        
+        if (name.isBlank()) {
+            nameErr = com.gokhanaytekinn.sdandroid.R.string.error_name_required
+            isValid = false
+        }
+        
+        if (email.isBlank()) {
+            emailErr = com.gokhanaytekinn.sdandroid.R.string.error_email_required
+            isValid = false
+        } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailErr = com.gokhanaytekinn.sdandroid.R.string.error_email_invalid
+            isValid = false
+        }
+        
+        if (password.isBlank()) {
+            passErr = com.gokhanaytekinn.sdandroid.R.string.error_password_required
+            isValid = false
+        } else if (password.length < 6) {
+            passErr = com.gokhanaytekinn.sdandroid.R.string.error_password_short
+            isValid = false
+        }
+        
+        _authState.value = _authState.value.copy(
+            nameError = nameErr,
+            emailError = emailErr,
+            passwordError = passErr
+        )
+        return isValid
+    }
+    
     fun clearError() {
-        _authState.value = _authState.value.copy(error = null)
+        _authState.value = _authState.value.copy(
+            error = null,
+            nameError = null,
+            emailError = null,
+            passwordError = null
+        )
     }
     
     fun logout() {

@@ -56,7 +56,10 @@ fun AddSubscriptionScreen(
     val isSuccess by viewModel.isSuccess.collectAsState()
     val isEditMode by viewModel.isEditMode.collectAsState()
     
-    // Load subscription if editing
+    val nameError by viewModel.nameError.collectAsState()
+    val amountError by viewModel.amountError.collectAsState()
+    val currencyError by viewModel.currencyError.collectAsState()
+    val dateError by viewModel.dateError.collectAsState()
     LaunchedEffect(subscriptionId) {
         if (subscriptionId != null) {
             viewModel.loadSubscription(subscriptionId)
@@ -147,9 +150,14 @@ fun AddSubscriptionScreen(
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     placeholder = { Text("örn. Netflix", color = Color.Gray) },
+                    isError = nameError != null,
+                    supportingText = if (nameError != null) {
+                        { Text(stringResource(nameError!!)) }
+                    } else null,
                     colors = OutlinedTextFieldDefaults.colors(
                         focusedBorderColor = PrimaryBlue,
                         unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                        errorBorderColor = MaterialTheme.colorScheme.error,
                         focusedContainerColor = Color.White.copy(alpha = 0.05f),
                         unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
                     ),
@@ -224,9 +232,14 @@ fun AddSubscriptionScreen(
                             shape = RoundedCornerShape(12.dp),
                             placeholder = { Text("0.00", color = Color.Gray) },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            isError = amountError != null,
+                            supportingText = if (amountError != null) {
+                                { Text(stringResource(amountError!!)) }
+                            } else null,
                             colors = OutlinedTextFieldDefaults.colors(
                                 focusedBorderColor = PrimaryBlue,
                                 unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                                errorBorderColor = MaterialTheme.colorScheme.error,
                                 focusedContainerColor = Color.White.copy(alpha = 0.05f),
                                 unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
                             ),
@@ -252,10 +265,12 @@ fun AddSubscriptionScreen(
                                 modifier = Modifier.fillMaxWidth(),
                                 shape = RoundedCornerShape(12.dp),
                                 readOnly = true,
+                                isError = currencyError != null,
                                 trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = null) },
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = PrimaryBlue,
                                     unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                                    errorBorderColor = MaterialTheme.colorScheme.error,
                                     focusedContainerColor = Color.White.copy(alpha = 0.05f),
                                     unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
                                 )
@@ -277,6 +292,14 @@ fun AddSubscriptionScreen(
                                     )
                                 }
                             }
+                        }
+                        if (currencyError != null) {
+                            Text(
+                                text = stringResource(currencyError!!),
+                                color = MaterialTheme.colorScheme.error,
+                                fontSize = 12.sp,
+                                modifier = Modifier.padding(start = 16.dp, top = 4.dp)
+                            )
                         }
                     }
                 }
@@ -339,9 +362,13 @@ fun AddSubscriptionScreen(
                         shape = RoundedCornerShape(12.dp),
                         readOnly = true,
                         enabled = false, // To prevent keyboard but allow click
+                        isError = dateError != null,
+                        supportingText = if (dateError != null) {
+                            { Text(stringResource(dateError!!)) }
+                        } else null,
                         colors = OutlinedTextFieldDefaults.colors(
                             disabledTextColor = MaterialTheme.colorScheme.onBackground,
-                            disabledBorderColor = Color.White.copy(alpha = 0.1f),
+                            disabledBorderColor = if (dateError != null) MaterialTheme.colorScheme.error else Color.White.copy(alpha = 0.1f),
                             disabledContainerColor = Color.White.copy(alpha = 0.05f),
                             disabledTrailingIconColor = Color.Gray
                         ),

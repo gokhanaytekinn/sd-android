@@ -82,10 +82,117 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
     <string name="language_russian">Русский</string>
+    <string name="select_language">Выберите Язык</string>
+    <string name="select_currency">Выберите Валюту</string>
+    <string name="close">Закрыть</string>
     
-    <!-- Категории -->
+    <!-- Auth -->
+    <string name="login">Вход</string>
+    <string name="register">Регистрация</string>
+    <string name="email">Email</string>
+    <string name="password">Пароль</string>
+    <string name="name">Имя</string>
+    <string name="full_name">Полное Имя</string>
+    <string name="forgot_password">Забыли пароль?</string>
+    <string name="no_account">Нет аккаунта?</string>
+    <string name="have_account">Уже есть аккаунт?</string>
+    <string name="sign_in">Войти</string>
+    <string name="sign_up">Зарегистрироваться</string>
+    <string name="create_account">Создать Аккаунт</string>
+    <string name="welcome_back">С Возвращением</string>
+    <string name="start_tracking">Начните отслеживать подписки</string>
+    <string name="join_us">Присоединяйтесь к нам</string>
+    <string name="manage_subscriptions">Управляйте подписками легко</string>
+    <string name="guest_user">Гость</string>
+    <string name="not_logged_in">Не в сети</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Подозрительные Платежи</string>
+    <string name="transactions_to_review">Транзакции для Проверки</string>
+    <string name="swipe_to_review">Смахните влево, чтобы отклонить, или вправо, чтобы подтвердить</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="reject">Отклонить</string>
+    <string name="all_done">Готово!</string>
+    <string name="no_suspicious">Подозрительных транзакций не найдено</string>
+    <string name="reviewing_transactions">Проверка Транзакций</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Все Подписки</string>
+    <string name="no_subscriptions">Пока нет подписок</string>
+    <string name="add_subscription">Добавить Подписку</string>
+    <string name="subscription_details">Детали Подписки</string>
+    <string name="next_payment">Следующий Платеж</string>
+    <string name="billing_cycle">Цикл Оплаты</string>
+    <string name="category">Категория</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Получить Premium</string>
+    <string name="premium_features">Premium Функции</string>
+    <string name="unlimited_subscriptions">Безлимитные Подписки</string>
+    <string name="advanced_analytics">Продвинутая Аналитика</string>
+    <string name="priority_support">Приоритетная Поддержка</string>
+    <string name="ad_free">Без Рекламы</string>
+    <string name="choose_plan">Выберите Тариф</string>
+    <string name="monthly_plan">Месячный План</string>
+    <string name="yearly_plan">Годовой План</string>
+    <string name="save_percent">Экономия %d%%</string>
+    <string name="per_month">/мес</string>
+    <string name="per_year">/год</string>
+    <string name="billed_monthly">Оплата ежемесячно</string>
+    <string name="billed_yearly">Оплата ежегодно</string>
+    <string name="start_trial">Начать Пробный Период</string>
+    <string name="restore_purchase">Восстановить Покупки</string>
+    
+    <!-- Categories -->
     <string name="category_entertainment">Развлечения</string>
     <string name="category_music">Музыка</string>
     <string name="category_sports">Спорт и Здоровье</string>
     <string name="category_other">Другое</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Аналитика</string>
+    <string name="spending_overview">Обзор Расходов</string>
+    <string name="monthly_trend">Месячный Тренд</string>
+    <string name="category_breakdown">Разбивка по Категориям</string>
+    <string name="top_subscriptions">Топ Подписок</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">История Транзакций</string>
+    <string name="all_transactions">Все Транзакции</string>
+    <string name="filter">Фильтр</string>
+    <string name="sort_by">Сортировать по</string>
+    <string name="date">Дата</string>
+    <string name="amount">Сумма</string>
+    <string name="merchant">Продавец</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Все Подписки</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Добавить</string>
+    <string name="edit">Изменить</string>
+    <string name="delete">Удалить</string>
+    <string name="done">Готово</string>
+    <string name="next">Далее</string>
+    <string name="previous">Назад</string>
+    <string name="finish">Завершить</string>
+    
+    <!-- Messages -->
+    <string name="loading">Загрузка…</string>
+    <string name="error">Ошибка</string>
+    <string name="success">Успех</string>
+    <string name="try_again">Повторить</string>
+    <string name="no_results">Ничего не найдено</string>
+    <string name="date_placeholder">ГГГГ-ММ-ДД</string>
+    
+    <!-- Validations -->
+    <string name="error_name_required">Название обязательно</string>
+    <string name="error_amount_required">Сумма обязательна</string>
+    <string name="error_amount_invalid">Введите корректную сумму</string>
+    <string name="error_currency_required">Валюта обязательна</string>
+    <string name="error_date_required">Дата обязательна</string>
+    <string name="error_email_required">Email обязателен</string>
+    <string name="error_email_invalid">Некорректный Email</string>
+    <string name="error_password_required">Пароль обязателен</string>
+    <string name="error_password_short">Пароль должен быть минимум 6 символов</string>
 </resources>
