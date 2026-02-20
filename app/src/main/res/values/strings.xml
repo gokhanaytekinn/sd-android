@@ -195,4 +195,11 @@
     <string name="error_email_invalid">Please enter a valid email</string>
     <string name="error_password_required">Password is required</string>
     <string name="error_password_short">Password must be at least 6 characters</string>
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">Edit Subscription</string>
+    <string name="service_name">Service Name</string>
+    <string name="period">Period</string>
+    <string name="reminder">Reminder</string>
+    <string name="reminder_desc">Notify 1 day before payment</string>
+    <string name="update">Update</string>
 </resources>

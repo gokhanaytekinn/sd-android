@@ -99,4 +99,12 @@
     <string name="error_email_invalid">Por favor introduce un correo electrónico válido</string>
     <string name="error_password_required">La contraseña es obligatoria</string>
     <string name="error_password_short">La contraseña debe tener mínimo 6 caracteres</string>
+
+    <string name="edit_subscription">Editar Suscripción</string>
+    <string name="service_name">Nombre del Servicio</string>
+    <string name="amount">Importe</string>
+    <string name="period">Período</string>
+    <string name="reminder">Recordatorio</string>
+    <string name="reminder_desc">Notificar 1 día antes del pago</string>
+    <string name="update">Actualizar</string>
 </resources>

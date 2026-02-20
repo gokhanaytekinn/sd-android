@@ -195,4 +195,11 @@
     <string name="error_email_invalid">Некорректный Email</string>
     <string name="error_password_required">Пароль обязателен</string>
     <string name="error_password_short">Пароль должен быть минимум 6 символов</string>
+    <!-- Экран добавления/редактирования подписки -->
+    <string name="edit_subscription">Редактировать подписку</string>
+    <string name="service_name">Название сервиса</string>
+    <string name="period">Период</string>
+    <string name="reminder">Напоминание</string>
+    <string name="reminder_desc">Уведомить за 1 день до оплаты</string>
+    <string name="update">Обновить</string>
 </resources>

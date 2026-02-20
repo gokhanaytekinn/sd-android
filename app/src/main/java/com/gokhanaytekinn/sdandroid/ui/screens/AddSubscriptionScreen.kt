@@ -121,7 +121,7 @@ fun AddSubscriptionScreen(
                 }
                 
                 Text(
-                    text = if (isEditMode) "Aboneliği Düzenle" else "Abonelik Ekle",
+                    text = if (isEditMode) stringResource(R.string.edit_subscription) else stringResource(R.string.add_subscription),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -137,7 +137,7 @@ fun AddSubscriptionScreen(
             Column(modifier = Modifier.padding(horizontal = 24.dp)) {
                 // Service Name Input
                 Text(
-                    text = "Hizmet Adı",
+                    text = stringResource(R.string.service_name),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
@@ -219,7 +219,7 @@ fun AddSubscriptionScreen(
                     // Amount
                     Column(modifier = Modifier.weight(2f)) {
                         Text(
-                            text = "Tutar",
+                            text = stringResource(R.string.amount),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
@@ -250,7 +250,7 @@ fun AddSubscriptionScreen(
                     // Currency
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "Döviz",
+                            text = stringResource(R.string.currency),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
@@ -308,7 +308,7 @@ fun AddSubscriptionScreen(
                 
                 // Billing Cycle
                 Text(
-                    text = "Periyot",
+                    text = stringResource(R.string.period),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
@@ -322,7 +322,7 @@ fun AddSubscriptionScreen(
                         .background(Color.White.copy(alpha = 0.05f), RoundedCornerShape(12.dp))
                         .padding(4.dp)
                 ) {
-                    val cycles = listOf(BillingCycle.MONTHLY to "Aylık", BillingCycle.YEARLY to "Yıllık")
+                    val cycles = listOf(BillingCycle.MONTHLY to stringResource(R.string.monthly), BillingCycle.YEARLY to stringResource(R.string.yearly))
                     cycles.forEach { (cycle, label) ->
                         val isSelected = billingCycle == cycle
                         Box(
@@ -347,7 +347,7 @@ fun AddSubscriptionScreen(
                 
                 // Next Payment Date
                 Text(
-                    text = "Sonraki Ödeme Tarihi",
+                    text = stringResource(R.string.next_payment),
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
@@ -389,14 +389,14 @@ fun AddSubscriptionScreen(
                 ) {
                     Column {
                         Text(
-                            text = "Hatırlatıcı",
+                            text = stringResource(R.string.reminder),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "Ödemeden 1 gün önce bildir",
+                            text = stringResource(R.string.reminder_desc),
                             fontSize = 12.sp,
                             color = Color.Gray
                         )
@@ -450,7 +450,7 @@ fun AddSubscriptionScreen(
                      CircularProgressIndicator(color = Color.White, modifier = Modifier.size(24.dp))
                  } else {
                      Text(
-                        text = if (isEditMode) "Güncelle" else "Kaydet",
+                        text = if (isEditMode) stringResource(R.string.update) else stringResource(R.string.save),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
                     )

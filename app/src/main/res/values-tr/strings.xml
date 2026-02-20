@@ -194,4 +194,11 @@
     <string name="error_email_invalid">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="error_password_required">Şifre alanı zorunludur</string>
     <string name="error_password_short">Şifre en az 6 karakter olmalıdır</string>
+    <!-- Abonelik Ekle/Düzenle Ekranı -->
+    <string name="edit_subscription">Aboneliği Düzenle</string>
+    <string name="service_name">Hizmet Adı</string>
+    <string name="period">Periyot</string>
+    <string name="reminder">Hatırlatıcı</string>
+    <string name="reminder_desc">Ödemeden 1 gün önce bildir</string>
+    <string name="update">Güncelle</string>
 </resources>
