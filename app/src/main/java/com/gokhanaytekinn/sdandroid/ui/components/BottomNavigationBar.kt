@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,10 +35,10 @@ fun BottomNavigationBar(
             .background(Color.Transparent)
             .border(
                 width = 1.dp,
-                color = Color.White.copy(alpha = 0.1f),
+                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
                 shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
             ),
-        color = Color(0xFF0d151b).copy(alpha = 0.95f), // Arka planı biraz daha belirgin yapalım
+        color = MaterialTheme.colorScheme.surface,
         tonalElevation = 8.dp
     ) {
         Row(
@@ -90,14 +91,14 @@ fun BottomNavItem(
         Icon(
             imageVector = icon,
             contentDescription = label,
-            tint = if (selected) PrimaryBlue else Color(0xFF6B7280),
+            tint = if (selected) PrimaryBlue else MaterialTheme.colorScheme.onSurfaceVariant,
             modifier = Modifier.size(26.dp)
         )
         Text(
             text = label,
             fontSize = 10.sp,
             fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Medium,
-            color = if (selected) PrimaryBlue else Color(0xFF6B7280)
+            color = if (selected) PrimaryBlue else MaterialTheme.colorScheme.onSurfaceVariant
         )
     }
 }
