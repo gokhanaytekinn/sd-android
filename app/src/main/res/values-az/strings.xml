@@ -90,6 +90,7 @@
     <string name="language_french">Fransızca</string>
     <string name="language_german">Almanca</string>
     <string name="language_azerbaijani">Azərbaycanca</string>
+    <string name="language_turkmen">Türkməncə</string>
 
     <string name="select_language">Dil seçin</string>
     <string name="select_currency">Valyuta seçin</string>

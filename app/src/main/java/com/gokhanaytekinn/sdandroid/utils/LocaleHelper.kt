@@ -26,6 +26,7 @@ object LocaleHelper {
             "fr" -> "Français"
             "de" -> "Deutsch"
             "az" -> "Azərbaycanca"
+            "tk" -> "Türkmençe"
             else -> "English"
 
 

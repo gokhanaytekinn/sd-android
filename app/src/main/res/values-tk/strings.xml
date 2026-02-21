@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Sub Tracker</string>
+    
+    <!-- Common -->
+    <string name="back">Yza</string>
+    <string name="save">Yatda sakla</string>
+    <string name="cancel">Yatyrmak</string>
+    <string name="skip">Geçmek</string>
+    <string name="continue_btn">Dowam et</string>
+    <string name="get_started">Geliň başlalyň</string>
+    <string name="show_password">Paroly görkez</string>
+    <string name="hide_password">Paroly gizle</string>
+    <string name="unknown_error">Näbelli säwlik</string>
+    <string name="scan">Skanirlemek</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Abunalyklaryňyzy Yzarlaň</string>
+    <string name="onboarding_desc_1">Ähli abunalyklaryňyzy bir ýerde görüň we dolandyryň. Hiç haçan tölegi sypdyrmaň.</string>
+    <string name="onboarding_title_2">Tölegleri Awtomatik Tutýar</string>
+    <string name="onboarding_desc_2">SMS we bildirişleriňizi skanirläp, abunalyklaryňyzy sanlyja sekuntda sanawlaýar.</string>
+    <string name="onboarding_security">Uçdan uça şifrlenen we ygtybarly</string>
+    <string name="onboarding_title_3">Gereksiz Çykdajylary Bes Ediň</string>
+    <string name="onboarding_desc_3">Ýatdan çykaran abunalyklaryňyzy ýatyryň, töleg günlerinden öň bildiriş alyň.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Gysgaça syn</string>
+    <string name="hello_user">Salam, %s</string>
+    <string name="total_monthly">Bu aý jemi</string>
+    <string name="vs_last_month">Geçen aýa görä</string>
+    <string name="suspicious_subscriptions">Şübheli Abunalyklar</string>
+    <string name="transactions_pending">%d amal bar barlanylmaly</string>
+    <string name="most_expensive">Iň Gymmat Abunalyklar</string>
+    <string name="view_all">Hemmesi</string>
+    <string name="view_all_subscriptions">Ähli Abunalyklary Gör</string>
+    
+    <!-- Settings -->
+    <string name="settings">Sazlamalar</string>
+    <string name="account">HASAP</string>
+    <string name="application">PROGRAMMA</string>
+    <string name="support">GOLDAW</string>
+    <string name="membership_type">Agzalyk Görnüşi</string>
+    <string name="free_plan">Mugt Plan</string>
+    <string name="notifications">Bildirişler</string>
+    <string name="currency">Walýuta</string>
+    <string name="dark_mode">Garaňky Režim</string>
+    <string name="language">Dil</string>
+    <string name="help_center">Kömek Merkezi</string>
+    <string name="privacy_policy">Gizlinlik Syýasaty</string>
+    <string name="logout">Hasapdan çyk</string>
+    <string name="version_info">Wersiýa %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Premium-a Geçiriň</string>
+    <string name="premium_desc">Ähli abunalyklaryňyzy awtomatik skanirläň we %%30 has köp tygşytlaň.</string>
+    <string name="upgrade">Täzele</string>
+    
+    <!-- Search -->
+    <string name="search">Gözle</string>
+    <string name="search_placeholder">Abunalyk ýa-da amal gözle</string>
+    <string name="recent_searches">SOŇKY GÖZLEGLER</string>
+    <string name="results_found">NETIJE TAPYLDY (%d)</string>
+    <string name="subscriptions">Abunalyklar</string>
+    <string name="transactions">Amallar</string>
+    <string name="looking_for_else">Başga zat gözleýärsiňiz mi?</string>
+    <string name="search_tip">Satyjy ady ýa-da belli bir amal mukdary boýunça gözlemäge synanyşyň.</string>
+    <string name="clear_search">Gözlegi arassala</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Aktiw</string>
+    <string name="suspicious">Şübheli</string>
+    <string name="cancelled">Ýatyryldy</string>
+    <string name="monthly">AÝLYK</string>
+    <string name="yearly">ÝYLLYK</string>
+    <string name="one_time">BIR GEZEKLEÝIN</string>
+    <string name="renews">Täzelenýär: %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Gysgaça syn</string>
+    <string name="nav_search">Gözle</string>
+    <string name="nav_settings">Sazlamalar</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Rusça</string>
+    <string name="language_chinese">Ýönekeýleşdirilen Hytaýça</string>
+    <string name="language_french">Fransuzça</string>
+    <string name="language_german">Nemesçe</string>
+    <string name="language_azerbaijani">Azärbaýjança</string>
+    <string name="language_turkmen">Türkmençe</string>
+
+    <string name="select_language">Dil saýlaň</string>
+    <string name="select_currency">Walýuta saýlaň</string>
+    <string name="close">Ýap</string>
+    
+    <!-- Auth -->
+    <string name="login">Giriş</string>
+    <string name="register">Hasap aç</string>
+    <string name="email">E-poçta</string>
+    <string name="password">Parol</string>
+    <string name="name">At</string>
+    <string name="full_name">Doly Ady</string>
+    <string name="forgot_password">Paroly ýatdan çykardyňyzmy?</string>
+    <string name="no_account">Hasabyňyz ýokmy?</string>
+    <string name="have_account">Eýýäm hasabyňyz barmy?</string>
+    <string name="sign_in">Giriş</string>
+    <string name="sign_up">Hasap aç</string>
+    <string name="create_account">Hasap döret</string>
+    <string name="welcome_back">Hoş geldiňiz</string>
+    <string name="start_tracking">Abunalyklaryňyzy yzarlap başlaň</string>
+    <string name="join_us">Bize goşulyň</string>
+    <string name="manage_subscriptions">Abunalyklaryňyz aňsatlyk bilen dolandyryň</string>
+    <string name="guest_user">Myhman Ulanyjy</string>
+    <string name="not_logged_in">Giriş edilmedi</string>
+
+    <!-- Login Screen -->
+    <string name="login_desc">Abunalyklaryňyzy yzarlamaga we tygşytlamaga häzir başlaň.</string>
+    <string name="email_placeholder">epocta@mysal.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">ýa-da</string>
+    <string name="no_account_prompt">Hasabyňyz ýokmy? </string>
+    <string name="google_sign_in_failed">Google bilen giriş şowsuz boldy (%s)</string>
+
+    <!-- Register Screen -->
+    <string name="register_desc">Abunalyklaryňyzy dolandyrmaga we tygşytlamaga başlaň.</string>
+    <string name="full_name_placeholder">Mysal üçin: Aman Amanow</string>
+    <string name="accept_terms_pre"></string>
+    <string name="and"> we </string>
+    <string name="accept_terms_post">-ny kabul edýärin.</string>
+    <string name="already_have_account_prompt">Eýýäm hasabyňyz barmy? </string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Ulanyş Şertleri</string>
+    <string name="terms_of_use_content">1. Kabul etmek\nSub Tracker-y ulanmak bilen bu şertleri kabul edýärsiňiz.\n\n2. Hyzmat Görnüşi\nProgramma abunalyklaryňyzy yzarlamaga kömek edýän guraldyr. Maliýe maslahaty däldir.\n\n3. Ulanyjy Jogapkärçiligi\nHasap maglumatlaryňyzyň ygtybarlylygy we goşan maglumatlaryňyzyň dogrulygy üçin siz jogapkärdiris.\n\n4. Üýtgeşmeler\nProgramma aýratynlyklarynda we bu şertlerde islendik wagt üýtgeşme girizmek hukugymyz bardyr.\n\n5. Bes Etmek\nŞertler bozulsa, hyzmaty ulanmagyňyzy bes edip bileris.</string>
+    <string name="understood">Düşündim</string>
+    <string name="privacy_dialog_content">Soňky Täzelenme: 20 Fewral 2026\n\n1. Giriş\nMaglumatlaryňyzyň gizlinligine uly ähmiýet berýäris.\n\n2. Toplanýan Maglumatlar\nAbunalyk maglumatlary, ulanyş saýlawlary we esasy enjam maglumatlary işlenilýär.\n\n3. Maglumatlaryň Ulanylyşy\nMaglumatlaryňyz diňe ýatlatmalar ibermek we programmanyň işleýşini gowulandyrmak üçin ulanylýar.\n\n4. Maglumat Ygtybarlylygy\nMaglumatlaryňyz pudaklaýyn standartly şifreleme usullary bilen goralýar.\n\n5. Aragatnaşyk\nSoraglaryňyz üçin: gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Parolyňyzy täzelemek üçin hasap açan e-poçta salgyňyzy giriziň. Size tassyklama koduny ibereris.</string>
+    <string name="email_address_label">E-poçta Salgysy</string>
+    <string name="send_code">Kody iber</string>
+    <string name="back_to_login">Giriş sahypasyna gaýt</string>
+    <string name="verify_code_title">Kody Tassykaň</string>
+    <string name="verify_code_desc">%s salgysyna iberilen 6 belgili tassyklama koduny giriziň.</string>
+    <string name="verify_and_continue">Tassyka we Dowam et</string>
+    <string name="wait_for_code">Täze kod üçin garaşyň:</string>
+    <string name="code_not_received">Kod gelmedimi?</string>
+    <string name="resend_code">Gaýtadan Iber</string>
+    <string name="reset_password_title">Täze Parol Döret</string>
+    <string name="reset_password_desc">Hasabyňyz üçin berk we täze bir parol saýlaň.</string>
+    <string name="new_password_label">Täze Parol</string>
+    <string name="confirm_password_label">Paroly Gaýtala</string>
+    <string name="min_6_chars">Iň azyndan 6 belgi</string>
+    <string name="passwords_match">Parollar meňzeş</string>
+    <string name="update_password">Paroly Täzele</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Şübheli Tölegler</string>
+    <string name="transactions_to_review">Barlanmaly Amallar</string>
+    <string name="swipe_to_review">Yatyrmak üçin çepe, abunalyk hökmünde tassyklamak üçin saga süýşüriň</string>
+    <string name="confirm">Tassyklamak</string>
+    <string name="reject">Yatyrmak</string>
+    <string name="all_done">Hemmesi Taýýar!</string>
+    <string name="no_suspicious">Şübheli amal tapylmady</string>
+    <string name="reviewing_transactions">Amallar barlanylýar</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Ähli Abunalyklar</string>
+    <string name="no_subscriptions">Heniz abunalyk ýok</string>
+    <string name="no_active_subscriptions">Aktiw abunalyk tapylmady</string>
+    <string name="no_suspicious_subscriptions">Şübheli abunalyk tapylmady</string>
+    <string name="no_cancelled_subscriptions">Ýatyrylan abunalyk tapylmady</string>
+    <string name="detected_count">Anyklananlar (%d)</string>
+    <string name="marked_count">Bellikler (%d)</string>
+    <string name="add_subscription">Abunalyk Goş</string>
+    <string name="service_name_placeholder">mys. Netflix</string>
+    <string name="subscription_details">Abunalyk Jikme-jiklikleri</string>
+    <string name="next_payment">Indiki Töleg</string>
+    <string name="billing_cycle">Töleg Döwri</string>
+    <string name="category">Kategoriýa</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Premium Al</string>
+    <string name="premium_features">Premium Aýratynlyklar</string>
+    <string name="unlimited_subscriptions">Çäksiz Abunalyk</string>
+    <string name="advanced_analytics">Giňişleýin Analitika</string>
+    <string name="priority_support">Ilkinji nobatly Goldaw</string>
+    <string name="ad_free">Mahabatsyz Ulanyş</string>
+    <string name="choose_plan">Planyňyzy Saýlaň</string>
+    <string name="monthly_plan">Aýlyk Plan</string>
+    <string name="yearly_plan">Ýyllyk Plan</string>
+    <string name="save_percent">%%d Tygşytlylyk</string>
+    <string name="per_month">/aý</string>
+    <string name="per_year">/ýyl</string>
+    <string name="billed_monthly">Her aý hasaplanýar</string>
+    <string name="billed_yearly">Her ýyl hasaplanýar</string>
+    <string name="start_trial">Mugt Synagy Başlat</string>
+    <string name="restore_purchase">Satyn alnanlary Dikelt</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">Gözegçilik</string>
+    <string name="category_music">Saz</string>
+    <string name="category_sports">Sport &amp; Saglyk</string>
+    <string name="category_other">Başga</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Analitika</string>
+    <string name="spending_overview">Çykdajy Syny</string>
+    <string name="monthly_trend">Aýlyk Trend</string>
+    <string name="category_breakdown">Kategoriýa Bölünişi</string>
+    <string name="top_subscriptions">Iň uly çykdajylar</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">Amal Taryhy</string>
+    <string name="all_transactions">Ähli Amallar</string>
+    <string name="filter">Süzgüç</string>
+    <string name="sort_by">Tertiplemek</string>
+    <string name="date">Sene</string>
+    <string name="amount">Mukdar</string>
+    <string name="merchant">Satyjy</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Ähli Abunalyklar</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Goş</string>
+    <string name="edit">Düzet</string>
+    <string name="delete">Poz</string>
+    <string name="done">Tamam</string>
+    <string name="next">Indiki</string>
+    <string name="previous">Öňki</string>
+    <string name="finish">Gutar</string>
+    
+    <!-- Messages -->
+    <string name="loading">Ýüklenýär…</string>
+    <string name="error">Säwlik</string>
+    <string name="success">Şowly</string>
+    <string name="try_again">Täzeden synanyş</string>
+    <string name="no_results">Netije tapylmady</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">At meýdançasy zerur</string>
+    <string name="error_amount_required">Mukdar meýdançasy zerur</string>
+    <string name="error_amount_invalid">Dogry mukdar giriziň</string>
+    <string name="error_currency_required">Walýuta saýlamak zerur</string>
+    <string name="error_date_required">Sene saýlamak zerur</string>
+    <string name="error_email_required">E-poçta meýdançasy zerur</string>
+    <string name="error_email_invalid">Dogry e-poçta salgysyny giriziň</string>
+    <string name="error_password_required">Parol meýdançasy zerur</string>
+    <string name="error_password_short">Parol iň azyndan 6 belgiden ybarat bolmaly</string>
+
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">Abunalygy Düzet</string>
+    <string name="service_name">Hyzmat Ady</string>
+    <string name="period">Döwür</string>
+    <string name="reminder">Ýatlatma</string>
+    <string name="reminder_desc">Tölegden 1 gün öň habar ber</string>
+    <string name="update">Täzele</string>
+    <string name="period_monthly">aý</string>
+    <string name="period_yearly">ýyl</string>
+    <string name="period_weekly">hepde</string>
+    <string name="days_remaining">%d gün galdy</string>
+    <string name="total_spent">Jemi Çykdajy</string>
+    <string name="start_date_label">Başlangyç</string>
+    <string name="turn_off_reminder">Ýatlatmany Öçür</string>
+    <string name="set_reminder">Ýatlatma Gur</string>
+    <string name="edit_plan">Plany Düzet</string>
+    <string name="reactivate_subscription">Abunalygy Täzeden Aktiwleşdir</string>
+    <string name="cancel_subscription_btn">Abunalygy Ýatyr</string>
+    <string name="payment_history">Töleg Taryhy</string>
+    <string name="an_error_occurred">Säwlik ýüze çykdy</string>
+    <string name="go_back">Yza Gaýt</string>
+    <string name="subscription_id_not_found">Abunalyk ID-si tapylmady</string>
+    <string name="no_subscriptions_yet">Heniz abunalyk goşulmady</string>
+    <string name="sms_permission_rationale">SMS rugsady enjamyňyzdaky abunalyk bildirişlerini awtomatik anyklamak üçin zerurdyr.\nŞunuň bilen abunalyklaryňyz el bilen girizmek kynçylygyndan dynarsyňyz.</string>
+    <string name="storage_permission_rationale">Saklaýyş rugsady enjamyňyzdaky petekleri we abunalyk resminamalaryny skanirlemek üçin zerurdyr.\nŞunuň bilen PDF we başga faýllardan abunalyk maglumatlary awtomatik anyklanyp bilner.</string>
+    <string name="permission_denied_message">Rugsat berilmän enjam skanirlenip bilinmez.\nIsleseňiz abunalyklaryňyz el bilen goşup bilersiňiz.</string>
+    <string name="permission_permanently_denied_message">Rugsat berilmedi. Programma sazlamalaryndan rugsatlary işlediň.</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Kömek Merkezi</string>
+    <string name="help_search_placeholder">Size nadip kömek edip bileris?</string>
+    <string name="popular_questions">Meşhur Soraglar</string>
+    
+    <string name="faq_q1">Abunalyk nadip ýatyrylýar?</string>
+    <string name="faq_a1">Abunalyk jikme-jiklikleri sahypasyna girip, iň aşakda ýerleşýän \'Abunalygy Ýatyr\' düwmesine basyp bilersiňiz. Bu amal diňe programma içindäki yzarlaýyşy bes edýär, hyzmat üpjün ediji arkaly hem ýatyranylmagyny ýatdan çykarmaly däl.</string>
+    
+    <string name="faq_q2">Maglumatlarym ygtybarlymy?</string>
+    <string name="faq_a2">Hawa, ähli maglumatlaryňyz enjamyňyzda şifrlendi we saklandy. Sub Tracker şahsy maglumatlaryňyzy üçünji taraplar bilen paýlaşmaýar.</string>
+    
+    <string name="faq_q3">Bank hasabymy nadip baglaryn?</string>
+    <string name="faq_a3">Häzirki wagtda gönümel bank integrasiýasynyň ýerine, SMS we bildiriş okama rugsady arkaly awtomatik yzarlaýyşy üpjün edýäris. Bank integrasiýasy ýakyn wagtda geler.</string>
+    
+    <string name="faq_q4">Pulymy yzyna alyp bilerinmi?</string>
+    <string name="faq_a4">Programma içindäki satyn almalarda Google Play/App Store syýasatlary geçerlidir. Yzyna we gaýtaryş baradaky talaplaryňyzy degişli dükan arkaly edip bilersiňiz.</string>
+    
+    <string name="faq_q5">Ýatlatmalar işlemeýär, näme etmeli?</string>
+    <string name="faq_a5">Enjam sazlamalaryndan programmanyň bildiriş rugsady açykdygyna göz ýetiriň. Şeýle-de batareýa tygşytlaýyş režiminiň bildirişleri bloklamaýandygyny barlaň.</string>
+    
+    <string name="faq_q6">Şübheli amal bildirişi näme?</string>
+    <string name="faq_a6">Programma adaty däl çykdajy ýa-da anyklanmadyk tölegleri duýanda sizi duýdurýar. Bu amallary \'Şübheli Amallar\' ekranynda barlap bilersiňiz.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Gizlinlik Syýasaty</string>
+    <string name="privacy_last_updated">Soňky Täzelenme: 20 Fewral 2026</string>
+    
+    <string name="privacy_title_1">1. Giriş</string>
+    <string name="privacy_content_1">Sub Tracker (\"Programma\") hökmünde gizlinligiňize uly ähmiýet berýäris. Bu Gizlinlik Syýasaty programmamyzy ulananyňyzda maglumatlaryňyzyň nadip toplanýandygyny, ulanylýandygyny we goralýandygyny düşündirýär.</string>
+    
+    <string name="privacy_title_2">2. Toplanýan Maglumatlar</string>
+    <string name="privacy_content_2">Programma size has gowy hyzmat berip bilmek üçin aşakdaky maglumatlary toplap ýa-da işläp biler:\n\n• Abunalyk Maglumatlary: Goşan abunalyklaryňyzyň ady, bahasy, töleg seneleri.\n• Ulanyş Maglumatlary: Programma içindäki täsirler we saýlawlar.\n• Enjam Maglumatlary: Programmanyň işlemegi üçin zerur bolan esasy enjam identifikatorlary.</string>
+    
+    <string name="privacy_title_3">3. Maglumatlaryň Ulanylýyşy</string>
+    <string name="privacy_content_3">Toplanýan maglumatlar diňe aşakdaky maksatlar bilen ulanylýar:\n\n• Abunalyklaryňyzy yzarlamaga kömek etmek.\n• Töleg güni golaýlaşýan abunalyklar üçin ýatlatma bildirişlerini ibermek.\n• Programma işleýşini gowulandyrmak we säwlikleri düzetmek.</string>
+    
+    <string name="privacy_title_4">4. Maglumat Ygtybarlylygy</string>
+    <string name="privacy_content_4">Şahsy maglumatlaryňyz enjamyňyzda ygtybarly saklanýar. Serwerlerimizde saklanan maglumatlar (hasap açsaňyz) pudaklaýyn standartly şifreleme usullary bilen goralýar. Maglumatlaryňyz hiç haçan rugsadyňyz bolmazdan üçünji taraplara satylmaz ýa-da paýlaşylmaz.</string>
+    
+    <string name="privacy_title_5">5. Rugsatlar</string>
+    <string name="privacy_content_5">Programma size bildiriş iberip bilmek üçin bildiriş rugsady talap edip biler. Bu rugsat diňe abunalyk ýatlatmalary üçin ulanylýar.</string>
+    
+    <string name="privacy_title_6">6. Aragatnaşyk</string>
+    <string name="privacy_content_6">Gizlinlik syýasatymyz barada soraglaryňyz bolsa, biz bilen habarlaşyp bilersiňiz:\ngokhanaytekinn@yandex.com</string>
+</resources>

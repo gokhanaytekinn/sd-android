@@ -69,6 +69,7 @@
     <string name="language_french">Französisch</string>
     <string name="language_german">Deutsch</string>
     <string name="language_azerbaijani">Aserbaidschanisch</string>
+    <string name="language_turkmen">Turkmenisch</string>
 
     <string name="select_language">Sprache wählen</string>
     <string name="select_currency">Währung wählen</string>

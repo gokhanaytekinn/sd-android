@@ -90,6 +90,7 @@
     <string name="language_french">法语</string>
     <string name="language_german">德语</string>
     <string name="language_azerbaijani">阿塞拜疆语</string>
+    <string name="language_turkmen">土库曼语</string>
 
 
     <string name="select_language">选择语言</string>
