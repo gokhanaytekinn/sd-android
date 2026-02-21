@@ -12,7 +12,20 @@
           "package_name": "com.gokhanaytekinn.sdandroid"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "511347263387-iba2p4r71rjnag10iqnnhi0mk2sqtqhv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gokhanaytekinn.sdandroid",
+            "certificate_hash": "43a5ad76be9d46a689607c2affb046e8d7884d3e"
+          }
+        },
+        {
+          "client_id": "511347263387-cv901jhvhfoap5ibn4rndu7irlgspkn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAgj7GS3kLv8HZlGdroPCxB_VGG3xvqcmM"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511347263387-cv901jhvhfoap5ibn4rndu7irlgspkn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

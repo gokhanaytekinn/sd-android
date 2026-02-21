@@ -170,6 +170,28 @@ class AuthViewModel(context: Context) : ViewModel() {
         )
     }
     
+    fun signInWithGoogle(idToken: String, onSuccess: () -> Unit) {
+        viewModelScope.launch {
+            _authState.value = _authState.value.copy(isLoading = true, error = null)
+            val result = repository.loginWithGoogle(idToken)
+            if (result.isSuccess) {
+                val user = result.getOrNull()?.user
+                _authState.value = _authState.value.copy(
+                    isLoading = false,
+                    isAuthenticated = true,
+                    userName = user?.name,
+                    userEmail = user?.email
+                )
+                onSuccess()
+            } else {
+                _authState.value = _authState.value.copy(
+                    isLoading = false,
+                    error = result.exceptionOrNull()?.message ?: "Google ile giriş başarısız"
+                )
+            }
+        }
+    }
+
     fun logout() {
         viewModelScope.launch {
             repository.logout()

@@ -19,8 +19,14 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.credentials.CredentialManager
+import androidx.credentials.GetCredentialRequest
+import androidx.credentials.exceptions.GetCredentialException
+import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
+import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
+import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(
@@ -32,6 +38,35 @@ fun LoginScreen(
     val context = LocalContext.current
     val viewModel = remember { AuthViewModel(context) }
     val authState by viewModel.authState.collectAsState()
+    val coroutineScope = rememberCoroutineScope()
+    val credentialManager = remember { CredentialManager.create(context) }
+
+    var googleSignInError by remember { mutableStateOf<String?>(null) }
+
+    // Google Sign-In akışı
+    fun launchGoogleSignIn() {
+        val googleSignInOption = GetSignInWithGoogleOption.Builder(
+            serverClientId = "511347263387-cv901jhvhfoap5ibn4rndu7irlgspkn7.apps.googleusercontent.com"
+        ).build()
+        val request = GetCredentialRequest.Builder()
+            .addCredentialOption(googleSignInOption)
+            .build()
+        coroutineScope.launch {
+            try {
+                val result = credentialManager.getCredential(context = context, request = request)
+                val credential = result.credential
+                val googleIdTokenCredential = GoogleIdTokenCredential.createFrom(credential.data)
+                val idToken = googleIdTokenCredential.idToken
+                viewModel.signInWithGoogle(idToken, onLoginSuccess)
+            } catch (e: GetCredentialException) {
+                android.util.Log.e("GoogleSignIn", "GetCredentialException: ${e.type} — ${e.message}")
+                googleSignInError = e.message ?: "Google ile giriş başarısız (${e.type})"
+            } catch (e: Exception) {
+                android.util.Log.e("GoogleSignIn", "Exception: ${e.message}")
+                googleSignInError = e.message ?: "Bilinmeyen hata"
+            }
+        }
+    }
     
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -279,35 +314,40 @@ fun LoginScreen(
                 // Social Login Buttons
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                    horizontalArrangement = Arrangement.Center
                 ) {
                     OutlinedButton(
-                        onClick = { },
+                        onClick = { launchGoogleSignIn() },
                         modifier = Modifier
-                            .weight(1f)
-                            .height(56.dp),
+                            .size(56.dp),
                         shape = RoundedCornerShape(12.dp),
+                        contentPadding = PaddingValues(0.dp),
                         border = ButtonDefaults.outlinedButtonBorder.copy(
                             width = 1.dp,
-                            brush = androidx.compose.ui.graphics.SolidColor(MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f))
+                            brush = androidx.compose.ui.graphics.SolidColor(MaterialTheme.colorScheme.onBackground.copy(alpha = 0.1f))
                         )
                     ) {
-                        Text("Google", color = MaterialTheme.colorScheme.onBackground)
-                    }
-                    OutlinedButton(
-                        onClick = { },
-                        modifier = Modifier
-                            .weight(1f)
-                            .height(56.dp),
-                        shape = RoundedCornerShape(12.dp),
-                        border = ButtonDefaults.outlinedButtonBorder.copy(
-                            width = 1.dp,
-                            brush = androidx.compose.ui.graphics.SolidColor(MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f))
+                        Icon(
+                            painter = androidx.compose.ui.res.painterResource(id = com.gokhanaytekinn.sdandroid.R.drawable.ic_google),
+                            contentDescription = "Google",
+                            modifier = Modifier.size(24.dp),
+                            tint = Color.Unspecified
                         )
-                    ) {
-                        Text("Apple", color = MaterialTheme.colorScheme.onBackground)
                     }
                 }
+
+                // Google Sign-In hata mesajı
+                if (googleSignInError != null) {
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = googleSignInError!!,
+                        color = MaterialTheme.colorScheme.error,
+                        fontSize = 13.sp,
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth()
+                    )
+                }
+
             }
             
             // Sign Up Link

@@ -121,4 +121,30 @@ class AuthRepository(context: Context) {
     suspend fun isLoggedIn(): Boolean {
         return tokenManager.isLoggedIn()
     }
+
+    suspend fun loginWithGoogle(idToken: String): Result<AuthResponse> {
+        return try {
+            val response = apiService.loginWithGoogle(
+                com.gokhanaytekinn.sdandroid.data.model.request.GoogleAuthRequest(idToken)
+            )
+            if (response.isSuccessful && response.body() != null) {
+                val authResponse = response.body()!!
+                authResponse.token?.let { tokenManager.saveToken(it) }
+                authResponse.user?.email?.let { tokenManager.saveUserEmail(it) }
+                Result.success(authResponse)
+            } else {
+                val errorMessage = try {
+                    val errorBody = response.errorBody()?.string()
+                    if (!errorBody.isNullOrEmpty()) {
+                        val gson = com.google.gson.Gson()
+                        val errorResponse = gson.fromJson(errorBody, com.gokhanaytekinn.sdandroid.data.model.response.ErrorResponse::class.java)
+                        errorResponse.message
+                    } else "Google login failed: ${response.message()}"
+                } catch (e: Exception) { "Google login failed: ${response.message()}" }
+                Result.failure(Exception(errorMessage))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

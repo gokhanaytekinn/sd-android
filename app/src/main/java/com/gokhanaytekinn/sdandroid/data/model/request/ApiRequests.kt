@@ -67,3 +67,7 @@ data class ConversionRequest(
 data class FcmTokenRequest(
     val token: String
 )
+
+data class GoogleAuthRequest(
+    val idToken: String
+)
