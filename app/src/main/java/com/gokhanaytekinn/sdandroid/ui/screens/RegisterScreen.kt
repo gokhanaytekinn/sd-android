@@ -2,6 +2,8 @@ package com.gokhanaytekinn.sdandroid.ui.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
@@ -19,9 +21,14 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.foundation.text.ClickableText
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun RegisterScreen(
     onBackClick: () -> Unit = {},
@@ -232,48 +239,43 @@ fun RegisterScreen(
                     ),
                     modifier = Modifier.padding(end = 8.dp)
                 )
-                Column(modifier = Modifier.weight(1f)) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        TextButton(
-                            onClick = { },
-                            contentPadding = PaddingValues(0.dp)
-                        ) {
-                            Text(
-                                text = "Kullanım Koşullarını",
-                                color = PrimaryBlue,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium
-                            )
-                        }
-                        Text(
-                            text = " ve",
-                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
-                            fontSize = 14.sp
-                        )
+                val annotatedString = buildAnnotatedString {
+                    withStyle(style = SpanStyle(color = PrimaryBlue, fontWeight = FontWeight.Medium)) {
+                        pushStringAnnotation(tag = "TERMS", annotation = "terms")
+                        append("Kullanım Koşullarını")
+                        pop()
                     }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        TextButton(
-                            onClick = { },
-                            contentPadding = PaddingValues(0.dp)
-                        ) {
-                            Text(
-                                text = "Gizlilik Politikası",
-                                color = PrimaryBlue,
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium
-                            )
-                        }
-                        Text(
-                            text = "'nı kabul ediyorum.",
-                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
-                            fontSize = 14.sp
-                        )
+                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))) {
+                        append(" ve ")
+                    }
+                    withStyle(style = SpanStyle(color = PrimaryBlue, fontWeight = FontWeight.Medium)) {
+                        pushStringAnnotation(tag = "POLICY", annotation = "policy")
+                        append("Gizlilik Politikası")
+                        pop()
+                    }
+                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))) {
+                        append("'nı kabul ediyorum.")
                     }
                 }
+
+                ClickableText(
+                    text = annotatedString,
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontSize = 14.sp,
+                        lineHeight = 20.sp
+                    ),
+                    modifier = Modifier.weight(1f),
+                    onClick = { offset ->
+                        annotatedString.getStringAnnotations(tag = "TERMS", start = offset, end = offset)
+                            .firstOrNull()?.let {
+                                // handle terms click
+                            }
+                        annotatedString.getStringAnnotations(tag = "POLICY", start = offset, end = offset)
+                            .firstOrNull()?.let {
+                                // handle policy click
+                            }
+                    }
+                )
             }
         }
         
