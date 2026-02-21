@@ -536,6 +536,14 @@ fun AppSettingsScreen(
                             AppCompatDelegate.setApplicationLocales(appLocale)
                         }
                     }
+                    LanguageOption("az", "Azərbaycanca", currentLanguage) {
+                        scope.launch {
+                            languagePreferences.setLanguage("az")
+                            showLanguageDialog = false
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("az")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                        }
+                    }
 
 
 
@@ -661,6 +669,7 @@ fun getLanguageName(code: String): String {
         "zh" -> "简体中文"
         "fr" -> "Français"
         "de" -> "Deutsch"
+        "az" -> "Azərbaycanca"
         else -> code
 
 

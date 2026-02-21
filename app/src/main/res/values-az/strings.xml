@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Sub Tracker</string>
+    
+    <!-- Common -->
+    <string name="back">Geri</string>
+    <string name="save">Yadda saxla</string>
+    <string name="cancel">Ləğv et</string>
+    <string name="skip">Keç</string>
+    <string name="continue_btn">Davam et</string>
+    <string name="get_started">Gəlin başlayaq</string>
+    <string name="show_password">Şifrəni göstər</string>
+    <string name="hide_password">Şifrəni gizlə</string>
+    <string name="unknown_error">Naməlum xəta</string>
+    <string name="scan">Skan et</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Abunəliklərinizi İzləyin</string>
+    <string name="onboarding_desc_1">Bütün abunəliklərinizi bir yerdə görün və idarə edin. Heç bir ödənişi qaçırmayın.</string>
+    <string name="onboarding_title_2">Ödənişləri Avtomatik Tapır</string>
+    <string name="onboarding_desc_2">SMS və bildirimlərinizi skan edərək abunəliklərinizi saniyələr ərzində siyahılayır.</string>
+    <string name="onboarding_security">Ucdan uca şifrələnmiş və təhlükəsiz</string>
+    <string name="onboarding_title_3">Lazımsız Xərclərə Son</string>
+    <string name="onboarding_desc_3">Unutduğunuz abunəlikləri ləğv edin, ödəniş günlərindən əvvəl bildiriş alın.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Xülasə</string>
+    <string name="hello_user">Salam, %s</string>
+    <string name="total_monthly">Bu ay cəmi</string>
+    <string name="vs_last_month">Keçən aya görə</string>
+    <string name="suspicious_subscriptions">Şübhəli Abunəliklər</string>
+    <string name="transactions_pending">%d əməliyyat araşdırma gözləyir</string>
+    <string name="most_expensive">Ən Bahalı Abunəliklər</string>
+    <string name="view_all">Hamısı</string>
+    <string name="view_all_subscriptions">Bütün Abunəlikləri Gör</string>
+    
+    <!-- Settings -->
+    <string name="settings">Ayarlar</string>
+    <string name="account">HESAB</string>
+    <string name="application">PROQRAM</string>
+    <string name="support">DƏSTƏK</string>
+    <string name="membership_type">Üzvlük Növü</string>
+    <string name="free_plan">Pulsuz Plan</string>
+    <string name="notifications">Bildirişlər</string>
+    <string name="currency">Valyuta</string>
+    <string name="dark_mode">Qaranlıq Rejim</string>
+    <string name="language">Dil</string>
+    <string name="help_center">Yardım Mərkəzi</string>
+    <string name="privacy_policy">Məxfilik Siyasəti</string>
+    <string name="logout">Çıxış et</string>
+    <string name="version_info">Versiya %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Premium-a Keçin</string>
+    <string name="premium_desc">Bütün abunəliklərinizi avtomatik skan edin və %%30 daha çox qənaət edin.</string>
+    <string name="upgrade">Yenilə</string>
+    
+    <!-- Search -->
+    <string name="search">Axtar</string>
+    <string name="search_placeholder">Abunəlik və ya əməliyyat axtar</string>
+    <string name="recent_searches">SON AXTARIŞLAR</string>
+    <string name="results_found">NƏTİCƏ TAPILDI (%d)</string>
+    <string name="subscriptions">Abunəliklər</string>
+    <string name="transactions">Əməliyyatlar</string>
+    <string name="looking_for_else">Başqa bir şey axtarırsınız?</string>
+    <string name="search_tip">Satıcı adı və ya müəyyən əməliyyat məbləğləri üzrə axtarış etməyə çalışın.</string>
+    <string name="clear_search">Axtarışı təmizlə</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Aktiv</string>
+    <string name="suspicious">Şübhəli</string>
+    <string name="cancelled">Ləğv edildi</string>
+    <string name="monthly">AYLIQ</string>
+    <string name="yearly">İLLİK</string>
+    <string name="one_time">BİRDƏFƏLİK</string>
+    <string name="renews">Yenilənir: %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Xülasə</string>
+    <string name="nav_search">Axtar</string>
+    <string name="nav_settings">Ayarlar</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Rusca</string>
+    <string name="language_chinese">Sadələşdirilmiş Çincə</string>
+    <string name="language_french">Fransızca</string>
+    <string name="language_german">Almanca</string>
+    <string name="language_azerbaijani">Azərbaycanca</string>
+
+    <string name="select_language">Dil seçin</string>
+    <string name="select_currency">Valyuta seçin</string>
+    <string name="close">Bağla</string>
+    
+    <!-- Auth -->
+    <string name="login">Daxil ol</string>
+    <string name="register">Qeydiyyatdan keç</string>
+    <string name="email">E-poçt</string>
+    <string name="password">Şifrə</string>
+    <string name="name">Ad</string>
+    <string name="full_name">Tam Ad</string>
+    <string name="forgot_password">Şifrəni unutmusunuz?</string>
+    <string name="no_account">Hesabınız yoxdur?</string>
+    <string name="have_account">Artıq hesabınız var?</string>
+    <string name="sign_in">Daxil ol</string>
+    <string name="sign_up">Qeydiyyatdan keç</string>
+    <string name="create_account">Hesab yaradın</string>
+    <string name="welcome_back">Yenidən xoş gəldiniz</string>
+    <string name="start_tracking">Abunəliklərinizi izləməyə başlayın</string>
+    <string name="join_us">Bizə qoşulun</string>
+    <string name="manage_subscriptions">Abunəliklərinizi asanlıqla idarə edin</string>
+    <string name="guest_user">Qonaq İstifadəçi</string>
+    <string name="not_logged_in">Daxil olunmayıb</string>
+
+    <!-- Login Screen -->
+    <string name="login_desc">Abunəliklərinizi izləməyə və qənaət etməyə indi başlayın.</string>
+    <string name="email_placeholder">epoct@numune.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">və ya</string>
+    <string name="no_account_prompt">Hesabınız yoxdur? </string>
+    <string name="google_sign_in_failed">Google ilə giriş uğursuz oldu (%s)</string>
+
+    <!-- Register Screen -->
+    <string name="register_desc">Abunəliklərinizi idarə etməyə və qənaət etməyə başlayın.</string>
+    <string name="full_name_placeholder">Məs: Əli Məmmədov</string>
+    <string name="accept_terms_pre"></string>
+    <string name="and"> və </string>
+    <string name="accept_terms_post">-nı qəbul edirəm.</string>
+    <string name="already_have_account_prompt">Artıq hesabınız var? </string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">İstifadə Şərtləri</string>
+    <string name="terms_of_use_content">1. Qəbul\nSub Tracker-dan istifadə edərək bu şərtləri qəbul etmiş sayılırsınız.\n\n2. Xidmət Əhatəsi\nProqram, abunəliklərinizi izləməyə kömək edən bir vasitədir. Maliyyə məsləhəti xarakteri daşımır.\n\n3. İstifadəçi Məsuliyyəti\nHesab məlumatlarınızın təhlükəsizliyindən və əlavə etdiyiniz məlumatların düzgünlüyündən siz məsuliyyət daşıyırsınız.\n\n4. Dəyişikliklər\nProqram xüsusiyyətlərində və bu şərtlərdə istədiyimiz vaxt dəyişiklik etmək hüququmuz saxlanılır.\n\n5. Xitam\nŞərtlərin pozulması halında xidmətə girişinizi dayandıra bilərik.</string>
+    <string name="understood">Anladım</string>
+    <string name="privacy_dialog_content">Son Yenilənmə: 20 Fevral 2026\n\n1. Giriş\nMəlumatlarınızın məxfiliyinə önəm veririk.\n\n2. Toplanan Məlumatlar\nAbunəlik məlumatları, istifadə seçimləri və əsas cihaz məlumatları emal olunur.\n\n3. Məlumatdan İstifadə\nMəlumatlarınız yalnız xatırlatmalar göndərmək və proqramın performansını artırmaq üçün istifadə olunur.\n\n4. Məlumat Təhlükəsizliyi\nMəlumatlarınız sənaye standartı şifrləmə üsulları ilə qorunur.\n\n5. Əlaqə\nSuallarınız üçün: gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Şifrənizi sıfırlamaq üçün qeydiyyatdan keçdiyiniz e-poçt ünvanınızı daxil edin. Sizə təsdiq kodu göndərəcəyik.</string>
+    <string name="email_address_label">E-poçt Ünvanı</string>
+    <string name="send_code">Kodu göndər</string>
+    <string name="back_to_login">Giriş səhifəsinə qayıt</string>
+    <string name="verify_code_title">Kodu Təsdiqləyin</string>
+    <string name="verify_code_desc">%s ünvanına göndərdiyimiz 6 rəqəmli təsdiq kodunu daxil edin.</string>
+    <string name="verify_and_continue">Təsdiqlə və Davam et</string>
+    <string name="wait_for_code">Yeni kod üçün gözləyin:</string>
+    <string name="code_not_received">Kod gəlmədi?</string>
+    <string name="resend_code">Yenidən Göndər</string>
+    <string name="reset_password_title">Yeni Şifrə Yaradın</string>
+    <string name="reset_password_desc">Zəhmət olmasa hesabınız üçün güclü və yeni bir şifrə təyin edin.</string>
+    <string name="new_password_label">Yeni Şifrə</string>
+    <string name="confirm_password_label">Şifrənin Təkrarı</string>
+    <string name="min_6_chars">Ən azı 6 simvol</string>
+    <string name="passwords_match">Şifrələr uyğun gəlir</string>
+    <string name="update_password">Şifrəni Yenilə</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Şübhəli Ödənişlər</string>
+    <string name="transactions_to_review">Araşdırılacaq Əməliyyatlar</string>
+    <string name="swipe_to_review">Rədd etmək üçün sola, abunəlik kimi təsdiqləmək üçün sağa sürüşdürün</string>
+    <string name="confirm">Təsdiqlə</string>
+    <string name="reject">Rədd et</string>
+    <string name="all_done">Hamısı Tamamdır!</string>
+    <string name="no_suspicious">Şübhəli əməliyyat tapılmadı</string>
+    <string name="reviewing_transactions">Əməliyyatlar araşdırılır</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Bütün Abunəliklər</string>
+    <string name="no_subscriptions">Hələ ki abunəlik yoxdur</string>
+    <string name="no_active_subscriptions">Aktiv abunəlik tapılmadı</string>
+    <string name="no_suspicious_subscriptions">Şübhəli abunəlik tapılmadı</string>
+    <string name="no_cancelled_subscriptions">Ləğv edilmiş abunəlik tapılmadı</string>
+    <string name="detected_count">Aşkar edilənlər (%d)</string>
+    <string name="marked_count">İşarələnənlər (%d)</string>
+    <string name="add_subscription">Abunəlik Əlavə et</string>
+    <string name="service_name_placeholder">məs. Netflix</string>
+    <string name="subscription_details">Abunəlik Detalları</string>
+    <string name="next_payment">Növbəti Ödəniş</string>
+    <string name="billing_cycle">Faktura Döngüsü</string>
+    <string name="category">Kateqoriya</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Premium Al</string>
+    <string name="premium_features">Premium Özəlliklər</string>
+    <string name="unlimited_subscriptions">Limitsiz Abunəlik</string>
+    <string name="advanced_analytics">Təkmil Analitika</string>
+    <string name="priority_support">Prioritetli Dəstək</string>
+    <string name="ad_free">Reklamsız Təcrübə</string>
+    <string name="choose_plan">Planınızı Seçin</string>
+    <string name="monthly_plan">Aylıq Plan</string>
+    <string name="yearly_plan">İllik Plan</string>
+    <string name="save_percent">%%d Qənaət</string>
+    <string name="per_month">/ay</string>
+    <string name="per_year">/il</string>
+    <string name="billed_monthly">Aylıq hesablanır</string>
+    <string name="billed_yearly">İllik hesablanır</string>
+    <string name="start_trial">Pulsuz Sınağı Başlat</string>
+    <string name="restore_purchase">Satınalmanı bərpa et</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">Əyləncə</string>
+    <string name="category_music">Musiqi</string>
+    <string name="category_sports">İdman &amp; Sağlamlıq</string>
+    <string name="category_other">Digər</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Analitika</string>
+    <string name="spending_overview">Xərc Xülasəsi</string>
+    <string name="monthly_trend">Aylıq Trend</string>
+    <string name="category_breakdown">Kateqoriya Bölgüsü</string>
+    <string name="top_subscriptions">Ən çox xərclənən</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">Əməliyyat Tarixçəsi</string>
+    <string name="all_transactions">Bütün Əməliyyatlar</string>
+    <string name="filter">Süzgəc</string>
+    <string name="sort_by">Sırala</string>
+    <string name="date">Tarix</string>
+    <string name="amount">Məbləğ</string>
+    <string name="merchant">Satıcı</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Bütün Abunəliklər</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Əlavə et</string>
+    <string name="edit">Düzəliş et</string>
+    <string name="delete">Sil</string>
+    <string name="done">Tamam</string>
+    <string name="next">İrəli</string>
+    <string name="previous">Geri</string>
+    <string name="finish">Bitir</string>
+    
+    <!-- Messages -->
+    <string name="loading">Yüklənir…</string>
+    <string name="error">Xəta</string>
+    <string name="success">Uğurlu</string>
+    <string name="try_again">Yenidən cəhd edin</string>
+    <string name="no_results">Nəticə tapılmadı</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">Ad hissəsi mütləqdir</string>
+    <string name="error_amount_required">Məbləğ hissəsi mütləqdir</string>
+    <string name="error_amount_invalid">Zəhmət olmasa düzgün məbləğ daxil edin</string>
+    <string name="error_currency_required">Valyuta seçimi mütləqdir</string>
+    <string name="error_date_required">Tarix seçimi mütləqdir</string>
+    <string name="error_email_required">E-poçt hissəsi mütləqdir</string>
+    <string name="error_email_invalid">Zəhmət olmasa düzgün e-poçt ünvanı daxil edin</string>
+    <string name="error_password_required">Şifrə hissəsi mütləqdir</string>
+    <string name="error_password_short">Şifrə ən azı 6 simvol olmalıdır</string>
+
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">Abunəliyə düzəliş et</string>
+    <string name="service_name">Xidmət Adı</string>
+    <string name="period">Period</string>
+    <string name="reminder">Xatırladıcı</string>
+    <string name="reminder_desc">Ödənişdən 1 gün əvvəl bildir</string>
+    <string name="update">Yenilə</string>
+    <string name="period_monthly">ay</string>
+    <string name="period_yearly">il</string>
+    <string name="period_weekly">həftə</string>
+    <string name="days_remaining">%d gün qaldı</string>
+    <string name="total_spent">Toplam Xərc</string>
+    <string name="start_date_label">Başlanğıc</string>
+    <string name="turn_off_reminder">Xatırlatıcını Söndür</string>
+    <string name="set_reminder">Xatırladıcı Qur</string>
+    <string name="edit_plan">Planı Düzəlt</string>
+    <string name="reactivate_subscription">Abunəliyi Yenidən Aktiv et</string>
+    <string name="cancel_subscription_btn">Abunəliyi Ləğv et</string>
+    <string name="payment_history">Ödəniş Tarixçəsi</string>
+    <string name="an_error_occurred">Xəta baş verdi</string>
+    <string name="go_back">Geri Qayıt</string>
+    <string name="subscription_id_not_found">Abunəlik ID tapılmadı</string>
+    <string name="no_subscriptions_yet">Hələ ki abunəlik əlavə olunmayıb</string>
+    <string name="sms_permission_rationale">SMS icazəsi, cihazınızdakı abunəlik bildirişlərini avtomatik aşkar etmək üçün lazımdır.\nBu sayədə abunəliklərinizi əllə daxil etmək məcburiyyətində qalmazsınız.</string>
+    <string name="storage_permission_rationale">Yaddaş icazəsi, cihazınızdakı faktura və abunəlik sənədlərini skan etmək üçün lazımdır.\nBu sayədə PDF və digər fayllardan abunəlik məlumatı avtomatik aşkar edilə bilər.</string>
+    <string name="permission_denied_message">İcazə verilmədən cihaz skanı edilə bilməz.\nİstəsəniz abunəliklərinizi əllə əlavə edə bilərsiniz.</string>
+    <string name="permission_permanently_denied_message">İcazə verilmədi. Zəhmət olmasa proqram ayarlarından icazələri aktivləşdirin.</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Yardım Mərkəzi</string>
+    <string name="help_search_placeholder">Sizə necə kömək edə bilərik?</string>
+    <string name="popular_questions">Məşhur Suallar</string>
+    
+    <string name="faq_q1">Abunəlik necə ləğv edilir?</string>
+    <string name="faq_a1">Abunəlik detalları səhifəsinə daxil olaraq ən aşağıda yerləşən \'Abunəliyi Ləğv et\' düyməsinə klikləyə bilərsiniz. Bu əməliyyat yalnız proqram daxili izləməni dayandırır, servis təminatçısı tərəfindən də ləğv etməyi unutmayın.</string>
+    
+    <string name="faq_q2">Məlumatlarım təhlükəsizdirmi?</string>
+    <string name="faq_a2">Bəli, bütün məlumatlarınız cihazınızda şifrələnmiş şəkildə saxlanılır. Sub Tracker, şəxsi məlumatlarınızı üçüncü tərəflərlə paylaşmır.</string>
+    
+    <string name="faq_q3">Banka hesabımı necə bağlayaram?</string>
+    <string name="faq_a3">Hazırda birbaşa bank inteqrasiyası əvəzinə, SMS və bildiriş oxuma icazəsi ilə avtomatik izləmə təmin edirik. Bank inteqrasiyası yaxında gələcək.</string>
+    
+    <string name="faq_q4">Pul iadəsi ala bilərəmmi?</string>
+    <string name="faq_a4">Proqram daxili satınalmalarda Google Play/App Store siyasətləri keçərlidir. İadə tələblərinizi aidiyyatı mağaza üzərindən edə bilərsiniz.</string>
+    
+    <string name="faq_q5">Xatırladıcılar işləmir, nə etməliyəm?</string>
+    <string name="faq_a5">Cihaz ayarlarından proqramın bildiriş icazələrinin açıq olduğundan əmin olun. Həmçinin batareya qənaət rejiminin bildirişləri əngəlləmədiyini yoxlayın.</string>
+    
+    <string name="faq_q6">Şübhəli əməliyyat bildirimi nədir?</string>
+    <string name="faq_a6">Proqram, normal xərc rejiminizdən kənar və ya naməlum ödənişləri aşkar etdikdə sizi xəbərdar edir. Bu əməliyyatları \'Şübhəli Əməliyyatlar\' ekranından araşdıra bilərsiniz.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Məxfilik Siyasəti</string>
+    <string name="privacy_last_updated">Son Yenilənmə: 20 Fevral 2026</string>
+    
+    <string name="privacy_title_1">1. Giriş</string>
+    <string name="privacy_content_1">Sub Tracker (\"Proqram\") olaraq məxfiliyinizə önəm veririk. Bu Məxfilik Siyasəti, proqramımızdan istifadə edərkən məlumatlarınızın necə toplandığını, istifadə edildiyini və qorunduğunu izah edir.</string>
+    
+    <string name="privacy_title_2">2. Toplanan Məlumatlar</string>
+    <string name="privacy_content_2">Proqramımız sizə daha yaxşı xidmət göstərmək üçün aşağıdakı məlumatları toplaya və ya emal edə bilər:\n\n• Abunəlik Məlumatları: Əlavə etdiyiniz abunəliklərin adı, qiyməti, ödəniş tarixləri.\n• İstifadə Məlumatları: Proqram daxili qarşılıqlı əlaqələr və seçimlər.\n• Cihaz Məlumatları: Proqramın işləməsi üçün lazım olan əsas cihaz identifikatorları.</string>
+    
+    <string name="privacy_title_3">3. Məlumatlardan İstifadə</string>
+    <string name="privacy_content_3">Toplanan məlumatlar yalnız aşağıdakı məqsədlərlə istifadə olunur:\n\n• Abunəliklərinizi izləməyinizi təmin etmək.\n• Ödəniş günü yaxınlaşan abunəliklər üçün xatırlatıcı bildirişləri göndərmək.\n• Proqram performansını yaxşılaşdırmaq və xətaları aradan qaldırmaq.</string>
+    
+    <string name="privacy_title_4">4. Məlumat Təhlükəsizliyi</string>
+    <string name="privacy_content_4">Şəxsi məlumatlarınız cihazınızda təhlükəsiz şəkildə saxlanılır. Serverlərimizdə saxlanılan məlumatlar (hesab yaratdığınız halda) sənaye standartı şifrləmə üsulları ilə qorunur. Məlumatlarınız heç vaxt icazəniz olmadan üçüncü tərəflərə satılmır və ya paylaşılmır.</string>
+    
+    <string name="privacy_title_5">5. İcazələr</string>
+    <string name="privacy_content_5">Proqram, sizə bildiriş göndərə bilmək üçün bildiriş icazəsi tələb edə bilər. Bu icazə yalnız abunəlik xatırlatmaları üçün istifadə olunur.</string>
+    
+    <string name="privacy_title_6">6. Əlaqə</string>
+    <string name="privacy_content_6">Məxfilik siyasətimizlə bağlı suallarınız üçün bizimlə əlaqə saxlaya bilərsiniz:\ngokhanaytekinn@yandex.com</string>
+</resources>
