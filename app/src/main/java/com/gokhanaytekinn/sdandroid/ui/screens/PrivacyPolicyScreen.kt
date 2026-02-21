@@ -1,5 +1,8 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
+import com.gokhanaytekinn.sdandroid.R
+import androidx.compose.ui.res.stringResource
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -46,13 +49,13 @@ fun PrivacyPolicyScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Geri",
+                    contentDescription = stringResource(R.string.back),
                     tint = MaterialTheme.colorScheme.onSurface
                 )
             }
             
             Text(
-                text = "Gizlilik Politikası",
+                text = stringResource(R.string.privacy_policy_title),
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 16.dp),
@@ -75,7 +78,7 @@ fun PrivacyPolicyScreen(
             Spacer(modifier = Modifier.height(16.dp))
             
             Text(
-                text = "Son Güncelleme: 20 Şubat 2026",
+                text = stringResource(R.string.privacy_last_updated),
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -83,39 +86,33 @@ fun PrivacyPolicyScreen(
             Spacer(modifier = Modifier.height(24.dp))
             
             PolicySection(
-                title = "1. Giriş",
-                content = "Sub Tracker (\"Uygulama\") olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, uygulamamızı kullanırken verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar."
+                title = stringResource(R.string.privacy_title_1),
+                content = stringResource(R.string.privacy_content_1)
             )
             
             PolicySection(
-                title = "2. Toplanan Veriler",
-                content = "Uygulamamız, size daha iyi hizmet verebilmek için aşağıdaki verileri toplayabilir veya işleyebilir:\n\n" +
-                        "• Abonelik Bilgileri: Eklediğiniz aboneliklerin adı, fiyatı, ödeme tarihleri.\n" +
-                        "• Kullanım Verileri: Uygulama içi etkileşimler ve tercihler.\n" +
-                        "• Cihaz Bilgileri: Uygulamanın çalışması için gerekli temel cihaz tanımlayıcıları."
+                title = stringResource(R.string.privacy_title_2),
+                content = stringResource(R.string.privacy_content_2)
             )
             
             PolicySection(
-                title = "3. Verilerin Kullanımı",
-                content = "Toplanan veriler yalnızca aşağıdaki amaçlarla kullanılır:\n\n" +
-                        "• Aboneliklerinizi takip etmenizi sağlamak.\n" +
-                        "• Ödeme günü yaklaşan abonelikler için hatırlatıcı bildirimleri göndermek.\n" +
-                        "• Uygulama performansını iyileştirmek ve hataları gidermek."
+                title = stringResource(R.string.privacy_title_3),
+                content = stringResource(R.string.privacy_content_3)
             )
             
             PolicySection(
-                title = "4. Veri Güvenliği",
-                content = "Kişisel verileriniz cihazınızda güvenli bir şekilde saklanır. Sunucularımızda tutulan veriler (hesap oluşturmanız durumunda) endüstri standardı şifreleme yöntemleri ile korunur. Verileriniz asla izniniz olmaksızın üçüncü taraflara satılmaz veya paylaşılmaz."
+                title = stringResource(R.string.privacy_title_4),
+                content = stringResource(R.string.privacy_content_4)
             )
             
             PolicySection(
-                title = "5. İzinler",
-                content = "Uygulama, size bildirim gönderebilmek için bildirim izni talep edebilir. Bu izin, yalnızca abonelik hatırlatıcıları için kullanılır."
+                title = stringResource(R.string.privacy_title_5),
+                content = stringResource(R.string.privacy_content_5)
             )
             
             PolicySection(
-                title = "6. İletişim",
-                content = "Gizlilik politikamızla ilgili sorularınız için bizimle iletişime geçebilirsiniz:\ngokhanaytekinn@yandex.com"
+                title = stringResource(R.string.privacy_title_6),
+                content = stringResource(R.string.privacy_content_6)
             )
             
             Spacer(modifier = Modifier.height(48.dp))

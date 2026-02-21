@@ -201,4 +201,49 @@
     <string name="reminder">Hatırlatıcı</string>
     <string name="reminder_desc">Ödemeden 1 gün önce bildir</string>
     <string name="update">Güncelle</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Yardım Merkezi</string>
+    <string name="help_search_placeholder">Nasıl yardımcı olabiliriz?</string>
+    <string name="popular_questions">Popüler Sorular</string>
+    
+    <string name="faq_q1">Abonelik nasıl iptal edilir?</string>
+    <string name="faq_a1">Abonelik detay sayfasına giderek en altta bulunan \'Aboneliği İptal Et\' butonuna tıklayabilirsiniz. Bu işlem sadece uygulama içi takibi sonlandırır, servis sağlayıcı üzerinden de iptal etmeyi unutmayın.</string>
+    
+    <string name="faq_q2">Verilerim güvende mi?</string>
+    <string name="faq_a2">Evet, tüm verileriniz cihazınızda şifrelenmiş olarak saklanır. Sub Tracker, kişisel verilerinizi üçüncü taraflarla paylaşmaz.</string>
+    
+    <string name="faq_q3">Banka hesabımı nasıl bağlarım?</string>
+    <string name="faq_a3">Şu an için doğrudan banka entegrasyonu yerine, SMS ve bildirim okuma izni ile otomatik takip sağlıyoruz. Banka entegrasyonu yakında gelecek.</string>
+    
+    <string name="faq_q4">Para iadesi alabilir miyim?</string>
+    <string name="faq_a4">Uygulama içi satın alımlarda Google Play/App Store politikaları geçerlidir. İade taleplerinizi ilgili mağaza üzerinden yapabilirsiniz.</string>
+    
+    <string name="faq_q5">Hatırlatıcılar çalışmıyor, ne yapmalıyım?</string>
+    <string name="faq_a5">Cihaz ayarlarından uygulamanın bildirim izinlerinin açık olduğundan emin olun. Ayrıca pil tasarrufu modunun bildirimleri engellemediğini kontrol edin.</string>
+    
+    <string name="faq_q6">Şüpheli işlem bildirimi nedir?</string>
+    <string name="faq_a6">Uygulama, normal harcama düzeninizin dışındaki veya tanımlanamayan ödemeleri tespit ettiğinde sizi uyarır. Bu işlemleri \'Şüpheli İşlemler\' ekranından inceleyebilirsiniz.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Gizlilik Politikası</string>
+    <string name="privacy_last_updated">Son Güncelleme: 20 Şubat 2026</string>
+    
+    <string name="privacy_title_1">1. Giriş</string>
+    <string name="privacy_content_1">Sub Tracker (\"Uygulama\") olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, uygulamamızı kullanırken verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.</string>
+    
+    <string name="privacy_title_2">2. Toplanan Veriler</string>
+    <string name="privacy_content_2">Uygulamamız, size daha iyi hizmet verebilmek için aşağıdaki verileri toplayabilir veya işleyebilir:\n\n• Abonelik Bilgileri: Eklediğiniz aboneliklerin adı, fiyatı, ödeme tarihleri.\n• Kullanım Verileri: Uygulama içi etkileşimler ve tercihler.\n• Cihaz Bilgileri: Uygulamanın çalışması için gerekli temel cihaz tanımlayıcıları.</string>
+    
+    <string name="privacy_title_3">3. Verilerin Kullanımı</string>
+    <string name="privacy_content_3">Toplanan veriler yalnızca aşağıdaki amaçlarla kullanılır:\n\n• Aboneliklerinizi takip etmenizi sağlamak.\n• Ödeme günü yaklaşan abonelikler için hatırlatıcı bildirimleri göndermek.\n• Uygulama performansını iyileştirmek ve hataları gidermek.</string>
+    
+    <string name="privacy_title_4">4. Veri Güvenliği</string>
+    <string name="privacy_content_4">Kişisel verileriniz cihazınızda güvenli bir şekilde saklanır. Sunucularımızda tutulan veriler (hesap oluşturmanız durumunda) endüstri standardı şifreleme yöntemleri ile korunur. Verileriniz asla izniniz olmaksızın üçüncü taraflara satılmaz veya paylaşılmaz.</string>
+    
+    <string name="privacy_title_5">5. İzinler</string>
+    <string name="privacy_content_5">Uygulama, size bildirim gönderebilmek için bildirim izni talep edebilir. Bu izin, yalnızca abonelik hatırlatıcıları için kullanılır.</string>
+    
+    <string name="privacy_title_6">6. İletişim</string>
+    <string name="privacy_content_6">Gizlilik politikamızla ilgili sorularınız için bizimle iletişime geçebilirsiniz:\ngokhanaytekinn@yandex.com</string>
 </resources>

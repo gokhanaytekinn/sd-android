@@ -36,31 +36,32 @@ data class FaqItem(
 fun HelpCenterScreen(
     onBackClick: () -> Unit = {}
 ) {
+    val context = androidx.compose.ui.platform.LocalContext.current
     val faqList = remember {
         listOf(
             FaqItem(
-                question = "Abonelik nasıl iptal edilir?",
-                answer = "Abonelik detay sayfasına giderek en altta bulunan 'Aboneliği İptal Et' butonuna tıklayabilirsiniz. Bu işlem sadece uygulama içi takibi sonlandırır, servis sağlayıcı üzerinden de iptal etmeyi unutmayın."
+                question = context.getString(R.string.faq_q1),
+                answer = context.getString(R.string.faq_a1)
             ),
             FaqItem(
-                question = "Verilerim güvende mi?",
-                answer = "Evet, tüm verileriniz cihazınızda şifrelenmiş olarak saklanır. Sub Tracker, kişisel verilerinizi üçüncü taraflarla paylaşmaz."
+                question = context.getString(R.string.faq_q2),
+                answer = context.getString(R.string.faq_a2)
             ),
             FaqItem(
-                question = "Banka hesabımı nasıl bağlarım?",
-                answer = "Şu an için doğrudan banka entegrasyonu yerine, SMS ve bildirim okuma izni ile otomatik takip sağlıyoruz. Banka entegrasyonu yakında gelecek."
+                question = context.getString(R.string.faq_q3),
+                answer = context.getString(R.string.faq_a3)
             ),
             FaqItem(
-                question = "Para iadesi alabilir miyim?",
-                answer = "Uygulama içi satın alımlarda Google Play/App Store politikaları geçerlidir. İade taleplerinizi ilgili mağaza üzerinden yapabilirsiniz."
+                question = context.getString(R.string.faq_q4),
+                answer = context.getString(R.string.faq_a4)
             ),
             FaqItem(
-                question = "Hatırlatıcılar çalışmıyor, ne yapmalıyım?",
-                answer = "Cihaz ayarlarından uygulamanın bildirim izinlerinin açık olduğundan emin olun. Ayrıca pil tasarrufu modunun bildirimleri engellemediğini kontrol edin."
+                question = context.getString(R.string.faq_q5),
+                answer = context.getString(R.string.faq_a5)
             ),
             FaqItem(
-                question = "Şüpheli işlem bildirimi nedir?",
-                answer = "Uygulama, normal harcama düzeninizin dışındaki veya tanımlanamayan ödemeleri tespit ettiğinde sizi uyarır. Bu işlemleri 'Şüpheli İşlemler' ekranından inceleyebilirsiniz."
+                question = context.getString(R.string.faq_q6),
+                answer = context.getString(R.string.faq_a6)
             )
         )
     }
@@ -97,13 +98,13 @@ fun HelpCenterScreen(
             ) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Geri",
+                    contentDescription = stringResource(R.string.back),
                     tint = MaterialTheme.colorScheme.onSurface
                 )
             }
             
             Text(
-                text = "Yardım Merkezi",
+                text = stringResource(R.string.help_center_title),
                 modifier = Modifier
                     .weight(1f)
                     .padding(horizontal = 16.dp),
@@ -134,7 +135,7 @@ fun HelpCenterScreen(
                     onValueChange = { searchQuery = it },
                     placeholder = { 
                         Text(
-                            text = "Nasıl yardımcı olabiliriz?",
+                            text = stringResource(R.string.help_search_placeholder),
                             color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                         ) 
                     },
@@ -166,7 +167,7 @@ fun HelpCenterScreen(
         ) {
             item {
                 Text(
-                    text = "Popüler Sorular",
+                    text = stringResource(R.string.popular_questions),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -225,7 +226,7 @@ fun FaqAccordionItem(item: FaqItem) {
                 
                 Icon(
                     imageVector = Icons.Default.KeyboardArrowDown,
-                    contentDescription = if (expanded) "Kapat" else "Aç",
+                    contentDescription = if (expanded) stringResource(R.string.close) else stringResource(R.string.view_all),
                     tint = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier
                         .rotate(rotationState)

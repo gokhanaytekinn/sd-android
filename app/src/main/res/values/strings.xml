@@ -202,4 +202,49 @@
     <string name="reminder">Reminder</string>
     <string name="reminder_desc">Notify 1 day before payment</string>
     <string name="update">Update</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Help Center</string>
+    <string name="help_search_placeholder">How can we help you?</string>
+    <string name="popular_questions">Popular Questions</string>
+    
+    <string name="faq_q1">How to cancel a subscription?</string>
+    <string name="faq_a1">You can go to the subscription details page and click the \'Cancel Subscription\' button at the bottom. This action only ends the tracking within the app, don\'t forget to also cancel through the service provider.</string>
+    
+    <string name="faq_q2">Is my data secure?</string>
+    <string name="faq_a2">Yes, all your data is stored encrypted on your device. Sub Tracker does not share your personal data with third parties.</string>
+    
+    <string name="faq_q3">How do I connect my bank account?</string>
+    <string name="faq_a3">Currently, instead of direct bank integration, we provide automatic tracking via SMS and notification reading permissions. Bank integration will be coming soon.</string>
+    
+    <string name="faq_q4">Can I get a refund?</string>
+    <string name="faq_a4">Google Play/App Store policies apply to in-app purchases. You can make your refund requests through the respective store.</string>
+    
+    <string name="faq_q5">Reminders are not working, what should I do?</string>
+    <string name="faq_a5">Make sure the app\'s notification permissions are enabled in the device settings. Also, check that battery saver mode is not blocking notifications.</string>
+    
+    <string name="faq_q6">What is a suspicious transaction notification?</string>
+    <string name="faq_a6">The app warns you when it detects payments outside your normal spending patterns or unidentified charges. You can review these transactions on the \'Suspicious Transactions\' screen.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Privacy Policy</string>
+    <string name="privacy_last_updated">Last Updated: February 20, 2026</string>
+    
+    <string name="privacy_title_1">1. Introduction</string>
+    <string name="privacy_content_1">As Sub Tracker (\"the App\"), we value your privacy. This Privacy Policy explains how your data is collected, used, and protected while using our application.</string>
+    
+    <string name="privacy_title_2">2. Collected Data</string>
+    <string name="privacy_content_2">Our application may collect or process the following data to provide you with better service:\n\n• Subscription Information: Name, price, and payment dates of the subscriptions you add.\n• Usage Data: In-app interactions and preferences.\n• Device Information: Basic device identifiers required for the application to function.</string>
+    
+    <string name="privacy_title_3">3. Use of Data</string>
+    <string name="privacy_content_3">The collected data is only used for the following purposes:\n\n• To allow you to track your subscriptions.\n• To send reminder notifications for subscriptions with upcoming payment dates.\n• To improve app performance and fix bugs.</string>
+    
+    <string name="privacy_title_4">4. Data Security</string>
+    <string name="privacy_content_4">Your personal data is stored securely on your device. Data held on our servers (in case you create an account) is protected with industry-standard encryption methods. Your data is never sold or shared with third parties without your permission.</string>
+    
+    <string name="privacy_title_5">5. Permissions</string>
+    <string name="privacy_content_5">The application may request notification permission to send you notifications. This permission is only used for subscription reminders.</string>
+    
+    <string name="privacy_title_6">6. Contact</string>
+    <string name="privacy_content_6">For questions regarding our privacy policy, you can contact us at:\ngokhanaytekinn@yandex.com</string>
 </resources>
