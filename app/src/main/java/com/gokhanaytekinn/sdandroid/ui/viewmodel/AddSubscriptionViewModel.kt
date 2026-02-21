@@ -68,8 +68,10 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     }
     
     fun updateAmount(value: String) {
-        _amount.value = value
-        if (value.isNotBlank()) _amountError.value = null
+        // Keep only digits
+        val cleanValue = value.filter { it.isDigit() }
+        _amount.value = cleanValue
+        if (cleanValue.isNotBlank()) _amountError.value = null
     }
     
     fun updateCurrency(value: String) {
@@ -101,9 +103,12 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         if (_amount.value.isBlank()) {
             _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_required
             isValid = false
-        } else if (_amount.value.toDoubleOrNull() == null || (_amount.value.toDoubleOrNull() ?: 0.0) <= 0.0) {
-            _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_invalid
-            isValid = false
+        } else {
+            val amountValue = _amount.value.toDoubleOrNull() ?: 0.0
+            if (amountValue <= 0.0) {
+                _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_invalid
+                isValid = false
+            }
         }
         
         if (_currency.value.isBlank()) {
@@ -130,7 +135,9 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 val sub = result.getOrNull()
                 sub?.let {
                     _name.value = it.name
-                    _amount.value = it.cost.toString()
+                    // Convert Double cost to cents string (e.g. 12.5 -> "1250")
+                    val cents = (it.cost * 100).toLong().toString()
+                    _amount.value = cents
                     _currency.value = it.currency
                     _billingCycle.value = it.billingCycle
                     val rawDate = it.nextBillingDate ?: it.startDate ?: ""
@@ -156,7 +163,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 val subscription = Subscription(
                     id = _subscriptionId ?: UUID.randomUUID().toString(),
                     name = _name.value,
-                    cost = _amount.value.toDoubleOrNull() ?: 0.0,
+                    cost = (_amount.value.toDoubleOrNull() ?: 0.0) / 100.0,
                     currency = _currency.value,
                     billingCycle = _billingCycle.value,
                     nextBillingDate = apiDate,

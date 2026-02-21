@@ -33,6 +33,8 @@ import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.data.model.BillingCycle
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AddSubscriptionViewModel
+import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
+import com.gokhanaytekinn.sdandroid.util.CurrencyVisualTransformation
 import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -230,8 +232,9 @@ fun AddSubscriptionScreen(
                             onValueChange = viewModel::updateAmount,
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(12.dp),
-                            placeholder = { Text("0.00", color = Color.Gray) },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                            placeholder = { Text("0,00", color = Color.Gray) },
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                            visualTransformation = CurrencyVisualTransformation(CurrencyFormatter.getCurrencySymbol(currency)),
                             isError = amountError != null,
                             supportingText = if (amountError != null) {
                                 { Text(stringResource(amountError!!)) }
