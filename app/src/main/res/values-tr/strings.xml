@@ -13,6 +13,7 @@
     <string name="show_password">Şifreyi göster</string>
     <string name="hide_password">Şifreyi gizle</string>
     <string name="unknown_error">Bilinmeyen hata</string>
+    <string name="scan">Tara</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Aboneliklerini Takip Et</string>
@@ -168,7 +169,13 @@
     <!-- Subscriptions List -->
     <string name="all_subscriptions">Tüm Abonelikler</string>
     <string name="no_subscriptions">Henüz abonelik yok</string>
+    <string name="no_active_subscriptions">Aktif abonelik bulunmuyor</string>
+    <string name="no_suspicious_subscriptions">Şüpheli abonelik bulunmuyor</string>
+    <string name="no_cancelled_subscriptions">İptal edilen abonelik bulunmuyor</string>
+    <string name="detected_count">Tespit Edilenler (%d)</string>
+    <string name="marked_count">İşaretlenenler (%d)</string>
     <string name="add_subscription">Abonelik Ekle</string>
+    <string name="service_name_placeholder">örn. Netflix</string>
     <string name="subscription_details">Abonelik Detayları</string>
     <string name="next_payment">Sonraki Ödeme</string>
     <string name="billing_cycle">Fatura Döngüsü</string>
@@ -266,6 +273,10 @@
     <string name="go_back">Geri Dön</string>
     <string name="subscription_id_not_found">Abonelik ID bulunamadı</string>
     <string name="no_subscriptions_yet">Henüz abonelik eklenmemiş</string>
+    <string name="sms_permission_rationale">SMS izni, cihazınızdaki abonelik bildirimlerini otomatik olarak tespit etmek için gereklidir.\nBu sayede aboneliklerinizi manuel olarak girmek zorunda kalmazsınız.</string>
+    <string name="storage_permission_rationale">Depolama izni, cihazınızdaki fatura ve abonelik belgelerini taramak için gereklidir.\nBu sayede PDF ve diğer dosyalardan abonelik bilgisi otomatik olarak tespit edilebilir.</string>
+    <string name="permission_denied_message">İzin verilmeden cihaz taraması yapılamaz.\nİsterseniz aboneliklerinizi manuel olarak ekleyebilirsiniz.</string>
+    <string name="permission_permanently_denied_message">İzin verilmedi. Lütfen uygulama ayarlarından izinleri etkinleştirin.</string>
 
 
     <!-- Help Center Content -->

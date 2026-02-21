@@ -13,6 +13,7 @@
     <string name="show_password">Mostrar contraseña</string>
     <string name="hide_password">Ocultar contraseña</string>
     <string name="unknown_error">Error desconocido</string>
+    <string name="scan">Escanear</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Rastrea tus Suscripciones</string>
@@ -123,6 +124,17 @@
     <string name="go_back">Volver</string>
     <string name="subscription_id_not_found">ID de suscripción no encontrado</string>
     <string name="no_subscriptions_yet">Aún no se han añadido suscripciones</string>
+    <string name="add_subscription">Añadir Suscripción</string>
+    <string name="service_name_placeholder">ej. Netflix</string>
+    <string name="sms_permission_rationale">Se requiere permiso de SMS para detectar automáticamente las notificaciones de suscripción en tu dispositivo.\nDe esta manera, no tienes que ingresar tus suscripciones manualmente.</string>
+    <string name="storage_permission_rationale">Se requiere permiso de almacenamiento para escanear facturas y documentos de suscripción en tu dispositivo.\nDe esta manera, la información de la suscripción se puede detectar automáticamente desde PDF y otros archivos.</string>
+    <string name="permission_denied_message">El escaneo del dispositivo no se puede realizar sin permiso.\nPuedes añadir tus suscripciones manualmente si lo deseas.</string>
+    <string name="permission_permanently_denied_message">Permiso denegado. Por favor, habilita los permisos desde los ajustes de la aplicación.</string>
+    <string name="no_active_subscriptions">No se encontraron suscripciones activas</string>
+    <string name="no_suspicious_subscriptions">No se encontraron suscripciones sospechosas</string>
+    <string name="no_cancelled_subscriptions">No se encontraron suscripciones canceladas</string>
+    <string name="detected_count">Detectadas (%d)</string>
+    <string name="marked_count">Marcadas (%d)</string>
 
     <string name="service_name">Nombre del Servicio</string>
     <string name="amount">Importe</string>

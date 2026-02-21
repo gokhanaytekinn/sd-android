@@ -144,7 +144,7 @@ fun SubscriptionDetailsScreen(
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.ArrowBack,
-                                contentDescription = "Back",
+                                contentDescription = stringResource(R.string.back),
                                 tint = colorScheme.onBackground
                             )
                         }

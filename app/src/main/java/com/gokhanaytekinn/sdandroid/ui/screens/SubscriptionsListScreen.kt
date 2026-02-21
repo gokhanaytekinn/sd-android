@@ -287,7 +287,7 @@ fun SubscriptionsListScreen(
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(
-                                        text = "Aktif abonelik bulunmuyor",
+                                        text = stringResource(R.string.no_active_subscriptions),
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
@@ -313,7 +313,7 @@ fun SubscriptionsListScreen(
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(
-                                        text = "Şüpheli abonelik bulunmuyor",
+                                        text = stringResource(R.string.no_suspicious_subscriptions),
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
@@ -322,7 +322,7 @@ fun SubscriptionsListScreen(
                             if (detectedSubscriptions.isNotEmpty()) {
                                 item { 
                                     Text(
-                                        text = "Tespit Edilenler (${detectedSubscriptions.size})",
+                                        text = stringResource(R.string.detected_count, detectedSubscriptions.size),
                                         fontSize = 14.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = WarningColor,
@@ -343,7 +343,7 @@ fun SubscriptionsListScreen(
                             if (suspiciousSubs.isNotEmpty()) {
                                 item { 
                                     Text(
-                                        text = "İşaretlenenler (${suspiciousSubs.size})",
+                                        text = stringResource(R.string.marked_count, suspiciousSubs.size),
                                         fontSize = 14.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = MaterialTheme.colorScheme.onSurface,
@@ -369,7 +369,7 @@ fun SubscriptionsListScreen(
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(
-                                        text = "İptal edilen abonelik bulunmuyor",
+                                        text = stringResource(R.string.no_cancelled_subscriptions),
                                         color = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
                                 }
@@ -426,7 +426,9 @@ fun SubscriptionsListScreen(
             title = { Text(stringResource(R.string.error)) }, // Or add "Permission Required" to strings
             text = { 
                 Text(
-                    "${PermissionManager.SMS_PERMISSION_RATIONALE}\n\n${PermissionManager.STORAGE_PERMISSION_RATIONALE}"
+                    text = "${stringResource(R.string.sms_permission_rationale)}\n\n${stringResource(R.string.storage_permission_rationale)}",
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             },
             confirmButton = {

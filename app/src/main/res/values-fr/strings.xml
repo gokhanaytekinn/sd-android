@@ -13,6 +13,7 @@
     <string name="show_password">Afficher le mot de passe</string>
     <string name="hide_password">Masquer le mot de passe</string>
     <string name="unknown_error">Erreur inconnue</string>
+    <string name="scan">Scanner</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Suivez vos abonnements</string>
@@ -166,6 +167,16 @@
     <string name="all_subscriptions">Tous les abonnements</string>
     <string name="no_subscriptions">Pas encore d\'abonnements</string>
     <string name="add_subscription">Ajouter un abonnement</string>
+    <string name="service_name_placeholder">ex. Netflix</string>
+    <string name="sms_permission_rationale">L\'autorisation SMS est requise pour détecter automatiquement les notifications d\'abonnement sur votre appareil.\nDe cette façon, vous n\'avez pas à saisir vos abonnements manuellement.</string>
+    <string name="storage_permission_rationale">L\'autorisation de stockage est requise pour scanner les factures et les documents d\'abonnement sur votre appareil.\nDe cette façon, les informations d\'abonnement peuvent être automatiquement détectées à partir de fichiers PDF et autres.</string>
+    <string name="permission_denied_message">Le balayage de l\'appareil ne peut pas être effectué sans autorisation.\nVous pouvez ajouter vos abonnements manuellement si vous le souhaitez.</string>
+    <string name="permission_permanently_denied_message">Autorisation refusée. Veuillez activer les autorisations dans les paramètres de l\'application.</string>
+    <string name="no_active_subscriptions">Aucun abonnement actif trouvé</string>
+    <string name="no_suspicious_subscriptions">Aucun abonnement suspect trouvé</string>
+    <string name="no_cancelled_subscriptions">Aucun abonnement annulé trouvé</string>
+    <string name="detected_count">Détectés (%d)</string>
+    <string name="marked_count">Marqués (%d)</string>
     <string name="subscription_details">Détails de l\'abonnement</string>
     <string name="next_payment">Prochain paiement</string>
     <string name="billing_cycle">Cycle de facturation</string>

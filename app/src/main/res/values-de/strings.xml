@@ -30,6 +30,7 @@
     <string name="hide_password">Passwort verbergen</string>
     <string name="or">oder</string>
     <string name="unknown_error">Unbekannter Fehler aufgetreten</string>
+    <string name="scan">Scannen</string>
     <string name="google_sign_in_failed">Google-Anmeldung fehlgeschlagen: %s</string>
 
     <!-- Dashboard -->
@@ -97,6 +98,7 @@
     <string name="all_subscriptions">Alle Abonnements</string>
     <string name="no_subscriptions">Keine Abonnements vorhanden</string>
     <string name="add_subscription">Abonnement hinzufügen</string>
+    <string name="service_name_placeholder">z.B. Netflix</string>
     <string name="subscription_details">Abonnement-Details</string>
     <string name="next_payment">Nächste Zahlung</string>
     <string name="billing_cycle">Abrechnungszyklus</string>
@@ -110,6 +112,15 @@
     <string name="nav_search">Suche</string>
     <string name="nav_settings">Einstellungen</string>
     <string name="subscriptions">Abonnements</string>
+    <string name="no_active_subscriptions">Keine aktiven Abonnements gefunden</string>
+    <string name="no_suspicious_subscriptions">Keine verdächtigen Abonnements gefunden</string>
+    <string name="no_cancelled_subscriptions">Keine gekündigten Abonnements gefunden</string>
+    <string name="sms_permission_rationale">Die SMS-Berechtigung ist erforderlich, um Abonnementbenachrichtigungen auf Ihrem Gerät automatisch zu erkennen.\nAuf diese Weise müssen Sie Ihre Abonnements nicht manuell eingeben.</string>
+    <string name="storage_permission_rationale">Die Speicherberechtigung ist erforderlich, um Rechnungs- und Abonnementdokumente auf Ihrem Gerät zu scannen.\nAuf diese Weise können Abonnementinformationen automatisch aus PDF- und anderen Dateien erkannt werden.</string>
+    <string name="permission_denied_message">Das Scannen des Geräts kann ohne Berechtigung nicht durchgeführt werden.\nSie können Ihre Abonnements bei Bedarf manuell hinzufügen.</string>
+    <string name="permission_permanently_denied_message">Berechtigung verweigert. Bitte aktivieren Sie die Berechtigungen in den Anwendungseinstellungen.</string>
+    <string name="detected_count">Erkannt (%d)</string>
+    <string name="marked_count">Markiert (%d)</string>
     <string name="nav_all_subscriptions">Alle Abonnements</string>
 
     <!-- Search -->

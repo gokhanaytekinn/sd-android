@@ -13,6 +13,7 @@
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
     <string name="unknown_error">Unknown error</string>
+    <string name="scan">Scan</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Track Your Subscriptions</string>
@@ -169,7 +170,13 @@
     <!-- Subscriptions List -->
     <string name="all_subscriptions">All Subscriptions</string>
     <string name="no_subscriptions">No subscriptions yet</string>
+    <string name="no_active_subscriptions">No active subscriptions found</string>
+    <string name="no_suspicious_subscriptions">No suspicious subscriptions found</string>
+    <string name="no_cancelled_subscriptions">No cancelled subscriptions found</string>
+    <string name="detected_count">Detected (%d)</string>
+    <string name="marked_count">Marked (%d)</string>
     <string name="add_subscription">Add Subscription</string>
+    <string name="service_name_placeholder">e.g. Netflix</string>
     <string name="subscription_details">Subscription Details</string>
     <string name="next_payment">Next Payment</string>
     <string name="billing_cycle">Billing Cycle</string>
@@ -268,6 +275,10 @@
     <string name="go_back">Go Back</string>
     <string name="subscription_id_not_found">Subscription ID not found</string>
     <string name="no_subscriptions_yet">No subscriptions added yet</string>
+    <string name="sms_permission_rationale">SMS permission is required to automatically detect subscription notifications on your device.\nThis way, you don\'t have to enter your subscriptions manually.</string>
+    <string name="storage_permission_rationale">Storage permission is required to scan invoice and subscription documents on your device.\nThis way, subscription information can be automatically detected from PDF and other files.</string>
+    <string name="permission_denied_message">Device scanning cannot be performed without permission.\nYou can add your subscriptions manually if you wish.</string>
+    <string name="permission_permanently_denied_message">Permission denied. Please enable permissions from the application settings.</string>
 
 
     <!-- Help Center Content -->

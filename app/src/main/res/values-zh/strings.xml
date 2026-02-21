@@ -13,6 +13,7 @@
     <string name="show_password">显示密码</string>
     <string name="hide_password">隐藏密码</string>
     <string name="unknown_error">未知错误</string>
+    <string name="scan">扫描</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">追踪您的订阅</string>
@@ -169,6 +170,7 @@
     <string name="all_subscriptions">所有订阅</string>
     <string name="no_subscriptions">尚无订阅</string>
     <string name="add_subscription">添加订阅</string>
+    <string name="service_name_placeholder">例如 Netflix</string>
     <string name="subscription_details">订阅详情</string>
     <string name="next_payment">下一次扣费</string>
     <string name="billing_cycle">账单周期</string>
@@ -267,6 +269,15 @@
     <string name="go_back">返回</string>
     <string name="subscription_id_not_found">未找到订阅 ID</string>
     <string name="no_subscriptions_yet">尚未添加订阅</string>
+    <string name="sms_permission_rationale">需要 SMS 权限才能自动检测设备上的订阅通知。\n这样，您就不必手动输入订阅内容。</string>
+    <string name="storage_permission_rationale">需要存储权限才能扫描设备上的发票和订阅文件。\n这样，可以从 PDF 和其他文件中自动检测订阅信息。</string>
+    <string name="permission_denied_message">没有权限无法进行设备扫描。\n如果需要，您可以手动添加订阅。</string>
+    <string name="permission_permanently_denied_message">权限被拒绝。请在应用设置中启用权限。</string>
+    <string name="no_active_subscriptions">未发现激活的订阅</string>
+    <string name="no_suspicious_subscriptions">未发现可疑订阅</string>
+    <string name="no_cancelled_subscriptions">未发现已取消的订阅</string>
+    <string name="detected_count">已检测 (%d)</string>
+    <string name="marked_count">已标记 (%d)</string>
 
 
     <!-- Help Center Content -->

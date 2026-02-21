@@ -115,7 +115,7 @@ fun AddSubscriptionScreen(
                 ) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "Back",
+                        contentDescription = stringResource(R.string.back),
                         tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
@@ -149,7 +149,7 @@ fun AddSubscriptionScreen(
                     onValueChange = viewModel::updateName,
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
-                    placeholder = { Text("örn. Netflix", color = Color.Gray) },
+                    placeholder = { Text(stringResource(R.string.service_name_placeholder), color = Color.Gray) },
                     isError = nameError != null,
                     supportingText = if (nameError != null) {
                         { Text(stringResource(nameError!!)) }

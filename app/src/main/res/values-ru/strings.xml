@@ -13,6 +13,7 @@
     <string name="show_password">Показать пароль</string>
     <string name="hide_password">Скрыть пароль</string>
     <string name="unknown_error">Неизвестная ошибка</string>
+    <string name="scan">Сканировать</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Отслеживайте Подписки</string>
@@ -141,6 +142,17 @@
     <string name="go_back">Вернуться</string>
     <string name="subscription_id_not_found">ID подписки не найден</string>
     <string name="no_subscriptions_yet">Подписки еще не добавлены</string>
+    <string name="add_subscription">Добавить подписку</string>
+    <string name="service_name_placeholder">например, Netflix</string>
+    <string name="sms_permission_rationale">Разрешение на SMS необходимо для автоматического обнаружения уведомлений о подписках на вашем устройстве.\nТаким образом, вам не придется вводить данные о подписках вручную.</string>
+    <string name="storage_permission_rationale">Разрешение на хранилище необходимо для сканирования счетов и документов о подписках на вашем устройстве.\nТаким образом, информация о подписках может быть автоматически извлечена из PDF и других файлов.</string>
+    <string name="permission_denied_message">Сканирование устройства невозможно без разрешения.\nВы можете добавить свои подписки вручную, если хотите.</string>
+    <string name="permission_permanently_denied_message">Разрешение отклонено. Пожалуйста, включите разрешения в настройках приложения.</string>
+    <string name="no_active_subscriptions">Активные подписки не найдены</string>
+    <string name="no_suspicious_subscriptions">Подозрительные подписки не найдены</string>
+    <string name="no_cancelled_subscriptions">Отмененные подписки не найдены</string>
+    <string name="detected_count">Обнаружено (%d)</string>
+    <string name="marked_count">Отмечено (%d)</string>
 
     <string name="subscription_details">Детали Подписки</string>
     <string name="next_payment">Следующий Платеж</string>
