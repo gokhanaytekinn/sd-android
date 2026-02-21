@@ -10,6 +10,9 @@
     <string name="skip">Skip</string>
     <string name="continue_btn">Continue</string>
     <string name="get_started">Get Started</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
+    <string name="unknown_error">Unknown error</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Track Your Subscriptions</string>
@@ -105,6 +108,47 @@
     <string name="manage_subscriptions">Manage your subscriptions easily</string>
     <string name="guest_user">Guest User</string>
     <string name="not_logged_in">Not logged in</string>
+    
+    <!-- Login Screen -->
+    <string name="login_desc">Start tracking your subscriptions and saving money now.</string>
+    <string name="email_placeholder">email@example.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">or</string>
+    <string name="no_account_prompt">Don\'t have an account? </string>
+    <string name="google_sign_in_failed">Google sign in failed (%s)</string>
+    
+    <!-- Register Screen -->
+    <string name="register_desc">Start managing your subscriptions and saving.</string>
+    <string name="full_name_placeholder">e.g. John Doe</string>
+    <string name="accept_terms_pre">I accept the </string>
+    <string name="and"> and </string>
+    <string name="accept_terms_post">.</string>
+    <string name="already_have_account_prompt">Already have an account? </string>
+    
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Terms of Use</string>
+    <string name="terms_of_use_content">1. Acceptance\nBy using Sub Tracker, you agree to these terms.\n\n2. Service Scope\nThe application is a tool to help you track your subscriptions. It is not financial advice.\n\n3. User Responsibility\nYou are responsible for the security of your account information and the accuracy of the data you add.\n\n4. Changes\nWe reserve the right to change app features and these terms at any time.\n\n5. Termination\nWe may terminate your access to the service in case of violation of the terms.</string>
+    <string name="understood">Understood</string>
+    <string name="privacy_dialog_content">Last Updated: February 20, 2026\n\n1. Introduction\nWe value the privacy of your data.\n\n2. Collected Data\nSubscription information, usage preferences, and basic device information are processed.\n\n3. Data Use\nYour data is only used to send reminders and improve app performance.\n\n4. Data Security\nYour data is protected with industry-standard encryption methods.\n\n5. Contact\nFor questions: gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Enter your registered email address to reset your password. We will send you a verification code.</string>
+    <string name="email_address_label">Email Address</string>
+    <string name="send_code">Send Code</string>
+    <string name="back_to_login">Back to login</string>
+    <string name="verify_code_title">Verify Code</string>
+    <string name="verify_code_desc">Enter the 6-digit verification code we sent to %s.</string>
+    <string name="verify_and_continue">Verify and Continue</string>
+    <string name="wait_for_code">Wait for new code:</string>
+    <string name="code_not_received">Didn\'t get the code?</string>
+    <string name="resend_code">Resend Code</string>
+    <string name="reset_password_title">Create New Password</string>
+    <string name="reset_password_desc">Please set a strong new password for your account.</string>
+    <string name="new_password_label">New Password</string>
+    <string name="confirm_password_label">Confirm Password</string>
+    <string name="min_6_chars">At least 6 characters</string>
+    <string name="passwords_match">Passwords match</string>
+    <string name="update_password">Update Password</string>
     
     <!-- Suspicious Payments -->
     <string name="suspicious_payments">Suspicious Payments</string>

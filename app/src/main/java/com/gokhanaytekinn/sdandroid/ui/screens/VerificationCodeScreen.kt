@@ -19,8 +19,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
 
@@ -65,7 +67,7 @@ fun VerificationCodeScreen(
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "Back",
+                        contentDescription = stringResource(R.string.back),
                         tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
@@ -98,7 +100,7 @@ fun VerificationCodeScreen(
                 
                 // Title & Description
                 Text(
-                    text = "Kodu Doğrula",
+                    text = stringResource(R.string.verify_code_title),
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -107,7 +109,7 @@ fun VerificationCodeScreen(
                 Spacer(modifier = Modifier.height(12.dp))
                 
                 Text(
-                    text = "${authState.resetEmail ?: "E-posta"} adresine gönderdiğimiz 6 haneli doğrulama kodunu girin.",
+                    text = stringResource(R.string.verify_code_desc, authState.resetEmail ?: stringResource(R.string.email)),
                     fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                     lineHeight = 24.sp
@@ -175,7 +177,7 @@ fun VerificationCodeScreen(
                         )
                     } else {
                         Text(
-                            "Doğrula ve Devam Et",
+                            stringResource(R.string.verify_and_continue),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -201,7 +203,7 @@ fun VerificationCodeScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = if (isTimerActive) "Yeni kod için bekleyin:" else "Kod gelmedi mi?",
+                        text = if (isTimerActive) stringResource(R.string.wait_for_code) else stringResource(R.string.code_not_received),
                         color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                         fontSize = 14.sp
                     )
@@ -225,7 +227,7 @@ fun VerificationCodeScreen(
                             }
                         }) {
                             Text(
-                                text = "Tekrar Gönder",
+                                text = stringResource(R.string.resend_code),
                                 color = PrimaryBlue,
                                 fontWeight = FontWeight.SemiBold,
                                 fontSize = 14.sp

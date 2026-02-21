@@ -88,7 +88,7 @@ fun RegisterScreen(
             
             // Headline
             Text(
-                text = "Hesap Oluştur",
+                text = stringResource(R.string.register),
                 fontSize = 32.sp,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onBackground
@@ -97,7 +97,7 @@ fun RegisterScreen(
             Spacer(modifier = Modifier.height(8.dp))
             
             Text(
-                text = "Aboneliklerini yönetmeye ve tasarruf etmeye başla.",
+                text = stringResource(R.string.register_desc),
                 fontSize = 16.sp,
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                 lineHeight = 24.sp
@@ -108,7 +108,7 @@ fun RegisterScreen(
             // Full Name Field
             Column {
                 Text(
-                    text = "Ad Soyad",
+                    text = stringResource(R.string.full_name),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -123,7 +123,7 @@ fun RegisterScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(if (authState.nameError != null) 76.dp else 56.dp),
-                    placeholder = { Text("Örn: Ahmet Yılmaz") },
+                    placeholder = { Text(stringResource(R.string.full_name_placeholder)) },
                     isError = authState.nameError != null,
                     supportingText = if (authState.nameError != null) {
                         { Text(stringResource(authState.nameError!!)) }
@@ -144,7 +144,7 @@ fun RegisterScreen(
             // Email Field
             Column {
                 Text(
-                    text = "E-posta",
+                    text = stringResource(R.string.email),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -159,7 +159,7 @@ fun RegisterScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(if (authState.emailError != null) 76.dp else 56.dp),
-                    placeholder = { Text("örnek@mail.com") },
+                    placeholder = { Text(stringResource(R.string.email_placeholder)) },
                     isError = authState.emailError != null,
                     supportingText = if (authState.emailError != null) {
                         { Text(stringResource(authState.emailError!!)) }
@@ -180,7 +180,7 @@ fun RegisterScreen(
             // Password Field
             Column {
                 Text(
-                    text = "Şifre",
+                    text = stringResource(R.string.password),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Medium,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -195,7 +195,7 @@ fun RegisterScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(if (authState.passwordError != null) 76.dp else 56.dp),
-                    placeholder = { Text("••••••••") },
+                    placeholder = { Text(stringResource(R.string.password_placeholder)) },
                     isError = authState.passwordError != null,
                     supportingText = if (authState.passwordError != null) {
                         { Text(stringResource(authState.passwordError!!)) }
@@ -205,11 +205,11 @@ fun RegisterScreen(
                     singleLine = true,
                     trailingIcon = {
                         IconButton(onClick = { passwordVisible = !passwordVisible }) {
-                            Icon(
-                                imageVector = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
-                                contentDescription = if (passwordVisible) "Hide password" else "Show password",
-                                tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
-                            )
+                                Icon(
+                                    imageVector = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
+                                    contentDescription = if (passwordVisible) stringResource(R.string.hide_password) else stringResource(R.string.show_password),
+                                    tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
+                                )
                         }
                     },
                     colors = OutlinedTextFieldDefaults.colors(
@@ -236,22 +236,35 @@ fun RegisterScreen(
                     ),
                     modifier = Modifier.padding(end = 8.dp)
                 )
+                val acceptTermsPre = stringResource(R.string.accept_terms_pre)
+                val termsText = stringResource(R.string.terms_of_use_title)
+                val andText = stringResource(R.string.and)
+                val privacyText = stringResource(R.string.privacy_policy_title)
+                val acceptTermsPost = stringResource(R.string.accept_terms_post)
+
                 val annotatedString = buildAnnotatedString {
+                    if (acceptTermsPre.isNotEmpty()) {
+                        withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))) {
+                            append(acceptTermsPre)
+                        }
+                    }
                     withStyle(style = SpanStyle(color = PrimaryBlue, fontWeight = FontWeight.Medium)) {
                         pushStringAnnotation(tag = "TERMS", annotation = "terms")
-                        append("Kullanım Koşullarını")
+                        append(termsText)
                         pop()
                     }
                     withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))) {
-                        append(" ve ")
+                        append(andText)
                     }
                     withStyle(style = SpanStyle(color = PrimaryBlue, fontWeight = FontWeight.Medium)) {
                         pushStringAnnotation(tag = "POLICY", annotation = "policy")
-                        append("Gizlilik Politikası")
+                        append(privacyText)
                         pop()
                     }
-                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))) {
-                        append("'nı kabul ediyorum.")
+                    if (acceptTermsPost.isNotEmpty()) {
+                        withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f))) {
+                            append(acceptTermsPost)
+                        }
                     }
                 }
 
@@ -312,7 +325,7 @@ fun RegisterScreen(
                         )
                     } else {
                         Text(
-                            text = "Kayıt Ol",
+                            text = stringResource(R.string.register),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -338,22 +351,22 @@ fun RegisterScreen(
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
+                Text(
+                    text = stringResource(R.string.already_have_account_prompt),
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
+                    fontSize = 14.sp
+                )
+                TextButton(
+                    onClick = onNavigateToLogin,
+                    contentPadding = PaddingValues(0.dp)
+                ) {
                     Text(
-                        text = "Zaten bir hesabın var mı? ",
-                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
-                        fontSize = 14.sp
+                        text = stringResource(R.string.login),
+                        color = PrimaryBlue,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Bold
                     )
-                    TextButton(
-                        onClick = onNavigateToLogin,
-                        contentPadding = PaddingValues(0.dp)
-                    ) {
-                        Text(
-                            text = "Giriş Yap",
-                            color = PrimaryBlue,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
+                }
                 }
                 
                 Spacer(modifier = Modifier.height(16.dp))
@@ -365,7 +378,7 @@ fun RegisterScreen(
     if (showTermsDialog) {
         AlertDialog(
             onDismissRequest = { showTermsDialog = false },
-            title = { Text("Kullanım Koşulları", fontWeight = FontWeight.Bold) },
+            title = { Text(stringResource(R.string.terms_of_use_title), fontWeight = FontWeight.Bold) },
             text = {
                 Column(
                     modifier = Modifier
@@ -373,18 +386,14 @@ fun RegisterScreen(
                         .padding(vertical = 8.dp)
                 ) {
                     Text(
-                        text = "1. Kabul\nAbonelik Dedektifi'ni kullanarak bu koşulları kabul etmiş sayılırsınız.\n\n" +
-                                "2. Hizmet Kapsamı\nUygulama, aboneliklerinizi takip etmenize yardımcı olan bir araçtır. Finansal tavsiye niteliği taşımaz.\n\n" +
-                                "3. Kullanıcı Sorumluluğu\nHesap bilgilerinizin güvenliğinden ve eklediğiniz verilerin doğruluğundan siz sorumlusunuz.\n\n" +
-                                "4. Değişiklikler\nUygulama özelliklerinde ve bu koşullarda dilediğimiz zaman değişiklik yapma hakkımız saklıdır.\n\n" +
-                                "5. Sonlandırma\nKoşulların ihlali durumunda hizmete erişiminizi sonlandırabiliriz.",
+                        text = stringResource(R.string.terms_of_use_content),
                         lineHeight = 20.sp
                     )
                 }
             },
             confirmButton = {
                 TextButton(onClick = { showTermsDialog = false }) {
-                    Text("Anladım", color = PrimaryBlue, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.understood), color = PrimaryBlue, fontWeight = FontWeight.Bold)
                 }
             },
             shape = RoundedCornerShape(16.dp),
@@ -396,7 +405,7 @@ fun RegisterScreen(
     if (showPrivacyDialog) {
         AlertDialog(
             onDismissRequest = { showPrivacyDialog = false },
-            title = { Text("Gizlilik Politikası", fontWeight = FontWeight.Bold) },
+            title = { Text(stringResource(R.string.privacy_policy_title), fontWeight = FontWeight.Bold) },
             text = {
                 Column(
                     modifier = Modifier
@@ -404,19 +413,14 @@ fun RegisterScreen(
                         .padding(vertical = 8.dp)
                 ) {
                     Text(
-                        text = "Son Güncelleme: 20 Şubat 2026\n\n" +
-                                "1. Giriş\nVerilerinizin gizliliğine önem veriyoruz.\n\n" +
-                                "2. Toplanan Veriler\nAbonelik bilgileri, kullanım tercihleri ve temel cihaz bilgileri işlenmektedir.\n\n" +
-                                "3. Veri Kullanımı\nVerileriniz yalnızca hatırlatıcılar göndermek ve uygulama performansını artırmak için kullanılır.\n\n" +
-                                "4. Veri Güvenliği\nVerileriniz endüstri standardı şifreleme yöntemleri ile korunmaktadır.\n\n" +
-                                "5. İletişim\nSorularınız için: gokhanaytekinn@yandex.com",
+                        text = stringResource(R.string.privacy_dialog_content),
                         lineHeight = 20.sp
                     )
                 }
             },
             confirmButton = {
                 TextButton(onClick = { showPrivacyDialog = false }) {
-                    Text("Kapat", color = PrimaryBlue, fontWeight = FontWeight.Bold)
+                    Text(stringResource(R.string.close), color = PrimaryBlue, fontWeight = FontWeight.Bold)
                 }
             },
             shape = RoundedCornerShape(16.dp),

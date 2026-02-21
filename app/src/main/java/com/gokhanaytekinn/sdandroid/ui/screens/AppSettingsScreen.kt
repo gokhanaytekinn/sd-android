@@ -95,7 +95,7 @@ fun AppSettingsScreen(
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = "Back",
+                        contentDescription = stringResource(R.string.back),
                         tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
@@ -235,7 +235,7 @@ fun AppSettingsScreen(
                                     contentAlignment = Alignment.Center
                                 ) {
                                     Text(
-                                        text = "CD",
+                                        text = (authState.userName?.take(1) ?: "G").uppercase(),
                                         fontSize = 18.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = PrimaryBlue

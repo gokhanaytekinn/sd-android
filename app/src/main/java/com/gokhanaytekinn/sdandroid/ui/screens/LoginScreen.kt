@@ -26,6 +26,7 @@ import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
+import com.gokhanaytekinn.sdandroid.R
 import kotlinx.coroutines.launch
 
 @Composable
@@ -59,11 +60,10 @@ fun LoginScreen(
                 val idToken = googleIdTokenCredential.idToken
                 viewModel.signInWithGoogle(idToken, onLoginSuccess)
             } catch (e: GetCredentialException) {
-                android.util.Log.e("GoogleSignIn", "GetCredentialException: ${e.type} — ${e.message}")
-                googleSignInError = e.message ?: "Google ile giriş başarısız (${e.type})"
+                googleSignInError = e.message ?: context.getString(R.string.google_sign_in_failed, e.type)
             } catch (e: Exception) {
                 android.util.Log.e("GoogleSignIn", "Exception: ${e.message}")
-                googleSignInError = e.message ?: "Bilinmeyen hata"
+                googleSignInError = e.message ?: context.getString(R.string.unknown_error)
             }
         }
     }
@@ -96,7 +96,7 @@ fun LoginScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Abonelik Dedektifi",
+                    text = stringResource(R.string.app_name),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -119,7 +119,7 @@ fun LoginScreen(
                 
                 // Headline
                 Text(
-                    text = "Giriş Yap",
+                    text = stringResource(R.string.login),
                     fontSize = 32.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -128,7 +128,7 @@ fun LoginScreen(
                 Spacer(modifier = Modifier.height(8.dp))
                 
                 Text(
-                    text = "Aboneliklerini takip etmeye ve tasarruf etmeye hemen başla.",
+                    text = stringResource(R.string.login_desc),
                     fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                     lineHeight = 24.sp
@@ -139,7 +139,7 @@ fun LoginScreen(
                 // Email Field
                 Column {
                     Text(
-                        text = "E-posta",
+                        text = stringResource(R.string.email),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
                         color = MaterialTheme.colorScheme.onBackground,
@@ -154,7 +154,7 @@ fun LoginScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(if (authState.emailError != null) 76.dp else 56.dp),
-                        placeholder = { Text("eposta@ornek.com") },
+                        placeholder = { Text(stringResource(R.string.email_placeholder)) },
                         isError = authState.emailError != null,
                         supportingText = if (authState.emailError != null) {
                             { Text(stringResource(authState.emailError!!)) }
@@ -175,7 +175,7 @@ fun LoginScreen(
                 // Password Field
                 Column {
                     Text(
-                        text = "Şifre",
+                        text = stringResource(R.string.password),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
                         color = MaterialTheme.colorScheme.onBackground,
@@ -190,7 +190,7 @@ fun LoginScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(if (authState.passwordError != null) 76.dp else 56.dp),
-                        placeholder = { Text("••••••••") },
+                        placeholder = { Text(stringResource(R.string.password_placeholder)) },
                         isError = authState.passwordError != null,
                         supportingText = if (authState.passwordError != null) {
                             { Text(stringResource(authState.passwordError!!)) }
@@ -202,7 +202,7 @@ fun LoginScreen(
                             IconButton(onClick = { passwordVisible = !passwordVisible }) {
                                 Icon(
                                     imageVector = if (passwordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
-                                    contentDescription = if (passwordVisible) "Hide password" else "Show password",
+                                    contentDescription = if (passwordVisible) stringResource(R.string.hide_password) else stringResource(R.string.show_password),
                                     tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
                                 )
                             }
@@ -227,7 +227,7 @@ fun LoginScreen(
                             contentPadding = PaddingValues(0.dp)
                         ) {
                             Text(
-                                text = "Şifremi Unuttum",
+                                text = stringResource(R.string.forgot_password),
                                 color = PrimaryBlue,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium
@@ -265,7 +265,7 @@ fun LoginScreen(
                         )
                     } else {
                         Text(
-                            text = "Giriş Yap",
+                            text = stringResource(R.string.login),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -292,7 +292,7 @@ fun LoginScreen(
                 ) {
                     Divider(modifier = Modifier.weight(1f), color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f))
                     Text(
-                        text = "veya",
+                        text = stringResource(R.string.or),
                         modifier = Modifier.padding(horizontal = 16.dp),
                         color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f),
                         fontSize = 14.sp
@@ -320,7 +320,7 @@ fun LoginScreen(
                     ) {
                         Icon(
                             painter = androidx.compose.ui.res.painterResource(id = com.gokhanaytekinn.sdandroid.R.drawable.ic_google),
-                            contentDescription = "Google",
+                            contentDescription = stringResource(R.string.language_english), // English/Google placeholder
                             modifier = Modifier.size(24.dp),
                             tint = Color.Unspecified
                         )
@@ -350,7 +350,7 @@ fun LoginScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Hesabın yok mu? ",
+                    text = stringResource(R.string.no_account_prompt),
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                     fontSize = 14.sp
                 )
@@ -359,7 +359,7 @@ fun LoginScreen(
                     contentPadding = PaddingValues(0.dp)
                 ) {
                     Text(
-                        text = "Kayıt Ol",
+                        text = stringResource(R.string.register),
                         color = PrimaryBlue,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Bold

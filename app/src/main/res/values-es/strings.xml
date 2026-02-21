@@ -10,6 +10,9 @@
     <string name="skip">Saltar</string>
     <string name="continue_btn">Continuar</string>
     <string name="get_started">Empezar</string>
+    <string name="show_password">Mostrar contraseña</string>
+    <string name="hide_password">Ocultar contraseña</string>
+    <string name="unknown_error">Error desconocido</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Rastrea tus Suscripciones</string>
@@ -107,4 +110,110 @@
     <string name="reminder">Recordatorio</string>
     <string name="reminder_desc">Notificar 1 día antes del pago</string>
     <string name="update">Actualizar</string>
+
+
+    <!-- Auth -->
+    <string name="login">Iniciar Sesión</string>
+    <string name="register">Registrarse</string>
+    <string name="email">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="name">Nombre</string>
+    <string name="full_name">Nombre Completo</string>
+    <string name="forgot_password">¿Olvidaste tu contraseña?</string>
+    <string name="no_account">¿No tienes una cuenta?</string>
+    <string name="have_account">¿Ya tienes una cuenta?</string>
+    <string name="sign_in">Iniciar Sesión</string>
+    <string name="sign_up">Registrarse</string>
+    <string name="create_account">Crear Cuenta</string>
+    <string name="welcome_back">Bienvenido de nuevo</string>
+    <string name="start_tracking">Comienza a rastrear tus suscripciones</string>
+    <string name="join_us">Únete a nosotros</string>
+    <string name="manage_subscriptions">Gestiona tus suscripciones fácilmente</string>
+    <string name="guest_user">Usuario Invitado</string>
+    <string name="not_logged_in">No has iniciado sesión</string>
+
+    <string name="login_desc">Empieza a rastrear senin suscripciones y a ahorrar dinero ahora.</string>
+    <string name="google_sign_in_failed">Error al iniciar sesión con Google (%s)</string>
+    <string name="email_placeholder">correo@ejemplo.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">o</string>
+    <string name="no_account_prompt">¿No tienes una cuenta? </string>
+    <string name="already_have_account_prompt">¿Ya tienes una cuenta? </string>
+    
+    <!-- Register Screen -->
+    <string name="register_desc">Empieza a gestionar tus suscripciones y a ahorrar.</string>
+    <string name="full_name_placeholder">ej. Juan Pérez</string>
+    <string name="accept_terms_pre">Acepto los </string>
+    <string name="and"> y la </string>
+    <string name="accept_terms_post">.</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Introduce tu correo electrónico registrado para restablecer tu contraseña. Te enviaremos un código de verificación.</string>
+    <string name="email_address_label">Correo Electrónico</string>
+    <string name="send_code">Enviar Código</string>
+    <string name="back_to_login">Volver al inicio de sesión</string>
+    <string name="verify_code_title">Verificar Código</string>
+    <string name="verify_code_desc">Introduce el código de verificación de 6 dígitos que enviamos a %s.</string>
+    <string name="verify_and_continue">Verificar y Continuar</string>
+    <string name="wait_for_code">Espera por el nuevo código:</string>
+    <string name="code_not_received">¿No recibiste el código?</string>
+    <string name="resend_code">Reenviar Código</string>
+    <string name="reset_password_title">Crear Nueva Contraseña</string>
+    <string name="reset_password_desc">Por favor, establece una nueva contraseña segura para tu cuenta.</string>
+    <string name="new_password_label">Nueva Contraseña</string>
+    <string name="confirm_password_label">Confirmar Contraseña</string>
+    <string name="min_6_chars">Al menos 6 caracteres</string>
+    <string name="passwords_match">Las contraseñas coinciden</string>
+    <string name="update_password">Actualizar Contraseña</string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Términos de Uso</string>
+    <string name="terms_of_use_content">1. Aceptación\nAl usar Sub Tracker, aceptas estos términos.\n\n2. Alcance del Servicio\nLa aplicación es una herramienta para ayudarte a rastrear tus suscripciones. No es un consejo financiero.\n\n3. Responsabilidad del Usuario\nEres responsable de la seguridad de la información de tu cuenta y de la exactitud de los datos que agregas.\n\n4. Cambios\nNos reservamos el derecho de cambiar las características de la aplicación y estos términos en cualquier momento.\n\n5. Terminación\nPodemos terminar tu acceso al servicio en caso de violación de los términos.</string>
+    <string name="understood">Entendido</string>
+    <string name="privacy_dialog_content">Última actualización: 20 de febrero de 2026\n\n1. Introducción\nValoramos la privacidad de tus datos.\n\n2. Datos Recopilados\nSe procesan la información de suscripción, las preferencias de uso y la información básica del dispositivo.\n\n3. Uso de Datos\nTus datos solo se usan para enviar recordatorios y mejorar el rendimiento de la aplicación.\n\n4. Seguridad de Datos\nTus datos están protegidos con métodos de cifrado estándar de la industria.\n\n5. Contacto\nPara preguntas: gokhanaytekinn@yandex.com</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Centro de Ayuda</string>
+    <string name="help_search_placeholder">¿Cómo podemos ayudarte?</string>
+    <string name="popular_questions">Preguntas Populares</string>
+    
+    <string name="faq_q1">¿Cómo cancelar una suscripción?</string>
+    <string name="faq_a1">Puedes ir a la página de detalles de la suscripción y hacer clic en el botón \'Cancelar Suscripción\' en la parte inferior. Esta acción solo detiene el seguimiento dentro de la aplicación, no olvides cancelar también a través del proveedor de servicios.</string>
+    
+    <string name="faq_q2">¿Mis datos están seguros?</string>
+    <string name="faq_a2">Sí, todos tus datos se almacenan cifrados en tu dispositivo. Sub Tracker no comparte tus datos personales con terceros.</string>
+    
+    <string name="faq_q3">¿Cómo conecto mi cuenta bancaria?</string>
+    <string name="faq_a3">Actualmente, en lugar de la integración bancaria directa, proporcionamos seguimiento automático a través de SMS y permisos de lectura de notificaciones. La integración bancaria llegará pronto.</string>
+    
+    <string name="faq_q4">¿Puedo obtener un reembolso?</string>
+    <string name="faq_a4">Las políticas de Google Play/App Store se aplican a las compras dentro de la aplicación. Puedes realizar tus solicitudes de reembolso a través de la tienda respectiva.</string>
+    
+    <string name="faq_q5">Los recordatorios no funcionan, ¿qué debo hacer?</string>
+    <string name="faq_a5">Asegúrate de que los permisos de notificación de la aplicación estén habilitados en los ajustes del dispositivo. Además, comprueba que el modo de ahorro de batería no esté bloqueando las notificaciones.</string>
+    
+    <string name="faq_q6">¿Qué es una notificación de transacción sospechosa?</string>
+    <string name="faq_a6">La aplicación te advierte cuando detecta pagos fuera de tus patrones de gasto normales o cargos no identificados. Puedes revisar estas transacciones en la pantalla de \'Transacciones Sospechosas\'.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Política de Privacidad</string>
+    <string name="privacy_last_updated">Última actualización: 20 de febrero de 2026</string>
+    
+    <string name="privacy_title_1">1. Introducción</string>
+    <string name="privacy_content_1">Como Sub Tracker (\"la Aplicación\"), valoramos su privacidad. Esta Política de Privacidad explica cómo se recopilan, utilizan y protegen sus datos al utilizar nuestra aplicación.</string>
+    
+    <string name="privacy_title_2">2. Datos Recopilados</string>
+    <string name="privacy_content_2">Nuestra aplicación puede recopilar o procesar los siguientes datos para brindarle un mejor servicio:\n\n• Información de Suscripción: Nombre, precio y fechas de pago de las suscripciones que agregue.\n• Datos de Uso: Interacciones y preferencias dentro de la aplicación.\n• Información del Dispositivo: Identificadores básicos del dispositivo requeridos para que la aplicación funcione.</string>
+    
+    <string name="privacy_title_3">3. Uso de Datos</string>
+    <string name="privacy_content_3">Los datos recopilados solo se utilizan para los siguientes fines:\n\n• Para permitirle rastrear sus suscripciones.\n• Para enviar notificaciones de recordatorio para suscripciones con próximas fechas de pago.\n• Para mejorar el rendimiento de la aplicación y corregir errores.</string>
+    
+    <string name="privacy_title_4">4. Seguridad de Datos</string>
+    <string name="privacy_content_4">Sus datos personales se almacenan de forma segura en su dispositivo. Los datos almacenados en nuestros servidores (en caso de que cree una cuenta) están protegidos con métodos de cifrado estándar de la industria. Sus datos nunca se venden ni se comparten con terceros sin su permiso.</string>
+    
+    <string name="privacy_title_5">5. Permisos</string>
+    <string name="privacy_content_5">La aplicación puede solicitar permiso de notificación para enviarle notificaciones. Este permiso solo se utiliza para recordatorios de suscripción.</string>
+    
+    <string name="privacy_title_6">6. Contacto</string>
+    <string name="privacy_content_6">Para preguntas sobre nuestra política de privacidad, puede contactarnos en:\ngokhanaytekinn@yandex.com</string>
 </resources>

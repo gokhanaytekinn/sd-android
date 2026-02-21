@@ -10,6 +10,9 @@
     <string name="skip">Geç</string>
     <string name="continue_btn">Devam Et</string>
     <string name="get_started">Hadi Başlayalım</string>
+    <string name="show_password">Şifreyi göster</string>
+    <string name="hide_password">Şifreyi gizle</string>
+    <string name="unknown_error">Bilinmeyen hata</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Aboneliklerini Takip Et</string>
@@ -105,6 +108,47 @@
     <string name="manage_subscriptions">Aboneliklerini kolayca yönet</string>
     <string name="guest_user">Misafir Kullanıcı</string>
     <string name="not_logged_in">Giriş yapılmadı</string>
+
+    <!-- Login Screen -->
+    <string name="login_desc">Aboneliklerini takip etmeye ve tasarruf etmeye hemen başla.</string>
+    <string name="email_placeholder">eposta@ornek.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">veya</string>
+    <string name="no_account_prompt">Hesabın yok mu? </string>
+    <string name="google_sign_in_failed">Google ile giriş başarısız (%s)</string>
+
+    <!-- Register Screen -->
+    <string name="register_desc">Aboneliklerini yönetmeye ve tasarruf etmeye başla.</string>
+    <string name="full_name_placeholder">Örn: Ahmet Yılmaz</string>
+    <string name="accept_terms_pre"></string>
+    <string name="and"> ve </string>
+    <string name="accept_terms_post">\'nı kabul ediyorum.</string>
+    <string name="already_have_account_prompt">Zaten bir hesabın var mı? </string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Kullanım Koşulları</string>
+    <string name="terms_of_use_content">1. Kabul\nSub Tracker\'ı kullanarak bu koşulları kabul etmiş sayılırsınız.\n\n2. Hizmet Kapsamı\nUygulama, aboneliklerinizi takip etmenize yardımcı olan bir araçtır. Finansal tavsiye niteliği taşımaz.\n\n3. Kullanıcı Sorumluluğu\nHesap bilgilerinizin güvenliğinden ve eklediğiniz verilerin doğruluğundan siz sorumlusunuz.\n\n4. Değişiklikler\nUygulama özelliklerinde ve bu koşullarda dilediğimiz zaman değişiklik yapma hakkımız saklıdır.\n\n5. Sonlandırma\nKoşulların ihlali durumunda hizmete erişiminizi sonlandırabiliriz.</string>
+    <string name="understood">Anladım</string>
+    <string name="privacy_dialog_content">Son Güncelleme: 20 Şubat 2026\n\n1. Giriş\nVerilerinizin gizliliğine önem veriyoruz.\n\n2. Toplanan Veriler\nAbonelik bilgileri, kullanım tercihleri ve temel cihaz bilgileri işlenmektedir.\n\n3. Veri Kullanımı\nVerileriniz yalnızca hatırlatıcılar göndermek ve uygulama performansını artırmak için kullanılır.\n\n4. Veri Güvenliği\nVerileriniz endüstri standardı şifreleme yöntemleri ile korunmaktadır.\n\n5. İletişim\nSorularınız için: gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Şifrenizi sıfırlamak için kayıtlı e-posta adresinizi girin. Size bir doğrulama kodu göndereceğiz.</string>
+    <string name="email_address_label">E-posta Adresi</string>
+    <string name="send_code">Kod Gönder</string>
+    <string name="back_to_login">Giriş sayfasına dön</string>
+    <string name="verify_code_title">Kodu Doğrula</string>
+    <string name="verify_code_desc">%s adresine gönderdiğimiz 6 haneli doğrulama kodunu girin.</string>
+    <string name="verify_and_continue">Doğrula ve Devam Et</string>
+    <string name="wait_for_code">Yeni kod için bekleyin:</string>
+    <string name="code_not_received">Kod gelmedi mi?</string>
+    <string name="resend_code">Tekrar Gönder</string>
+    <string name="reset_password_title">Yeni Şifre Oluştur</string>
+    <string name="reset_password_desc">Lütfen hesabınız için güçlü ve yeni bir şifre belirleyin.</string>
+    <string name="new_password_label">Yeni Şifre</string>
+    <string name="confirm_password_label">Şifre Tekrar</string>
+    <string name="min_6_chars">En az 6 karakter</string>
+    <string name="passwords_match">Şifreler eşleşiyor</string>
+    <string name="update_password">Şifreyi Güncelle</string>
     
     <!-- Suspicious Payments -->
     <string name="suspicious_payments">Şüpheli Ödemeler</string>

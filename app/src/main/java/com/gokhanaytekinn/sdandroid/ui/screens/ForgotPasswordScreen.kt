@@ -51,7 +51,7 @@ fun ForgotPasswordScreen(
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "Back",
+                        contentDescription = stringResource(R.string.back),
                         tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
@@ -84,7 +84,7 @@ fun ForgotPasswordScreen(
                 
                 // Title & Description
                 Text(
-                    text = "Şifremi Unuttum",
+                    text = stringResource(R.string.forgot_password),
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -93,7 +93,7 @@ fun ForgotPasswordScreen(
                 Spacer(modifier = Modifier.height(12.dp))
                 
                 Text(
-                    text = "Şifrenizi sıfırlamak için kayıtlı e-posta adresinizi girin. Size bir doğrulama kodu göndereceğiz.",
+                    text = stringResource(R.string.forgot_password_desc),
                     fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                     lineHeight = 24.sp
@@ -103,7 +103,7 @@ fun ForgotPasswordScreen(
                 
                 // Email Input
                 Text(
-                    text = "E-posta Adresi",
+                    text = stringResource(R.string.email_address_label),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.SemiBold,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
@@ -114,7 +114,7 @@ fun ForgotPasswordScreen(
                     value = email,
                     onValueChange = { email = it },
                     modifier = Modifier.fillMaxWidth(),
-                    placeholder = { Text("e-posta@ornek.com", color = Color(0xFF94A3B8)) },
+                    placeholder = { Text(stringResource(R.string.email_placeholder), color = Color(0xFF94A3B8)) },
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Default.Mail,
@@ -167,7 +167,7 @@ fun ForgotPasswordScreen(
                             horizontalArrangement = Arrangement.Center
                         ) {
                             Text(
-                                "Kod Gönder",
+                                stringResource(R.string.send_code),
                                 fontSize = 16.sp,
                                 fontWeight = FontWeight.Bold
                             )
@@ -199,7 +199,7 @@ fun ForgotPasswordScreen(
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 ) {
                     Text(
-                        text = "Giriş sayfasına dön",
+                        text = stringResource(R.string.back_to_login),
                         color = PrimaryBlue,
                         fontWeight = FontWeight.SemiBold
                     )

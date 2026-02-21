@@ -15,8 +15,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
 
@@ -57,7 +59,7 @@ fun ResetPasswordScreen(
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "Back",
+                        contentDescription = stringResource(R.string.back),
                         tint = MaterialTheme.colorScheme.onBackground
                     )
                 }
@@ -90,7 +92,7 @@ fun ResetPasswordScreen(
                 
                 // Title & Description
                 Text(
-                    text = "Yeni Şifre Oluştur",
+                    text = stringResource(R.string.reset_password_title),
                     fontSize = 30.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground
@@ -99,7 +101,7 @@ fun ResetPasswordScreen(
                 Spacer(modifier = Modifier.height(12.dp))
                 
                 Text(
-                    text = "Lütfen hesabınız için güçlü ve yeni bir şifre belirleyin.",
+                    text = stringResource(R.string.reset_password_desc),
                     fontSize = 16.sp,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f),
                     lineHeight = 24.sp
@@ -108,11 +110,11 @@ fun ResetPasswordScreen(
                 Spacer(modifier = Modifier.height(32.dp))
                 
                 // Password Input
-                LabelText("Yeni Şifre")
+                LabelText(stringResource(R.string.new_password_label))
                 PasswordTextField(
                     value = password,
                     onValueChange = { password = it },
-                    placeholder = "••••••••",
+                    placeholder = stringResource(R.string.password_placeholder),
                     visible = passwordVisible,
                     onToggleVisibility = { passwordVisible = !passwordVisible }
                 )
@@ -120,11 +122,11 @@ fun ResetPasswordScreen(
                 Spacer(modifier = Modifier.height(20.dp))
                 
                 // Confirm Password Input
-                LabelText("Şifre Tekrar")
+                LabelText(stringResource(R.string.confirm_password_label))
                 PasswordTextField(
                     value = confirmPassword,
                     onValueChange = { confirmPassword = it },
-                    placeholder = "••••••••",
+                    placeholder = stringResource(R.string.password_placeholder),
                     visible = confirmPasswordVisible,
                     onToggleVisibility = { confirmPasswordVisible = !confirmPasswordVisible }
                 )
@@ -133,8 +135,8 @@ fun ResetPasswordScreen(
                 
                 // Requirements
                 Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                    RequirementItem(text = "En az 6 karakter", isMet = isPasswordValid)
-                    RequirementItem(text = "Şifreler eşleşiyor", isMet = doPasswordsMatch)
+                    RequirementItem(text = stringResource(R.string.min_6_chars), isMet = isPasswordValid)
+                    RequirementItem(text = stringResource(R.string.passwords_match), isMet = doPasswordsMatch)
                 }
                 
                 Spacer(modifier = Modifier.height(40.dp))
@@ -161,7 +163,7 @@ fun ResetPasswordScreen(
                         )
                     } else {
                         Text(
-                            "Şifreyi Güncelle",
+                            stringResource(R.string.update_password),
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Bold
                         )
@@ -219,7 +221,7 @@ private fun PasswordTextField(
             IconButton(onClick = onToggleVisibility) {
                 Icon(
                     imageVector = if (visible) Icons.Default.VisibilityOff else Icons.Default.Visibility,
-                    contentDescription = null,
+                    contentDescription = if (visible) stringResource(R.string.hide_password) else stringResource(R.string.show_password),
                     tint = Color(0xFF94A3B8)
                 )
             }

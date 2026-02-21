@@ -10,6 +10,9 @@
     <string name="skip">Пропустить</string>
     <string name="continue_btn">Продолжить</string>
     <string name="get_started">Начать</string>
+    <string name="show_password">Показать пароль</string>
+    <string name="hide_password">Скрыть пароль</string>
+    <string name="unknown_error">Неизвестная ошибка</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Отслеживайте Подписки</string>
@@ -202,4 +205,90 @@
     <string name="reminder">Напоминание</string>
     <string name="reminder_desc">Уведомить за 1 день до оплаты</string>
     <string name="update">Обновить</string>
+
+    <!-- Auth -->
+    <string name="login_desc">Начните отслеживать свои подписки и экономить прямо сейчас.</string>
+    <string name="email_placeholder">email@example.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">или</string>
+    <string name="no_account_prompt">Нет аккаунта? </string>
+    <string name="google_sign_in_failed">Ошибка входа через Google (%s)</string>
+    <string name="already_have_account_prompt">Уже есть аккаунт? </string>
+    
+    <!-- Register Screen -->
+    <string name="register_desc">Начните управлять подписками и экономить.</string>
+    <string name="full_name_placeholder">например, Иван Иванов</string>
+    <string name="accept_terms_pre">Я принимаю </string>
+    <string name="and"> и </string>
+    <string name="accept_terms_post">.</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Введите ваш зарегистрированный адрес электронной почты, чтобы сбросить пароль. Мы отправим вам код подтверждения.</string>
+    <string name="email_address_label">Электронная почта</string>
+    <string name="send_code">Отправить код</string>
+    <string name="back_to_login">Вернуться ко входу</string>
+    <string name="verify_code_title">Подтверждение кода</string>
+    <string name="verify_code_desc">Введите 6-значный код подтверждения, который мы отправили на %s.</string>
+    <string name="verify_and_continue">Подтвердить и продолжить</string>
+    <string name="wait_for_code">Подождите до отправки нового кода:</string>
+    <string name="code_not_received">Не получили код?</string>
+    <string name="resend_code">Отправить повторно</string>
+    <string name="reset_password_title">Создать новый пароль</string>
+    <string name="reset_password_desc">Пожалуйста, установите новый надежный пароль для вашего аккаунта.</string>
+    <string name="new_password_label">Новый пароль</string>
+    <string name="confirm_password_label">Подтвердите пароль</string>
+    <string name="min_6_chars">Минимум 6 символов</string>
+    <string name="passwords_match">Пароли совпадают</string>
+    <string name="update_password">Обновить пароль</string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Условия использования</string>
+    <string name="terms_of_use_content">1. Принятие\nИспользуя Sub Tracker, вы соглашаетесь с этими условиями.\n\n2. Объем услуг\nПриложение является инструментом для отслеживания ваших подписок. Оно не является финансовой рекомендацией.\n\n3. Ответственность пользователя\nВы несете ответственность за безопасность данных вашего аккаунта и точность добавляемой информации.\n\n4. Изменения\nМы оставляем за собой право изменять функции приложения и эти условия в любое время.\n\n5. Прекращение\nМы можем прекратить ваш доступ к сервису в случае нарушения условий.</string>
+    <string name="understood">Понятно</string>
+    <string name="privacy_dialog_content">Последнее обновление: 20 февраля 2026 г.\n\n1. Введение\nМы ценим конфиденциальность ваших данных.\n\n2. Собираемые данные\nОбрабатывается информация о подписках, предпочтениях использования и основные данные об устройстве.\n\n3. Использование данных\nВаши данные используются только для отправки напоминаний и улучшения работы приложения.\n\n4. Безопасность данных\nВаши данные защищены с использованием стандартных методов шифрования.\n\n5. Контакт\nПо вопросам: gokhanaytekinn@yandex.com</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Центр помощи</string>
+    <string name="help_search_placeholder">Чем мы можем вам помочь?</string>
+    <string name="popular_questions">Популярные вопросы</string>
+    
+    <string name="faq_q1">Как отменить подписку?</string>
+    <string name="faq_a1">Вы можете перейти на страницу деталей подписки и нажать кнопку «Отменить подписку» внизу. Это действие только прекращает отслеживание в приложении, не забудьте также отменить подписку через поставщика услуг.</string>
+    
+    <string name="faq_q2">Безопасны ли мои данные?</string>
+    <string name="faq_a2">Да, все ваши данные хранятся в зашифрованном виде на вашем устройстве. Sub Tracker не передает ваши личные данные третьим лицам.</string>
+    
+    <string name="faq_q3">Как привязать банковский счет?</string>
+    <string name="faq_a3">В настоящее время вместо прямой банковской интеграции мы предоставляем автоматическое отслеживание через SMS и разрешения на чтение уведомлений. Банковская интеграция появится в ближайшее время.</string>
+    
+    <string name="faq_q4">Могу ли я получить возврат средств?</string>
+    <string name="faq_a4">К покупкам внутри приложения применяются правила Google Play/App Store. Вы можете подать запрос на возврат средств через соответствующий магазин.</string>
+    
+    <string name="faq_q5">Напоминания не работают, что мне делать?</string>
+    <string name="faq_a5">Убедитесь, что разрешения на уведомления приложения включены в настройках устройства. Также проверьте, что режим энергосбережения не блокирует уведомления.</string>
+    
+    <string name="faq_q6">Что такое уведомление о подозрительной транзакции?</string>
+    <string name="faq_a6">Приложение предупреждает вас, когда обнаруживает платежи, выходящие за рамки ваших обычных расходов, или неопознанные списания. Вы можете просмотреть эти транзакции на экране «Подозрительные транзакции».</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Политика конфиденциальности</string>
+    <string name="privacy_last_updated">Последнее обновление: 20 февраля 2026 г.</string>
+    
+    <string name="privacy_title_1">1. Введение</string>
+    <string name="privacy_content_1">Как Sub Tracker («Приложение»), мы ценим вашу конфиденциальность. Настоящая Политика конфиденциальности объясняет, как ваши данные собираются, используются и защищаются при использовании нашего приложения.</string>
+    
+    <string name="privacy_title_2">2. Собираемые данные</string>
+    <string name="privacy_content_2">Наше приложение может собирать или обрабатывать следующие данные для предоставления вам лучшего сервиса:\n\n• Информация о подписках: Название, цена и даты оплаты добавляемых вами подписок.\n• Данные об использовании: Взаимодействия и предпочтения внутри приложения.\n• Информация об устройстве: Основные идентификаторы устройства, необходимые для работы приложения.</string>
+    
+    <string name="privacy_title_3">3. Использование данных</string>
+    <string name="privacy_content_3">Собранные данные используются только для следующих целей:\n\n• Чтобы позволить вам отслеживать ваши подписки.\n• Чтобы отправлять напоминания о подписках с предстоящими датами оплаты.\n• Чтобы улучшить производительность приложения и исправить ошибки.</string>
+    
+    <string name="privacy_title_4">4. Безопасность данных</string>
+    <string name="privacy_content_4">Ваши личные данные надежно хранятся на вашем устройстве. Данные, хранящиеся на наших серверах (в случае создания аккаунта), защищены стандартными методами шифрования. Ваши данные никогда не продаются и не передаются третьим лицам без вашего разрешения.</string>
+    
+    <string name="privacy_title_5">5. Разрешения</string>
+    <string name="privacy_content_5">Приложение может запрашивать разрешение на уведомления для отправки вам сообщений. Это разрешение используется только для напоминаний о подписках.</string>
+    
+    <string name="privacy_title_6">6. Контакты</string>
+    <string name="privacy_content_6">По вопросам, касающимся нашей политики конфиденциальности, вы можете связаться с нами по адресу:\ngokhanaytekinn@yandex.com</string>
 </resources>
