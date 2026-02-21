@@ -44,7 +44,7 @@ fun HelpCenterScreen(
             ),
             FaqItem(
                 question = "Verilerim güvende mi?",
-                answer = "Evet, tüm verileriniz cihazınızda şifrelenmiş olarak saklanır. Abonelik Dedektifi, kişisel verilerinizi üçüncü taraflarla paylaşmaz."
+                answer = "Evet, tüm verileriniz cihazınızda şifrelenmiş olarak saklanır. Sub Tracker, kişisel verilerinizi üçüncü taraflarla paylaşmaz."
             ),
             FaqItem(
                 question = "Banka hesabımı nasıl bağlarım?",

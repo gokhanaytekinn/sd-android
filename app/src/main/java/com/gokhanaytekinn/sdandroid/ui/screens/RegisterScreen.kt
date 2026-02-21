@@ -29,6 +29,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.foundation.text.ClickableText
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
+import com.gokhanaytekinn.sdandroid.R
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -67,7 +68,7 @@ fun RegisterScreen(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Text(
-                    text = "Abonelik Dedektifi",
+                    text = stringResource(R.string.app_name),
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onBackground,

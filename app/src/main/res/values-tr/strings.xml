@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Name -->
-    <string name="app_name">Abonelik Dedektifi</string>
+    <string name="app_name">Sub Tracker</string>
     
     <!-- Common -->
     <string name="back">Geri</string>

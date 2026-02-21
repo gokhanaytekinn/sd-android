@@ -84,7 +84,7 @@ fun PrivacyPolicyScreen(
             
             PolicySection(
                 title = "1. Giriş",
-                content = "Abonelik Dedektifi (\"Uygulama\") olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, uygulamamızı kullanırken verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar."
+                content = "Sub Tracker (\"Uygulama\") olarak gizliliğinize önem veriyoruz. Bu Gizlilik Politikası, uygulamamızı kullanırken verilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar."
             )
             
             PolicySection(
