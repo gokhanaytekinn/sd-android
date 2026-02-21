@@ -93,6 +93,7 @@
     <string name="language_turkmen">Түркмөн тили</string>
     <string name="language_kazakh">Казак тили</string>
     <string name="language_kyrgyz">Кыргызча</string>
+    <string name="language_uzbek">Өзбекче</string>
 
     <string name="select_language">Тилди тандаңыз</string>
     <string name="select_currency">Валютаны тандаңыз</string>

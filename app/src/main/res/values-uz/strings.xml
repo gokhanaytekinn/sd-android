@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Sub Tracker</string>
+    
+    <!-- Common -->
+    <string name="back">Orqaga</string>
+    <string name="save">Saqlash</string>
+    <string name="cancel">Bekor qilish</string>
+    <string name="skip">Oʻtkazib yuborish</string>
+    <string name="continue_btn">Davom etish</string>
+    <string name="get_started">Boshlash</string>
+    <string name="show_password">Parolni koʻrsatish</string>
+    <string name="hide_password">Parolni yashirish</string>
+    <string name="unknown_error">Nomaʼlum xatolik</string>
+    <string name="scan">Skanerlash</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Obunalaringizni kuzatib boring</string>
+    <string name="onboarding_desc_1">Barcha obunalaringizni bir joyda koʻring va boshqaring. Hech qachon toʻlovni oʻtkazib yubormang.</string>
+    <string name="onboarding_title_2">Toʻlovlarni avtomatik aniqlaydi</string>
+    <string name="onboarding_desc_2">SMS va bildirishnomalarni skanerlab, obunalaringizni sanoqli soniyalarda roʻyxat qiladi.</string>
+    <string name="onboarding_security">Shifrlangan va xavfsiz</string>
+    <string name="onboarding_title_3">Haddan tashqari xarajatlarni toʻxtating</string>
+    <string name="onboarding_desc_3">Esingizdan chiqqan obunalardan voz keching, toʻlov kunlaridan oldin bildirishnoma oling.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Xulosa</string>
+    <string name="hello_user">Salom, %s</string>
+    <string name="total_monthly">Shu oy xulosasi</string>
+    <string name="vs_last_month">Oʻtgan oyga nisbatan</string>
+    <string name="suspicious_subscriptions">Shubhali obunalar</string>
+    <string name="transactions_pending">%d ta tranzaksiya tekshirishni kutmoqda</string>
+    <string name="most_expensive">Eng qimmat obunalar</string>
+    <string name="view_all">Barchasi</string>
+    <string name="view_all_subscriptions">Barcha obunalarni koʻrish</string>
+    
+    <!-- Settings -->
+    <string name="settings">Sozlamalar</string>
+    <string name="account">ACCOUNT</string>
+    <string name="application">ILOVA</string>
+    <string name="support">QOʻLLAB-QUVVATLASH</string>
+    <string name="membership_type">Aʼzolik turi</string>
+    <string name="free_plan">Bepul reja</string>
+    <string name="notifications">Bildirishnomalar</string>
+    <string name="currency">Valyuta</string>
+    <string name="dark_mode">Tungi rejim</string>
+    <string name="language">Til</string>
+    <string name="help_center">Yordam markazi</string>
+    <string name="privacy_policy">Maxfiylik siyosati</string>
+    <string name="logout">Chiqish</string>
+    <string name="version_info">Versiya %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Premiumga oʻting</string>
+    <string name="premium_desc">Barcha obunalaringizni avtomatik skanerlang va %%30 koʻproq tejang.</string>
+    <string name="upgrade">Yangilash</string>
+    
+    <!-- Search -->
+    <string name="search">Qidirish</string>
+    <string name="search_placeholder">Obunani yoki tranzaksiyani qidirish</string>
+    <string name="recent_searches">OXIRGI QIDIRISHLAR</string>
+    <string name="results_found">NATIJA TOPILDI (%d)</string>
+    <string name="subscriptions">Obunalar</string>
+    <string name="transactions">Tranzaksiyalar</string>
+    <string name="looking_for_else">Boshqa narsa qidiryapsizmi?</string>
+    <string name="search_tip">Sotuvchi nomi yoki maʼlum bir tranzaksiya summasi boʻyicha qidirib koʻring.</string>
+    <string name="clear_search">Qidiruvni tozalash</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Faol</string>
+    <string name="suspicious">Shubhali</string>
+    <string name="cancelled">Bekor qilingan</string>
+    <string name="monthly">OYLIK</string>
+    <string name="yearly">YILLIK</string>
+    <string name="one_time">BIR MARTALIK</string>
+    <string name="renews">Yangilanish muddati: %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Xulosa</string>
+    <string name="nav_search">Qidirish</string>
+    <string name="nav_settings">Sozlamalar</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_chinese">Soddalashtirilgan xitoycha (zh)</string>
+    <string name="language_french">Fransuzcha</string>
+    <string name="language_german">Nemischa</string>
+    <string name="language_azerbaijani">Ozarbayjoncha</string>
+    <string name="language_turkmen">Turkmancha</string>
+    <string name="language_kazakh">Qozoqcha</string>
+    <string name="language_kyrgyz">Qirgʻizcha</string>
+    <string name="language_uzbek">Oʻzbekcha</string>
+
+    <string name="select_language">Tilni tanlang</string>
+    <string name="select_currency">Valyutani tanlang</string>
+    <string name="close">Yopish</string>
+    
+    <!-- Auth -->
+    <string name="login">Kirish</string>
+    <string name="register">Roʻyxatdan oʻtish</string>
+    <string name="email">Email</string>
+    <string name="password">Parol</string>
+    <string name="name">Ism</string>
+    <string name="full_name">Toʻliq ism</string>
+    <string name="forgot_password">Parolni unutdingizmi?</string>
+    <string name="no_account">Hisobingiz yoʻqmi?</string>
+    <string name="have_account">Hisobingiz bormi?</string>
+    <string name="sign_in">Kirish</string>
+    <string name="sign_up">Roʻyxatdan oʻtish</string>
+    <string name="create_account">Hisob ochish</string>
+    <string name="welcome_back">Xush kelibsiz</string>
+    <string name="start_tracking">Obunalaringizni kuzatishni boshlang</string>
+    <string name="join_us">Bizga qoʻshiling</string>
+    <string name="manage_subscriptions">Obunalaringizni oson boshqaring</string>
+    <string name="guest_user">Mehmon</string>
+    <string name="not_logged_in">Tizimga kirilmagan</string>
+
+    <!-- Login Screen -->
+    <string name="login_desc">Obunalaringizni kuzatishni va tejashni hozir boshlang.</string>
+    <string name="email_placeholder">email@example.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">yoki</string>
+    <string name="no_account_prompt">Hisobingiz yoʻqmi? </string>
+    <string name="google_sign_in_failed">Google orqali kirish amalga oshmadi (%s)</string>
+
+    <!-- Register Screen -->
+    <string name="register_desc">Obunalaringizni boshqarishni va tejashni boshlang.</string>
+    <string name="full_name_placeholder">Misol uchun: Ali Valiov</string>
+    <string name="accept_terms_pre"></string>
+    <string name="and"> va </string>
+    <string name="accept_terms_post">ga roziman.</string>
+    <string name="already_have_account_prompt">Hisobingiz bormi? </string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Foydalanish shartlari</string>
+    <string name="terms_of_use_content">1. Qabul qilish\nSub Tracker ilovasidan foydalanish orqali siz ushbu shartlarga rozilik bildirasiz.\n\n2. Xizmat doirasi\nIlova obunalaringizni kuzatishga yordam beradigan vositadir. Moliyaviy maslahat bermaydi.\n\n3. Foydalanuvchi masʼuliyati\nSiz oʻz hisobingiz xavfsizligi va kiritilgan maʼlumotlar toʻgʻriligi uchun javobgarsiz.\n\n4. Oʻzgarishlar\nBiz istalgan vaqtda ilova imkoniyatlariga va ushbu shartlarga oʻzgartirish kiritish huquqini oʻzimizda qoldiramiz.\n\n5. Toʻxtatish\nShartlar buzilsa, xizmatdan foydalanishingizni toʻxtatishimiz mumkin.</string>
+    <string name="understood">Tushundim</string>
+    <string name="privacy_dialog_content">Oxirgi yangilanish: 20-fevral, 2026-yil\n\n1. Kirish\nBiz sizning maʼlumotlaringiz maxfiyligiga jiddiy eʼtibor beramiz.\n\n2. Toʻplanadigan maʼlumotlar\nObunalar maʼlumotlari, foydalanish tanlovlari va asosiy qurilma maʼlumotlari qayta ishlanadi.\n\n3. Maʼlumotlardan foydalanish\nMaʼlumotlaringiz faqat eslatmalar yuborish va ilova ishlashini yaxshilash uchun foydalaniladi.\n\n4. Maʼlumotlar xavfsizligi\nMaʼlumotlaringiz standart shifrlash usullari bilan himoyalangan.\n\n5. Aloqa\nSavollar boʻyicha: gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Parolni tiklash uchun roʻyxatdan oʻtgan emailingizni kiriting. Biz sizga tasdiqlash kodini yuboramiz.</string>
+    <string name="email_address_label">Email manzili</string>
+    <string name="send_code">Kod yuborish</string>
+    <string name="back_to_login">Kirish sahifasiga qaytish</string>
+    <string name="verify_code_title">Kodani tasdiqlang</string>
+    <string name="verify_code_desc">%s manziliga yuborilgan 6 xonali tasdiqlash kodini kiriting.</string>
+    <string name="verify_and_continue">Tasdiqlash va Davom etish</string>
+    <string name="wait_for_code">Yangi kod uchun kuting:</string>
+    <string name="code_not_received">Kod kelmadimi?</string>
+    <string name="resend_code">Qaytadan yuborish</string>
+    <string name="reset_password_title">Yangi parol yarating</string>
+    <string name="reset_password_desc">Hisobingiz uchun yangi va ishonchli parol tanlang.</string>
+    <string name="new_password_label">Yangi parol</string>
+    <string name="confirm_password_label">Parolni qaytadan kiriting</string>
+    <string name="min_6_chars">Kamida 6 ta belgi</string>
+    <string name="passwords_match">Parollar mos keladi</string>
+    <string name="update_password">Parolni yangilash</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Shubhali toʻlovlar</string>
+    <string name="transactions_to_review">Koʻrib chiqiladigan tranzaksiyalar</string>
+    <string name="swipe_to_review">Bekor qilish uchun chapga, obuna sifatida tasdiqlash uchun oʻngga suring</string>
+    <string name="confirm">Tasdiqlash</string>
+    <string name="reject">Rad etish</string>
+    <string name="all_done">Hammasi tayyor!</string>
+    <string name="no_suspicious">Shubhali tranzaksiyalar topilmadi</string>
+    <string name="reviewing_transactions">Tranzaksiyalar koʻrib chiqilmoqda</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Barcha obunalar</string>
+    <string name="no_subscriptions">Hozircha obunalar yoʻq</string>
+    <string name="no_active_subscriptions">Faol obunalar topilmadi</string>
+    <string name="no_suspicious_subscriptions">Shubhali obunalar topilmadi</string>
+    <string name="no_cancelled_subscriptions">Bekor qilingan obunalar topilmadi</string>
+    <string name="detected_count">Aniqlanganlar (%d)</string>
+    <string name="marked_count">Belgilanganlar (%d)</string>
+    <string name="add_subscription">Obuna qoʻshish</string>
+    <string name="service_name_placeholder">mis. Netflix</string>
+    <string name="subscription_details">Obuna tafsilotlari</string>
+    <string name="next_payment">Keyingi toʻlov</string>
+    <string name="billing_cycle">Toʻlov davri</string>
+    <string name="category">Kategoriya</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Premium olish</string>
+    <string name="premium_features">Premium imkoniyatlari</string>
+    <string name="unlimited_subscriptions">Cheksiz obunalar</string>
+    <string name="advanced_analytics">Kengaytirilgan tahlil</string>
+    <string name="priority_support">Birinchi navbatdagi qoʻllab-quvvatlash</string>
+    <string name="ad_free">Reklamasiz</string>
+    <string name="choose_plan">Rejangizni tanlang</string>
+    <string name="monthly_plan">Oylik reja</string>
+    <string name="yearly_plan">Yillik reja</string>
+    <string name="save_percent">%%d tejash</string>
+    <string name="per_month">/oy</string>
+    <string name="per_year">/yil</string>
+    <string name="billed_monthly">Har oy toʻlanadi</string>
+    <string name="billed_yearly">Har yil toʻlanadi</string>
+    <string name="start_trial">Bepul sinov muddatini boshlash</string>
+    <string name="restore_purchase">Sotib olinganlarni tiklash</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">Koʻngilochar</string>
+    <string name="category_music">Musiqa</string>
+    <string name="category_sports">Sport va salomatlik</string>
+    <string name="category_other">Boshqa</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Tahlil</string>
+    <string name="spending_overview">Xarajatlar sharhi</string>
+    <string name="monthly_trend">Oylik trend</string>
+    <string name="category_breakdown">Kategoriyalar boʻyicha taqsimot</string>
+    <string name="top_subscriptions">Eng katta xarajatlar</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">Tranzaksiyalar tarixi</string>
+    <string name="all_transactions">Barcha tranzaksiyalar</string>
+    <string name="filter">Süzgüch</string>
+    <string name="sort_by">Saralash</string>
+    <string name="date">Sana</string>
+    <string name="amount">Miqdor</string>
+    <string name="merchant">Sotuvchi</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Barcha obunalar</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Qoʻshish</string>
+    <string name="edit">Oʻzgartirish</string>
+    <string name="delete">Oʻchirish</string>
+    <string name="done">Tayyor</string>
+    <string name="next">Keyingi</string>
+    <string name="previous">Oldingi</string>
+    <string name="finish">Tugatish</string>
+    
+    <!-- Messages -->
+    <string name="loading">Yuklanmoqda…</string>
+    <string name="error">Xatolik</string>
+    <string name="success">Muvaffaqiyatli</string>
+    <string name="try_again">Qaytadan urinib koʻring</string>
+    <string name="no_results">Natija topilmadi</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">Ism maydoni toʻldirilishi shart</string>
+    <string name="error_amount_required">Summa maydoni toʻldirilishi shart</string>
+    <string name="error_amount_invalid">Toʻgʻri summani kiriting</string>
+    <string name="error_currency_required">Valyutani tanlash shart</string>
+    <string name="error_date_required">Sanani tanlash shart</string>
+    <string name="error_email_required">Email maydoni toʻldirilishi shart</string>
+    <string name="error_email_invalid">Toʻgʻri email manzilini kiriting</string>
+    <string name="error_password_required">Parol maydoni toʻldirilishi shart</string>
+    <string name="error_password_short">Parol kamida 6 ta belgidan iborat boʻlishi kerak</string>
+
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">Obunani oʻzgartirish</string>
+    <string name="service_name">Xizmat nomi</string>
+    <string name="period">Davr</string>
+    <string name="reminder">Eslatma</string>
+    <string name="reminder_desc">Toʻlovdan 1 kun oldin xabar berish</string>
+    <string name="update">Yangilash</string>
+    <string name="period_monthly">oy</string>
+    <string name="period_yearly">yil</string>
+    <string name="period_weekly">hafta</string>
+    <string name="days_remaining">%d kun qoldi</string>
+    <string name="total_spent">Jami xarajat</string>
+    <string name="start_date_label">Boshlanish sanasi</string>
+    <string name="turn_off_reminder">Eslatmani oʻchirish</string>
+    <string name="set_reminder">Eslatma oʻrnatish</string>
+    <string name="edit_plan">Rejani oʻzgartirish</string>
+    <string name="reactivate_subscription">Obunani qayta faollashtirish</string>
+    <string name="cancel_subscription_btn">Obunani bekor qilish</string>
+    <string name="payment_history">Toʻlovlar tarixi</string>
+    <string name="an_error_occurred">Xatolik yuz berdi</string>
+    <string name="go_back">Orqaga qaytish</string>
+    <string name="subscription_id_not_found">Obuna ID-si topilmadi</string>
+    <string name="no_subscriptions_yet">Hozircha hech qanday obuna qoʻshilmagan</string>
+    <string name="sms_permission_rationale">Obunalarni avtomatik tarzda aniqlash uchun SMS ruxsati kerak.\nShunda siz obunalarni qoʻlda kiritishingiz shart boʻlmaydi.</string>
+    <string name="storage_permission_rationale">Hujjatlarni skanerlash uchun xotiraga ruxsat kerak.\nShunda PDF fayllardan obuna maʼlumotlari avtomatik olinishi mumkin.</string>
+    <string name="permission_denied_message">Ruxsatsiz qurilmani skanerlab boʻlmaydi.\nXohlasangiz, obunalarni qoʻlda qoʻshishingiz mumkin.</string>
+    <string name="permission_permanently_denied_message">Ruxsat berilmadi. Sozlamalardan ruxsatlarni yoqing.</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Yordam markazi</string>
+    <string name="help_search_placeholder">Sizga qanday yordam bera olamiz?</string>
+    <string name="popular_questions">Mashhur savollar</string>
+    
+    <string name="faq_q1">Obunani qanday bekor qilish mumkin?</string>
+    <string name="faq_a1">Obuna sahifasiga kirib, eng pastdagi \'Obunani bekor qilish\' tugmasini bosing. Bu faqat ilovadagi kuzatishni toʻxtatadi, xizmat koʻrsatuvchi orqali ham bekor qilishni unutmang.</string>
+    
+    <string name="faq_q2">Maʼlumotlarim xavfsizimi?</string>
+    <string name="faq_a2">Ha, barcha maʼlumotlar qurilmangizda shifrlangan holatda saqlanadi. Biz maʼlumotlaringizni uchinchi shaxslarga bermaymiz.</string>
+    
+    <string name="faq_q3">Bank kartasini qanday ulash mumkin?</string>
+    <string name="faq_a3">Hozirda SMS va bildirishnomalarni oʻqish orqali avtomatik kuzatish amalga oshiriladi. Bank integratsiyasi yaqin orada qoʻshiladi.</string>
+    
+    <string name="faq_q4">Toʻlovni qaytarib olsam boʻladimi?</string>
+    <string name="faq_a4">Ilova ichidagi xaridlar boʻyicha Google Play/App Store qoidalari amal qiladi. Savollar boʻyicha rasmiy doʻkonlarga murojaat qilishingiz mumkin.</string>
+    
+    <string name="faq_q5">Eslatmalar ishlamayapti, nima qilish kerak?</string>
+    <string name="faq_a5">Sozlamalardan bildirishnomalar yoqilganligini tekshiring. Shuningdek, quvvat tejash rejimi bunga toʻsqinlik qilmayotganiga ishonch hosil qiling.</string>
+    
+    <string name="faq_q6">Shubhali tranzaksiya nima?</string>
+    <string name="faq_a6">Ilova gʻayritabiiy yoki nomaʼlum xarajatlarni sezsa, sizni ogohlantiradi. Bu tranzaksiyalarni \'Shubhali toʻlovlar\' sahifasida koʻrishingiz mumkin.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Maxfiylik siyosati</string>
+    <string name="privacy_last_updated">Oxirgi yangilanish: 20-fevral, 2026-yil</string>
+    
+    <string name="privacy_title_1">1. Kirish</string>
+    <string name="privacy_content_1">Sub Tracker sizning maxfiyligingizni hurmat qiladi. Ushbu siyosat maʼlumotlarning qanday toʻplanishi va himoyalanishini tushuntiradi.</string>
+    
+    <string name="privacy_title_2">2. Maʼlumotlarni toʻplash</string>
+    <string name="privacy_content_2">Biz obunalar, foydalanish tanlovlari va asosiy qurilma maʼlumotlarini toʻplashimiz mumkin.</string>
+    
+    <string name="privacy_title_3">3. Maʼlumotlardan foydalanish</string>
+    <string name="privacy_content_3">Maʼlumotlar obunalarni kuzatish, eslatmalar yuborish va xizmatni yaxshilash uchun ishlatiladi.</string>
+    
+    <string name="privacy_title_4">4. Xavfsizlik</string>
+    <string name="privacy_content_4">Maʼlumotlaringiz standart usullar bilan himoyalangan va hech kimga ruxsatsiz berilmaydi.</string>
+    
+    <string name="privacy_title_5">5. Ruxsatlar</string>
+    <string name="privacy_content_5">Ilova eslatmalarni yuborish uchun bildirishnoma ruxsatini soʻrashi mumkin.</string>
+    
+    <string name="privacy_title_6">6. Aloqa</string>
+    <string name="privacy_content_6">Savollar boʻyicha bizga yozishingiz mumkin: gokhanaytekinn@yandex.com</string>
+</resources>

@@ -72,6 +72,7 @@
     <string name="language_turkmen">Turkmenisch</string>
     <string name="language_kazakh">Kasachisch</string>
     <string name="language_kyrgyz">Kirgisisch</string>
+    <string name="language_uzbek">Usbekisch</string>
 
     <string name="select_language">Sprache wählen</string>
     <string name="select_currency">Währung wählen</string>

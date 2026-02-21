@@ -29,6 +29,7 @@ object LocaleHelper {
             "tk" -> "Türkmençe"
             "kk" -> "Қазақша"
             "ky" -> "Кыргызча"
+            "uz" -> "Oʻzbekcha"
             else -> "English"
 
 
