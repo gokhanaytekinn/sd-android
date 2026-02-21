@@ -344,4 +344,14 @@
     
     <string name="privacy_title_6">6. İletişim</string>
     <string name="privacy_content_6">Gizlilik politikamızla ilgili sorularınız için bizimle iletişime geçebilirsiniz:\ngokhanaytekinn@yandex.com</string>
+
+    <!-- Widgets -->
+    <string name="widget_upcoming_title">Yaklaşan Ödemeler</string>
+    <string name="widget_upcoming_desc">Önümüzdeki 7 gün içindeki ödemeleri gösterir</string>
+    <string name="widget_expensive_title">En Pahalı Abonelikler</string>
+    <string name="widget_expensive_desc">En pahalı 3 aboneliğinizi gösterir</string>
+    <string name="widget_login_required">Lütfen Giriş Yapın</string>
+    <string name="widget_no_data">Veri bulunamadı</string>
+    <string name="widget_days_left">%d gün kaldı</string>
+    <string name="widget_today">Bugün Ödenecek</string>
 </resources>

@@ -35,6 +35,31 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <!-- Widgets -->
+        <receiver
+            android:name=".ui.widgets.UpcomingPaymentsWidgetReceiver"
+            android:label="@string/widget_upcoming_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/upcoming_payments_widget_info" />
+        </receiver>
+
+        <receiver
+            android:name=".ui.widgets.TopExpensiveWidgetReceiver"
+            android:label="@string/widget_expensive_title"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/top_expensive_widget_info" />
+        </receiver>
     </application>
 
 </manifest>

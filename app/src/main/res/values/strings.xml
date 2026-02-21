@@ -346,4 +346,14 @@
     
     <string name="privacy_title_6">6. Contact</string>
     <string name="privacy_content_6">For questions regarding our privacy policy, you can contact us at:\ngokhanaytekinn@yandex.com</string>
+
+    <!-- Widgets -->
+    <string name="widget_upcoming_title">Upcoming Subscriptions</string>
+    <string name="widget_upcoming_desc">Shows subscriptions due in next 7 days</string>
+    <string name="widget_expensive_title">Top Expensive</string>
+    <string name="widget_expensive_desc">Shows your top 3 most expensive subs</string>
+    <string name="widget_login_required">Please Login</string>
+    <string name="widget_no_data">No data found</string>
+    <string name="widget_days_left">%d days left</string>
+    <string name="widget_today">Due Today</string>
 </resources>
