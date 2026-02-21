@@ -4,14 +4,18 @@ object CurrencyFormatter {
     
     fun formatAmount(amount: Double, currencyCode: String): String {
         val symbol = getCurrencySymbol(currencyCode)
+        val formattedAmount = formatAmountLocalized(amount)
         
-        return when (currencyCode) {
-            "TRY" -> "₺%.2f".format(amount)
-            "USD" -> "$%.2f".format(amount)
-            "EUR" -> "€%.2f".format(amount)
-            "GBP" -> "£%.2f".format(amount)
-            else -> "$symbol%.2f".format(amount)
+        return "$formattedAmount $symbol"
+    }
+    
+    private fun formatAmountLocalized(amount: Double): String {
+        val symbols = java.text.DecimalFormatSymbols().apply {
+            groupingSeparator = '.'
+            decimalSeparator = ','
         }
+        val decimalFormat = java.text.DecimalFormat("#,##0.00", symbols)
+        return decimalFormat.format(amount)
     }
     
     fun getCurrencySymbol(currencyCode: String): String {
@@ -20,6 +24,9 @@ object CurrencyFormatter {
             "USD" -> "$"
             "EUR" -> "€"
             "GBP" -> "£"
+            "RUB" -> "₽"
+            "AZN" -> "₼"
+            "KZT" -> "₸"
             else -> currencyCode
         }
     }

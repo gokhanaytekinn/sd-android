@@ -107,7 +107,7 @@ class TopExpensiveWidget : GlanceAppWidget() {
                 )
             )
             Text(
-                text = "${sub.cost} ${sub.currency}", 
+                text = com.gokhanaytekinn.sdandroid.util.CurrencyFormatter.formatAmount(sub.cost, sub.currency), 
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
                     color = ColorProvider(Color(0xFF359EFF)), // PrimaryBlue
