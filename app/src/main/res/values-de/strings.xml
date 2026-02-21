@@ -104,6 +104,13 @@
     <string name="cancel_subscription">Abonnement kündigen</string>
     <string name="delete_subscription">Abonnement löschen</string>
     <string name="save_changes">Änderungen speichern</string>
+ 
+    <!-- Navigation -->
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_search">Suche</string>
+    <string name="nav_settings">Einstellungen</string>
+    <string name="subscriptions">Abonnements</string>
+    <string name="nav_all_subscriptions">Alle Abonnements</string>
 
     <!-- Search -->
     <string name="search_placeholder">Abonnements suchen...</string>
