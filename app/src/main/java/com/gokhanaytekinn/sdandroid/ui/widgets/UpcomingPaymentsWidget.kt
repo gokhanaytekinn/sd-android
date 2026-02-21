@@ -17,16 +17,16 @@ import androidx.glance.unit.ColorProvider
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
-import java.text.SimpleDateFormat
-import java.util.*
 import androidx.glance.LocalContext
-import androidx.glance.color.ColorProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.appwidget.lazy.LazyColumn
 import androidx.glance.appwidget.lazy.items
+import androidx.glance.appwidget.cornerRadius
+import androidx.glance.appwidget.appWidgetBackground
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
 
 class UpcomingPaymentsWidget : GlanceAppWidget() {
 
@@ -41,33 +41,26 @@ class UpcomingPaymentsWidget : GlanceAppWidget() {
         val upcoming = filterUpcoming(subscriptions)
 
         provideContent {
-            GlanceTheme {
+            WidgetTheme {
                 WidgetContent(upcoming)
             }
         }
     }
 
     private fun filterUpcoming(subscriptions: List<Subscription>): List<Subscription> {
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val now = Calendar.getInstance()
-        val sevenDaysLater = Calendar.getInstance().apply { add(Calendar.DAY_OF_YEAR, 7) }
+        val today = LocalDate.now()
+        val sevenDaysLater = today.plusDays(7)
 
         return subscriptions.filter { sub ->
             sub.nextBillingDate?.let { dateStr ->
                 try {
-                    val date = sdf.parse(dateStr)
-                    val cal = Calendar.getInstance().apply { time = date }
-                    cal.after(now) && cal.before(sevenDaysLater) || isSameDay(cal, now)
+                    val renewalDate = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE)
+                    !renewalDate.isBefore(today) && !renewalDate.isAfter(sevenDaysLater)
                 } catch (e: Exception) {
                     false
                 }
             } ?: false
         }.sortedBy { it.nextBillingDate }
-    }
-
-    private fun isSameDay(cal1: Calendar, cal2: Calendar): Boolean {
-        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-               cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR)
     }
 
     @Composable
@@ -77,22 +70,31 @@ class UpcomingPaymentsWidget : GlanceAppWidget() {
         Column(
             modifier = GlanceModifier
                 .fillMaxSize()
-                .background(Color.White) // Adjust for dark mode if needed
-                .padding(8.dp)
+                .appWidgetBackground()
+                .background(ColorProvider(Color(0xFF1E293B))) // SurfaceDark
+                .cornerRadius(16.dp)
+                .padding(16.dp)
         ) {
             Text(
                 text = context.getString(R.string.widget_upcoming_title),
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = 18.sp,
+                    color = ColorProvider(Color.White)
                 )
             )
             
-            Spacer(modifier = GlanceModifier.height(4.dp))
+            Spacer(modifier = GlanceModifier.height(8.dp))
             
             if (subscriptions.isEmpty()) {
-                Box(modifier = GlanceModifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(text = context.getString(R.string.widget_no_data))
+                Box(
+                    modifier = GlanceModifier.fillMaxSize(), 
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = context.getString(R.string.widget_no_data),
+                        style = TextStyle(color = ColorProvider(Color.White.copy(alpha = 0.6f)))
+                    )
                 }
             } else {
                 LazyColumn(modifier = GlanceModifier.fillMaxSize()) {
@@ -110,34 +112,52 @@ class UpcomingPaymentsWidget : GlanceAppWidget() {
         Row(
             modifier = GlanceModifier
                 .fillMaxWidth()
-                .padding(vertical = 4.dp),
+                .padding(vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Column(modifier = GlanceModifier.defaultWeight()) {
-                Text(text = sub.name, style = TextStyle(fontWeight = FontWeight.Medium))
-                Text(text = formatDate(sub.nextBillingDate, context), style = TextStyle(fontSize = 12.sp))
+                Text(
+                    text = sub.name, 
+                    style = TextStyle(
+                        fontWeight = FontWeight.Bold,
+                        color = ColorProvider(Color.White),
+                        fontSize = 14.sp
+                    )
+                )
+                Text(
+                    text = formatDateRelative(sub.nextBillingDate, context), 
+                    style = TextStyle(
+                        fontSize = 12.sp,
+                        color = ColorProvider(Color.White.copy(alpha = 0.7f))
+                    )
+                )
             }
-            Text(text = "${sub.cost} ${sub.currency}", style = TextStyle(fontWeight = FontWeight.Bold))
+            Text(
+                text = "${sub.cost} ${sub.currency}", 
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    color = ColorProvider(Color(0xFF359EFF)), // PrimaryBlue
+                    fontSize = 14.sp
+                )
+            )
         }
     }
 
-    private fun formatDate(dateStr: String?, context: Context): String {
+    private fun formatDateRelative(dateStr: String?, context: Context): String {
         if (dateStr == null) return ""
-        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         return try {
-            val date = sdf.parse(dateStr)
-            val cal = Calendar.getInstance().apply { time = date }
-            val now = Calendar.getInstance()
+            val renewalDate = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE)
+            val today = LocalDate.now()
             
-            if (isSameDay(cal, now)) {
-                context.getString(R.string.widget_today)
-            } else {
-                val diff = cal.timeInMillis - now.timeInMillis
-                val days = (diff / (1000 * 60 * 60 * 24)).toInt() + 1
-                context.getString(R.string.widget_days_left, days)
+            val days = ChronoUnit.DAYS.between(today, renewalDate).toInt()
+            
+            when {
+                days == 0 -> context.getString(R.string.widget_today)
+                days > 0 -> context.getString(R.string.widget_days_left, days)
+                else -> dateStr
             }
         } catch (e: Exception) {
-            dateStr
+            dateStr ?: ""
         }
     }
 }
@@ -147,7 +167,6 @@ class UpcomingPaymentsWidgetReceiver : GlanceAppWidgetReceiver() {
 }
 
 @Composable
-fun GlanceTheme(content: @Composable () -> Unit) {
-    // Basic theme wrapper
+fun WidgetTheme(content: @Composable () -> Unit) {
     content()
 }

@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.glance.appwidget.lazy.LazyColumn
 import androidx.glance.appwidget.lazy.items
+import androidx.glance.appwidget.cornerRadius
+import androidx.glance.appwidget.appWidgetBackground
 
 class TopExpensiveWidget : GlanceAppWidget() {
 
@@ -38,7 +40,7 @@ class TopExpensiveWidget : GlanceAppWidget() {
             .take(3)
 
         provideContent {
-            GlanceTheme {
+            WidgetTheme {
                 WidgetContent(topExpensive)
             }
         }
@@ -51,22 +53,31 @@ class TopExpensiveWidget : GlanceAppWidget() {
         Column(
             modifier = GlanceModifier
                 .fillMaxSize()
-                .background(Color.White)
-                .padding(8.dp)
+                .appWidgetBackground()
+                .background(ColorProvider(Color(0xFF1E293B))) // SurfaceDark
+                .cornerRadius(16.dp)
+                .padding(16.dp)
         ) {
             Text(
                 text = context.getString(R.string.widget_expensive_title),
                 style = TextStyle(
                     fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
+                    fontSize = 18.sp,
+                    color = ColorProvider(Color.White)
                 )
             )
             
-            Spacer(modifier = GlanceModifier.height(4.dp))
+            Spacer(modifier = GlanceModifier.height(8.dp))
             
             if (subscriptions.isEmpty()) {
-                Box(modifier = GlanceModifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(text = context.getString(R.string.widget_no_data))
+                Box(
+                    modifier = GlanceModifier.fillMaxSize(), 
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = context.getString(R.string.widget_no_data),
+                        style = TextStyle(color = ColorProvider(Color.White.copy(alpha = 0.6f)))
+                    )
                 }
             } else {
                 LazyColumn(modifier = GlanceModifier.fillMaxSize()) {
@@ -83,17 +94,25 @@ class TopExpensiveWidget : GlanceAppWidget() {
         Row(
             modifier = GlanceModifier
                 .fillMaxWidth()
-                .padding(vertical = 4.dp),
+                .padding(vertical = 6.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = sub.name, 
                 modifier = GlanceModifier.defaultWeight(),
-                style = TextStyle(fontWeight = FontWeight.Medium)
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    color = ColorProvider(Color.White),
+                    fontSize = 14.sp
+                )
             )
             Text(
                 text = "${sub.cost} ${sub.currency}", 
-                style = TextStyle(fontWeight = FontWeight.Bold)
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    color = ColorProvider(Color(0xFF359EFF)), // PrimaryBlue
+                    fontSize = 14.sp
+                )
             )
         }
     }
