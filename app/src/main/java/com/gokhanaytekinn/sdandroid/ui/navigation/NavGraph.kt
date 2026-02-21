@@ -20,6 +20,11 @@ fun NavGraph(
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
+    
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val authViewModel: com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel = androidx.lifecycle.viewmodel.compose.viewModel {
+        com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel(context)
+    }
 
     val showBottomBar = currentRoute in listOf(
         Screen.Dashboard.route,
@@ -63,6 +68,7 @@ fun NavGraph(
             
             composable(Screen.Login.route) {
                 LoginScreen(
+                    viewModel = authViewModel,
                     onBackClick = {
                         navController.popBackStack()
                     },
@@ -75,13 +81,55 @@ fun NavGraph(
                         navController.navigate(Screen.Register.route)
                     },
                     onForgotPassword = {
-                        // TODO: Forgot password screen
+                        navController.navigate(Screen.ForgotPassword.route)
+                    }
+                )
+            }
+
+            composable(Screen.ForgotPassword.route) {
+                ForgotPasswordScreen(
+                    viewModel = authViewModel,
+                    onBackClick = { navController.popBackStack() },
+                    onCodeSent = {
+                        navController.navigate(Screen.VerificationCode.route)
+                    }
+                )
+            }
+
+            composable(Screen.VerificationCode.route) {
+                VerificationCodeScreen(
+                    viewModel = authViewModel,
+                    onBackClick = { navController.popBackStack() },
+                    onCodeVerified = { code ->
+                        navController.navigate("reset_password/$code")
+                    }
+                )
+            }
+
+            composable(
+                route = "reset_password/{code}",
+                arguments = listOf(
+                    androidx.navigation.navArgument("code") {
+                        type = androidx.navigation.NavType.StringType
+                    }
+                )
+            ) { backStackEntry ->
+                val code = backStackEntry.arguments?.getString("code") ?: ""
+                ResetPasswordScreen(
+                    viewModel = authViewModel,
+                    verificationCode = code,
+                    onBackClick = { navController.popBackStack() },
+                    onPasswordReset = {
+                        navController.navigate(Screen.Login.route) {
+                            popUpTo(Screen.Login.route) { inclusive = true }
+                        }
                     }
                 )
             }
             
             composable(Screen.Register.route) {
                 RegisterScreen(
+                    viewModel = authViewModel,
                     onBackClick = {
                         navController.popBackStack()
                     },

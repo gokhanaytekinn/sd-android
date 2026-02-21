@@ -30,13 +30,13 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun LoginScreen(
+    viewModel: AuthViewModel,
     onBackClick: () -> Unit = {},
     onLoginSuccess: () -> Unit = {},
     onNavigateToRegister: () -> Unit = {},
     onForgotPassword: () -> Unit = {}
 ) {
     val context = LocalContext.current
-    val viewModel = remember { AuthViewModel(context) }
     val authState by viewModel.authState.collectAsState()
     val coroutineScope = rememberCoroutineScope()
     val credentialManager = remember { CredentialManager.create(context) }
@@ -227,7 +227,7 @@ fun LoginScreen(
                             contentPadding = PaddingValues(0.dp)
                         ) {
                             Text(
-                                text = "Şifremi Unuttun?",
+                                text = "Şifremi Unuttum",
                                 color = PrimaryBlue,
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium

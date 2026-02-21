@@ -20,6 +20,15 @@ interface ApiService {
     
     @GET("api/auth/me")
     suspend fun getCurrentUser(): Response<UserResponse>
+
+    @POST("api/auth/forgot-password")
+    suspend fun forgotPassword(@Body request: ForgotPasswordRequest): Response<Unit>
+
+    @POST("api/auth/verify-code")
+    suspend fun verifyCode(@Body request: VerifyCodeRequest): Response<Unit>
+
+    @POST("api/auth/reset-password")
+    suspend fun resetPassword(@Body request: ResetPasswordRequest): Response<Unit>
     
     // ============ USERS ============
     

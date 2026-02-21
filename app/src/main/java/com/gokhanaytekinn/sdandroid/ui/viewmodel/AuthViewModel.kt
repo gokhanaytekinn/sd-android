@@ -17,7 +17,9 @@ data class AuthState(
     val passwordError: Int? = null,
     val isAuthenticated: Boolean = false,
     val userName: String? = null,
-    val userEmail: String? = null
+    val userEmail: String? = null,
+    val resetEmail: String? = null,
+    val isResetCodeVerified: Boolean = false
 )
 
 class AuthViewModel(context: Context) : ViewModel() {
@@ -187,6 +189,68 @@ class AuthViewModel(context: Context) : ViewModel() {
                 _authState.value = _authState.value.copy(
                     isLoading = false,
                     error = result.exceptionOrNull()?.message ?: "Google ile giriş başarısız"
+                )
+            }
+        }
+    }
+
+    fun forgotPassword(email: String, onSuccess: () -> Unit) {
+        if (email.isBlank()) {
+            _authState.value = _authState.value.copy(emailError = com.gokhanaytekinn.sdandroid.R.string.error_email_required)
+            return
+        }
+
+        viewModelScope.launch {
+            _authState.value = _authState.value.copy(isLoading = true, error = null)
+            val result = repository.forgotPassword(email)
+            if (result.isSuccess) {
+                _authState.value = _authState.value.copy(isLoading = false, resetEmail = email)
+                onSuccess()
+            } else {
+                _authState.value = _authState.value.copy(
+                    isLoading = false,
+                    error = result.exceptionOrNull()?.message ?: "Sıfırlama kodu gönderilemedi"
+                )
+            }
+        }
+    }
+
+    fun verifyCode(code: String, onSuccess: () -> Unit) {
+        val email = _authState.value.resetEmail ?: return
+        if (code.length != 6) return
+
+        viewModelScope.launch {
+            _authState.value = _authState.value.copy(isLoading = true, error = null)
+            val result = repository.verifyCode(email, code)
+            if (result.isSuccess) {
+                _authState.value = _authState.value.copy(isLoading = false, isResetCodeVerified = true)
+                onSuccess()
+            } else {
+                _authState.value = _authState.value.copy(
+                    isLoading = false,
+                    error = result.exceptionOrNull()?.message ?: "Geçersiz doğrulama kodu"
+                )
+            }
+        }
+    }
+
+    fun resetPassword(code: String, newPassword: String, onSuccess: () -> Unit) {
+        val email = _authState.value.resetEmail ?: return
+        
+        viewModelScope.launch {
+            _authState.value = _authState.value.copy(isLoading = true, error = null)
+            val result = repository.resetPassword(email, code, newPassword)
+            if (result.isSuccess) {
+                _authState.value = _authState.value.copy(
+                    isLoading = false, 
+                    resetEmail = null, 
+                    isResetCodeVerified = false
+                )
+                onSuccess()
+            } else {
+                _authState.value = _authState.value.copy(
+                    isLoading = false,
+                    error = result.exceptionOrNull()?.message ?: "Şifre güncellenemedi"
                 )
             }
         }

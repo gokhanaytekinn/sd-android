@@ -19,6 +19,9 @@ sealed class Screen(val route: String) {
     object OnboardingAutomaticTracking : Screen("onboarding_automatic_tracking")
     object OnboardingSavings : Screen("onboarding_savings")
     object Search : Screen("search")
+    object ForgotPassword : Screen("forgot_password")
+    object VerificationCode : Screen("verification_code")
+    object ResetPassword : Screen("reset_password")
     object AddSubscription : Screen("add_subscription?id={id}") {
         fun createRoute(id: String? = null): String {
             return if (id != null) "add_subscription?id=$id" else "add_subscription"

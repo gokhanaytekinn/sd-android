@@ -31,12 +31,12 @@ import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun RegisterScreen(
+    viewModel: AuthViewModel,
     onBackClick: () -> Unit = {},
     onRegisterSuccess: () -> Unit = {},
     onNavigateToLogin: () -> Unit = {}
 ) {
     val context = LocalContext.current
-    val viewModel = remember { AuthViewModel(context) }
     val authState by viewModel.authState.collectAsState()
     
     var fullName by remember { mutableStateOf("") }

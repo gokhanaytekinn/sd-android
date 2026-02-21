@@ -4,9 +4,7 @@ import android.content.Context
 import com.gokhanaytekinn.sdandroid.data.api.ApiService
 import com.gokhanaytekinn.sdandroid.data.api.RetrofitClient
 import com.gokhanaytekinn.sdandroid.data.local.TokenManager
-import com.gokhanaytekinn.sdandroid.data.model.request.FcmTokenRequest
-import com.gokhanaytekinn.sdandroid.data.model.request.LoginRequest
-import com.gokhanaytekinn.sdandroid.data.model.request.RegisterRequest
+import com.gokhanaytekinn.sdandroid.data.model.request.*
 import com.gokhanaytekinn.sdandroid.data.model.response.AuthResponse
 import com.gokhanaytekinn.sdandroid.data.model.response.UserResponse
 
@@ -146,5 +144,29 @@ class AuthRepository(context: Context) {
         } catch (e: Exception) {
             Result.failure(e)
         }
+    }
+
+    suspend fun forgotPassword(email: String): Result<Unit> {
+        return try {
+            val response = apiService.forgotPassword(ForgotPasswordRequest(email))
+            if (response.isSuccessful) Result.success(Unit)
+            else Result.failure(Exception("Failed to send reset code"))
+        } catch (e: Exception) { Result.failure(e) }
+    }
+
+    suspend fun verifyCode(email: String, code: String): Result<Unit> {
+        return try {
+            val response = apiService.verifyCode(VerifyCodeRequest(email, code))
+            if (response.isSuccessful) Result.success(Unit)
+            else Result.failure(Exception("Invalid verification code"))
+        } catch (e: Exception) { Result.failure(e) }
+    }
+
+    suspend fun resetPassword(email: String, code: String, newPassword: String): Result<Unit> {
+        return try {
+            val response = apiService.resetPassword(ResetPasswordRequest(email, code, newPassword))
+            if (response.isSuccessful) Result.success(Unit)
+            else Result.failure(Exception("Failed to reset password"))
+        } catch (e: Exception) { Result.failure(e) }
     }
 }
