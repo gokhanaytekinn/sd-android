@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Sub Tracker</string>
+    
+    <!-- Common -->
+    <string name="back">Kembali</string>
+    <string name="save">Simpan</string>
+    <string name="cancel">Batal</string>
+    <string name="skip">Lewati</string>
+    <string name="continue_btn">Lanjutkan</string>
+    <string name="get_started">Mulai</string>
+    <string name="show_password">Tampilkan kata sandi</string>
+    <string name="hide_password">Sembunyikan kata sandi</string>
+    <string name="unknown_error">Kesalahan tidak dikenal</string>
+    <string name="scan">Pindai</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Lacak Obongan Anda</string>
+    <string name="onboarding_desc_1">Lihat dan kelola semua langganan Anda di satu tempat. Jangan pernah lewatkan pembayaran.</string>
+    <string name="onboarding_title_2">Deteksi Pembayaran Otomatis</string>
+    <string name="onboarding_desc_2">Pindai SMS dan notifikasi untuk mendaftarkan langganan Anda dalam hitungan detik.</string>
+    <string name="onboarding_security">Terenkripsi dan Aman</string>
+    <string name="onboarding_title_3">Hentikan Pengeluaran Berlebih</string>
+    <string name="onboarding_desc_3">Batalkan langganan yang terlupakan, dapatkan notifikasi sebelum tanggal jatuh tempo.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Ringkasan</string>
+    <string name="hello_user">Halo, %s</string>
+    <string name="total_monthly">Ringkasan Bulan Ini</string>
+    <string name="vs_last_month">vs bulan lalu</string>
+    <string name="suspicious_subscriptions">Langganan Mencurigakan</string>
+    <string name="transactions_pending">%d transaksi menunggu ulasan</string>
+    <string name="most_expensive">Langganan Termahal</string>
+    <string name="view_all">Lihat Semua</string>
+    <string name="view_all_subscriptions">Lihat Semua Langganan</string>
+    
+    <!-- Settings -->
+    <string name="settings">Pengaturan</string>
+    <string name="account">AKUN</string>
+    <string name="application">APLIKASI</string>
+    <string name="support">DUKUNGAN</string>
+    <string name="membership_type">Tipe Keanggotaan</string>
+    <string name="free_plan">Paket Gratis</string>
+    <string name="notifications">Notifikasi</string>
+    <string name="currency">Mata Uang</string>
+    <string name="dark_mode">Mode Gelap</string>
+    <string name="language">Bahasa</string>
+    <string name="help_center">Pusat Bantuan</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="logout">Keluar</string>
+    <string name="version_info">Versi %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Tingkatkan ke Premium</string>
+    <string name="premium_desc">Pindai semua langganan Anda secara otomatis ve hemat %%30 lebih banyak.</string>
+    <string name="upgrade">Tingkatkan</string>
+    
+    <!-- Search -->
+    <string name="search">Cari</string>
+    <string name="search_placeholder">Cari langganan atau transaksi</string>
+    <string name="recent_searches">PENCARIAN TERBARU</string>
+    <string name="results_found">HASIL DITEMUKAN (%d)</string>
+    <string name="subscriptions">Langganan</string>
+    <string name="transactions">Transaksi</string>
+    <string name="looking_for_else">Mencari yang lain?</string>
+    <string name="search_tip">Coba cari berdasarkan nama pedagang atau jumlah transaksi tertentu.</string>
+    <string name="clear_search">Hapus Pencarian</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Aktif</string>
+    <string name="suspicious">Mencurigakan</string>
+    <string name="cancelled">Dibatalkan</string>
+    <string name="monthly">BULANAN</string>
+    <string name="yearly">TAHUNAN</string>
+    <string name="one_time">SEKALI</string>
+    <string name="renews">Diperbarui pada: %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Ringkasan</string>
+    <string name="nav_search">Cari</string>
+    <string name="nav_settings">Pengaturan</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Turkish</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_chinese">Tionghoa (Sederhana)</string>
+    <string name="language_french">Prancis</string>
+    <string name="language_german">Jerman</string>
+    <string name="language_azerbaijani">Azerbaijan</string>
+    <string name="language_turkmen">Turkmenistan</string>
+    <string name="language_kazakh">Kazakhstan</string>
+    <string name="language_kyrgyz">Kirgizstan</string>
+    <string name="language_uzbek">Uzbekistan</string>
+    <string name="language_indonesian">Bahasa Indonesia</string>
+
+    <string name="select_language">Pilih Bahasa</string>
+    <string name="select_currency">Pilih Mata Uang</string>
+    <string name="close">Tutup</string>
+    
+    <!-- Auth -->
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="email">Email</string>
+    <string name="password">Kata Sandi</string>
+    <string name="name">Nama</string>
+    <string name="full_name">Nama Lengkap</string>
+    <string name="forgot_password">Lupa Kata Sandi?</string>
+    <string name="no_account">Belum punya akun?</string>
+    <string name="have_account">Sudah punya akun?</string>
+    <string name="sign_in">Masuk</string>
+    <string name="sign_up">Daftar</string>
+    <string name="create_account">Buat Akun</string>
+    <string name="welcome_back">Selamat Datang Kembali</string>
+    <string name="start_tracking">Mulai melacak langganan Anda</string>
+    <string name="join_us">Bergabunglah dengan kami</string>
+    <string name="manage_subscriptions">Kelola langganan Anda dengan mudah</string>
+    <string name="guest_user">Tamu</string>
+    <string name="not_logged_in">Belum masuk</string>
+
+    <!-- Login Screen -->
+    <string name="login_desc">Mulai melacak dan menghemat langganan Anda sekarang.</string>
+    <string name="email_placeholder">email@example.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">atau</string>
+    <string name="no_account_prompt">Belum punya akun? </string>
+    <string name="google_sign_in_failed">Masuk Google gagal (%s)</string>
+
+    <!-- Register Screen -->
+    <string name="register_desc">Mulai mengelola dan menghemat langganan Anda.</string>
+    <string name="full_name_placeholder">Misal: Budi Santoso</string>
+    <string name="accept_terms_pre">Saya menyetujui </string>
+    <string name="and"> ve </string>
+    <string name="accept_terms_post">.</string>
+    <string name="already_have_account_prompt">Sudah punya akun? </string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Syarat Penggunaan</string>
+    <string name="terms_of_use_content">1. Penerimaan\nBy using Sub Tracker, you agree to these terms.\n\n2. Service Scope\nAplikasi bu adalah alat untuk membantu Anda melacak langganan. Ini bukan saran finansial.\n\n3. User Responsibility\nAnda bertanggung jawab atas keamanan akun Anda ve keakuratan data yang dimasukkan.\n\n4. Changes\nKami berhak untuk mengubah fitur aplikasi ve syarat-syarat ini kapan saja.\n\n5. Termination\nKami dapat menghentikan akses Anda ke layanan jika syarat-syarat dilanggar.</string>
+    <string name="understood">Dimengerti</string>
+    <string name="privacy_dialog_content">Pembaruan Terakhir: 21 Februari 2026\n\n1. Pendahuluan\nKami sangat memperhatikan privasi data Anda.\n\n2. Collected Data\nInformasi langganan, preferensi penggunaan, ve data dasar perangkat diproses.\n\n3. Data Use\nData Anda hanya digunakan untuk mengirim pengingat ve meningkatkan performa aplikasi.\n\n4. Data Security\nData Anda dilindungi dengan metode enkripsi standar.\n\n5. Contact\nUntuk pertanyaan: gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Masukkan email terdaftar Anda untuk mengatur ulang kata sandi. Kami akan mengirimkan kode verifikasi.</string>
+    <string name="email_address_label">Alamat Email</string>
+    <string name="send_code">Kirim Kode</string>
+    <string name="back_to_login">Kembali ke Masuk</string>
+    <string name="verify_code_title">Verifikasi Kode</string>
+    <string name="verify_code_desc">Masukkan kode verifikasi 6 digit yang dikirim ke %s.</string>
+    <string name="verify_and_continue">Verifikasi &amp; Lanjutkan</string>
+    <string name="wait_for_code">Tunggu kode baru dalam:</string>
+    <string name="code_not_received">Tidak menerima kode?</string>
+    <string name="resend_code">Kirim Ulang</string>
+    <string name="reset_password_title">Buat Kata Sandi Baru</string>
+    <string name="reset_password_desc">Pilih kata sandi baru ve aman untuk akun Anda.</string>
+    <string name="new_password_label">Kata Sandi Baru</string>
+    <string name="confirm_password_label">Konfirmasi Kata Sandi</string>
+    <string name="min_6_chars">Minimal 6 karakter</string>
+    <string name="passwords_match">Kata sandi cocok</string>
+    <string name="update_password">Perbarui Kata Sandi</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Pembayaran Mencurigakan</string>
+    <string name="transactions_to_review">Transaksi untuk Diulas</string>
+    <string name="swipe_to_review">Geser ke kiri untuk menolak, ke kanan untuk mengonfirmasi sebagai langganan</string>
+    <string name="confirm">Konfirmasi</string>
+    <string name="reject">Tolak</string>
+    <string name="all_done">Semua selesai!</string>
+    <string name="no_suspicious">Tidak ada transaksi mencurigakan ditemukan</string>
+    <string name="reviewing_transactions">Mengulas transaksi</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Semua Langganan</string>
+    <string name="no_subscriptions">Belum ada langganan</string>
+    <string name="no_active_subscriptions">Tidak ada langganan aktif ditemukan</string>
+    <string name="no_suspicious_subscriptions">Tidak ada langganan mencurigakan ditemukan</string>
+    <string name="no_cancelled_subscriptions">Tidak ada langganan yang dibatalkan ditemukan</string>
+    <string name="detected_count">Terdeteksi (%d)</string>
+    <string name="marked_count">Ditandai (%d)</string>
+    <string name="add_subscription">Tambah Langganan</string>
+    <string name="service_name_placeholder">mis. Netflix</string>
+    <string name="subscription_details">Detail Langganan</string>
+    <string name="next_payment">Pembayaran Berikutnya</string>
+    <string name="billing_cycle">Siklus Penagihan</string>
+    <string name="category">Kategori</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Dapatkan Premium</string>
+    <string name="premium_features">Fitur Premium</string>
+    <string name="unlimited_subscriptions">Langganan Tanpa Batas</string>
+    <string name="advanced_analytics">Analitik Lanjutan</string>
+    <string name="priority_support">Dukungan Prioritas</string>
+    <string name="ad_free">Bebas Iklan</string>
+    <string name="choose_plan">Pilih Paket</string>
+    <string name="monthly_plan">Paket Bulanan</string>
+    <string name="yearly_plan">Paket Tahunan</string>
+    <string name="save_percent">Hemat %%d</string>
+    <string name="per_month">/bulan</string>
+    <string name="per_year">/tahun</string>
+    <string name="billed_monthly">Ditagih bulanan</string>
+    <string name="billed_yearly">Ditagih tahunan</string>
+    <string name="start_trial">Mulai Uji Coba Gratis</string>
+    <string name="restore_purchase">Pulihkan Pembelian</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">Hiburan</string>
+    <string name="category_music">Musik</string>
+    <string name="category_sports">Olahraga &amp; Kesehatan</string>
+    <string name="category_other">Lainnya</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Analitik</string>
+    <string name="spending_overview">Tinjauan Pengeluaran</string>
+    <string name="monthly_trend">Tren Bulanan</string>
+    <string name="category_breakdown">Rincian Per Kategori</string>
+    <string name="top_subscriptions">Pengeluaran Teratas</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">Riwayat Transaksi</string>
+    <string name="all_transactions">Semua Transaksi</string>
+    <string name="filter">Saring</string>
+    <string name="sort_by">Urutkan Berdasarkan</string>
+    <string name="date">Tanggal</string>
+    <string name="amount">Jumlah</string>
+    <string name="merchant">Pedagang</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Semua Langganan</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Tambah</string>
+    <string name="edit">Ubah</string>
+    <string name="delete">Hapus</string>
+    <string name="done">Selesai</string>
+    <string name="next">Berikutnya</string>
+    <string name="previous">Sebelumnya</string>
+    <string name="finish">Selesai</string>
+    
+    <!-- Messages -->
+    <string name="loading">Memuat…</string>
+    <string name="error">Kesalahan</string>
+    <string name="success">Berhasil</string>
+    <string name="try_again">Coba lagi</string>
+    <string name="no_results">Hasil tidak ditemukan</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">Nama wajib diisi</string>
+    <string name="error_amount_required">Jumlah wajib diisi</string>
+    <string name="error_amount_invalid">Masukkan jumlah yang valid</string>
+    <string name="error_currency_required">Mata uang wajib dipilih</string>
+    <string name="error_date_required">Tanggal wajib dipilih</string>
+    <string name="error_email_required">Email wajib diisi</string>
+    <string name="error_email_invalid">Masukkan email yang valid</string>
+    <string name="error_password_required">Kata sandi wajib diisi</string>
+    <string name="error_password_short">Kata sandi harus minimal 6 karakter</string>
+
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">Ubah Langganan</string>
+    <string name="service_name">Nama Layanan</string>
+    <string name="period">Periode</string>
+    <string name="reminder">Pengingat</string>
+    <string name="reminder_desc">Notifikasi 1 hari sebelum pembayaran</string>
+    <string name="update">Perbarui</string>
+    <string name="period_monthly">bulan</string>
+    <string name="period_yearly">tahun</string>
+    <string name="period_weekly">minggu</string>
+    <string name="days_remaining">%d hari tersisa</string>
+    <string name="total_spent">Total Pengeluaran</string>
+    <string name="start_date_label">Tanggal Mulai</string>
+    <string name="turn_off_reminder">Matikan Pengingat</string>
+    <string name="set_reminder">Atur Pengingat</string>
+    <string name="edit_plan">Ubah Paket</string>
+    <string name="reactivate_subscription">Aktifkan Kembali Langganan</string>
+    <string name="cancel_subscription_btn">Batalkan Langganan</string>
+    <string name="payment_history">Riwayat Pembayaran</string>
+    <string name="an_error_occurred">Terjadi kesalahan</string>
+    <string name="go_back">Kembali</string>
+    <string name="subscription_id_not_found">ID langganan tidak ditemukan</string>
+    <string name="no_subscriptions_yet">Belum ada langganan yang ditambahkan</string>
+    <string name="sms_permission_rationale">Izin SMS diperlukan untuk mendeteksi langganan secara otomatis.\nDengan cara ini, Anda tidak perlu memasukkan langganan secara manual.</string>
+    <string name="storage_permission_rationale">Izin penyimpanan diperlukan untuk memindai dokumen.\nDengan cara ini, informasi langganan dapat diambil secara otomatis dari file PDF.</string>
+    <string name="permission_denied_message">Tidak dapat memindai perangkat tanpa izin.\nAnda dapat menambahkan langganan secara manual jika diinginkan.</string>
+    <string name="permission_permanently_denied_message">Izin ditolak. Silakan aktifkan izin dari pengaturan.</string>
+
+    <!-- Scan Dialogs -->
+    <string name="scan_dialog_scanning">Memindai Perangkat...</string>
+    <string name="scan_dialog_completed">Pemindaian Selesai</string>
+    <string name="scan_dialog_sms_count">SMS: %d pesan dipindai</string>
+    <string name="scan_dialog_file_count">Berkas: %d berkas dipindai</string>
+    <string name="scan_dialog_detected_count">%d langganan terdeteksi</string>
+    <string name="scan_dialog_ok">OK</string>
+    <string name="detected_subs_title">Langganan Terdeteksi</string>
+    <string name="detected_subs_found">%d langganan ditemukan</string>
+    <string name="detected_subs_close">Tutup</string>
+    <string name="detected_sub_reject">Tolak</string>
+    <string name="detected_sub_add">Tambah</string>
+    <string name="billing_monthly_label">Bulanan</string>
+    <string name="billing_yearly_label">Tahunan</string>
+    <string name="billing_weekly_label">Mingguan</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Pusat Bantuan</string>
+    <string name="help_search_placeholder">Bagaimana kami bisa membantu Anda?</string>
+    <string name="popular_questions">Pertanyaan Populer</string>
+    
+    <string name="faq_q1">Bagaimana cara membatalkan langganan?</string>
+    <string name="faq_a1">Buka halaman langganan ve klik tombol \'Batalkan Langganan\' di bagian bawah. Ini hanya menghentikan pelacakan di aplikasi, pastikan untuk membatalkan juga melalui penyedia layanan.</string>
+    
+    <string name="faq_q2">Apakah data saya aman?</string>
+    <string name="faq_a2">Ya, semua data disimpan dalam keadaan terenkripsi di perangkat Anda. Kami tidak memberikan data Anda kepada pihak ketiga.</string>
+    
+    <string name="faq_q3">Bagaimana cara menyambungkan kartu bank?</string>
+    <string name="faq_a3">Saat ini, pelacakan otomatis dilakukan dengan membaca SMS ve notifikasi. Integrasi bank akan segera ditambahkan.</string>
+    
+    <string name="faq_q4">Bisakah saya mendapatkan pengembalian dana?</string>
+    <string name="faq_a4">Aturan Google Play/App Store berlaku untuk pembelian dalam aplikasi. Anda dapat menghubungi toko resmi untuk pertanyaan Anda.</string>
+    
+    <string name="faq_q5">Pengingat tidak berfungsi, apa yang harus dilakukan?</string>
+    <string name="faq_a5">Pastikan notifikasi diaktifkan dari pengaturan. Pastikan juga mode hemat daya tidak menghangatkannya.</string>
+    
+    <string name="faq_q6">Apa itu transaksi mencurigakan?</string>
+    <string name="faq_a6">Aplikasi akan memperingatkan Anda ketika mendeteksi pengeluaran yang tidak biasa atau tidak dikenal. Anda dapat meninjau transaksi ini di halaman \'Pembayaran Mencurigakan\'.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Kebijakan Privasi</string>
+    <string name="privacy_last_updated">Pembaruan Terakhir: 21 Februari 2026</string>
+    
+    <string name="privacy_title_1">1. Pendahuluan</string>
+    <string name="privacy_content_1">Sub Tracker menghormati privasi Anda. Kebijakan ini menjelaskan bagaimana data dikumpulkan ve dilindungi.</string>
+    
+    <string name="privacy_title_2">2. Pengumpulan Data</string>
+    <string name="privacy_content_2">Kami dapat mengumpulkan informasi langganan, preferensi penggunaan, ve data dasar perangkat.</string>
+    
+    <string name="privacy_title_3">3. Penggunaan Data</string>
+    <string name="privacy_content_3">Data digunakan untuk melacak langganan, mengirim pengingat, ve meningkatkan layanan.</string>
+    
+    <string name="privacy_title_4">4. Keamanan</string>
+    <string name="privacy_content_4">Data Anda dilindungi dengan metode standart ve tidak akan diberikan kepada siapa pun tanpa izin.</string>
+    
+    <string name="privacy_title_5">5. Izin</string>
+    <string name="privacy_content_5">Aplikasi dapat meminta izin notifikasi untuk mengirimkan pengingat.</string>
+    
+    <string name="privacy_title_6">6. Kontak</string>
+    <string name="privacy_content_6">Anda dapat menulis kepada kami untuk pertanyaan: gokhanaytekinn@yandex.com</string>
+</resources>

@@ -327,4 +327,21 @@
     
     <string name="privacy_title_6">6. Байланыс</string>
     <string name="privacy_content_6">Сұрақтар бойынша бізге жаза аласыз: gokhanaytekinn@yandex.com</string>
+
+    <!-- Scan Dialogs -->
+    <string name="scan_dialog_scanning">Құрылғы сканерленуде...</string>
+    <string name="scan_dialog_completed">Сканерлеу аяқталды</string>
+    <string name="scan_dialog_sms_count">SMS: %d хабарлама сканерленді</string>
+    <string name="scan_dialog_file_count">Файл: %d файл сканерленді</string>
+    <string name="scan_dialog_detected_count">%d жазылым анықталды</string>
+    <string name="scan_dialog_ok">ОК</string>
+    <string name="detected_subs_title">Анықталған жазылымдар</string>
+    <string name="detected_subs_found">%d жазылым табылды</string>
+    <string name="detected_subs_close">Жабу</string>
+    <string name="detected_sub_reject">Қабылдамау</string>
+    <string name="detected_sub_add">Қосу</string>
+    <string name="billing_monthly_label">Айына</string>
+    <string name="billing_yearly_label">Жылына</string>
+    <string name="billing_weekly_label">Аптасына</string>
 </resources>
+

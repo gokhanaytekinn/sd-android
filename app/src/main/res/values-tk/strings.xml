@@ -327,4 +327,21 @@
     
     <string name="privacy_title_6">6. Aragatnaşyk</string>
     <string name="privacy_content_6">Gizlinlik syýasatymyz barada soraglaryňyz bolsa, biz bilen habarlaşyp bilersiňiz:\ngokhanaytekinn@yandex.com</string>
+
+    <!-- Scan Dialogs -->
+    <string name="scan_dialog_scanning">Enjam skanirlenýär...</string>
+    <string name="scan_dialog_completed">Skanirlemek tamamlandy</string>
+    <string name="scan_dialog_sms_count">SMS: %d hat skanirlendi</string>
+    <string name="scan_dialog_file_count">Faýl: %d faýl skanirlendi</string>
+    <string name="scan_dialog_detected_count">%d abunalyk anyklandy</string>
+    <string name="scan_dialog_ok">Bolýar</string>
+    <string name="detected_subs_title">Anyklanan abunalyklar</string>
+    <string name="detected_subs_found">%d abunalyk tapyldy</string>
+    <string name="detected_subs_close">Ýap</string>
+    <string name="detected_sub_reject">Ret et</string>
+    <string name="detected_sub_add">Goş</string>
+    <string name="billing_monthly_label">Aýlyk</string>
+    <string name="billing_yearly_label">Ýyllyk</string>
+    <string name="billing_weekly_label">Hepdelik</string>
 </resources>
+

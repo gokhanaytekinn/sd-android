@@ -278,6 +278,22 @@
     <string name="storage_permission_rationale">需要存储权限才能扫描设备上的发票和订阅文件。\n这样，可以从 PDF 和其他文件中自动检测订阅信息。</string>
     <string name="permission_denied_message">没有权限无法进行设备扫描。\n如果需要，您可以手动添加订阅。</string>
     <string name="permission_permanently_denied_message">权限被拒绝。请在应用设置中启用权限。</string>
+
+    <!-- Scan Dialogs -->
+    <string name="scan_dialog_scanning">正在扫描设备...</string>
+    <string name="scan_dialog_completed">扫描完成</string>
+    <string name="scan_dialog_sms_count">短信：%d 条信息已扫描</string>
+    <string name="scan_dialog_file_count">文件：%d 个文件已扫描</string>
+    <string name="scan_dialog_detected_count">检查到 %d 个订阅</string>
+    <string name="scan_dialog_ok">确定</string>
+    <string name="detected_subs_title">检测到的订阅</string>
+    <string name="detected_subs_found">找到 %d 个订阅</string>
+    <string name="detected_subs_close">关闭</string>
+    <string name="detected_sub_reject">拒绝</string>
+    <string name="detected_sub_add">添加</string>
+    <string name="billing_monthly_label">每月</string>
+    <string name="billing_yearly_label">每年</string>
+    <string name="billing_weekly_label">每周</string>
     <string name="no_active_subscriptions">未发现激活的订阅</string>
     <string name="no_suspicious_subscriptions">未发现可疑订阅</string>
     <string name="no_cancelled_subscriptions">未发现已取消的订阅</string>

@@ -327,4 +327,21 @@
     
     <string name="privacy_title_6">6. Байланыш</string>
     <string name="privacy_content_6">Суроолор боюнча бизге жаза аласыз: gokhanaytekinn@yandex.com</string>
+
+    <!-- Scan Dialogs -->
+    <string name="scan_dialog_scanning">Түзмөк сканерленүүдө...</string>
+    <string name="scan_dialog_completed">Сканерлөө аяктады</string>
+    <string name="scan_dialog_sms_count">SMS: %d билдирүү сканерленди</string>
+    <string name="scan_dialog_file_count">Файл: %d файл сканерленди</string>
+    <string name="scan_dialog_detected_count">%d жазылуу аныкталды</string>
+    <string name="scan_dialog_ok">ОК</string>
+    <string name="detected_subs_title">Аныкталган жазылуулар</string>
+    <string name="detected_subs_found">%d жазылуу табылды</string>
+    <string name="detected_subs_close">Жабу</string>
+    <string name="detected_sub_reject">Четке кагуу</string>
+    <string name="detected_sub_add">Кошуу</string>
+    <string name="billing_monthly_label">Айына</string>
+    <string name="billing_yearly_label">Жылына</string>
+    <string name="billing_weekly_label">Аптасына</string>
 </resources>
+

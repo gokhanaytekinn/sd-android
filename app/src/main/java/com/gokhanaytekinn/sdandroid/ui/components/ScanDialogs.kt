@@ -18,6 +18,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.compose.ui.res.stringResource
+import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
@@ -66,7 +68,7 @@ fun ScanningDialog(
                 Spacer(modifier = Modifier.height(16.dp))
                 
                 Text(
-                    text = if (isScanning) "Cihaz Taranıyor..." else "Tarama Tamamlandı",
+                    text = if (isScanning) stringResource(R.string.scan_dialog_scanning) else stringResource(R.string.scan_dialog_completed),
                     fontSize = 20.sp,
                     fontWeight = FontWeight.Bold,
                     color = Color.White
@@ -79,19 +81,19 @@ fun ScanningDialog(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "SMS: ${it.smsScanned} mesaj tarandı",
+                            text = stringResource(R.string.scan_dialog_sms_count, it.smsScanned),
                             fontSize = 14.sp,
                             color = Color(0xFF9CA3AF)
                         )
                         Text(
-                            text = "Dosya: ${it.filesScanned} dosya tarandı",
+                            text = stringResource(R.string.scan_dialog_file_count, it.filesScanned),
                             fontSize = 14.sp,
                             color = Color(0xFF9CA3AF)
                         )
                         if (it.totalDetected > 0) {
                             Spacer(modifier = Modifier.height(4.dp))
                             Text(
-                                text = "${it.totalDetected} abonelik tespit edildi",
+                                text = stringResource(R.string.scan_dialog_detected_count, it.totalDetected),
                                 fontSize = 14.sp,
                                 color = SuccessColor,
                                 fontWeight = FontWeight.SemiBold
@@ -108,7 +110,7 @@ fun ScanningDialog(
                             containerColor = PrimaryBlue
                         )
                     ) {
-                        Text("Tamam")
+                        Text(stringResource(R.string.scan_dialog_ok))
                     }
                 }
             }
@@ -146,14 +148,14 @@ fun DetectedSubscriptionsDialog(
                 ) {
                     Column {
                         Text(
-                            text = "Tespit Edilen Abonelikler",
+                            text = stringResource(R.string.detected_subs_title),
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             color = Color.White
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "${detectedSubscriptions.size} abonelik bulundu",
+                            text = stringResource(R.string.detected_subs_found, detectedSubscriptions.size),
                             fontSize = 14.sp,
                             color = Color(0xFF9CA3AF)
                         )
@@ -162,7 +164,7 @@ fun DetectedSubscriptionsDialog(
                     IconButton(onClick = onDismiss) {
                         Icon(
                             imageVector = Icons.Default.Close,
-                            contentDescription = "Kapat",
+                            contentDescription = stringResource(R.string.detected_subs_close),
                             tint = Color.White
                         )
                     }
@@ -229,9 +231,9 @@ fun DetectedSubscriptionItem(
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
                         text = when (subscription.billingCycle) {
-                            "MONTHLY" -> "Aylık"
-                            "YEARLY" -> "Yıllık"
-                            "WEEKLY" -> "Haftalık"
+                            "MONTHLY" -> stringResource(R.string.billing_monthly_label)
+                            "YEARLY" -> stringResource(R.string.billing_yearly_label)
+                            "WEEKLY" -> stringResource(R.string.billing_weekly_label)
                             else -> subscription.billingCycle
                         },
                         fontSize = 12.sp,
@@ -279,7 +281,7 @@ fun DetectedSubscriptionItem(
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("Reddet")
+                    Text(stringResource(R.string.detected_sub_reject))
                 }
                 
                 Button(
@@ -296,7 +298,7 @@ fun DetectedSubscriptionItem(
                         modifier = Modifier.size(18.dp)
                     )
                     Spacer(modifier = Modifier.width(4.dp))
-                    Text("Ekle")
+                    Text(stringResource(R.string.detected_sub_add))
                 }
             }
         }

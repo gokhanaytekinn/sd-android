@@ -256,4 +256,21 @@
     
     <string name="privacy_title_6">6. Contacto</string>
     <string name="privacy_content_6">Para preguntas sobre nuestra política de privacidad, puede contactarnos en:\ngokhanaytekinn@yandex.com</string>
+
+
+    <!-- Scan Dialogs -->
+    <string name="scan_dialog_scanning">Escaneando dispositivo...</string>
+    <string name="scan_dialog_completed">Escaneo completado</string>
+    <string name="scan_dialog_sms_count">SMS: %d mensajes escaneados</string>
+    <string name="scan_dialog_file_count">Archivo: %d archivos escaneados</string>
+    <string name="scan_dialog_detected_count">%d suscripciones detectadas</string>
+    <string name="scan_dialog_ok">Aceptar</string>
+    <string name="detected_subs_title">Suscripciones detectadas</string>
+    <string name="detected_subs_found">%d suscripciones encontradas</string>
+    <string name="detected_subs_close">Cerrar</string>
+    <string name="detected_sub_reject">Rechazar</string>
+    <string name="detected_sub_add">Añadir</string>
+    <string name="billing_monthly_label">Mensual</string>
+    <string name="billing_yearly_label">Anual</string>
+    <string name="billing_weekly_label">Semanal</string>
 </resources>

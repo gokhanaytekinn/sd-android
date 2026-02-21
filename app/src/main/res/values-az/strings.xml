@@ -327,4 +327,21 @@
     
     <string name="privacy_title_6">6. Əlaqə</string>
     <string name="privacy_content_6">Məxfilik siyasətimizlə bağlı suallarınız üçün bizimlə əlaqə saxlaya bilərsiniz:\ngokhanaytekinn@yandex.com</string>
+
+    <!-- Scan Dialogs -->
+    <string name="scan_dialog_scanning">Cihaz taranır...</string>
+    <string name="scan_dialog_completed">Tarama tamamlandı</string>
+    <string name="scan_dialog_sms_count">SMS: %d mesaj tarandı</string>
+    <string name="scan_dialog_file_count">Fayl: %d fayl tarandı</string>
+    <string name="scan_dialog_detected_count">%d abunəlik aşkar edildi</string>
+    <string name="scan_dialog_ok">Tamam</string>
+    <string name="detected_subs_title">Aşkar edilmiş abunəliklər</string>
+    <string name="detected_subs_found">%d abunəlik tapıldı</string>
+    <string name="detected_subs_close">Bağla</string>
+    <string name="detected_sub_reject">Rədd et</string>
+    <string name="detected_sub_add">Əlavə et</string>
+    <string name="billing_monthly_label">Aylıq</string>
+    <string name="billing_yearly_label">İllik</string>
+    <string name="billing_weekly_label">Həftəlik</string>
 </resources>
+
