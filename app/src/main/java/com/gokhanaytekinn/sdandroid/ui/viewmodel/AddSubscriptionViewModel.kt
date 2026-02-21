@@ -68,10 +68,18 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     }
     
     fun updateAmount(value: String) {
-        // Keep only digits
-        val cleanValue = value.filter { it.isDigit() }
-        _amount.value = cleanValue
-        if (cleanValue.isNotBlank()) _amountError.value = null
+        // Keep digits and at most one comma
+        val cleanValue = value.filter { it.isDigit() || it == ',' }
+        val parts = cleanValue.split(",")
+        val finalValue = if (parts.size > 2) {
+            // If more than one comma, keep only the first one
+            parts[0] + "," + parts.drop(1).joinToString("")
+        } else {
+            cleanValue
+        }
+        
+        _amount.value = finalValue
+        if (finalValue.isNotBlank()) _amountError.value = null
     }
     
     fun updateCurrency(value: String) {
@@ -135,9 +143,10 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 val sub = result.getOrNull()
                 sub?.let {
                     _name.value = it.name
-                    // Convert Double cost to cents string (e.g. 12.5 -> "1250")
-                    val cents = (it.cost * 100).toLong().toString()
-                    _amount.value = cents
+                    // Convert Double cost to string with comma (e.g. 12.5 -> "12,5")
+                    val amountStr = it.cost.toString().replace('.', ',')
+                        .removeSuffix(",0") // Clean up .0 case
+                    _amount.value = amountStr
                     _currency.value = it.currency
                     _billingCycle.value = it.billingCycle
                     val rawDate = it.nextBillingDate ?: it.startDate ?: ""
@@ -163,7 +172,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 val subscription = Subscription(
                     id = _subscriptionId ?: UUID.randomUUID().toString(),
                     name = _name.value,
-                    cost = (_amount.value.toDoubleOrNull() ?: 0.0) / 100.0,
+                    cost = _amount.value.replace(',', '.').toDoubleOrNull() ?: 0.0,
                     currency = _currency.value,
                     billingCycle = _billingCycle.value,
                     nextBillingDate = apiDate,

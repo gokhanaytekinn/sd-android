@@ -17,36 +17,68 @@ class CurrencyVisualTransformation(
             return TransformedText(text, OffsetMapping.Identity)
         }
 
-        // Clean input: only digits
-        val rawInput = originalText.filter { it.isDigit() }
-        if (rawInput.isEmpty()) {
-            return TransformedText(AnnotatedString(""), OffsetMapping.Identity)
-        }
+        val parts = originalText.split(",")
+        val integerPart = parts[0]
+        val decimalPart = if (parts.size > 1) parts[1] else null
 
-        // Parse as cents (Long)
-        val value = rawInput.toLongOrNull() ?: 0L
-        val amount = value.toDouble() / 100.0
-
-        // Format
+        // Format integer part with dots
         val symbols = DecimalFormatSymbols().apply {
             groupingSeparator = '.'
-            decimalSeparator = ','
         }
-        val decimalFormat = DecimalFormat("#,##0.00", symbols)
-        val formatted = "${decimalFormat.format(amount)} $currencySymbol"
+        val decimalFormat = DecimalFormat("#,###", symbols)
+        val formattedInteger = if (integerPart.isEmpty()) "" else {
+            val value = integerPart.toLongOrNull() ?: 0L
+            decimalFormat.format(value)
+        }
+
+        val formattedResult = StringBuilder(formattedInteger)
+        if (decimalPart != null) {
+            formattedResult.append(",").append(decimalPart)
+        }
+        
+        val suffix = " $currencySymbol"
+        val transformedText = formattedResult.toString() + suffix
 
         val offsetMapping = object : OffsetMapping {
             override fun originalToTransformed(offset: Int): Int {
-                // This is a bit tricky for currency formatting where length changes a lot
-                // For simplicity in a fixed-decimal input, we usually put cursor at the end
-                return formatted.length
+                if (offset == 0) return 0
+                
+                var transformedOffset = 0
+                var originalProcessed = 0
+                
+                val transformedBase = formattedResult.toString()
+                
+                for (i in 0 until transformedBase.length) {
+                    if (originalProcessed == offset) break
+                    
+                    val char = transformedBase[i]
+                    if (char == '.') {
+                        transformedOffset++
+                    } else {
+                        transformedOffset++
+                        originalProcessed++
+                    }
+                }
+                
+                // If offset was at the end of original text (after all digits), 
+                // it should still be before the suffix in transformed text
+                return transformedOffset.coerceAtMost(transformedBase.length)
             }
 
             override fun transformedToOriginal(offset: Int): Int {
-                return originalText.length
+                val transformedBase = formattedResult.toString()
+                val actualOffset = offset.coerceAtMost(transformedBase.length)
+                
+                var originalOffset = 0
+                for (i in 0 until actualOffset) {
+                    if (transformedBase[i] != '.') {
+                        originalOffset++
+                    }
+                }
+                return originalOffset
             }
         }
 
-        return TransformedText(AnnotatedString(formatted), offsetMapping)
+        return TransformedText(AnnotatedString(transformedText), offsetMapping)
     }
 }

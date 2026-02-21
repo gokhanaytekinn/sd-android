@@ -233,7 +233,7 @@ fun AddSubscriptionScreen(
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(12.dp),
                             placeholder = { Text("0,00", color = Color.Gray) },
-                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
                             visualTransformation = CurrencyVisualTransformation(CurrencyFormatter.getCurrencySymbol(currency)),
                             isError = amountError != null,
                             supportingText = if (amountError != null) {
