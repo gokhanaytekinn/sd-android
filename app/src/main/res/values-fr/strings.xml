@@ -248,6 +248,9 @@
     <string name="reminder">Rappel</string>
     <string name="reminder_desc">Notifier 1 jour avant le paiement</string>
     <string name="update">Mettre à jour</string>
+    <string name="period_monthly">mois</string>
+    <string name="period_yearly">an</string>
+    <string name="period_weekly">semaine</string>
 
     <!-- Help Center Content -->
     <string name="help_center_title">Centre d\'aide</string>

@@ -87,6 +87,8 @@
     <string name="language_russian">Ruso</string>
     <string name="language_chinese">Chino simplificado</string>
     <string name="language_french">Francés</string>
+    <string name="language_german">Alemán</string>
+
 
 
     
@@ -107,13 +109,30 @@
     <string name="error_password_required">La contraseña es obligatoria</string>
     <string name="error_password_short">La contraseña debe tener mínimo 6 caracteres</string>
 
-    <string name="edit_subscription">Editar Suscripción</string>
+    <string name="edit_subscription">Editar suscripción</string>
+    <string name="days_remaining">%d días restantes</string>
+    <string name="total_spent">Gasto Total</string>
+    <string name="start_date_label">Fecha de Inicio</string>
+    <string name="turn_off_reminder">Desactivar Recordatorio</string>
+    <string name="set_reminder">Establecer Recordatorio</string>
+    <string name="edit_plan">Editar Plan</string>
+    <string name="reactivate_subscription">Reactivar Suscripción</string>
+    <string name="cancel_subscription_btn">Cancelar Suscripción</string>
+    <string name="payment_history">Historial de Pagos</string>
+    <string name="an_error_occurred">Ocurrió un error</string>
+    <string name="go_back">Volver</string>
+    <string name="subscription_id_not_found">ID de suscripción no encontrado</string>
+    <string name="no_subscriptions_yet">Aún no se han añadido suscripciones</string>
+
     <string name="service_name">Nombre del Servicio</string>
     <string name="amount">Importe</string>
     <string name="period">Período</string>
     <string name="reminder">Recordatorio</string>
     <string name="reminder_desc">Notificar 1 día antes del pago</string>
     <string name="update">Actualizar</string>
+    <string name="period_monthly">mes</string>
+    <string name="period_yearly">año</string>
+    <string name="period_weekly">semana</string>
 
 
     <!-- Auth -->

@@ -87,6 +87,8 @@
     <string name="language_russian">Rusça</string>
     <string name="language_chinese">Basitleştirilmiş Çince</string>
     <string name="language_french">Fransızca</string>
+    <string name="language_german">Almanca</string>
+
 
     <string name="select_language">Dil Seçin</string>
     <string name="select_currency">Para Birimi Seçin</string>
@@ -248,6 +250,23 @@
     <string name="reminder">Hatırlatıcı</string>
     <string name="reminder_desc">Ödemeden 1 gün önce bildir</string>
     <string name="update">Güncelle</string>
+    <string name="period_monthly">ay</string>
+    <string name="period_yearly">yıl</string>
+    <string name="period_weekly">hafta</string>
+    <string name="days_remaining">%d gün kaldı</string>
+    <string name="total_spent">Toplam Harcama</string>
+    <string name="start_date_label">Başlangıç</string>
+    <string name="turn_off_reminder">Hatırlatıcıyı Kapat</string>
+    <string name="set_reminder">Hatırlatıcı Kur</string>
+    <string name="edit_plan">Planı Düzenle</string>
+    <string name="reactivate_subscription">Aboneliği Tekrar Aktif Et</string>
+    <string name="cancel_subscription_btn">Aboneliği İptal Et</string>
+    <string name="payment_history">Ödeme Geçmişi</string>
+    <string name="an_error_occurred">Bir hata oluştu</string>
+    <string name="go_back">Geri Dön</string>
+    <string name="subscription_id_not_found">Abonelik ID bulunamadı</string>
+    <string name="no_subscriptions_yet">Henüz abonelik eklenmemiş</string>
+
 
     <!-- Help Center Content -->
     <string name="help_center_title">Yardım Merkezi</string>

@@ -24,7 +24,9 @@ object LocaleHelper {
             "ru" -> "Русский"
             "zh" -> "简体中文"
             "fr" -> "Français"
+            "de" -> "Deutsch"
             else -> "English"
+
 
 
         }

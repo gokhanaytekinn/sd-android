@@ -528,6 +528,15 @@ fun AppSettingsScreen(
                             AppCompatDelegate.setApplicationLocales(appLocale)
                         }
                     }
+                    LanguageOption("de", "Deutsch", currentLanguage) {
+                        scope.launch {
+                            languagePreferences.setLanguage("de")
+                            showLanguageDialog = false
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("de")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                        }
+                    }
+
 
 
                 }
@@ -651,7 +660,9 @@ fun getLanguageName(code: String): String {
         "ru" -> "Русский"
         "zh" -> "简体中文"
         "fr" -> "Français"
+        "de" -> "Deutsch"
         else -> code
+
 
 
     }

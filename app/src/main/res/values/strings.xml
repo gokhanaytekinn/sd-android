@@ -87,6 +87,8 @@
     <string name="language_russian">Русский</string>
     <string name="language_chinese">简体中文</string>
     <string name="language_french">Français</string>
+    <string name="language_german">Deutsch</string>
+
 
 
     <string name="select_language">Select Language</string>
@@ -250,6 +252,23 @@
     <string name="reminder">Reminder</string>
     <string name="reminder_desc">Notify 1 day before payment</string>
     <string name="update">Update</string>
+    <string name="period_monthly">month</string>
+    <string name="period_yearly">year</string>
+    <string name="period_weekly">week</string>
+    <string name="days_remaining">%d days left</string>
+    <string name="total_spent">Total Spent</string>
+    <string name="start_date_label">Start Date</string>
+    <string name="turn_off_reminder">Turn Off Reminder</string>
+    <string name="set_reminder">Set Reminder</string>
+    <string name="edit_plan">Edit Plan</string>
+    <string name="reactivate_subscription">Reactivate Subscription</string>
+    <string name="cancel_subscription_btn">Cancel Subscription</string>
+    <string name="payment_history">Payment History</string>
+    <string name="an_error_occurred">An error occurred</string>
+    <string name="go_back">Go Back</string>
+    <string name="subscription_id_not_found">Subscription ID not found</string>
+    <string name="no_subscriptions_yet">No subscriptions added yet</string>
+
 
     <!-- Help Center Content -->
     <string name="help_center_title">Help Center</string>

@@ -87,6 +87,8 @@
     <string name="language_russian">Русский</string>
     <string name="language_chinese">简体中文</string>
     <string name="language_french">法语</string>
+    <string name="language_german">德语</string>
+
 
     <string name="select_language">选择语言</string>
     <string name="select_currency">选择货币</string>
@@ -249,6 +251,23 @@
     <string name="reminder">提醒</string>
     <string name="reminder_desc">在扣费前 1 天通知</string>
     <string name="update">更新</string>
+    <string name="period_monthly">月</string>
+    <string name="period_yearly">年</string>
+    <string name="period_weekly">周</string>
+    <string name="days_remaining">剩余 %d 天</string>
+    <string name="total_spent">总计支出</string>
+    <string name="start_date_label">开始时间</string>
+    <string name="turn_off_reminder">关闭提醒</string>
+    <string name="set_reminder">设置提醒</string>
+    <string name="edit_plan">修改计划</string>
+    <string name="reactivate_subscription">重新激活订阅</string>
+    <string name="cancel_subscription_btn">取消订阅</string>
+    <string name="payment_history">付款记录</string>
+    <string name="an_error_occurred">发生错误</string>
+    <string name="go_back">返回</string>
+    <string name="subscription_id_not_found">未找到订阅 ID</string>
+    <string name="no_subscriptions_yet">尚未添加订阅</string>
+
 
     <!-- Help Center Content -->
     <string name="help_center_title">帮助中心</string>

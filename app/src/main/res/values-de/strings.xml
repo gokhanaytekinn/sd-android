@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Abonnement-Tracker</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Verwalten Sie Ihre Abonnements</string>
+    <string name="onboarding_desc_1">Verfolgen Sie alle Ihre monatlichen und jährlichen Abonnements an einem Ort.</string>
+    <string name="onboarding_title_2">Sparen Sie Geld</string>
+    <string name="onboarding_desc_2">Erkennen Sie unnötige Abonnements und behalten Sie Ihr Budget unter Kontrolle.</string>
+    <string name="onboarding_title_3">Erhalten Sie Erinnerungen</string>
+    <string name="onboarding_desc_3">Verpassen Sie keine Zahlung mehr mit automatischen Mahnungen vor dem Verlängerungsdatum.</string>
+    <string name="get_started">Loslegen</string>
+    <string name="next">Weiter</string>
+    <string name="back">Zurück</string>
+
+    <!-- Auth -->
+    <string name="login">Anmelden</string>
+    <string name="register">Registrieren</string>
+    <string name="email">E-Mail</string>
+    <string name="password">Passwort</string>
+    <string name="forgot_password">Passwort vergessen?</string>
+    <string name="no_account_prompt">Haben Sie noch kein Konto?</string>
+    <string name="already_have_account">Haben Sie bereits ein Konto?</string>
+    <string name="login_desc">Willkommen zurück! Bitte melden Sie sich an.</string>
+    <string name="register_desc">Erstellen Sie ein Konto, um Ihre Abonnements zu verwalten.</string>
+    <string name="email_placeholder">beispiel@email.com</string>
+    <string name="password_placeholder">Ihr Passwort</string>
+    <string name="name_placeholder">Ihr Name</string>
+    <string name="show_password">Passwort anzeigen</string>
+    <string name="hide_password">Passwort verbergen</string>
+    <string name="or">oder</string>
+    <string name="unknown_error">Unbekannter Fehler aufgetreten</string>
+    <string name="google_sign_in_failed">Google-Anmeldung fehlgeschlagen: %s</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard</string>
+    <string name="total_monthly">Gesamte monatliche Kosten</string>
+    <string name="suspicious_subscriptions">Verdächtige Abonnements</string>
+    <string name="transactions_pending">%d Transaktionen ausstehend</string>
+    <string name="most_expensive">Teuerste Abonnements</string>
+    <string name="view_all_subscriptions">Alle Abonnements anzeigen</string>
+    <string name="hello_user">Hallo %s</string>
+    <string name="guest_user">Gast</string>
+
+    <!-- Categories -->
+    <string name="category_entertainment">Unterhaltung</string>
+    <string name="category_music">Musik</string>
+    <string name="category_sports">Sport &amp; Gesundheit</string>
+    <string name="category_technology">Technologie</string>
+    <string name="category_other">Andere</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Einstellungen</string>
+    <string name="account_settings">Kontoeinstellungen</string>
+    <string name="language">Sprache</string>
+    <string name="currency">Währung</string>
+    <string name="dark_mode">Dunkelmodus</string>
+    <string name="logout">Abmelden</string>
+    <string name="version">Version %s</string>
+    <string name="close">Schließen</string>
+
+    <!-- Languages -->
+    <string name="language_english">Englisch</string>
+    <string name="language_turkish">Türkisch</string>
+    <string name="language_spanish">Spanisch</string>
+    <string name="language_russian">Russisch</string>
+    <string name="language_chinese">Chinesisch (Vereinfacht)</string>
+    <string name="language_french">Französisch</string>
+    <string name="language_german">Deutsch</string>
+
+    <string name="select_language">Sprache wählen</string>
+    <string name="select_currency">Währung wählen</string>
+
+    <!-- Errors -->
+    <string name="error_email_required">E-Mail ist erforderlich</string>
+    <string name="error_email_invalid">Ungültiges E-Mail-Format</string>
+    <string name="error_password_required">Passwort ist erforderlich</string>
+    <string name="error_password_short">Passwort muss mindestens 6 Zeichen lang sein</string>
+
+    <!-- New keys for localization audit fixes -->
+    <string name="edit_subscription">Abonnement bearbeiten</string>
+    <string name="days_remaining">Noch %d Tage</string>
+    <string name="total_spent">Gesamtausgaben</string>
+    <string name="start_date_label">Startdatum</string>
+    <string name="turn_off_reminder">Benachrichtigung ausschalten</string>
+    <string name="set_reminder">Erinnerung einstellen</string>
+    <string name="edit_plan">Plan bearbeiten</string>
+    <string name="reactivate_subscription">Abonnement reaktivieren</string>
+    <string name="cancel_subscription_btn">Abonnement kündigen</string>
+    <string name="payment_history">Zahlungsverlauf</string>
+    <string name="an_error_occurred">Ein Fehler ist aufgetreten</string>
+    <string name="go_back">Zurückgehen</string>
+    <string name="subscription_id_not_found">Abonnement-ID nicht gefunden</string>
+    <string name="no_subscriptions_yet">Noch keine Abonnements hinzugefügt</string>
+
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Alle Abonnements</string>
+    <string name="no_subscriptions">Keine Abonnements vorhanden</string>
+    <string name="add_subscription">Abonnement hinzufügen</string>
+    <string name="subscription_details">Abonnement-Details</string>
+    <string name="next_payment">Nächste Zahlung</string>
+    <string name="billing_cycle">Abrechnungszyklus</string>
+    <string name="start_date">Startdatum</string>
+    <string name="cancel_subscription">Abonnement kündigen</string>
+    <string name="delete_subscription">Abonnement löschen</string>
+    <string name="save_changes">Änderungen speichern</string>
+
+    <!-- Search -->
+    <string name="search_placeholder">Abonnements suchen...</string>
+    <string name="popular_subscriptions">Beliebte Abonnements</string>
+
+    <!-- Add Subscription -->
+    <string name="service_name">Dienstname</string>
+    <string name="amount">Betrag</string>
+    <string name="period">Zeitraum</string>
+    <string name="category">Kategorie</string>
+    <string name="reminder">Erinnerung</string>
+    <string name="reminder_desc">1 Tag vor der Zahlung benachrichtigen</string>
+    <string name="update">Aktualisieren</string>
+    <string name="period_monthly">Monat</string>
+    <string name="period_yearly">Jahr</string>
+    <string name="period_weekly">Woche</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Hilfecenter</string>
+    <string name="how_to_add">Wie füge ich ein Abonnement hinzu?</string>
+    <string name="how_to_add_desc">Klicken Sie auf das Plus-Symbol in der Liste aller Abonnements, um einen neuen Dienst hinzuzufügen.</string>
+    <string name="automatic_tracking">Automatische Verfolgung</string>
+    <string name="automatic_tracking_desc">Wir scannen Ihre Transaktionen sicher, um wiederkehrende Abonnements automatisch zu finden.</string>
+    <string name="cancel_anytime">Jederzeit kündigen</string>
+    <string name="cancel_anytime_desc">Sie können Abonnements direkt über die App-Details verfolgen und verwalten.</string>
+</resources>

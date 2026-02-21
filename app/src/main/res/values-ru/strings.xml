@@ -87,6 +87,8 @@
     <string name="language_russian">Русский</string>
     <string name="language_chinese">Упрощенный китайский</string>
     <string name="language_french">Французский</string>
+    <string name="language_german">Немецкий</string>
+
 
 
     <string name="select_language">Выберите Язык</string>
@@ -126,7 +128,20 @@
     <!-- Subscriptions List -->
     <string name="all_subscriptions">Все Подписки</string>
     <string name="no_subscriptions">Пока нет подписок</string>
-    <string name="add_subscription">Добавить Подписку</string>
+    <string name="days_remaining">осталось %d дн.</string>
+    <string name="total_spent">Всего потрачено</string>
+    <string name="start_date_label">Дата начала</string>
+    <string name="turn_off_reminder">Выключить напоминание</string>
+    <string name="set_reminder">Установить напоминание</string>
+    <string name="edit_plan">Изменить план</string>
+    <string name="reactivate_subscription">Возобновить подписку</string>
+    <string name="cancel_subscription_btn">Отменить подписку</string>
+    <string name="payment_history">История платежей</string>
+    <string name="an_error_occurred">Произошла ошибка</string>
+    <string name="go_back">Вернуться</string>
+    <string name="subscription_id_not_found">ID подписки не найден</string>
+    <string name="no_subscriptions_yet">Подписки еще не добавлены</string>
+
     <string name="subscription_details">Детали Подписки</string>
     <string name="next_payment">Следующий Платеж</string>
     <string name="billing_cycle">Цикл Оплаты</string>
@@ -209,6 +224,9 @@
     <string name="reminder">Напоминание</string>
     <string name="reminder_desc">Уведомить за 1 день до оплаты</string>
     <string name="update">Обновить</string>
+    <string name="period_monthly">месяц</string>
+    <string name="period_yearly">год</string>
+    <string name="period_weekly">неделя</string>
 
     <!-- Auth -->
     <string name="login_desc">Начните отслеживать свои подписки и экономить прямо сейчас.</string>

@@ -19,6 +19,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
 import com.gokhanaytekinn.sdandroid.ui.theme.*
@@ -64,8 +66,9 @@ fun SubscriptionDetailsScreen(
             isLoading = false
         } else {
             isLoading = false
-            error = "Abonelik ID bulunamadı"
+            error = context.getString(R.string.subscription_id_not_found)
         }
+
     }
 
     val colorScheme = MaterialTheme.colorScheme
@@ -87,33 +90,35 @@ fun SubscriptionDetailsScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = error ?: "Bir hata oluştu",
+                    text = (error ?: stringResource(R.string.an_error_occurred)).toString(),
                     color = colorScheme.error,
                     fontSize = 16.sp
                 )
                 Spacer(modifier = Modifier.height(16.dp))
                 Button(onClick = onBackClick) {
-                    Text("Geri Dön")
+                    Text(stringResource(R.string.go_back))
                 }
+
             }
         } else if (subscription != null) {
             val sub = subscription!!
 
             // Calculate remaining days
             val daysRemaining = calculateDaysRemaining(sub.nextBillingDate)
-            val daysRemainingText = if (daysRemaining >= 0) "$daysRemaining gün kaldı" else ""
+            val daysRemainingText = if (daysRemaining >= 0) stringResource(R.string.days_remaining, daysRemaining) else ""
             val progressValue = calculateProgress(sub.billingCycle.name, daysRemaining)
-            val formattedStartDate = formatDateTurkish(sub.startDate)
-            val formattedRenewalDate = formatDateTurkish(sub.nextBillingDate)
+            val formattedStartDate = formatDateLocalized(context, sub.startDate)
+            val formattedRenewalDate = formatDateLocalized(context, sub.nextBillingDate)
+
 
             // Period text
             val periodText = when (sub.billingCycle.name) {
-                "MONTHLY" -> "ay"
-                "YEARLY" -> "yıl"
-                "WEEKLY" -> "hafta"
-                "QUARTERLY" -> "çeyrek"
-                else -> "ay"
+                "MONTHLY" -> stringResource(R.string.period_monthly).lowercase()
+                "YEARLY" -> stringResource(R.string.period_yearly).lowercase()
+                "WEEKLY" -> stringResource(R.string.period_weekly).lowercase()
+                else -> stringResource(R.string.period_monthly).lowercase()
             }
+
 
             // Price text
             val priceText = CurrencyFormatter.formatAmount(sub.cost, sub.currency)
@@ -233,11 +238,12 @@ fun SubscriptionDetailsScreen(
                                     )
                                     Spacer(modifier = Modifier.width(8.dp))
                                     Text(
-                                        text = "Hatırlatıcı Açık",
+                                        text = stringResource(R.string.reminder),
                                         color = colorScheme.onPrimaryContainer,
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.Medium
                                     )
+
                                 }
                             }
                         }
@@ -268,11 +274,12 @@ fun SubscriptionDetailsScreen(
                                 modifier = Modifier.padding(20.dp)
                             ) {
                                 Text(
-                                    text = "Bir Sonraki Ödeme",
+                                    text = stringResource(R.string.next_payment),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Medium,
                                     color = colorScheme.onSurfaceVariant
                                 )
+
                                 Spacer(modifier = Modifier.height(8.dp))
                                 Row(
                                     verticalAlignment = Alignment.CenterVertically,
@@ -334,11 +341,12 @@ fun SubscriptionDetailsScreen(
                                     modifier = Modifier.padding(16.dp)
                                 ) {
                                     Text(
-                                        text = "Toplam Harcama",
+                                        text = stringResource(R.string.total_spent),
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.Medium,
                                         color = colorScheme.onSurfaceVariant
                                     )
+
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         text = priceText,
@@ -364,11 +372,12 @@ fun SubscriptionDetailsScreen(
                                     modifier = Modifier.padding(16.dp)
                                 ) {
                                     Text(
-                                        text = "Başlangıç",
+                                        text = stringResource(R.string.start_date_label),
                                         fontSize = 12.sp,
                                         fontWeight = FontWeight.Medium,
                                         color = colorScheme.onSurfaceVariant
                                     )
+
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         text = formattedStartDate,
@@ -424,11 +433,12 @@ fun SubscriptionDetailsScreen(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = if (sub.reminderEnabled) "Hatırlatıcıyı Kapat" else "Hatırlatıcı Kur",
+                                text = if (sub.reminderEnabled) stringResource(R.string.turn_off_reminder) else stringResource(R.string.set_reminder),
                                 fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold,
                                 maxLines = 1
                             )
+
                         }
 
                         OutlinedButton(
@@ -448,10 +458,11 @@ fun SubscriptionDetailsScreen(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Planı Düzenle",
+                                text = stringResource(R.string.edit_plan),
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium
                             )
+
                         }
                     }
                     
@@ -490,10 +501,11 @@ fun SubscriptionDetailsScreen(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Aboneliği Tekrar Aktif Et",
+                                text = stringResource(R.string.reactivate_subscription),
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium
                             )
+
                         }
                     } else {
                         OutlinedButton(
@@ -528,10 +540,11 @@ fun SubscriptionDetailsScreen(
                             )
                             Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = "Aboneliği İptal Et",
+                                text = stringResource(R.string.cancel_subscription_btn),
                                 fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium
                             )
+
                         }
                     }
                 }
@@ -551,11 +564,12 @@ fun SubscriptionDetailsScreen(
                             modifier = Modifier.size(20.dp)
                         )
                         Text(
-                            text = "Ödeme Geçmişi",
+                            text = stringResource(R.string.payment_history),
                             fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = colorScheme.onBackground
                         )
+
                     }
                     Spacer(modifier = Modifier.height(16.dp))
                 }
@@ -650,16 +664,15 @@ private fun calculateProgress(billingCycle: String, daysRemaining: Int): Float {
     return (elapsed.toFloat() / totalDays.toFloat()).coerceIn(0f, 1f)
 }
 
-private fun formatDateTurkish(dateStr: String?): String {
+private fun formatDateLocalized(context: android.content.Context, dateStr: String?): String {
     if (dateStr.isNullOrBlank()) return "-"
     return try {
         val date = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE)
-        val months = listOf(
-            "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
-            "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
-        )
-        "${date.dayOfMonth} ${months[date.monthValue - 1]} ${date.year}"
+        val locale = context.resources.configuration.locales[0]
+        val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", locale)
+        date.format(formatter)
     } catch (e: Exception) {
         dateStr
     }
 }
+

@@ -237,10 +237,11 @@ fun DashboardScreen(
                             contentAlignment = Alignment.Center
                         ) {
                             Text(
-                                text = "Henüz abonelik eklenmemiş",
+                                text = stringResource(R.string.no_subscriptions_yet),
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                                 fontSize = 14.sp
                             )
+
                         }
                     }
                 } else {
