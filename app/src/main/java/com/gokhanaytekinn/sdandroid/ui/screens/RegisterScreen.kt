@@ -229,9 +229,10 @@ fun RegisterScreen(
                     onCheckedChange = { termsAccepted = it },
                     colors = CheckboxDefaults.colors(
                         checkedColor = PrimaryBlue
-                    )
+                    ),
+                    modifier = Modifier.padding(end = 8.dp)
                 )
-                Column(modifier = Modifier.padding(start = 4.dp)) {
+                Column(modifier = Modifier.weight(1f)) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -335,7 +336,8 @@ fun RegisterScreen(
                 // Login Link
                 Row(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
                         text = "Zaten bir hesabın var mı? ",
