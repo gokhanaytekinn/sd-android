@@ -32,7 +32,6 @@ import kotlinx.coroutines.launch
 @Composable
 fun LoginScreen(
     viewModel: AuthViewModel,
-    onBackClick: () -> Unit = {},
     onLoginSuccess: () -> Unit = {},
     onNavigateToRegister: () -> Unit = {},
     onForgotPassword: () -> Unit = {}

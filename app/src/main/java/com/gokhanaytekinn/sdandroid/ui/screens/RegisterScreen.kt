@@ -35,11 +35,9 @@ import com.gokhanaytekinn.sdandroid.R
 @Composable
 fun RegisterScreen(
     viewModel: AuthViewModel,
-    onBackClick: () -> Unit = {},
     onRegisterSuccess: () -> Unit = {},
     onNavigateToLogin: () -> Unit = {}
 ) {
-    val context = LocalContext.current
     val authState by viewModel.authState.collectAsState()
     
     var fullName by remember { mutableStateOf("") }

@@ -69,9 +69,6 @@ fun NavGraph(
             composable(Screen.Login.route) {
                 LoginScreen(
                     viewModel = authViewModel,
-                    onBackClick = {
-                        navController.popBackStack()
-                    },
                     onLoginSuccess = {
                         navController.navigate(Screen.Dashboard.route) {
                             popUpTo(Screen.Login.route) { inclusive = true }
@@ -130,9 +127,6 @@ fun NavGraph(
             composable(Screen.Register.route) {
                 RegisterScreen(
                     viewModel = authViewModel,
-                    onBackClick = {
-                        navController.popBackStack()
-                    },
                     onRegisterSuccess = {
                         navController.navigate(Screen.Dashboard.route) {
                             popUpTo(Screen.Register.route) { inclusive = true }
@@ -224,7 +218,7 @@ fun NavGraph(
                     onCloseClick = {
                         navController.popBackStack()
                     },
-                    onUpgradeClick = { isYearly ->
+                    onUpgradeClick = { _ ->
                         // Handle premium upgrade
                         navController.popBackStack()
                     }
