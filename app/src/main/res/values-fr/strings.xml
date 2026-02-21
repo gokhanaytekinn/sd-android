@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Suivi d\'Abonnement</string>
+    
+    <!-- Common -->
+    <string name="back">Retour</string>
+    <string name="save">Enregistrer</string>
+    <string name="cancel">Annuler</string>
+    <string name="skip">Passer</string>
+    <string name="continue_btn">Continuer</string>
+    <string name="get_started">Commencer</string>
+    <string name="show_password">Afficher le mot de passe</string>
+    <string name="hide_password">Masquer le mot de passe</string>
+    <string name="unknown_error">Erreur inconnue</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Suivez vos abonnements</string>
+    <string name="onboarding_desc_1">Visualisez et gérez tous vos abonnements en un seul endroit. Ne manquez plus jamais un paiement.</string>
+    <string name="onboarding_title_2">Capture automatique des paiements</string>
+    <string name="onboarding_desc_2">Scanne vos SMS et notifications pour lister vos abonnements en quelques secondes.</string>
+    <string name="onboarding_security">Chiffré de bout en bout et sécurisé</string>
+    <string name="onboarding_title_3">Mettez fin aux dépenses inutiles</string>
+    <string name="onboarding_desc_3">Annulez les abonnements oubliés, soyez notifié avant les dates de paiement.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Tableau de bord</string>
+    <string name="hello_user">Bonjour, %s</string>
+    <string name="total_monthly">Total ce mois-ci</string>
+    <string name="vs_last_month">vs mois dernier</string>
+    <string name="suspicious_subscriptions">Abonnements suspects</string>
+    <string name="transactions_pending">%d transactions en attente de révision</string>
+    <string name="most_expensive">Abonnements les plus chers</string>
+    <string name="view_all">Tout afficher</string>
+    <string name="view_all_subscriptions">Voir tous les abonnements</string>
+    
+    <!-- Settings -->
+    <string name="settings">Paramètres</string>
+    <string name="account">COMPTE</string>
+    <string name="application">APPLICATION</string>
+    <string name="support">SUPPORT</string>
+    <string name="membership_type">Type d\'adhésion</string>
+    <string name="free_plan">Plan gratuit</string>
+    <string name="notifications">Notifications</string>
+    <string name="currency">Devise</string>
+    <string name="dark_mode">Mode sombre</string>
+    <string name="language">Langue</string>
+    <string name="help_center">Centre d\'aide</string>
+    <string name="privacy_policy">Politique de confidentialité</string>
+    <string name="logout">Déconnexion</string>
+    <string name="version_info">Version %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Passer au Premium</string>
+    <string name="premium_desc">Scannez automatiquement tous vos abonnements et économisez 30%% de plus.</string>
+    <string name="upgrade">Mettre à niveau</string>
+    
+    <!-- Search -->
+    <string name="search">Rechercher</string>
+    <string name="search_placeholder">Rechercher des abonnements ou transactions</string>
+    <string name="recent_searches">RECHERCHES RÉCENTES</string>
+    <string name="results_found">RÉSULTATS TROUVÉS (%d)</string>
+    <string name="subscriptions">Abonnements</string>
+    <string name="transactions">Transactions</string>
+    <string name="looking_for_else">Vous cherchez autre chose ?</string>
+    <string name="search_tip">Essayez de rechercher par nom de marchand ou montants de transaction spécifiques.</string>
+    <string name="clear_search">Effacer la recherche</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Actif</string>
+    <string name="suspicious">Suspect</string>
+    <string name="cancelled">Annulé</string>
+    <string name="monthly">MENSUEL</string>
+    <string name="yearly">ANNUEL</string>
+    <string name="one_time">UNE SEULE FOIS</string>
+    <string name="renews">Renouvellement %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Tableau de bord</string>
+    <string name="nav_search">Rechercher</string>
+    <string name="nav_settings">Paramètres</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_french">Français</string>
+    <string name="select_language">Choisir la langue</string>
+    <string name="select_currency">Choisir la devise</string>
+    <string name="close">Fermer</string>
+    
+    <!-- Auth -->
+    <string name="login">Connexion</string>
+    <string name="register">S\'inscrire</string>
+    <string name="email">Email</string>
+    <string name="password">Mot de passe</string>
+    <string name="name">Nom</string>
+    <string name="full_name">Nom complet</string>
+    <string name="forgot_password">Mot de passe oublié ?</string>
+    <string name="no_account">Vous n\'avez pas de compte ?</string>
+    <string name="have_account">Vous avez déjà un compte ?</string>
+    <string name="sign_in">Se connecter</string>
+    <string name="sign_up">S\'inscrire</string>
+    <string name="create_account">Créer un compte</string>
+    <string name="welcome_back">Bon retour</string>
+    <string name="start_tracking">Commencez à suivre vos abonnements</string>
+    <string name="join_us">Rejoignez-nous</string>
+    <string name="manage_subscriptions">Gérez vos abonnements facilement</string>
+    <string name="guest_user">Utilisateur invité</string>
+    <string name="not_logged_in">Non connecté</string>
+    
+    <!-- Login Screen -->
+    <string name="login_desc">Commencez à suivre vos abonnements et à économiser dès maintenant.</string>
+    <string name="email_placeholder">email@example.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">ou</string>
+    <string name="no_account_prompt">Vous n\'avez pas de compte ? </string>
+    <string name="google_sign_in_failed">Échec de la connexion Google (%s)</string>
+    
+    <!-- Register Screen -->
+    <string name="register_desc">Commencez à gérer vos abonnements et à économiser.</string>
+    <string name="full_name_placeholder">ex. John Doe</string>
+    <string name="accept_terms_pre">J\'accepte les </string>
+    <string name="and"> et </string>
+    <string name="accept_terms_post">.</string>
+    <string name="already_have_account_prompt">Vous avez déjà un compte ? </string>
+    
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Conditions d\'utilisation</string>
+    <string name="terms_of_use_content">1. Acceptation\nEn utilisant Suivi d\'Abonnement, vous acceptez ces conditions.\n\n2. Portée du service\nL\'application est un outil pour vous aider à suivre vos abonnements. Ce n\'est pas un conseil financier.\n\n3. Responsabilité de l\'utilisateur\nVous êtes responsable de la sécurité des informations de votre compte et de l\'exactitude des données que vous ajoutez.\n\n4. Changements\nNous nous réservons le droit de modifier les fonctionnalités de l\'application et ces conditions à tout moment.\n\n5. Résiliation\nNous pouvons mettre fin à votre accès au service en cas de violation des conditions.</string>
+    <string name="understood">Compris</string>
+    <string name="privacy_dialog_content">Dernière mise à jour : 20 février 2026\n\n1. Introduction\nNous accordons de l\'importance à la confidentialité de vos données.\n\n2. Données collectées\nLes informations d\'abonnement, les préférences d\'utilisation et les informations de base sur l\'appareil sont traitées.\n\n3. Utilisation des données\nVos données sont uniquement utilisées pour envoyer des rappels et améliorer les performances de l\'application.\n\n4. Sécurité des données\nVos données sont protégées par des méthodes de chiffrement standard de l\'industrie.\n\n5. Contact\nPour des questions : gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Entrez votre adresse email enregistrée pour réinitialiser votre mot de passe. Nous vous enverrons un code de vérification.</string>
+    <string name="email_address_label">Adresse email</string>
+    <string name="send_code">Envoyer le code</string>
+    <string name="back_to_login">Retour à la connexion</string>
+    <string name="verify_code_title">Vérifier le code</string>
+    <string name="verify_code_desc">Entrez le code de vérification à 6 chiffres que nous avons envoyé à %s.</string>
+    <string name="verify_and_continue">Vérifier et continuer</string>
+    <string name="wait_for_code">Attendre le nouveau code :</string>
+    <string name="code_not_received">Vous n\'avez pas reçu le code ?</string>
+    <string name="resend_code">Renvoyer le code</string>
+    <string name="reset_password_title">Créer un nouveau mot de passe</string>
+    <string name="reset_password_desc">Veuillez définir un nouveau mot de passe fort pour votre compte.</string>
+    <string name="new_password_label">Nouveau mot de passe</string>
+    <string name="confirm_password_label">Confirmer le mot de passe</string>
+    <string name="min_6_chars">Au moins 6 caractères</string>
+    <string name="passwords_match">Les mots de passe correspondent</string>
+    <string name="update_password">Mettre à jour le mot de passe</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Paiements suspects</string>
+    <string name="transactions_to_review">Transactions à réviser</string>
+    <string name="swipe_to_review">Balayez vers la gauche pour rejeter ou vers la droite pour confirmer comme abonnement</string>
+    <string name="confirm">Confirmer</string>
+    <string name="reject">Rejeter</string>
+    <string name="all_done">Tout est fait !</string>
+    <string name="no_suspicious">Aucune transaction suspecte trouvée</string>
+    <string name="reviewing_transactions">Révision des transactions</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Tous les abonnements</string>
+    <string name="no_subscriptions">Pas encore d\'abonnements</string>
+    <string name="add_subscription">Ajouter un abonnement</string>
+    <string name="subscription_details">Détails de l\'abonnement</string>
+    <string name="next_payment">Prochain paiement</string>
+    <string name="billing_cycle">Cycle de facturation</string>
+    <string name="category">Catégorie</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Obtenir le Premium</string>
+    <string name="premium_features">Fonctionnalités Premium</string>
+    <string name="unlimited_subscriptions">Abonnements illimités</string>
+    <string name="advanced_analytics">Analyses avancées</string>
+    <string name="priority_support">Support prioritaire</string>
+    <string name="ad_free">Expérience sans publicité</string>
+    <string name="choose_plan">Choisissez votre plan</string>
+    <string name="monthly_plan">Plan mensuel</string>
+    <string name="yearly_plan">Plan annuel</string>
+    <string name="save_percent">Économisez %d%%</string>
+    <string name="per_month">/mois</string>
+    <string name="per_year">/an</string>
+    <string name="billed_monthly">Facturé mensuellement</string>
+    <string name="billed_yearly">Facturé annuellement</string>
+    <string name="start_trial">Commencer l\'essai gratuit</string>
+    <string name="restore_purchase">Restaurer l\'achat</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">Divertissement</string>
+    <string name="category_music">Musique</string>
+    <string name="category_sports">Sports et Santé</string>
+    <string name="category_other">Autre</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Analyses</string>
+    <string name="spending_overview">Aperçu des dépenses</string>
+    <string name="monthly_trend">Tendance mensuelle</string>
+    <string name="category_breakdown">Répartition par catégorie</string>
+    <string name="top_subscriptions">Meilleurs abonnements</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">Historique des transactions</string>
+    <string name="all_transactions">Toutes les transactions</string>
+    <string name="filter">Filtrer</string>
+    <string name="sort_by">Trier par</string>
+    <string name="date">Date</string>
+    <string name="amount">Montant</string>
+    <string name="merchant">Marchand</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Tous les abonnements</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Ajouter</string>
+    <string name="edit">Modifier</string>
+    <string name="delete">Supprimer</string>
+    <string name="done">Terminé</string>
+    <string name="next">Suivant</string>
+    <string name="previous">Précédent</string>
+    <string name="finish">Terminer</string>
+    
+    <!-- Messages -->
+    <string name="loading">Chargement…</string>
+    <string name="error">Erreur</string>
+    <string name="success">Succès</string>
+    <string name="try_again">Réessayer</string>
+    <string name="no_results">Aucun résultat trouvé</string>
+    <string name="date_placeholder">AAAA-MM-JJ</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">Le nom est requis</string>
+    <string name="error_amount_required">Le montant est requis</string>
+    <string name="error_amount_invalid">Veuillez entrer un montant valide</string>
+    <string name="error_currency_required">La devise est requise</string>
+    <string name="error_date_required">La date est requise</string>
+    <string name="error_email_required">L\'email est requis</string>
+    <string name="error_email_invalid">Veuillez entrer un email valide</string>
+    <string name="error_password_required">Le mot de passe est requis</string>
+    <string name="error_password_short">Le mot de passe doit comporter au moins 6 caractères</string>
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">Modifier l\'abonnement</string>
+    <string name="service_name">Nom du service</string>
+    <string name="period">Période</string>
+    <string name="reminder">Rappel</string>
+    <string name="reminder_desc">Notifier 1 jour avant le paiement</string>
+    <string name="update">Mettre à jour</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Centre d\'aide</string>
+    <string name="help_search_placeholder">Comment pouvons-nous vous aider ?</string>
+    <string name="popular_questions">Questions populaires</string>
+    
+    <string name="faq_q1">Comment annuler un abonnement ?</string>
+    <string name="faq_a1">Vous pouvez aller sur la page des détails de l\'abonnement et cliquer sur le bouton \'Annuler l\'abonnement\' en bas. Cette action ne fait que mettre fin au suivi dans l\'application, n\'oubliez pas d\'annuler également via le fournisseur de services.</string>
+    
+    <string name="faq_q2">Mes données sont-elles sécurisées ?</string>
+    <string name="faq_a2">Oui, toutes vos données sont stockées de manière chiffrée sur votre appareil. Suivi d\'Abonnement ne partage pas vos données personnelles avec des tiers.</string>
+    
+    <string name="faq_q3">Comment connecter mon compte bancaire ?</string>
+    <string name="faq_a3">Actuellement, au lieu d\'une intégration bancaire directe, nous proposons un suivi automatique via les permissions de lecture de SMS et de notifications. L\'intégration bancaire sera bientôt disponible.</string>
+    
+    <string name="faq_q4">Puis-je obtenir un remboursement ?</string>
+    <string name="faq_a4">Les politiques de Google Play/App Store s\'appliquent aux achats intégrés. Vous pouvez faire vos demandes de remboursement via le magasin respectif.</string>
+    
+    <string name="faq_q5">Les rappels ne fonctionnent pas, que dois-je faire ?</string>
+    <string name="faq_a5">Assurez-vous que les permissions de notification de l\'application sont activées dans les paramètres de l\'appareil. Vérifiez également que le mode économiseur de batterie ne bloque pas les notifications.</string>
+    
+    <string name="faq_q6">Qu\'est-ce qu\'une notification de transaction suspecte ?</string>
+    <string name="faq_a6">L\'application vous avertit lorsqu\'elle détecte des paiements en dehors de vos habitudes de dépense normales ou des frais non identifiés. Vous pouvez réviser ces transactions sur l\'écran \'Transactions suspectes\'.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Politique de confidentialité</string>
+    <string name="privacy_last_updated">Dernière mise à jour : 20 février 2026</string>
+    
+    <string name="privacy_title_1">1. Introduction</string>
+    <string name="privacy_content_1">En tant que Suivi d\'Abonnement (\"l\'App\"), nous accordons de l\'importance à votre vie privée. Cette politique de confidentialité explique comment vos données sont collectées, utilisées et protégées lors de l\'utilisation de notre application.</string>
+    
+    <string name="privacy_title_2">2. Données collectées</string>
+    <string name="privacy_content_2">Notre application peut collecter ou traiter les données suivantes pour vous offrir un meilleur service :\n\n• Informations d\'abonnement : Nom, prix et dates de paiement des abonnements que vous ajoutez.\n• Données d\'utilisation : Interactions intégrées et préférences.\n• Informations sur l\'appareil : Identifiants de base de l\'appareil requis pour le fonctionnement de l\'application.</string>
+    
+    <string name="privacy_title_3">3. Utilisation des données</string>
+    <string name="privacy_content_3">Les données collectées sont uniquement utilisées aux fins suivantes :\n\n• Pour vous permettre de suivre vos abonnements.\n• Pour envoyer des notifications de rappel pour les abonnements avec des dates de paiement à venir.\n• Pour améliorer les performances de l\'application et corriger les bugs.</string>
+    
+    <string name="privacy_title_4">4. Sécurité des données</string>
+    <string name="privacy_content_4">Vos données personnelles sont stockées en toute sécurité sur votre appareil. Les données détenues sur nos serveurs (au cas où vous créeriez un compte) sont protégées par des méthodes de chiffrement standard de l\'industrie. Vos données ne sont jamais vendues ou partagées avec des tiers sans votre permission.</string>
+    
+    <string name="privacy_title_5">5. Permissions</string>
+    <string name="privacy_content_5">L\'application peut demander la permission de notification pour vous envoyer des notifications. Cette permission est uniquement utilisée pour les rappels d\'abonnement.</string>
+    
+    <string name="privacy_title_6">6. Contact</string>
+    <string name="privacy_content_6">Pour des questions concernant notre politique de confidentialité, vous pouvez nous contacter à :\ngokhanaytekinn@yandex.com</string>
+</resources>
