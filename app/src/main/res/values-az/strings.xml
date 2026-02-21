@@ -92,6 +92,7 @@
     <string name="language_azerbaijani">Azərbaycanca</string>
     <string name="language_turkmen">Türkməncə</string>
     <string name="language_kazakh">Qazaxca</string>
+    <string name="language_kyrgyz">Qırğızca</string>
 
     <string name="select_language">Dil seçin</string>
     <string name="select_currency">Valyuta seçin</string>

@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Sub Tracker</string>
+    
+    <!-- Common -->
+    <string name="back">Артка</string>
+    <string name="save">Сактоо</string>
+    <string name="cancel">Жокко чыгаруу</string>
+    <string name="skip">Өткөрүү</string>
+    <string name="continue_btn">Улантуу</string>
+    <string name="get_started">Баштайлы</string>
+    <string name="show_password">Сырсөздү көрсөтүү</string>
+    <string name="hide_password">Сырсөздү жашыруу</string>
+    <string name="unknown_error">Белгисиз ката</string>
+    <string name="scan">Сканерлөө</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Жазылууларыңызды байкаңыз</string>
+    <string name="onboarding_desc_1">Бардык жазылууларыңызды бир жерден көрүңүз жана башкарыңыз. Эч качан төлөмдү өткөрүп жибербеңиз.</string>
+    <string name="onboarding_title_2">Төлөмдөрдү автоматтык түрдө аныктайт</string>
+    <string name="onboarding_desc_2">SMS жана билдирмелерди сканерлеп, жазылууларыңызды саналуу секундда тизмелейт.</string>
+    <string name="onboarding_security">Шифрленген жана коопсуз</string>
+    <string name="onboarding_title_3">Ашыкча чыгымдарды токтотуңуз</string>
+    <string name="onboarding_desc_3">Унутулган жазылуулардан баш тартыңыз, төлөм күндөрүнө чейин билдирме алыңыз.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Жыйынтык</string>
+    <string name="hello_user">Салам, %s</string>
+    <string name="total_monthly">Ушул айдагы жыйынтык</string>
+    <string name="vs_last_month">Өткөн айга салыштырмалуу</string>
+    <string name="suspicious_subscriptions">Шектүү жазылуулар</string>
+    <string name="transactions_pending">%d транзакция текшерүүнү күтүүдө</string>
+    <string name="most_expensive">Эң кымбат жазылуулар</string>
+    <string name="view_all">Баары</string>
+    <string name="view_all_subscriptions">Бардык жазылууларды көрүү</string>
+    
+    <!-- Settings -->
+    <string name="settings">Орнотуулар</string>
+    <string name="account">АККАУНТ</string>
+    <string name="application">ТИРКЕМЕ</string>
+    <string name="support">КОЛДОО</string>
+    <string name="membership_type">Мүчөлүк түрү</string>
+    <string name="free_plan">Акысыз план</string>
+    <string name="notifications">Билдирмелер</string>
+    <string name="currency">Валюта</string>
+    <string name="dark_mode">Түн режими</string>
+    <string name="language">Тил</string>
+    <string name="help_center">Жардам борбору</string>
+    <string name="privacy_policy">Купуялык саясаты</string>
+    <string name="logout">Чыгуу</string>
+    <string name="version_info">Версиясы %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">Premium-га өтүңүз</string>
+    <string name="premium_desc">Бардык жазылууларыңызды автоматтык түрдө сканерлеңиз жана %%30 көбүрөөк үнөмдөңүз.</string>
+    <string name="upgrade">Жаңыртуу</string>
+    
+    <!-- Search -->
+    <string name="search">Издөө</string>
+    <string name="search_placeholder">Жазылууну же транзакцияны издөө</string>
+    <string name="recent_searches">АКЫРКЫ ИЗДӨӨЛӨР</string>
+    <string name="results_found">ЖЫЙЫНТЫК ТАБЫЛДЫ (%d)</string>
+    <string name="subscriptions">Жазылуулар</string>
+    <string name="transactions">Транзакциялар</string>
+    <string name="looking_for_else">Башка нерсе издеп жатасызбы?</string>
+    <string name="search_tip">Сатуучу аты же белгилүү бир транзакция суммасы боюнча издеп көрүңүз.</string>
+    <string name="clear_search">Издөөнү тазалоо</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">Активдүү</string>
+    <string name="suspicious">Шектүү</string>
+    <string name="cancelled">Жокко чыгарылды</string>
+    <string name="monthly">АЙЛЫК</string>
+    <string name="yearly">ЖЫЛДЫК</string>
+    <string name="one_time">БИР ЖОЛКУ</string>
+    <string name="renews">Жаңыртылат: %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">Жыйынтык</string>
+    <string name="nav_search">Издөө</string>
+    <string name="nav_settings">Орнотуулар</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_chinese">Жөнөкөйлөтүлгөн кытай тили</string>
+    <string name="language_french">Француз тили</string>
+    <string name="language_german">Немис тили</string>
+    <string name="language_azerbaijani">Азербайжан тили</string>
+    <string name="language_turkmen">Түркмөн тили</string>
+    <string name="language_kazakh">Казак тили</string>
+    <string name="language_kyrgyz">Кыргызча</string>
+
+    <string name="select_language">Тилди тандаңыз</string>
+    <string name="select_currency">Валютаны тандаңыз</string>
+    <string name="close">Жабу</string>
+    
+    <!-- Auth -->
+    <string name="login">Кирүү</string>
+    <string name="register">Катталуу</string>
+    <string name="email">Электрондук почта</string>
+    <string name="password">Сырсөз</string>
+    <string name="name">Аты</string>
+    <string name="full_name">Толук аты-жөнү</string>
+    <string name="forgot_password">Сырсөздү унутуп калдыңызбы?</string>
+    <string name="no_account">Аккаунтуңуз жокпу?</string>
+    <string name="have_account">Аккаунтуңуз барбы?</string>
+    <string name="sign_in">Кирүү</string>
+    <string name="sign_up">Катталуу</string>
+    <string name="create_account">Аккаунт түзүү</string>
+    <string name="welcome_back">Кош келиңиз</string>
+    <string name="start_tracking">Жазылууларыңызды байкай баштаңыз</string>
+    <string name="join_us">Бизге кошулуңуз</string>
+    <string name="manage_subscriptions">Жазылууларыңызды оңой башкарыңыз</string>
+    <string name="guest_user">Конок</string>
+    <string name="not_logged_in">Кириле элек</string>
+
+    <!-- Login Screen -->
+    <string name="login_desc">Жазылууларыңызды байкоону жана үнөмдөөнү азыр баштаңыз.</string>
+    <string name="email_placeholder">email@example.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">же</string>
+    <string name="no_account_prompt">Аккаунтуңуз жокпу? </string>
+    <string name="google_sign_in_failed">Google аркылуу кирүү ишке ашкан жок (%s)</string>
+
+    <!-- Register Screen -->
+    <string name="register_desc">Жазылууларыңызды башкарууну жана үнөмдөөнү баштаңыз.</string>
+    <string name="full_name_placeholder">Мисалы: Азамат Темирбеков</string>
+    <string name="accept_terms_pre"></string>
+    <string name="and"> жана </string>
+    <string name="accept_terms_post"> келишем.</string>
+    <string name="already_have_account_prompt">Аккаунтуңуз барбы? </string>
+
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">Колдонуу шарттары</string>
+    <string name="terms_of_use_content">1. Кабыл алуу\nSub Tracker тиркемесин колдонуу менен сиз бул шарттарга макул болосуз.\n\n2. Кызмет алкагы\nТиркеме жазылууларыңызды байкоого жардам берүүчү курал болуп саналат. Финансылык кеңеш бербейт.\n\n3. Колдонуучунун жоопкерчилиги\nСиз аккаунтуңуздун коопсуздугуна жана киргизилген маалыматтардын тактыгына жооп бересиз.\n\n4. Өзгөртүүлөр\nБиз каалаган убакта тиркеме мүмкүнчүлүктөрүнө жана бул шарттарга өзгөртүү киргизүү укугун өзүбүздө калтырабыз.\n\n5. Токтотуу\nШарттар бузулса, кызматты колдонууңузду токтото алабыз.</string>
+    <string name="understood">Түшүндүм</string>
+    <string name="privacy_dialog_content">Акыркы жаңыртуу: 20-февраль, 2026-ж.\n\n1. Киришүү\nБиз сиздин маалыматтарыңыздын купуялыгына чоң маани беребиз.\n\n2. Жыйналган маалыматтар\nЖазылуу маалыматтары, колдонуу тандалмалары жана негизги түзмөк маалыматтары иштетилет.\n\n3. Маалыматтарды колдонуу\nМаалыматтарыңыз эскерткичтерди жөнөтүү жана тиркеменин иштешин жакшыртуу үчүн гана колдонулат.\n\n4. Маалымат коопсуздугу\nМаалыматтарыңыз стандарттык шифрлөө ыкмалары менен корголгон.\n\n5. Байланыш\nСуроолор боюнча: gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">Сырсөздү калыбына келтирүү үчүн катталган электрондук почтаңызды киргизиңиз. Биз сизге ырастоо кодун жөнөтөбүз.</string>
+    <string name="email_address_label">Электрондук почта дареги</string>
+    <string name="send_code">Кодду жөнөтүү</string>
+    <string name="back_to_login">Кирүү барагына кайтуу</string>
+    <string name="verify_code_title">Кодду ырастаңыз</string>
+    <string name="verify_code_desc">%s дарегине жөнөтүлгөн 6 орундуу ырастоо кодун киргизиңиз.</string>
+    <string name="verify_and_continue">Ырастоо жана Улантуу</string>
+    <string name="wait_for_code">Жаңы код үчүн күтүңүз:</string>
+    <string name="code_not_received">Код келбей калдыбы?</string>
+    <string name="resend_code">Кайра жөнөтүү</string>
+    <string name="reset_password_title">Жаңы сырсөз түзүү</string>
+    <string name="reset_password_desc">Аккаунтуңуз үчүн жаңы жана ишенимдүү сырсөз тандаңыз.</string>
+    <string name="new_password_label">Жаңы сырсөз</string>
+    <string name="confirm_password_label">Сырсөздү кайталаңыз</string>
+    <string name="min_6_chars">Кеминде 6 белги</string>
+    <string name="passwords_match">Сырсөздөр дал келет</string>
+    <string name="update_password">Сырсөздү жаңыртуу</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">Шектүү төлөмдөр</string>
+    <string name="transactions_to_review">Карала турган транзакциялар</string>
+    <string name="swipe_to_review">Жокко чыгаруу үчүн солго, жазылуу катары ырастоо үчүн оңго сүрүңүз</string>
+    <string name="confirm">Ырастоо</string>
+    <string name="reject">Жокко чыгаруу</string>
+    <string name="all_done">Баары даяр!</string>
+    <string name="no_suspicious">Шектүү транзакция табылган жок</string>
+    <string name="reviewing_transactions">Транзакциялар каралууда</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">Бардык жазылуулар</string>
+    <string name="no_subscriptions">Азырынча жазылуу жок</string>
+    <string name="no_active_subscriptions">Активдүү жазылуу табылган жок</string>
+    <string name="no_suspicious_subscriptions">Шектүү жазылуу табылган жок</string>
+    <string name="no_cancelled_subscriptions">Жокко чыгарылган жазылуу табылган жок</string>
+    <string name="detected_count">Аныкталгандар (%d)</string>
+    <string name="marked_count">Белгиленгендер (%d)</string>
+    <string name="add_subscription">Жазылуу кошуу</string>
+    <string name="service_name_placeholder">мис. Netflix</string>
+    <string name="subscription_details">Жазылуу чоо-жайы</string>
+    <string name="next_payment">Кийинки төлөм</string>
+    <string name="billing_cycle">Төлөм цикли</string>
+    <string name="category">Категория</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">Premium алуу</string>
+    <string name="premium_features">Premium мүмкүнчүлүктөрү</string>
+    <string name="unlimited_subscriptions">Чексиз жазылуулар</string>
+    <string name="advanced_analytics">Өркүндөтүлгөн аналитика</string>
+    <string name="priority_support">Биринчи кезектеги колдоо</string>
+    <string name="ad_free">Жарнамасыз</string>
+    <string name="choose_plan">План тандаңыз</string>
+    <string name="monthly_plan">Айлык план</string>
+    <string name="yearly_plan">Жылдык план</string>
+    <string name="save_percent">%%d үнөмдөө</string>
+    <string name="per_month">/ай</string>
+    <string name="per_year">/жыл</string>
+    <string name="billed_monthly">Айына эсептелет</string>
+    <string name="billed_yearly">Жылына эсептелет</string>
+    <string name="start_trial">Акысыз сыноону баштоо</string>
+    <string name="restore_purchase">Сатып алууну калыбына келтирүү</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">Көңүл ачуу</string>
+    <string name="category_music">Музыка</string>
+    <string name="category_sports">Спорт жана ден соолук</string>
+    <string name="category_other">Башка</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">Аналитика</string>
+    <string name="spending_overview">Чыгымдарга сереп</string>
+    <string name="monthly_trend">Айлык тренд</string>
+    <string name="category_breakdown">Категориялар боюнча бөлүштүрүү</string>
+    <string name="top_subscriptions">Эң көп чыгымдар</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">Транзакциялар тарыхы</string>
+    <string name="all_transactions">Бардык транзакциялар</string>
+    <string name="filter">Чыпка</string>
+    <string name="sort_by">Иреттөө</string>
+    <string name="date">Күнү</string>
+    <string name="amount">Суммасы</string>
+    <string name="merchant">Сатуучу</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">Бардык жазылуулар</string>
+    
+    <!-- Common Actions -->
+    <string name="add">Кошуу</string>
+    <string name="edit">Өзгөртүү</string>
+    <string name="delete">Өчүрүү</string>
+    <string name="done">Даяр</string>
+    <string name="next">Кийинки</string>
+    <string name="previous">Мурунку</string>
+    <string name="finish">Аяктоо</string>
+    
+    <!-- Messages -->
+    <string name="loading">Жүктөлүүдө…</string>
+    <string name="error">Ката</string>
+    <string name="success">Ийгиликтүү</string>
+    <string name="try_again">Кайра аракет кылыңыз</string>
+    <string name="no_results">Жыйынтык табылган жок</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">Аты-жөнүн толтуруу зарыл</string>
+    <string name="error_amount_required">Сумманы көрсөтүү зарыл</string>
+    <string name="error_amount_invalid">Туура сумманы киргизиңиз</string>
+    <string name="error_currency_required">Валютаны тандоо зарыл</string>
+    <string name="error_date_required">Күндү тандоо зарыл</string>
+    <string name="error_email_required">Электрондук почтаны толтуруу зарыл</string>
+    <string name="error_email_invalid">Туура электрондук почтаны киргизиңиз</string>
+    <string name="error_password_required">Сырсөздү киргизүү зарыл</string>
+    <string name="error_password_short">Сырсөз кеминде 6 белгиден турушу керек</string>
+
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">Жазылууну өзгөртүү</string>
+    <string name="service_name">Кызматтын аты</string>
+    <string name="period">Мөөнөтү</string>
+    <string name="reminder">Эскертүү</string>
+    <string name="reminder_desc">Төлөмгө 1 күн калганда билдирүү</string>
+    <string name="update">Жаңыртуу</string>
+    <string name="period_monthly">ай</string>
+    <string name="period_yearly">жыл</string>
+    <string name="period_weekly">жума</string>
+    <string name="days_remaining">%d күн калды</string>
+    <string name="total_spent">Бардык чыгымдар</string>
+    <string name="start_date_label">Башталган күнү</string>
+    <string name="turn_off_reminder">Эскертүүнү өчүрүү</string>
+    <string name="set_reminder">Эскертүү орнотуу</string>
+    <string name="edit_plan">Планды өзгөртүү</string>
+    <string name="reactivate_subscription">Жазылууну кайра активдештирүү</string>
+    <string name="cancel_subscription_btn">Жазылуудан баш тартуу</string>
+    <string name="payment_history">Төлөмдөр тарыхы</string>
+    <string name="an_error_occurred">Ката кетти</string>
+    <string name="go_back">Артка кайтуу</string>
+    <string name="subscription_id_not_found">Жазылуунун ID-си табылган жок</string>
+    <string name="no_subscriptions_yet">Азырынча эч кандай жазылуу кошула элек</string>
+    <string name="sms_permission_rationale">Жазылууларды автоматтык түрдө аныктоо үчүн SMS уруксаты талап кылынат.\nМуну менен сиз жазылууларды кол менен киргизип убара болбойсуз.</string>
+    <string name="storage_permission_rationale">Документтерди сканерлөө үчүн эс тутумга уруксат талап кылынат.\nМуну менен PDF файлдардан жазылуу маалыматтары автоматтык түрдө алынат.</string>
+    <string name="permission_denied_message">Уруксатсыз түзмөктү сканерлөө мүмкүн эмес.\nКааласаңыз, жазылууларды кол менен кошо аласыз.</string>
+    <string name="permission_permanently_denied_message">Уруксат берилген жок. Орнотуулардан уруксаттарды күйгүзүңүз.</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">Жардам борбору</string>
+    <string name="help_search_placeholder">Сизге кантип жардам бере алабыз?</string>
+    <string name="popular_questions">Көп берилүүчү суроолор</string>
+    
+    <string name="faq_q1">Жазылуудан кантип баш тартууга болот?</string>
+    <string name="faq_a1">Жазылуу барагына барып, эң ылдыйдагы \'Жазылуудан баш тартуу\' баскычын басыңыз. Бул тиркемедеги байкоону гана токтотот, кызмат көрсөтүүчү аркылуу да токтотууну унутпаңыз.</string>
+    
+    <string name="faq_q2">Маалыматтарым коопсузбу?</string>
+    <string name="faq_a2">Ооба, бардык маалыматтар түзмөгүңүздө шифрленген түрдө сакталат. Биз маалыматтарыңызды үчүнчү тараптарга бербейбиз.</string>
+    
+    <string name="faq_q3">Банк картасын кантип кошо алам?</string>
+    <string name="faq_a3">Азыркы учурда SMS жана билдирмелерди окуу аркылы автоматтык байкоо жүргүзүлөт. Банк интеграциясы жакында кошулат.</string>
+    
+    <string name="faq_q4">Төлөмдү кайтарып алсам болобу?</string>
+    <string name="faq_a4">Тиркеме ичиндеги сатып алуулар боюнча Google Play/App Store эрежелери колдонулат. Суроолоруңуз боюнча расмий дүкөндөргө кайрылыңыз.</string>
+    
+    <string name="faq_q5">Эскертүүлөр иштебей жатат, эмне кылуу керек?</string>
+    <string name="faq_a5">Орнотуулардан билдирмелердин күйүк экенин текшериңиз. Ошондой эле энергия үнемдөө режими тоскоол болбой жатканын караңыз.</string>
+    
+    <string name="faq_q6">Шектүү транзакция деген эмне?</string>
+    <string name="faq_a6">Тиркеме адаттан тыш же белгисиз чыгымдарды байкаганда сизге кабар берет. Бул транзакцияларды \'Шектүү төлөмдөр\' барагынан текшере аласыз.</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">Купуялык саясаты</string>
+    <string name="privacy_last_updated">Акыркы жаңыртуу: 20-февраль, 2026-ж.</string>
+    
+    <string name="privacy_title_1">1. Киришүү</string>
+    <string name="privacy_content_1">Sub Tracker сиздин купуялыгыңызды сыйлайт. Бул саясат маалыматтардын кандайча жыйнала тургандыгын жана корголушун түшүндүрөт.</string>
+    
+    <string name="privacy_title_2">2. Маалыматтарды жыйноо</string>
+    <string name="privacy_content_2">Биз жазылуулар, колдонуу тандалмалары жана негизги түзмөк маалыматтарын жыйнашыбыз мүмкүн.</string>
+    
+    <string name="privacy_title_3">3. Маалыматтарды колдонуу</string>
+    <string name="privacy_content_3">Маалыматтар жазылууларды байкоо, эскерткичтерди жөнөтүү жана кызматты жакшыртуу үчүн колдонулат.</string>
+    
+    <string name="privacy_title_4">4. Коопсуздук</string>
+    <string name="privacy_content_4">Маалыматтарыңыз стандарттык ыкмалар менен корголгон жана эч кимге уруксатсыз берилбейт.</string>
+    
+    <string name="privacy_title_5">5. Уруксаттар</string>
+    <string name="privacy_content_5">Тиркеме эскертүүлөрдү жөнөтүү үчүн билдирме уруксатын сурашы мүмкүн.</string>
+    
+    <string name="privacy_title_6">6. Байланыш</string>
+    <string name="privacy_content_6">Суроолор боюнча бизге жаза аласыз: gokhanaytekinn@yandex.com</string>
+</resources>
