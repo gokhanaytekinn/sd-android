@@ -488,6 +488,14 @@ fun AppSettingsScreen(
                             AppCompatDelegate.setApplicationLocales(appLocale)
                         }
                     }
+                    LanguageOption("az", "Azərbaycanca", currentLanguage) {
+                        scope.launch {
+                            languagePreferences.setLanguage("az")
+                            showLanguageDialog = false
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("az")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                        }
+                    }
                     LanguageOption("en", "English", currentLanguage) {
                         scope.launch {
                             languagePreferences.setLanguage("en")
@@ -533,14 +541,6 @@ fun AppSettingsScreen(
                             languagePreferences.setLanguage("de")
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("de")
-                            AppCompatDelegate.setApplicationLocales(appLocale)
-                        }
-                    }
-                    LanguageOption("az", "Azərbaycanca", currentLanguage) {
-                        scope.launch {
-                            languagePreferences.setLanguage("az")
-                            showLanguageDialog = false
-                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("az")
                             AppCompatDelegate.setApplicationLocales(appLocale)
                         }
                     }
