@@ -496,6 +496,14 @@ fun AppSettingsScreen(
                             AppCompatDelegate.setApplicationLocales(appLocale)
                         }
                     }
+                    LanguageOption("kk", "Қазақша", currentLanguage) {
+                        scope.launch {
+                            languagePreferences.setLanguage("kk")
+                            showLanguageDialog = false
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("kk")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                        }
+                    }
                     LanguageOption("tk", "Türkmençe", currentLanguage) {
                         scope.launch {
                             languagePreferences.setLanguage("tk")
@@ -679,6 +687,7 @@ fun getLanguageName(code: String): String {
         "de" -> "Deutsch"
         "az" -> "Azərbaycanca"
         "tk" -> "Türkmençe"
+        "kk" -> "Қазақша"
         else -> code
 
 
