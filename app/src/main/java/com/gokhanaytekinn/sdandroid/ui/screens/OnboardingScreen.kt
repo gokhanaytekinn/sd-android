@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.R
 
 @Composable
 fun OnboardingScreen(
@@ -59,7 +60,7 @@ fun OnboardingScreen(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = "ABONELİK DEDEKTİFİ",
+                        text = stringResource(R.string.app_name).uppercase(),
                         fontSize = 10.sp,
                         fontWeight = FontWeight.SemiBold,
                         color = Color(0xFF9db99d),
