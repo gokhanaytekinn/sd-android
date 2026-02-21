@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
@@ -44,6 +46,9 @@ fun RegisterScreen(
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
     var termsAccepted by remember { mutableStateOf(false) }
+    
+    var showTermsDialog by remember { mutableStateOf(false) }
+    var showPrivacyDialog by remember { mutableStateOf(false) }
     
     Column(
         modifier = Modifier
@@ -259,11 +264,11 @@ fun RegisterScreen(
                     onClick = { offset ->
                         annotatedString.getStringAnnotations(tag = "TERMS", start = offset, end = offset)
                             .firstOrNull()?.let {
-                                // handle terms click
+                                showTermsDialog = true
                             }
                         annotatedString.getStringAnnotations(tag = "POLICY", start = offset, end = offset)
                             .firstOrNull()?.let {
-                                // handle policy click
+                                showPrivacyDialog = true
                             }
                     }
                 )
@@ -353,5 +358,68 @@ fun RegisterScreen(
                 Spacer(modifier = Modifier.height(16.dp))
             }
         }
+    }
+
+    // Terms of Use Dialog
+    if (showTermsDialog) {
+        AlertDialog(
+            onDismissRequest = { showTermsDialog = false },
+            title = { Text("Kullanım Koşulları", fontWeight = FontWeight.Bold) },
+            text = {
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(vertical = 8.dp)
+                ) {
+                    Text(
+                        text = "1. Kabul\nAbonelik Dedektifi'ni kullanarak bu koşulları kabul etmiş sayılırsınız.\n\n" +
+                                "2. Hizmet Kapsamı\nUygulama, aboneliklerinizi takip etmenize yardımcı olan bir araçtır. Finansal tavsiye niteliği taşımaz.\n\n" +
+                                "3. Kullanıcı Sorumluluğu\nHesap bilgilerinizin güvenliğinden ve eklediğiniz verilerin doğruluğundan siz sorumlusunuz.\n\n" +
+                                "4. Değişiklikler\nUygulama özelliklerinde ve bu koşullarda dilediğimiz zaman değişiklik yapma hakkımız saklıdır.\n\n" +
+                                "5. Sonlandırma\nKoşulların ihlali durumunda hizmete erişiminizi sonlandırabiliriz.",
+                        lineHeight = 20.sp
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showTermsDialog = false }) {
+                    Text("Anladım", color = PrimaryBlue, fontWeight = FontWeight.Bold)
+                }
+            },
+            shape = RoundedCornerShape(16.dp),
+            containerColor = MaterialTheme.colorScheme.surface
+        )
+    }
+
+    // Privacy Policy Dialog
+    if (showPrivacyDialog) {
+        AlertDialog(
+            onDismissRequest = { showPrivacyDialog = false },
+            title = { Text("Gizlilik Politikası", fontWeight = FontWeight.Bold) },
+            text = {
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(vertical = 8.dp)
+                ) {
+                    Text(
+                        text = "Son Güncelleme: 20 Şubat 2026\n\n" +
+                                "1. Giriş\nVerilerinizin gizliliğine önem veriyoruz.\n\n" +
+                                "2. Toplanan Veriler\nAbonelik bilgileri, kullanım tercihleri ve temel cihaz bilgileri işlenmektedir.\n\n" +
+                                "3. Veri Kullanımı\nVerileriniz yalnızca hatırlatıcılar göndermek ve uygulama performansını artırmak için kullanılır.\n\n" +
+                                "4. Veri Güvenliği\nVerileriniz endüstri standardı şifreleme yöntemleri ile korunmaktadır.\n\n" +
+                                "5. İletişim\nSorularınız için: gokhanaytekinn@yandex.com",
+                        lineHeight = 20.sp
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showPrivacyDialog = false }) {
+                    Text("Kapat", color = PrimaryBlue, fontWeight = FontWeight.Bold)
+                }
+            },
+            shape = RoundedCornerShape(16.dp),
+            containerColor = MaterialTheme.colorScheme.surface
+        )
     }
 }
