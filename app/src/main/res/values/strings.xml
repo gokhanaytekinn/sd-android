@@ -85,6 +85,8 @@
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
     <string name="language_russian">Русский</string>
+    <string name="language_chinese">简体中文</string>
+
     <string name="select_language">Select Language</string>
     <string name="select_currency">Select Currency</string>
     <string name="close">Close</string>

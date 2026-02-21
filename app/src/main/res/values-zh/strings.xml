@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Name -->
+    <string name="app_name">订阅追踪器</string>
+    
+    <!-- Common -->
+    <string name="back">返回</string>
+    <string name="save">保存</string>
+    <string name="cancel">取消</string>
+    <string name="skip">跳过</string>
+    <string name="continue_btn">继续</string>
+    <string name="get_started">开始使用</string>
+    <string name="show_password">显示密码</string>
+    <string name="hide_password">隐藏密码</string>
+    <string name="unknown_error">未知错误</string>
+    
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">追踪您的订阅</string>
+    <string name="onboarding_desc_1">在同一处查看并管理您的所有订阅。不再错过任何一次扣费。</string>
+    <string name="onboarding_title_2">自动捕获账单</string>
+    <string name="onboarding_desc_2">扫描您的短信和通知，几秒钟内列出您的订阅。</string>
+    <string name="onboarding_security">端到端加密，安全可靠</string>
+    <string name="onboarding_title_3">结束不必要的开支</string>
+    <string name="onboarding_desc_3">取消遗忘的订阅，在扣费日期前获得通知。</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">仪表盘</string>
+    <string name="hello_user">你好，%s</string>
+    <string name="total_monthly">本月总计</string>
+    <string name="vs_last_month">对比上个月</string>
+    <string name="suspicious_subscriptions">可疑订阅</string>
+    <string name="transactions_pending">%d 笔交易待处理</string>
+    <string name="most_expensive">最昂贵的订阅</string>
+    <string name="view_all">查看全部</string>
+    <string name="view_all_subscriptions">查看所有订阅</string>
+    
+    <!-- Settings -->
+    <string name="settings">设置</string>
+    <string name="account">账户</string>
+    <string name="application">应用</string>
+    <string name="support">支持</string>
+    <string name="membership_type">会员类型</string>
+    <string name="free_plan">免费计划</string>
+    <string name="notifications">通知</string>
+    <string name="currency">货币</string>
+    <string name="dark_mode">暗夜模式</string>
+    <string name="language">语言</string>
+    <string name="help_center">帮助中心</string>
+    <string name="privacy_policy">隐私政策</string>
+    <string name="logout">退出登录</string>
+    <string name="version_info">版本 %1$s (Build %2$d)</string>
+    
+    <!-- Premium -->
+    <string name="upgrade_to_premium">升级到高级版</string>
+    <string name="premium_desc">自动扫描您的所有订阅，多节省 30%%。</string>
+    <string name="upgrade">升级</string>
+    
+    <!-- Search -->
+    <string name="search">搜索</string>
+    <string name="search_placeholder">搜索订阅或交易</string>
+    <string name="recent_searches">最近搜索</string>
+    <string name="results_found">找到结果 (%d)</string>
+    <string name="subscriptions">订阅</string>
+    <string name="transactions">交易</string>
+    <string name="looking_for_else">在找其他东西吗？</string>
+    <string name="search_tip">尝试搜索商户名称或特定交易金额。</string>
+    <string name="clear_search">清除搜索</string>
+    
+    <!-- Subscriptions -->
+    <string name="active">激活</string>
+    <string name="suspicious">可疑</string>
+    <string name="cancelled">已取消</string>
+    <string name="monthly">每月</string>
+    <string name="yearly">每年</string>
+    <string name="one_time">一次性</string>
+    <string name="renews">续期日期 %s</string>
+    
+    <!-- Bottom Navigation -->
+    <string name="nav_dashboard">仪表盘</string>
+    <string name="nav_search">搜索</string>
+    <string name="nav_settings">设置</string>
+    
+    <!-- Languages -->
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_spanish">Español</string>
+    <string name="language_russian">Русский</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="select_language">选择语言</string>
+    <string name="select_currency">选择货币</string>
+    <string name="close">关闭</string>
+    
+    <!-- Auth -->
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="email">电子邮件</string>
+    <string name="password">密码</string>
+    <string name="name">姓名</string>
+    <string name="full_name">全名</string>
+    <string name="forgot_password">忘记密码？</string>
+    <string name="no_account">还没有账号？</string>
+    <string name="have_account">已有账号？</string>
+    <string name="sign_in">登录</string>
+    <string name="sign_up">注册</string>
+    <string name="create_account">创建账号</string>
+    <string name="welcome_back">欢迎回来</string>
+    <string name="start_tracking">开始追踪您的订阅</string>
+    <string name="join_us">加入我们</string>
+    <string name="manage_subscriptions">轻松管理您的订阅</string>
+    <string name="guest_user">游客用户</string>
+    <string name="not_logged_in">未登录</string>
+    
+    <!-- Login Screen -->
+    <string name="login_desc">现在开始追踪您的订阅并节省开支。</string>
+    <string name="email_placeholder">email@example.com</string>
+    <string name="password_placeholder">••••••••</string>
+    <string name="or">或</string>
+    <string name="no_account_prompt">还没有账号？ </string>
+    <string name="google_sign_in_failed">Google 登录失败 (%s)</string>
+    
+    <!-- Register Screen -->
+    <string name="register_desc">开始管理您的订阅并节省开支。</string>
+    <string name="full_name_placeholder">例如：张三</string>
+    <string name="accept_terms_pre">我接受 </string>
+    <string name="and"> 和 </string>
+    <string name="accept_terms_post">。</string>
+    <string name="already_have_account_prompt">已有账号？ </string>
+    
+    <!-- Terms & Privacy Dialogs -->
+    <string name="terms_of_use_title">使用条款</string>
+    <string name="terms_of_use_content">1. 接受\n通过使用订阅追踪器，您同意这些条款。\n\n2. 服务范围\n该应用程序是帮助您追踪订阅的工具。它不是财务建议。\n\n3. 用户责任\n您对账户信息的安全性以及您添加的数据的准确性负责。\n\n4. 更改\n我们保留随时更改应用功能和这些条款的权利。\n\n5. 终止\n如果违反条款，我们可能会终止您对服务的访问。</string>
+    <string name="understood">明白</string>
+    <string name="privacy_dialog_content">最后更新日期：2026年2月20日\n\n1. 简介\n我们重视您的数据隐私。\n\n2. 收集的数据\n处理订阅信息、使用偏好和基本设备信息。\n\n3. 数据使用\n您的数据仅用于发送提醒并改进应用性能。\n\n4. 数据安全\n您的数据受行业标准加密方法的保护。\n\n5. 联系方式\n如有疑问：gokhanaytekinn@yandex.com</string>
+
+    <!-- Forgot Password Screens -->
+    <string name="forgot_password_desc">输入您的注册电子邮件地址以重置密码。我们将向您发送一个验证码。</string>
+    <string name="email_address_label">电子邮件地址</string>
+    <string name="send_code">发送代码</string>
+    <string name="back_to_login">返回登录</string>
+    <string name="verify_code_title">验证代码</string>
+    <string name="verify_code_desc">输入我们发送至 %s 的 6 位验证码。</string>
+    <string name="verify_and_continue">验证并继续</string>
+    <string name="wait_for_code">等待新代码：</string>
+    <string name="code_not_received">没有收到代码？</string>
+    <string name="resend_code">重发代码</string>
+    <string name="reset_password_title">创建新密码</string>
+    <string name="reset_password_desc">请为您的账户设置一个强力的新密码。</string>
+    <string name="new_password_label">新密码</string>
+    <string name="confirm_password_label">确认密码</string>
+    <string name="min_6_chars">至少 6 个字符</string>
+    <string name="passwords_match">密码匹配</string>
+    <string name="update_password">更新密码</string>
+    
+    <!-- Suspicious Payments -->
+    <string name="suspicious_payments">可疑支付</string>
+    <string name="transactions_to_review">待核查交易</string>
+    <string name="swipe_to_review">向左滑动拒绝，或向右滑动确认为订阅</string>
+    <string name="confirm">确认</string>
+    <string name="reject">拒绝</string>
+    <string name="all_done">全部完成！</string>
+    <string name="no_suspicious">未发现可疑交易</string>
+    <string name="reviewing_transactions">正在核查交易</string>
+    
+    <!-- Subscriptions List -->
+    <string name="all_subscriptions">所有订阅</string>
+    <string name="no_subscriptions">尚无订阅</string>
+    <string name="add_subscription">添加订阅</string>
+    <string name="subscription_details">订阅详情</string>
+    <string name="next_payment">下一次扣费</string>
+    <string name="billing_cycle">账单周期</string>
+    <string name="category">类别</string>
+    
+    <!-- Premium -->
+    <string name="get_premium">获取高级版</string>
+    <string name="premium_features">高级版功能</string>
+    <string name="unlimited_subscriptions">无限订阅</string>
+    <string name="advanced_analytics">高级分析</string>
+    <string name="priority_support">优先支持</string>
+    <string name="ad_free">无广告体验</string>
+    <string name="choose_plan">选择您的计划</string>
+    <string name="monthly_plan">月度计划</string>
+    <string name="yearly_plan">年度计划</string>
+    <string name="save_percent">节省 %d%%</string>
+    <string name="per_month">/月</string>
+    <string name="per_year">/年</string>
+    <string name="billed_monthly">按月计费</string>
+    <string name="billed_yearly">按年计费</string>
+    <string name="start_trial">开始免费试用</string>
+    <string name="restore_purchase">恢复购买</string>
+    
+    <!-- Categories -->
+    <string name="category_entertainment">娱乐</string>
+    <string name="category_music">音乐</string>
+    <string name="category_sports">运动与健康</string>
+    <string name="category_other">其他</string>
+    
+    <!-- Analytics -->
+    <string name="analytics">分析</string>
+    <string name="spending_overview">支出概览</string>
+    <string name="monthly_trend">月度趋势</string>
+    <string name="category_breakdown">类别明细</string>
+    <string name="top_subscriptions">热门订阅</string>
+    
+    <!-- Transaction History -->
+    <string name="transaction_history">交易历史</string>
+    <string name="all_transactions">所有交易</string>
+    <string name="filter">筛选</string>
+    <string name="sort_by">排序方式</string>
+    <string name="date">日期</string>
+    <string name="amount">金额</string>
+    <string name="merchant">商户</string>
+    
+    <!-- Navigation -->
+    <string name="nav_all_subscriptions">所有订阅</string>
+    
+    <!-- Common Actions -->
+    <string name="add">添加</string>
+    <string name="edit">编辑</string>
+    <string name="delete">删除</string>
+    <string name="done">完成</string>
+    <string name="next">下一步</string>
+    <string name="previous">上一步</string>
+    <string name="finish">结束</string>
+    
+    <!-- Messages -->
+    <string name="loading">加载中…</string>
+    <string name="error">错误</string>
+    <string name="success">成功</string>
+    <string name="try_again">重试</string>
+    <string name="no_results">未找到结果</string>
+    <string name="date_placeholder">YYYY-MM-DD</string>
+
+    <!-- Validations -->
+    <string name="error_name_required">姓名是必填项</string>
+    <string name="error_amount_required">金额是必填项</string>
+    <string name="error_amount_invalid">请输入有效的金额</string>
+    <string name="error_currency_required">货币是必填项</string>
+    <string name="error_date_required">日期是必填项</string>
+    <string name="error_email_required">电子邮件是必填项</string>
+    <string name="error_email_invalid">请输入有效的电子邮件</string>
+    <string name="error_password_required">密码是必填项</string>
+    <string name="error_password_short">密码必须至少包含 6 个字符</string>
+    <!-- Add/Edit Subscription Screen -->
+    <string name="edit_subscription">编辑订阅</string>
+    <string name="service_name">服务名称</string>
+    <string name="period">周期</string>
+    <string name="reminder">提醒</string>
+    <string name="reminder_desc">在扣费前 1 天通知</string>
+    <string name="update">更新</string>
+
+    <!-- Help Center Content -->
+    <string name="help_center_title">帮助中心</string>
+    <string name="help_search_placeholder">我们能帮您什么？</string>
+    <string name="popular_questions">热门问题</string>
+    
+    <string name="faq_q1">如何取消订阅？</string>
+    <string name="faq_a1">您可以前往订阅详情页面，点击底部的“取消订阅”按钮。此操作仅终止应用内的追踪，请不要忘记在服务提供商处也进行取消。</string>
+    
+    <string name="faq_q2">我的数据安全吗？</string>
+    <string name="faq_a2">是的，您的所有数据都加密存储在您的设备上。订阅追踪器不会与第三方分享您的个人数据。</string>
+    
+    <string name="faq_q3">如何连接我的银行账户？</string>
+    <string name="faq_a3">目前，我们提供通过短信和通知读取权限进行的自动追踪，而不是直接的银行集成。银行集成即将推出。</string>
+    
+    <string name="faq_q4">我可以获得退款吗？</string>
+    <string name="faq_a4">Google Play/App Store 的政策适用于应用内购买。您可以通过相应的商店提交退款请求。</string>
+    
+    <string name="faq_q5">提醒功能不起作用，我该怎么办？</string>
+    <string name="faq_a5">请确保在设备设置中启用了应用的通知权限。此外，请检查省电模式是否未阻止通知。</string>
+    
+    <string name="faq_q6">什么是可疑交易通知？</string>
+    <string name="faq_a6">当应用检测到超出您正常支出模式的支付或无法识别的费用时，它会向您发出警告。您可以在“可疑交易”屏幕上查看这些交易。</string>
+
+    <!-- Privacy Policy Content -->
+    <string name="privacy_policy_title">隐私政策</string>
+    <string name="privacy_last_updated">最后更新日期：2026年2月20日</string>
+    
+    <string name="privacy_title_1">1. 简介</string>
+    <string name="privacy_content_1">作为订阅追踪器（“本应用”），我们重视您的隐私。本隐私政策解释了在使用我们的应用程序时如何收集、使用和保护您的数据。</string>
+    
+    <string name="privacy_title_2">2. 收集的数据</string>
+    <string name="privacy_content_2">我们的应用程序可能会收集或处理以下数据，以便为您提供更好的服务：\n\n• 订阅信息：您添加的订阅的名称、价格和扣费日期。\n• 使用数据：应用内交互和偏好。\n• 设备信息：应用程序运行所需的基本设备标识符。</string>
+    
+    <string name="privacy_title_3">3. 数据使用</string>
+    <string name="privacy_content_3">收集的数据仅用于以下目的：\n\n• 让您能够追踪您的订阅。\n• 为接下来的扣费日期发送提醒通知。\n• 改进应用性能并修复错误。</string>
+    
+    <string name="privacy_title_4">4. 数据安全</string>
+    <string name="privacy_content_4">您的个人数据安全地存储在您的设备上。存储在我们服务器上的数据（如果您创建了账户）受行业标准加密方法的保护。未经您的许可，您的数据绝不会被出售或与第三方分享。</string>
+    
+    <string name="privacy_title_5">5. 权限</string>
+    <string name="privacy_content_5">应用程序可能会请求通知权限以向您发送通知。此权限仅用于订阅提醒。</string>
+    
+    <string name="privacy_title_6">6. 联系方式</string>
+    <string name="privacy_content_6">有关我们隐私政策的问题，您可以通过以下方式联系我们：\ngokhanaytekinn@yandex.com</string>
+</resources>

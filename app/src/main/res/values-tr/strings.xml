@@ -84,7 +84,8 @@
     <string name="language_english">English</string>
     <string name="language_turkish">Türkçe</string>
     <string name="language_spanish">Español</string>
-    <string name="language_russian">Русский</string>
+    <string name="language_russian">Rusça</string>
+    <string name="language_chinese">Basitleştirilmiş Çince</string>
     <string name="select_language">Dil Seçin</string>
     <string name="select_currency">Para Birimi Seçin</string>
     <string name="close">Kapat</string>

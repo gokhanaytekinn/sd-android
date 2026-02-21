@@ -512,6 +512,15 @@ fun AppSettingsScreen(
                             AppCompatDelegate.setApplicationLocales(appLocale)
                         }
                     }
+                    LanguageOption("zh", "简体中文", currentLanguage) {
+                        scope.launch {
+                            languagePreferences.setLanguage("zh")
+                            showLanguageDialog = false
+                            val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("zh")
+                            AppCompatDelegate.setApplicationLocales(appLocale)
+                        }
+                    }
+
                 }
             },
             confirmButton = {
@@ -631,7 +640,9 @@ fun getLanguageName(code: String): String {
         "en" -> "English"
         "es" -> "Español"
         "ru" -> "Русский"
+        "zh" -> "简体中文"
         else -> code
+
     }
 }
 

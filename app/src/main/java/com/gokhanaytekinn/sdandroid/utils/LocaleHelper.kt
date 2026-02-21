@@ -22,7 +22,9 @@ object LocaleHelper {
             "tr" -> "Türkçe"
             "es" -> "Español"
             "ru" -> "Русский"
+            "zh" -> "简体中文"
             else -> "English"
+
         }
     }
 }
