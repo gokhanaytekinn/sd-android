@@ -19,13 +19,14 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
-
-        // Base URL for API - change this single value for different environments
-        buildConfigField("String", "BASE_URL", "\"http://192.168.1.117:8080/\"")
     }
 
     buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"http://192.168.1.117:8080/\"")
+        }
         release {
+            buildConfigField("String", "BASE_URL", "\"https://sd-backend-f2bd.onrender.com/\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
