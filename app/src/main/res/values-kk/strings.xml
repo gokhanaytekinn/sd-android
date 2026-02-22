@@ -188,7 +188,7 @@
     <string name="add_subscription">Жазылымды қосу</string>
     <string name="service_name_placeholder">мысалы, Netflix</string>
     <string name="subscription_details">Жазылым мәліметтері</string>
-    <string name="next_payment">Келесі төлем</string>
+    <string name="next_payment">Төлемнің басталу күні</string>
     <string name="billing_cycle">Төлем циклі</string>
     <string name="category">Санат</string>
     

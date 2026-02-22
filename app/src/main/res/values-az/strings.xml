@@ -188,7 +188,7 @@
     <string name="add_subscription">Abunəlik Əlavə et</string>
     <string name="service_name_placeholder">məs. Netflix</string>
     <string name="subscription_details">Abunəlik Detalları</string>
-    <string name="next_payment">Növbəti Ödəniş</string>
+    <string name="next_payment">Ödəniş başlanğıc tarixi</string>
     <string name="billing_cycle">Faktura Döngüsü</string>
     <string name="category">Kateqoriya</string>
     

@@ -188,7 +188,7 @@
     <string name="add_subscription">Жазылуу кошуу</string>
     <string name="service_name_placeholder">мис. Netflix</string>
     <string name="subscription_details">Жазылуу чоо-жайы</string>
-    <string name="next_payment">Кийинки төлөм</string>
+    <string name="next_payment">Төлөмдүн башталыш күнү</string>
     <string name="billing_cycle">Төлөм цикли</string>
     <string name="category">Категория</string>
     

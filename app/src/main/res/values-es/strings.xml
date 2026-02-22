@@ -150,7 +150,8 @@
 
     <string name="service_name">Nombre del Servicio</string>
     <string name="amount">Importe</string>
-    <string name="period">Período</string>
+    <string name="billing_cycle">Ciclo de facturación</string>
+    <string name="next_payment">Fecha de inicio de pago</string>
     <string name="reminder">Recordatorio</string>
     <string name="reminder_desc">Notificar 1 día antes del pago</string>
     <string name="update">Actualizar</string>

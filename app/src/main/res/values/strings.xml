@@ -190,7 +190,7 @@
     <string name="add_subscription">Add Subscription</string>
     <string name="service_name_placeholder">e.g. Netflix</string>
     <string name="subscription_details">Subscription Details</string>
-    <string name="next_payment">Next Payment</string>
+    <string name="next_payment">Payment Start Date</string>
     <string name="billing_cycle">Billing Cycle</string>
     <string name="category">Category</string>
     

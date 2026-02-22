@@ -189,7 +189,7 @@
     <string name="add_subscription">Tambah Langganan</string>
     <string name="service_name_placeholder">mis. Netflix</string>
     <string name="subscription_details">Detail Langganan</string>
-    <string name="next_payment">Pembayaran Berikutnya</string>
+    <string name="next_payment">Tanggal mulai pembayaran</string>
     <string name="billing_cycle">Siklus Penagihan</string>
     <string name="category">Kategori</string>
     

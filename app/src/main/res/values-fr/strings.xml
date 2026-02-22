@@ -190,7 +190,7 @@
     <string name="detected_count">Détectés (%d)</string>
     <string name="marked_count">Marqués (%d)</string>
     <string name="subscription_details">Détails de l\'abonnement</string>
-    <string name="next_payment">Prochain paiement</string>
+    <string name="next_payment">Date de début de paiement</string>
     <string name="billing_cycle">Cycle de facturation</string>
     <string name="category">Catégorie</string>
     

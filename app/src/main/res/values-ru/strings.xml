@@ -167,7 +167,7 @@
     <string name="marked_count">Отмечено (%d)</string>
 
     <string name="subscription_details">Детали Подписки</string>
-    <string name="next_payment">Следующий Платеж</string>
+    <string name="next_payment">Дата начала оплаты</string>
     <string name="billing_cycle">Цикл Оплаты</string>
     <string name="category">Категория</string>
     

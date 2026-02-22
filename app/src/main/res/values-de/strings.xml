@@ -111,7 +111,7 @@
     <string name="add_subscription">Abonnement hinzufügen</string>
     <string name="service_name_placeholder">z.B. Netflix</string>
     <string name="subscription_details">Abonnement-Details</string>
-    <string name="next_payment">Nächste Zahlung</string>
+    <string name="next_payment">Zahlungsbeginndatum</string>
     <string name="billing_cycle">Abrechnungszyklus</string>
     <string name="start_date">Startdatum</string>
     <string name="cancel_subscription">Abonnement kündigen</string>
