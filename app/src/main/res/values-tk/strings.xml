@@ -34,6 +34,12 @@
     <string name="most_expensive">Iň Gymmat Abunalyklar</string>
     <string name="view_all">Hemmesi</string>
     <string name="view_all_subscriptions">Ähli Abunalyklary Gör</string>
+    <string name="upcoming_payments">Gelejekki tölegler</string>
+    <string name="no_upcoming_payments">Indiki 10 gün üçin töleg ýok</string>
+    <string name="today">Şu gün</string>
+    <string name="tomorrow">Ertir</string>
+    <string name="days_left">gün galdy</string>
+    <string name="retry">Gaýtadan synanyşyň</string>
     
     <!-- Settings -->
     <string name="settings">Sazlamalar</string>
@@ -79,6 +85,7 @@
     <!-- Bottom Navigation -->
     <string name="nav_dashboard">Gysgaça syn</string>
     <string name="nav_search">Gözle</string>
+    <string name="nav_upcoming">Gelejekki</string>
     <string name="nav_settings">Sazlamalar</string>
     
     <!-- Languages -->

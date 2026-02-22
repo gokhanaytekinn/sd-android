@@ -67,6 +67,12 @@ fun BottomNavigationBar(
                 onClick = { onNavigate(Screen.Search.route) }
             )
             BottomNavItem(
+                icon = Icons.Default.Notifications,
+                label = stringResource(R.string.nav_upcoming),
+                selected = currentRoute == Screen.UpcomingSubscriptions.route,
+                onClick = { onNavigate(Screen.UpcomingSubscriptions.route) }
+            )
+            BottomNavItem(
                 icon = Icons.Default.Settings,
                 label = stringResource(R.string.nav_settings),
                 selected = currentRoute == Screen.AppSettings.route,

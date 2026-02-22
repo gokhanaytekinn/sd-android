@@ -34,6 +34,12 @@
     <string name="most_expensive">Langganan Termahal</string>
     <string name="view_all">Lihat Semua</string>
     <string name="view_all_subscriptions">Lihat Semua Langganan</string>
+    <string name="upcoming_payments">Pembayaran Mendatang</string>
+    <string name="no_upcoming_payments">Tidak ada pembayaran mendatang untuk 10 hari ke depan</string>
+    <string name="today">Hari Ini</string>
+    <string name="tomorrow">Besok</string>
+    <string name="days_left">hari lagi</string>
+    <string name="retry">Coba Lagi</string>
     
     <!-- Settings -->
     <string name="settings">Pengaturan</string>
@@ -79,6 +85,7 @@
     <!-- Bottom Navigation -->
     <string name="nav_dashboard">Ringkasan</string>
     <string name="nav_search">Cari</string>
+    <string name="nav_upcoming">Mendatang</string>
     <string name="nav_settings">Pengaturan</string>
     
     <!-- Languages -->

@@ -34,12 +34,14 @@ import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
     onNavigateToSuspicious: () -> Unit = {},
     onNavigateToAllSubscriptions: () -> Unit = {},
     onNavigateToSearch: () -> Unit = {},
-    onNavigateToSettings: () -> Unit = {}
+    onNavigateToSettings: () -> Unit = {},
+    onNavigateToUpcoming: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val application = context.applicationContext as android.app.Application
@@ -53,6 +55,7 @@ fun DashboardScreen(
     val error by viewModel.error.collectAsState()
     val authState by authViewModel.authState.collectAsState()
     val suspiciousCount by viewModel.suspiciousCount.collectAsState()
+    val upcomingSubs by viewModel.upcomingSubscriptions.collectAsState()
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
     
     // Calculate expensive subscriptions outside of LazyColumn items
@@ -147,9 +150,82 @@ fun DashboardScreen(
                         }
                     }
                 }
+                // Upcoming Payments Section
+                item {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(bottom = 12.dp),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = stringResource(R.string.upcoming_payments),
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onBackground
+                        )
+                        
+                        Text(
+                            text = stringResource(R.string.view_all),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = PrimaryBlue,
+                            modifier = Modifier.clickable { onNavigateToUpcoming() }
+                        )
+                    }
+                }
                 
-                
-                // Suspicious Activity Alert - Only show if there are suspicious subscriptions
+                if (upcomingSubs.isEmpty()) {
+                    item {
+                        Text(
+                            text = stringResource(R.string.no_upcoming_payments),
+                            fontSize = 14.sp,
+                            color = Color.Gray,
+                            modifier = Modifier.padding(vertical = 8.dp)
+                        )
+                    }
+                } else {
+                    items(upcomingSubs) { sub ->
+                        Card(
+                            onClick = { onNavigateToUpcoming() },
+                            shape = RoundedCornerShape(12.dp),
+                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+                            modifier = Modifier.fillMaxWidth(),
+                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
+                        ) {
+                            Row(
+                                modifier = Modifier
+                                    .padding(12.dp)
+                                    .fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Box(
+                                    modifier = Modifier
+                                        .size(36.dp)
+                                        .background(PrimaryBlue.copy(alpha = 0.1f), CircleShape),
+                                    contentAlignment = Alignment.Center
+                                ) {
+                                    Text(sub.name.take(1).uppercase(), color = PrimaryBlue, fontWeight = FontWeight.Bold)
+                                }
+                                
+                                Spacer(modifier = Modifier.width(12.dp))
+                                
+                                Column(modifier = Modifier.weight(1f)) {
+                                    Text(sub.name, fontWeight = FontWeight.Bold, fontSize = 14.sp)
+                                    Text(sub.nextBillingDate ?: "", fontSize = 12.sp, color = Color.Gray)
+                                }
+                                
+                                Text(
+                                    CurrencyFormatter.formatAmount(sub.cost, sub.currency),
+                                    fontWeight = FontWeight.Bold,
+                                    fontSize = 14.sp,
+                                    color = MaterialTheme.colorScheme.onBackground
+                                )
+                            }
+                        }
+                    }
+                }
                 if (suspiciousCount > 0) {
     item {
                     Surface(

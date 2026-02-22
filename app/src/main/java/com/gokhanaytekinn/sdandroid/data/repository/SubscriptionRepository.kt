@@ -51,6 +51,23 @@ class SubscriptionRepository(context: Context? = null) {
         }
     }
     
+    suspend fun getUpcomingSubscriptions(): Result<List<Subscription>> {
+        return try {
+            if (apiService == null) {
+                return Result.failure(Exception("API not available"))
+            }
+            val response = apiService.getUpcomingSubscriptions()
+            if (response.isSuccessful && response.body() != null) {
+                val subscriptions = response.body()!!.map { it.toSubscription() }
+                Result.success(subscriptions)
+            } else {
+                Result.failure(Exception("Failed to get upcoming subscriptions"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+    
     suspend fun getSuspiciousSubscriptions(): Result<List<Subscription>> {
         return try {
             if (apiService == null) {
@@ -67,7 +84,7 @@ class SubscriptionRepository(context: Context? = null) {
             Result.failure(e)
         }
     }
-    
+
     suspend fun createSubscription(subscription: Subscription): Result<Subscription> {
         return try {
             if (apiService == null) {

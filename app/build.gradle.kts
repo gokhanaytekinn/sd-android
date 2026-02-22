@@ -21,7 +21,7 @@ android {
         }
 
         // Base URL for API - change this single value for different environments
-        buildConfigField("String", "BASE_URL", "\"https://sd-backend-f2bd.onrender.com/\"")
+        buildConfigField("String", "BASE_URL", "\"http://192.168.1.117:8080/\"")
     }
 
     buildTypes {

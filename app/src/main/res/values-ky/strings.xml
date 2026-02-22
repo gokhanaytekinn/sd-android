@@ -34,6 +34,12 @@
     <string name="most_expensive">Эң кымбат жазылуулар</string>
     <string name="view_all">Баары</string>
     <string name="view_all_subscriptions">Бардык жазылууларды көрүү</string>
+    <string name="upcoming_payments">Келе жаткан төлөмдөр</string>
+    <string name="no_upcoming_payments">Кийинки 10 күн ичинде төлөмдөр жок</string>
+    <string name="today">Бүгүн</string>
+    <string name="tomorrow">Эртең</string>
+    <string name="days_left">күн калды</string>
+    <string name="retry">Кайра аракет кылуу</string>
     
     <!-- Settings -->
     <string name="settings">Орнотуулар</string>
@@ -79,6 +85,7 @@
     <!-- Bottom Navigation -->
     <string name="nav_dashboard">Жыйынтык</string>
     <string name="nav_search">Издөө</string>
+    <string name="nav_upcoming">Келе жаткан</string>
     <string name="nav_settings">Орнотуулар</string>
     
     <!-- Languages -->

@@ -34,6 +34,12 @@
     <string name="most_expensive">Suscripciones Más Caras</string>
     <string name="view_all">Ver Todo</string>
     <string name="view_all_subscriptions">Ver Todas las Suscripciones</string>
+    <string name="upcoming_payments">Próximos Pagos</string>
+    <string name="no_upcoming_payments">No hay próximos pagos para los próximos 10 días</string>
+    <string name="today">Hoy</string>
+    <string name="tomorrow">Mañana</string>
+    <string name="days_left">días restantes</string>
+    <string name="retry">Reintentar</string>
     
     <!-- Settings -->
     <string name="settings">Ajustes</string>
@@ -77,8 +83,9 @@
     <string name="renews">Renova %s</string>
     
     <!-- Bottom Navigation -->
-    <string name="nav_dashboard">Panel</string>
+    <string name="nav_dashboard">Resumen</string>
     <string name="nav_search">Buscar</string>
+    <string name="nav_upcoming">Próximos</string>
     <string name="nav_settings">Ajustes</string>
     
     <!-- Languages -->

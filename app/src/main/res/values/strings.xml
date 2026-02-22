@@ -34,6 +34,12 @@
     <string name="most_expensive">Most Expensive Subscriptions</string>
     <string name="view_all">View All</string>
     <string name="view_all_subscriptions">View All Subscriptions</string>
+    <string name="upcoming_payments">Upcoming Payments</string>
+    <string name="no_upcoming_payments">No upcoming payments for the next 10 days</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="days_left">days left</string>
+    <string name="retry">Retry</string>
     
     <!-- Settings -->
     <string name="settings">Settings</string>
@@ -77,8 +83,9 @@
     <string name="renews">Renews %s</string>
     
     <!-- Bottom Navigation -->
-    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_dashboard">Summary</string>
     <string name="nav_search">Search</string>
+    <string name="nav_upcoming">Upcoming</string>
     <string name="nav_settings">Settings</string>
     
     <!-- Languages -->

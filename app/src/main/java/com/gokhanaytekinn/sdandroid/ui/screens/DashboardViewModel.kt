@@ -42,6 +42,10 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     private val _suspiciousCount = MutableStateFlow(0)
     val suspiciousCount: StateFlow<Int> = _suspiciousCount.asStateFlow()
     
+    // Upcoming subscriptions for preview
+    private val _upcomingSubscriptions = MutableStateFlow<List<Subscription>>(emptyList())
+    val upcomingSubscriptions: StateFlow<List<Subscription>> = _upcomingSubscriptions.asStateFlow()
+    
     // Scanning state
     private val _isScanning = MutableStateFlow(false)
     val isScanning: StateFlow<Boolean> = _isScanning.asStateFlow()
@@ -55,6 +59,7 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     init {
         loadSubscriptions()
         loadSuspiciousCount()
+        loadUpcomingSubscriptions()
     }
     
     fun loadSubscriptions() {
@@ -109,6 +114,16 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
             val result = repository.getSuspiciousSubscriptions()
             if (result.isSuccess) {
                 _suspiciousCount.value = result.getOrNull()?.size ?: 0
+            }
+        }
+    }
+
+    private fun loadUpcomingSubscriptions() {
+        viewModelScope.launch {
+            val result = repository.getUpcomingSubscriptions()
+            if (result.isSuccess) {
+                // Take only first 3 for preview
+                _upcomingSubscriptions.value = result.getOrNull()?.take(3) ?: emptyList()
             }
         }
     }

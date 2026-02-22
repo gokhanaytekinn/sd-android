@@ -57,6 +57,9 @@ interface ApiService {
     
     @GET("api/subscriptions/suspicious")
     suspend fun getSuspiciousSubscriptions(): Response<List<SubscriptionResponse>>
+
+    @GET("api/subscriptions/upcoming")
+    suspend fun getUpcomingSubscriptions(): Response<List<SubscriptionResponse>>
     
     @PATCH("api/subscriptions/{id}/approve")
     suspend fun approveSubscription(@Path("id") id: String): Response<SubscriptionResponse>

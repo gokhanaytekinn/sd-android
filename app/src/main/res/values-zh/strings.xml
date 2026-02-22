@@ -34,6 +34,12 @@
     <string name="most_expensive">最昂贵的订阅</string>
     <string name="view_all">查看全部</string>
     <string name="view_all_subscriptions">查看所有订阅</string>
+    <string name="upcoming_payments">即将到来的付款</string>
+    <string name="no_upcoming_payments">未来 10 天内没有即将到来的付款</string>
+    <string name="today">今天</string>
+    <string name="tomorrow">明天</string>
+    <string name="days_left">天剩余</string>
+    <string name="retry">重试</string>
     
     <!-- Settings -->
     <string name="settings">设置</string>
@@ -77,8 +83,9 @@
     <string name="renews">续期日期 %s</string>
     
     <!-- Bottom Navigation -->
-    <string name="nav_dashboard">仪表盘</string>
+    <string name="nav_dashboard">摘要</string>
     <string name="nav_search">搜索</string>
+    <string name="nav_upcoming">即将到来</string>
     <string name="nav_settings">设置</string>
     
     <!-- Languages -->

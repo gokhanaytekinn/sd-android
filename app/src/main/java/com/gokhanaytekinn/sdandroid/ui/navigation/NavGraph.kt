@@ -30,6 +30,7 @@ fun NavGraph(
         Screen.Dashboard.route,
         Screen.SubscriptionsList.route,
         Screen.Search.route,
+        Screen.UpcomingSubscriptions.route,
         Screen.AppSettings.route
     )
 
@@ -151,6 +152,9 @@ fun NavGraph(
                     },
                     onNavigateToSettings = {
                         navController.navigate(Screen.AppSettings.route)
+                    },
+                    onNavigateToUpcoming = {
+                        navController.navigate(Screen.UpcomingSubscriptions.route)
                     }
                 )
             }
@@ -197,6 +201,17 @@ fun NavGraph(
                 )
             }
             
+            composable(Screen.UpcomingSubscriptions.route) {
+                UpcomingSubscriptionsScreen(
+                    onBackClick = {
+                        navController.popBackStack()
+                    },
+                    onSubscriptionClick = { id ->
+                        navController.navigate(Screen.SubscriptionDetails.createRoute(id))
+                    }
+                )
+            }
+            
             composable(Screen.SuspiciousPayments.route) {
                 SuspiciousPaymentsScreen(
                     onBackClick = {
@@ -204,7 +219,6 @@ fun NavGraph(
                     }
                 )
             }
-            
             composable(Screen.PremiumAnalytics.route) {
                 PremiumAnalyticsScreen(
                     onBackClick = {

@@ -34,6 +34,12 @@
     <string name="most_expensive">Ən Bahalı Abunəliklər</string>
     <string name="view_all">Hamısı</string>
     <string name="view_all_subscriptions">Bütün Abunəlikləri Gör</string>
+    <string name="upcoming_payments">Gələcək Ödənişlər</string>
+    <string name="no_upcoming_payments">Növbəti 10 gün üçün ödəniş yoxdur</string>
+    <string name="today">Bu gün</string>
+    <string name="tomorrow">Sabah</string>
+    <string name="days_left">gün qaldı</string>
+    <string name="retry">Yenidən cəhd et</string>
     
     <!-- Settings -->
     <string name="settings">Ayarlar</string>
@@ -79,7 +85,8 @@
     <!-- Bottom Navigation -->
     <string name="nav_dashboard">Xülasə</string>
     <string name="nav_search">Axtar</string>
-    <string name="nav_settings">Ayarlar</string>
+    <string name="nav_upcoming">Gələcək</string>
+    <string name="nav_settings">Parametrlər</string>
     
     <!-- Languages -->
     <string name="language_english">English</string>

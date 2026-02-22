@@ -34,6 +34,12 @@
     <string name="most_expensive">En Pahalı Abonelikler</string>
     <string name="view_all">Tümü</string>
     <string name="view_all_subscriptions">Tüm Abonelikleri Gör</string>
+    <string name="upcoming_payments">Yaklaşan Ödemeler</string>
+    <string name="no_upcoming_payments">Önümüzdeki 10 gün için yaklaşan ödeme yok</string>
+    <string name="today">Bugün</string>
+    <string name="tomorrow">Yarın</string>
+    <string name="days_left">gün kaldı</string>
+    <string name="retry">Tekrar Dene</string>
     
     <!-- Settings -->
     <string name="settings">Ayarlar</string>
@@ -79,6 +85,7 @@
     <!-- Bottom Navigation -->
     <string name="nav_dashboard">Özet</string>
     <string name="nav_search">Ara</string>
+    <string name="nav_upcoming">Yaklaşan</string>
     <string name="nav_settings">Ayarlar</string>
     
     <!-- Languages -->

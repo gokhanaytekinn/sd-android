@@ -38,8 +38,14 @@
     <string name="total_monthly">Gesamte monatliche Kosten</string>
     <string name="suspicious_subscriptions">Verdächtige Abonnements</string>
     <string name="transactions_pending">%d Transaktionen ausstehend</string>
-    <string name="most_expensive">Teuerste Abonnements</string>
+    <string name="view_all">Alle anzeigen</string>
     <string name="view_all_subscriptions">Alle Abonnements anzeigen</string>
+    <string name="upcoming_payments">Anstehende Zahlungen</string>
+    <string name="no_upcoming_payments">Keine anstehenden Zahlungen für die nächsten 10 Tage</string>
+    <string name="today">Heute</string>
+    <string name="tomorrow">Morgen</string>
+    <string name="days_left">Tage übrig</string>
+    <string name="retry">Wiederholen</string>
     <string name="hello_user">Hallo %s</string>
     <string name="guest_user">Gast</string>
 
@@ -113,8 +119,9 @@
     <string name="save_changes">Änderungen speichern</string>
  
     <!-- Navigation -->
-    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_dashboard">Übersicht</string>
     <string name="nav_search">Suche</string>
+    <string name="nav_upcoming">Anstehend</string>
     <string name="nav_settings">Einstellungen</string>
     <string name="subscriptions">Abonnements</string>
     <string name="no_active_subscriptions">Keine aktiven Abonnements gefunden</string>

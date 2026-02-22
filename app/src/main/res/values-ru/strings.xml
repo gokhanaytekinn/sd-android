@@ -34,6 +34,12 @@
     <string name="most_expensive">Самые Дорогие Подписки</string>
     <string name="view_all">Все</string>
     <string name="view_all_subscriptions">Посмотреть Все Подписки</string>
+    <string name="upcoming_payments">Предстоящие Платежи</string>
+    <string name="no_upcoming_payments">На ближайшие 10 дней платежей нет</string>
+    <string name="today">Сегодня</string>
+    <string name="tomorrow">Завтра</string>
+    <string name="days_left">дней осталось</string>
+    <string name="retry">Повторить</string>
     
     <!-- Settings -->
     <string name="settings">Настройки</string>
@@ -77,8 +83,9 @@
     <string name="renews">Обновляется %s</string>
     
     <!-- Bottom Navigation -->
-    <string name="nav_dashboard">Панель</string>
+    <string name="nav_dashboard">Итог</string>
     <string name="nav_search">Поиск</string>
+    <string name="nav_upcoming">Ближайшие</string>
     <string name="nav_settings">Настройки</string>
     
     <!-- Languages -->
