@@ -29,6 +29,7 @@ import com.gokhanaytekinn.sdandroid.ui.viewmodel.UpcomingSubscriptionsViewModel
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.UpcomingUiState
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
+import com.gokhanaytekinn.sdandroid.util.DateUtils
 import androidx.compose.ui.platform.LocalContext
 import android.app.Application
 import androidx.lifecycle.ViewModel
@@ -129,7 +130,7 @@ fun UpcomingSubscriptionItem(
     subscription: Subscription,
     onClick: () -> Unit
 ) {
-    val daysRemaining = calculateDaysRemaining(subscription.nextBillingDate)
+    val daysRemaining = DateUtils.calculateDaysRemaining(subscription.nextBillingDate)
     
     Card(
         onClick = onClick,
@@ -168,7 +169,7 @@ fun UpcomingSubscriptionItem(
                     color = Color.White
                 )
                 Text(
-                    text = subscription.nextBillingDate ?: "",
+                    text = DateUtils.formatDate(subscription.nextBillingDate),
                     fontSize = 13.sp,
                     color = Color.Gray
                 )
@@ -196,16 +197,5 @@ fun UpcomingSubscriptionItem(
                 )
             }
         }
-    }
-}
-
-private fun calculateDaysRemaining(dateStr: String?): Long {
-    if (dateStr == null) return -1
-    return try {
-        val targetDate = LocalDate.parse(dateStr)
-        val today = LocalDate.now()
-        ChronoUnit.DAYS.between(today, targetDate)
-    } catch (e: Exception) {
-        -1
     }
 }

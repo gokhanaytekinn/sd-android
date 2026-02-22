@@ -33,6 +33,7 @@ import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
+import com.gokhanaytekinn.sdandroid.util.DateUtils
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -213,7 +214,7 @@ fun DashboardScreen(
                                 
                                 Column(modifier = Modifier.weight(1f)) {
                                     Text(sub.name, fontWeight = FontWeight.Bold, fontSize = 14.sp)
-                                    Text(sub.nextBillingDate ?: "", fontSize = 12.sp, color = Color.Gray)
+                                    Text(DateUtils.formatDate(sub.nextBillingDate), fontSize = 12.sp, color = Color.Gray)
                                 }
                                 
                                 Text(

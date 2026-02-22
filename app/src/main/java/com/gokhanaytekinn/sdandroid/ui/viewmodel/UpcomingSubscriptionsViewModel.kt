@@ -5,6 +5,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
+import com.gokhanaytekinn.sdandroid.util.DateUtils
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -26,7 +27,9 @@ class UpcomingSubscriptionsViewModel(application: Application) : AndroidViewMode
             _uiState.value = UpcomingUiState.Loading
             val result = repository.getUpcomingSubscriptions()
             if (result.isSuccess) {
-                val subscriptions = result.getOrDefault(emptyList())
+                val subscriptions = result.getOrDefault(emptyList()).filter {
+                    DateUtils.isWithinNextDays(it.nextBillingDate, 10)
+                }
                 if (subscriptions.isEmpty()) {
                     _uiState.value = UpcomingUiState.Empty
                 } else {

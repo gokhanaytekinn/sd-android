@@ -9,6 +9,7 @@ import com.gokhanaytekinn.sdandroid.data.model.SubscriptionStats
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
 import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
 import com.gokhanaytekinn.sdandroid.util.PermissionManager
+import com.gokhanaytekinn.sdandroid.util.DateUtils
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -122,8 +123,11 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         viewModelScope.launch {
             val result = repository.getUpcomingSubscriptions()
             if (result.isSuccess) {
-                // Take only first 3 for preview
-                _upcomingSubscriptions.value = result.getOrNull()?.take(3) ?: emptyList()
+                // Filter locally for safety (max 10 days) and take only first 3 for preview
+                val filtered = result.getOrNull()?.filter { 
+                    DateUtils.isWithinNextDays(it.nextBillingDate, 10)
+                } ?: emptyList()
+                _upcomingSubscriptions.value = filtered.take(3)
             }
         }
     }

@@ -31,6 +31,7 @@ import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.ui.screens.DashboardViewModel
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
+import com.gokhanaytekinn.sdandroid.util.DateUtils
 import com.gokhanaytekinn.sdandroid.util.PermissionManager
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
@@ -564,7 +565,7 @@ fun SubscriptionListItemDetailed(
                     )
                     Spacer(modifier = Modifier.height(4.dp))
                     Text(
-                        text = subscription.nextBillingDate ?: "",
+                        text = DateUtils.formatDate(subscription.nextBillingDate),
                         fontSize = 12.sp,
                         color = Color(0xFF6B7280),
                         fontWeight = FontWeight.Medium
