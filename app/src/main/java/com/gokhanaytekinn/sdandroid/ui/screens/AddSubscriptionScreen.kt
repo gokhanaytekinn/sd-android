@@ -163,9 +163,6 @@ fun AddSubscriptionScreen(
                         focusedContainerColor = Color.White.copy(alpha = 0.05f),
                         unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
                     ),
-                    trailingIcon = {
-                        Icon(Icons.Default.Search, contentDescription = null, tint = Color.Gray)
-                    },
                     singleLine = true
                 )
                 
