@@ -13,6 +13,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -52,6 +53,11 @@ fun UpcomingSubscriptionsScreen(
         }
     )
     val uiState by viewModel.uiState.collectAsState()
+
+    // Refresh data whenever the screen is entered
+    LaunchedEffect(Unit) {
+        viewModel.loadUpcomingSubscriptions()
+    }
 
     Scaffold(
         topBar = {
