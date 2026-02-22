@@ -46,6 +46,8 @@
     <string name="account">ACCOUNT</string>
     <string name="application">APPLICATION</string>
     <string name="support">SUPPORT</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="settings_title">Settings</string>
     <string name="membership_type">Membership Type</string>
     <string name="free_plan">Free Plan</string>
     <string name="notifications">Notifications</string>
@@ -56,6 +58,7 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="logout">Logout</string>
     <string name="version_info">Version %1$s (Build %2$d)</string>
+    <string name="version">Version %s</string>
     
     <!-- Premium -->
     <string name="upgrade_to_premium">Upgrade to Premium</string>
@@ -66,6 +69,7 @@
     <string name="search">Search</string>
     <string name="search_placeholder">Search subscriptions or transactions</string>
     <string name="recent_searches">RECENT SEARCHES</string>
+    <string name="popular_subscriptions">Popular Subscriptions</string>
     <string name="results_found">RESULTS FOUND (%d)</string>
     <string name="subscriptions">Subscriptions</string>
     <string name="transactions">Transactions</string>
@@ -101,6 +105,7 @@
     <string name="language_kazakh">Қазақша</string>
     <string name="language_kyrgyz">Кыргызча</string>
     <string name="language_uzbek">Oʻzbekcha</string>
+    <string name="language_indonesian">Indonesian</string>
 
 
 
@@ -115,9 +120,11 @@
     <string name="password">Password</string>
     <string name="name">Name</string>
     <string name="full_name">Full Name</string>
+    <string name="name_placeholder">Your Name</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="no_account">Don\'t have an account?</string>
     <string name="have_account">Already have an account?</string>
+    <string name="already_have_account">Already have an account?</string>
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="create_account">Create Account</string>
@@ -193,6 +200,9 @@
     <string name="next_payment">Payment Start Date</string>
     <string name="billing_cycle">Billing Cycle</string>
     <string name="category">Category</string>
+    <string name="start_date">Start Date</string>
+    <string name="cancel_subscription">Cancel Subscription</string>
+    <string name="delete_subscription">Delete Subscription</string>
     
     <!-- Premium -->
     <string name="get_premium">Get Premium</string>
@@ -216,6 +226,7 @@
     <string name="category_entertainment">Entertainment</string>
     <string name="category_music">Music</string>
     <string name="category_sports">Sports &amp; Health</string>
+    <string name="category_technology">Technology</string>
     <string name="category_other">Other</string>
     
     <!-- Analytics -->
@@ -241,6 +252,7 @@
     <string name="add">Add</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="save_changes">Save Changes</string>
     <string name="done">Done</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -313,6 +325,12 @@
     <string name="help_center_title">Help Center</string>
     <string name="help_search_placeholder">How can we help you?</string>
     <string name="popular_questions">Popular Questions</string>
+    <string name="how_to_add">How do I add a subscription?</string>
+    <string name="how_to_add_desc">Click the plus icon in the all subscriptions list to add a new service.</string>
+    <string name="automatic_tracking">Automatic Tracking</string>
+    <string name="automatic_tracking_desc">We securely scan your transactions to automatically find recurring subscriptions.</string>
+    <string name="cancel_anytime">Cancel Anytime</string>
+    <string name="cancel_anytime_desc">You can track and manage subscriptions directly through the app details.</string>
     
     <string name="faq_q1">How to cancel a subscription?</string>
     <string name="faq_a1">You can go to the subscription details page and click the \'Cancel Subscription\' button at the bottom. This action only ends the tracking within the app, don\'t forget to also cancel through the service provider.</string>

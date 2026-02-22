@@ -46,6 +46,8 @@
     <string name="account">HESAP</string>
     <string name="application">UYGULAMA</string>
     <string name="support">DESTEK</string>
+    <string name="account_settings">Hesap Ayarları</string>
+    <string name="settings_title">Ayarlar</string>
     <string name="membership_type">Üyelik Tipi</string>
     <string name="free_plan">Ücretsiz Plan</string>
     <string name="notifications">Bildirimler</string>
@@ -56,6 +58,7 @@
     <string name="privacy_policy">Gizlilik Politikası</string>
     <string name="logout">Çıkış Yap</string>
     <string name="version_info">Versiyon %1$s (Build %2$d)</string>
+    <string name="version">Versiyon %s</string>
     
     <!-- Premium -->
     <string name="upgrade_to_premium">Premium\'a Yükselt</string>
@@ -66,6 +69,7 @@
     <string name="search">Ara</string>
     <string name="search_placeholder">Abonelik veya işlem ara</string>
     <string name="recent_searches">SON ARAMALAR</string>
+    <string name="popular_subscriptions">Popüler Abonelikler</string>
     <string name="results_found">SONUÇ BULUNDU (%d)</string>
     <string name="subscriptions">Abonelikler</string>
     <string name="transactions">İşlemler</string>
@@ -101,6 +105,7 @@
     <string name="language_kazakh">Kazakça</string>
     <string name="language_kyrgyz">Kırgızca</string>
     <string name="language_uzbek">Özbekçe</string>
+    <string name="language_indonesian">Endonezce</string>
 
 
     <string name="select_language">Dil Seçin</string>
@@ -114,9 +119,11 @@
     <string name="password">Şifre</string>
     <string name="name">İsim</string>
     <string name="full_name">Tam İsim</string>
+    <string name="name_placeholder">Adınız</string>
     <string name="forgot_password">Şifremi Unuttum?</string>
     <string name="no_account">Hesabınız yok mu?</string>
     <string name="have_account">Zaten hesabınız var mı?</string>
+    <string name="already_have_account">Zaten bir hesabınız var mı?</string>
     <string name="sign_in">Giriş Yap</string>
     <string name="sign_up">Kayıt Ol</string>
     <string name="create_account">Hesap Oluştur</string>
@@ -192,6 +199,9 @@
     <string name="next_payment">Ödeme Başlangıç Tarihi</string>
     <string name="billing_cycle">Fatura Döngüsü</string>
     <string name="category">Kategori</string>
+    <string name="start_date">Başlangıç Tarihi</string>
+    <string name="cancel_subscription">Aboneliği İptal Et</string>
+    <string name="delete_subscription">Aboneliği Sil</string>
     
     <!-- Premium -->
     <string name="get_premium">Premium Al</string>
@@ -215,6 +225,7 @@
     <string name="category_entertainment">Eğlence</string>
     <string name="category_music">Müzik</string>
     <string name="category_sports">Spor &amp; Sağlık</string>
+    <string name="category_technology">Teknoloji</string>
     <string name="category_other">Diğer</string>
     
     <!-- Analytics -->
@@ -240,6 +251,7 @@
     <string name="add">Ekle</string>
     <string name="edit">Düzenle</string>
     <string name="delete">Sil</string>
+    <string name="save_changes">Değişiklikleri Kaydet</string>
     <string name="done">Tamam</string>
     <string name="next">İleri</string>
     <string name="previous">Geri</string>
@@ -311,6 +323,12 @@
     <string name="help_center_title">Yardım Merkezi</string>
     <string name="help_search_placeholder">Nasıl yardımcı olabiliriz?</string>
     <string name="popular_questions">Popüler Sorular</string>
+    <string name="how_to_add">Nasıl abonelik eklerim?</string>
+    <string name="how_to_add_desc">Yeni bir servis eklemek için tüm abonelikler listesindeki artı simgesine tıklayın.</string>
+    <string name="automatic_tracking">Otomatik Takip</string>
+    <string name="automatic_tracking_desc">Yinelenen abonelikleri otomatik olarak bulmak için işlemlerinizi güvenli bir şekilde tararız.</string>
+    <string name="cancel_anytime">İstediğiniz Zaman İptal Edin</string>
+    <string name="cancel_anytime_desc">Aboneliklerinizi doğrudan uygulama detayları üzerinden takip edebilir ve yönetebilirsiniz.</string>
     
     <string name="faq_q1">Abonelik nasıl iptal edilir?</string>
     <string name="faq_a1">Abonelik detay sayfasına giderek en altta bulunan \'Aboneliği İptal Et\' butonuna tıklayabilirsiniz. Bu işlem sadece uygulama içi takibi sonlandırır, servis sağlayıcı üzerinden de iptal etmeyi unutmayın.</string>
