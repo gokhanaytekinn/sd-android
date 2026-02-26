@@ -14,6 +14,8 @@
     <string name="hide_password">Şifrəni gizlə</string>
     <string name="unknown_error">Naməlum xəta</string>
     <string name="scan">Skan et</string>
+    <string name="menu_scan">Skan et</string>
+    <string name="menu_add_manually">Əllə əlavə et</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Abunəliklərinizi İzləyin</string>

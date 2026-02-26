@@ -31,6 +31,8 @@
     <string name="or">oder</string>
     <string name="unknown_error">Unbekannter Fehler aufgetreten</string>
     <string name="scan">Scannen</string>
+    <string name="menu_scan">Scannen</string>
+    <string name="menu_add_manually">Manuell hinzufügen</string>
     <string name="google_sign_in_failed">Google-Anmeldung fehlgeschlagen: %s</string>
 
     <!-- Dashboard -->

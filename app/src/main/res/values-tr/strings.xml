@@ -14,6 +14,8 @@
     <string name="hide_password">Şifreyi gizle</string>
     <string name="unknown_error">Bilinmeyen hata</string>
     <string name="scan">Tara</string>
+    <string name="menu_scan">Tara</string>
+    <string name="menu_add_manually">Manuel Ekle</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Aboneliklerini Takip Et</string>

@@ -14,6 +14,8 @@
     <string name="hide_password">Құпия сөзді жасыру</string>
     <string name="unknown_error">Белгісіз қате</string>
     <string name="scan">Сканерлеу</string>
+    <string name="menu_scan">Сканерлеу</string>
+    <string name="menu_add_manually">Қолмен қосу</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Жазылымдарыңызды бақылаңыз</string>

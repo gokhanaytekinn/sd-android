@@ -14,6 +14,8 @@
     <string name="hide_password">Ocultar contraseña</string>
     <string name="unknown_error">Error desconocido</string>
     <string name="scan">Escanear</string>
+    <string name="menu_scan">Escanear</string>
+    <string name="menu_add_manually">Añadir manualmente</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Rastrea tus Suscripciones</string>

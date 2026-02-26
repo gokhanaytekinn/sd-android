@@ -14,6 +14,8 @@
     <string name="hide_password">Hide password</string>
     <string name="unknown_error">Unknown error</string>
     <string name="scan">Scan</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_add_manually">Add Manually</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Track Your Subscriptions</string>

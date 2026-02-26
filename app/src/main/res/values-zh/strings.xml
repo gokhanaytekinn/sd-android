@@ -14,6 +14,8 @@
     <string name="hide_password">隐藏密码</string>
     <string name="unknown_error">未知错误</string>
     <string name="scan">扫描</string>
+    <string name="menu_scan">扫描</string>
+    <string name="menu_add_manually">手动添加</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">追踪您的订阅</string>

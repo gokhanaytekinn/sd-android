@@ -14,6 +14,8 @@
     <string name="hide_password">Paroly gizle</string>
     <string name="unknown_error">Näbelli säwlik</string>
     <string name="scan">Skanirlemek</string>
+    <string name="menu_scan">Skanirlemek</string>
+    <string name="menu_add_manually">Elde goşmak</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Abunalyklaryňyzy Yzarlaň</string>
