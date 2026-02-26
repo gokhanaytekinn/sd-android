@@ -12,7 +12,7 @@ android {
         applicationId = "com.gokhanaytekinn.sdandroid"
         minSdk = 26
         targetSdk = 35
-        versionCode = 3
+        versionCode = 5
         versionName = "1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"

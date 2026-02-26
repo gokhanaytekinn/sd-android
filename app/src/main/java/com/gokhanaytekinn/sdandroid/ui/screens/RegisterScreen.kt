@@ -81,6 +81,7 @@ fun RegisterScreen(
                 .fillMaxSize()
                 .weight(1f)
                 .padding(horizontal = 24.dp)
+                .verticalScroll(rememberScrollState())
         ) {
             Spacer(modifier = Modifier.height(24.dp))
             
