@@ -218,6 +218,7 @@ fun RegisterScreen(
                         unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f),
                         errorBorderColor = MaterialTheme.colorScheme.error
                     ),
+                    shape = RoundedCornerShape(12.dp)
                 )
             }
             

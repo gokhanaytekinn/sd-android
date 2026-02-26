@@ -114,7 +114,7 @@ fun PremiumAnalyticsScreen(
             item {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(12.dp),
                     color = Color(0xFF1c271c)
                 ) {
                     Box {
@@ -209,7 +209,7 @@ fun PremiumAnalyticsScreen(
             item {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(12.dp),
                     color = MaterialTheme.colorScheme.surface
                 ) {
                     Column(
@@ -314,7 +314,7 @@ fun PremiumAnalyticsScreen(
             item {
                 Surface(
                     modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(16.dp),
+                    shape = RoundedCornerShape(12.dp),
                     color = MaterialTheme.colorScheme.surface
                 ) {
                     Column(

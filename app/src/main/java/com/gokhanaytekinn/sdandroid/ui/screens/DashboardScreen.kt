@@ -145,9 +145,9 @@ fun DashboardScreen(
                             .border(
                                 width = 1.dp,
                                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
-                                shape = RoundedCornerShape(16.dp)
+                                shape = RoundedCornerShape(12.dp)
                             ),
-                        shape = RoundedCornerShape(16.dp),
+                        shape = RoundedCornerShape(12.dp),
                         color = Color.Transparent,
                         tonalElevation = 0.dp
                     ) {
@@ -362,7 +362,7 @@ fun DashboardScreen(
                             containerColor = PrimaryBlue,
                             contentColor = MaterialTheme.colorScheme.onPrimary
                         ),
-                        shape = RoundedCornerShape(16.dp)
+                        shape = RoundedCornerShape(12.dp)
                     ) {
                         Text(
                             text = stringResource(R.string.view_all_subscriptions),

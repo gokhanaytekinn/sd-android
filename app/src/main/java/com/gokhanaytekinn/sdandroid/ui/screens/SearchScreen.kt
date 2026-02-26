@@ -153,7 +153,7 @@ fun SearchScreen(
                     items(recentSearches) { search ->
                         Surface(
                             onClick = { viewModel.onRecentSearchClick(search) },
-                            shape = RoundedCornerShape(50),
+                            shape = RoundedCornerShape(12.dp),
                             color = MaterialTheme.colorScheme.surface
                         ) {
                             Text(

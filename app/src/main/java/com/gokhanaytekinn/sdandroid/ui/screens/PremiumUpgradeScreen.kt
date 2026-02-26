@@ -227,7 +227,7 @@ fun PremiumUpgradeScreen(
                 colors = ButtonDefaults.buttonColors(
                     containerColor = PrimaryBlue
                 ),
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(12.dp)
             ) {
                 Text(
                     text = "Premium'a Geç",
@@ -351,7 +351,7 @@ fun PricingCard(
     Surface(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(12.dp),
         color = if (selected) Color(0xFF1c271c) else Color(0xFF1c271c).copy(alpha = 0.6f),
         border = androidx.compose.foundation.BorderStroke(
             width = if (selected) 2.dp else 1.dp,

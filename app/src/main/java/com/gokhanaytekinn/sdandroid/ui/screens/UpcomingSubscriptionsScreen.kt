@@ -140,7 +140,7 @@ fun UpcomingSubscriptionItem(
     
     Card(
         onClick = onClick,
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(12.dp),
         colors = CardDefaults.cardColors(containerColor = SurfaceDark),
         modifier = Modifier.fillMaxWidth()
     ) {

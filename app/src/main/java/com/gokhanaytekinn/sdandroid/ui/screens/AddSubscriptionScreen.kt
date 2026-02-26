@@ -329,7 +329,7 @@ fun AddSubscriptionScreen(
                             modifier = Modifier
                                 .weight(1f)
                                 .fillMaxHeight()
-                                .clip(RoundedCornerShape(8.dp))
+                                .clip(RoundedCornerShape(12.dp))
                                 .background(if (isSelected) PrimaryBlue else Color.Transparent)
                                 .clickable { viewModel.updateBillingCycle(cycle) },
                             contentAlignment = Alignment.Center
@@ -439,8 +439,8 @@ fun AddSubscriptionScreen(
                     .fillMaxWidth()
                     .padding(24.dp)
                     .height(56.dp)
-                    .shadow(8.dp, RoundedCornerShape(16.dp)),
-                shape = RoundedCornerShape(16.dp),
+                    .shadow(8.dp, RoundedCornerShape(12.dp)),
+                shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(
                     containerColor = PrimaryBlue,
                     disabledContainerColor = PrimaryBlue.copy(alpha = 0.5f)

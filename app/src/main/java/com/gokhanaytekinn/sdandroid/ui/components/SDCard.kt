@@ -18,7 +18,7 @@ fun SDCard(
     modifier: Modifier = Modifier,
     backgroundColor: Color = Color.White,
     elevation: Dp = 4.dp,
-    cornerRadius: Dp = 16.dp,
+    cornerRadius: Dp = 12.dp,
     content: @Composable ColumnScope.() -> Unit
 ) {
     Card(

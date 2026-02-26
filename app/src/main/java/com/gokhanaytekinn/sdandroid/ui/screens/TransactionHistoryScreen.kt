@@ -242,7 +242,7 @@ fun TransactionItem(transaction: Transaction) {
     val colorScheme = MaterialTheme.colorScheme
     Surface(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(12.dp),
         color = colorScheme.surface,
         tonalElevation = 2.dp
     ) {

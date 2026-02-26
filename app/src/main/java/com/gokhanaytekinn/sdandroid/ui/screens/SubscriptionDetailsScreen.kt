@@ -171,7 +171,7 @@ fun SubscriptionDetailsScreen(
                         Box(
                             modifier = Modifier
                                 .size(112.dp)
-                                .clip(RoundedCornerShape(16.dp))
+                                .clip(RoundedCornerShape(12.dp))
                                 .background(colorScheme.surfaceVariant),
                             contentAlignment = Alignment.Center
                         ) {
@@ -224,7 +224,7 @@ fun SubscriptionDetailsScreen(
                         ) {
                             Surface(
                                 color = colorScheme.primaryContainer,
-                                shape = RoundedCornerShape(16.dp)
+                                shape = RoundedCornerShape(12.dp)
                             ) {
                                 Row(
                                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
@@ -424,7 +424,7 @@ fun SubscriptionDetailsScreen(
                                 containerColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.surfaceVariant else colorScheme.primary,
                                 contentColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.onSurfaceVariant else colorScheme.onPrimary
                             ),
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(12.dp)
                         ) {
                             Icon(
                                 imageVector = if (sub.reminderEnabled) Icons.Default.NotificationsOff else Icons.Default.NotificationsActive,
@@ -449,7 +449,7 @@ fun SubscriptionDetailsScreen(
                             colors = ButtonDefaults.outlinedButtonColors(
                                 contentColor = colorScheme.onBackground
                             ),
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(12.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Edit,
@@ -492,7 +492,7 @@ fun SubscriptionDetailsScreen(
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = AccentColor
                             ),
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(12.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.CheckCircle,
@@ -531,7 +531,7 @@ fun SubscriptionDetailsScreen(
                                 contentColor = colorScheme.error
                             ),
                             border = androidx.compose.foundation.BorderStroke(1.dp, colorScheme.error),
-                            shape = RoundedCornerShape(8.dp)
+                            shape = RoundedCornerShape(12.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Filled.Cancel,
