@@ -382,4 +382,6 @@
     <string name="widget_no_data">No data found</string>
     <string name="widget_days_left">%d days left</string>
     <string name="widget_today">Due Today</string>
+    <string name="menu_scan">Scan</string>
+    <string name="menu_add_manually">Add Manually</string>
 </resources>

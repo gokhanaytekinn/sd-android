@@ -380,4 +380,6 @@
     <string name="widget_no_data">Veri bulunamadı</string>
     <string name="widget_days_left">%d gün kaldı</string>
     <string name="widget_today">Bugün Ödenecek</string>
+    <string name="menu_scan">Tara</string>
+    <string name="menu_add_manually">Manuel Ekle</string>
 </resources>

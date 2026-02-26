@@ -12,6 +12,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,12 +39,10 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.material3.LocalTextStyle
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
+import androidx.compose.animation.core.MutableTransitionState
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.window.Popup
 import androidx.compose.ui.window.PopupProperties
 @Composable
@@ -108,34 +111,41 @@ fun BottomNavigationBar(
         }
 
         // Central FAB over the bar
+        // We use a Box with the same height as the navigation bar to ensure the FAB is positioned relative to the same baseline
         Box(
             modifier = Modifier
-                .align(Alignment.TopCenter)
-                .offset(y = (-20).dp),
-            contentAlignment = Alignment.Center
+                .fillMaxWidth()
+                .height(80.dp) // Approximate height of the bottom bar
+                .align(Alignment.BottomCenter)
         ) {
-            FloatingActionButton(
-                onClick = { isMenuExpanded = !isMenuExpanded },
-                shape = CircleShape,
-                containerColor = PrimaryBlue,
-                contentColor = Color.White,
-                elevation = FloatingActionButtonDefaults.elevation(
-                    defaultElevation = 6.dp,
-                    pressedElevation = 12.dp
-                ),
-                modifier = Modifier.size(56.dp)
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopCenter)
+                    .offset(y = (-20).dp),
+                contentAlignment = Alignment.Center
             ) {
-                Icon(
-                    imageVector = if (isMenuExpanded) Icons.Default.Close else Icons.Default.Add,
-                    contentDescription = "Add/Scan",
-                    modifier = Modifier.size(28.dp)
+                // Hide the background FAB when expanded to avoid duplication and layering issues
+                val alpha by animateFloatAsState(
+                    targetValue = if (isMenuExpanded) 0f else 1f,
+                    animationSpec = tween(durationMillis = 300)
                 )
+
+                Box(modifier = Modifier.alpha(alpha)) {
+                    MainActionButton(
+                        isMenuExpanded = isMenuExpanded,
+                        onClick = { isMenuExpanded = !isMenuExpanded }
+                    )
+                }
             }
         }
     }
-            // Replaced above
 
-    if (isMenuExpanded) {
+    val popupTransitionState = remember { MutableTransitionState(false) }
+    LaunchedEffect(isMenuExpanded) {
+        popupTransitionState.targetState = isMenuExpanded
+    }
+
+    if (popupTransitionState.currentState || popupTransitionState.targetState) {
         Popup(
             alignment = Alignment.BottomCenter,
             onDismissRequest = { isMenuExpanded = false },
@@ -147,82 +157,144 @@ fun BottomNavigationBar(
                     .background(Color.Black.copy(alpha = 0.5f))
                     .clickable { isMenuExpanded = false }
             ) {
-                Column(
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .padding(bottom = 100.dp), // Adjust based on bottom bar height
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                AnimatedVisibility(
+                    visibleState = popupTransitionState,
+                    enter = fadeIn(animationSpec = tween(300)),
+                    exit = fadeOut(animationSpec = tween(300))
                 ) {
-                    // Scan Subscription
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.End,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(end = 40.dp)
-                    ) {
-                        Surface(
-                            shape = RoundedCornerShape(8.dp),
-                            color = MaterialTheme.colorScheme.surface,
-                            modifier = Modifier.padding(end = 16.dp)
+                    // Full screen container to allow children to align themselves
+                    Box(modifier = Modifier.fillMaxSize()) {
+                        Column(
+                            modifier = Modifier
+                                .align(Alignment.BottomCenter)
+                                .padding(bottom = 100.dp),
+                            horizontalAlignment = Alignment.CenterHorizontally,
+                            verticalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            Text(
-                                text = "Tara", // Consider moving to strings.xml later if not existing
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-                                fontWeight = FontWeight.Medium
-                            )
-                        }
-                        FloatingActionButton(
-                            onClick = {
-                                isMenuExpanded = false
-                                onScanClick()
-                            },
-                            shape = CircleShape,
-                            containerColor = MaterialTheme.colorScheme.surface,
-                            contentColor = PrimaryBlue,
-                            modifier = Modifier.size(48.dp)
-                        ) {
-                            Icon(Icons.Default.DocumentScanner, contentDescription = "Scan")
-                        }
-                    }
+                            // Scan Subscription
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.End,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(end = 40.dp)
+                            ) {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp),
+                                    color = MaterialTheme.colorScheme.surface,
+                                    modifier = Modifier.padding(end = 16.dp)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.menu_scan),
+                                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                        fontWeight = FontWeight.Medium
+                                    )
+                                }
+                                FloatingActionButton(
+                                    onClick = {
+                                        isMenuExpanded = false
+                                        onScanClick()
+                                    },
+                                    shape = CircleShape,
+                                    containerColor = MaterialTheme.colorScheme.surface,
+                                    contentColor = PrimaryBlue,
+                                    modifier = Modifier.size(48.dp)
+                                ) {
+                                    Icon(Icons.Default.DocumentScanner, contentDescription = "Scan")
+                                }
+                            }
 
-                    // Add Manually
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.End,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(end = 40.dp)
-                    ) {
-                        Surface(
-                            shape = RoundedCornerShape(8.dp),
-                            color = MaterialTheme.colorScheme.surface,
-                            modifier = Modifier.padding(end = 16.dp)
-                        ) {
-                            Text(
-                                text = "Manuel Ekle", // Consider moving to strings.xml later if not existing
-                                modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-                                fontWeight = FontWeight.Medium
-                            )
+                            // Add Manually
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.End,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(end = 40.dp)
+                            ) {
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp),
+                                    color = MaterialTheme.colorScheme.surface,
+                                    modifier = Modifier.padding(end = 16.dp)
+                                ) {
+                                    Text(
+                                        text = stringResource(R.string.menu_add_manually),
+                                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                        fontWeight = FontWeight.Medium
+                                    )
+                                }
+                                FloatingActionButton(
+                                    onClick = {
+                                        isMenuExpanded = false
+                                        onAddClick()
+                                    },
+                                    shape = CircleShape,
+                                    containerColor = MaterialTheme.colorScheme.surface,
+                                    contentColor = PrimaryBlue,
+                                    modifier = Modifier.size(48.dp)
+                                ) {
+                                    Icon(Icons.Default.Edit, contentDescription = "Add Manually")
+                                }
+                            }
                         }
-                        FloatingActionButton(
-                            onClick = {
-                                isMenuExpanded = false
-                                onAddClick()
-                            },
-                            shape = CircleShape,
-                            containerColor = MaterialTheme.colorScheme.surface,
-                            contentColor = PrimaryBlue,
-                            modifier = Modifier.size(48.dp)
+
+                        // IMPORTANT: Replicate the FAB here so it's ABOVE the dimming background
+                        // We use the exact same Box structure as above to ensure identical positioning
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(80.dp)
+                                .align(Alignment.BottomCenter)
                         ) {
-                            Icon(Icons.Default.Edit, contentDescription = "Add Manually")
+                            Box(
+                                modifier = Modifier
+                                    .align(Alignment.TopCenter)
+                                    .offset(y = (-20).dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                MainActionButton(
+                                    isMenuExpanded = isMenuExpanded,
+                                    onClick = { isMenuExpanded = false }
+                                )
+                            }
                         }
                     }
                 }
             }
-            }
         }
+    }
+    }
+}
+
+@Composable
+fun MainActionButton(
+    isMenuExpanded: Boolean,
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    val rotation by animateFloatAsState(
+        targetValue = if (isMenuExpanded) 135f else 0f,
+        animationSpec = tween(durationMillis = 300)
+    )
+
+    FloatingActionButton(
+        onClick = onClick,
+        shape = CircleShape,
+        containerColor = PrimaryBlue,
+        contentColor = Color.White,
+        elevation = FloatingActionButtonDefaults.elevation(
+            defaultElevation = 6.dp,
+            pressedElevation = 12.dp
+        ),
+        modifier = modifier.size(56.dp)
+    ) {
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = "Add/Scan",
+            modifier = Modifier
+                .size(28.dp)
+                .rotate(rotation)
+        )
     }
 }
 
