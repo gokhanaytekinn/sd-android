@@ -10,9 +10,10 @@ object SubscriptionDetectionPatterns {
     val servicePatterns = mapOf(
         "Netflix" to listOf("netflix", "netflix premium", "netflix standart"),
         "Spotify" to listOf("spotify", "spotify premium", "spotify duo", "spotify family"),
-        "YouTube Premium" to listOf("youtube premium", "youtube music", "yt premium"),
-        "Amazon Prime" to listOf("amazon prime", "prime video", "prime üyelik"),
+        "YouTube Premium" to listOf("youtube premium", "youtube music", "yt premium", "youtube memb"),
+        "Amazon Prime" to listOf("amazon prime", "prime video", "prime üyelik", "amazonprime"),
         "Disney+" to listOf("disney plus", "disney+", "disneyplus"),
+        "Apple" to listOf("apple.com/bill", "apple.com", "itunes", "apple storage"),
         "Apple Music" to listOf("apple music"),
         "Apple TV+" to listOf("apple tv+", "apple tv plus"),
         "iCloud" to listOf("icloud", "icloud+", "icloud storage"),
@@ -34,6 +35,7 @@ object SubscriptionDetectionPatterns {
         // Diğer
         "Google One" to listOf("google one", "google storage"),
         "Microsoft 365" to listOf("microsoft 365", "office 365", "onedrive"),
+        "Xbox Game Pass" to listOf("pc game pass", "xbox game pass", "xbox", "microsoft*pc game"),
         "Dropbox" to listOf("dropbox"),
     )
     
@@ -52,12 +54,14 @@ object SubscriptionDetectionPatterns {
         "fatura"
     )
     
-    // Tutar pattern'leri - Türk Lirası
     val amountPatterns = listOf(
-        Regex("""(\d+[.,]\d{2})\s*(?:TL|₺|TRY)"""),  // 99.99 TL veya 99,99₺
-        Regex("""(?:TL|₺|TRY)\s*(\d+[.,]\d{2})"""),  // TL 99.99 veya ₺99,99
-        Regex("""(\d+)\s*(?:TL|₺|TRY)"""),           // 99 TL
+        Regex("""[-+]?((?:\d+[.,])?\d+[.,]\d{2})\s*(?:TL|₺|TRY)"""),  // -1.099.99 TL veya 99,99₺
+        Regex("""(?:TL|₺|TRY)\s*[-+]?((?:\d+[.,])?\d+[.,]\d{2})"""),  // TL -1.099.99 veya ₺99,99
+        Regex("""[-+]?((?:\d+[.,])?\d+)\s*(?:TL|₺|TRY)"""),           // -1.099 TL
     )
+    
+    // Tutar pattern'i (Para birimi olmadan sadece ondalıklı sayı, örn: -149.99 veya 1.050,00)
+    val fallbackAmountPattern = Regex("""[-+]?((?:\d+[.,])?\d+[.,]\d{2})""")
     
     // Tarih pattern'leri
     val datePatterns = listOf(
@@ -102,15 +106,35 @@ object SubscriptionDetectionPatterns {
     /**
      * Verilen metinde tutar tespit eder
      */
-    fun detectAmount(text: String): Double? {
+    fun detectAmount(text: String, fallbackToAnyNumber: Boolean = false): Double? {
         for (pattern in amountPatterns) {
             val match = pattern.find(text)
             if (match != null) {
                 val amountStr = match.groupValues.getOrNull(1) ?: continue
-                return amountStr.replace(",", ".").toDoubleOrNull()
+                return parseAmountString(amountStr)
             }
         }
+        
+        if (fallbackToAnyNumber) {
+            val match = fallbackAmountPattern.find(text)
+            if (match != null) {
+                val amountStr = match.groupValues.getOrNull(1) ?: return null
+                return parseAmountString(amountStr)
+            }
+        }
+        
         return null
+    }
+    
+    private fun parseAmountString(amountStr: String): Double? {
+        // Find the last separator (either dot or comma)
+        val lastSeparatorIndex = amountStr.indexOfLast { it == ',' || it == '.' }
+        if (lastSeparatorIndex != -1) {
+            val withoutThousands = amountStr.substring(0, lastSeparatorIndex).replace(".", "").replace(",", "")
+            val decimalPart = amountStr.substring(lastSeparatorIndex + 1)
+            return "$withoutThousands.$decimalPart".toDoubleOrNull()
+        }
+        return amountStr.toDoubleOrNull()
     }
     
     /**

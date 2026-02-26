@@ -121,6 +121,7 @@ fun ScanningDialog(
 @Composable
 fun DetectedSubscriptionsDialog(
     detectedSubscriptions: List<DeviceSubscriptionScanner.DetectedSubscription>,
+    scannedFileCount: Int = 0,
     onConfirm: (DeviceSubscriptionScanner.DetectedSubscription) -> Unit,
     onReject: (DeviceSubscriptionScanner.DetectedSubscription) -> Unit,
     onDismiss: () -> Unit,
@@ -159,6 +160,14 @@ fun DetectedSubscriptionsDialog(
                             fontSize = 14.sp,
                             color = Color(0xFF9CA3AF)
                         )
+                        if (scannedFileCount > 0) {
+                            Spacer(modifier = Modifier.height(2.dp))
+                            Text(
+                                text = "Toplam $scannedFileCount dosya tarandı",
+                                fontSize = 12.sp,
+                                color = Color.Gray
+                            )
+                        }
                     }
                     
                     IconButton(onClick = onDismiss) {

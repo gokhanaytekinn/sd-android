@@ -406,6 +406,7 @@ fun SubscriptionsListScreen(
     if (showResultsDialog) {
         DetectedSubscriptionsDialog(
             detectedSubscriptions = detectedSubscriptions,
+            scannedFileCount = scanProgress?.filesScanned ?: 0,
             onConfirm = { subscription ->
                 viewModel.confirmDetectedSubscription(subscription)
             },
