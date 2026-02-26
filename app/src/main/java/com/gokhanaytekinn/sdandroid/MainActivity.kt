@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         
+        createNotificationChannel()
+        checkNotificationPermission()
         getAndSendFCMToken()
         
         val themePreferences = ThemePreferences(this)
@@ -71,6 +73,36 @@ class MainActivity : AppCompatActivity() {
                         NavGraph(navController = navController, startDestination = startDestination!!)
                     }
                 }
+            }
+        }
+    }
+
+    private fun createNotificationChannel() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            val name = "Abonelik Hatırlatıcıları"
+            val descriptionText = "Yenilenen abonelikleriniz için bildirimler"
+            val importance = android.app.NotificationManager.IMPORTANCE_HIGH
+            val channel = android.app.NotificationChannel("reminders_channel", name, importance).apply {
+                description = descriptionText
+            }
+            val notificationManager: android.app.NotificationManager =
+                getSystemService(android.content.Context.NOTIFICATION_SERVICE) as android.app.NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+    }
+
+    private fun checkNotificationPermission() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+            if (androidx.core.content.ContextCompat.checkSelfPermission(
+                    this,
+                    android.Manifest.permission.POST_NOTIFICATIONS
+                ) != android.content.pm.PackageManager.PERMISSION_GRANTED
+            ) {
+                androidx.core.app.ActivityCompat.requestPermissions(
+                    this,
+                    arrayOf(android.Manifest.permission.POST_NOTIFICATIONS),
+                    101
+                )
             }
         }
     }
