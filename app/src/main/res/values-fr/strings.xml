@@ -264,6 +264,7 @@
     <string name="error_email_invalid">Veuillez entrer un email valide</string>
     <string name="error_password_required">Le mot de passe est requis</string>
     <string name="error_password_short">Le mot de passe doit comporter au moins 6 caractères</string>
+    <string name="error_passwords_do_not_match">Les mots de passe ne correspondent pas</string>
     <!-- Add/Edit Subscription Screen -->
     <string name="edit_subscription">Modifier l\'abonnement</string>
     <string name="service_name">Nom du service</string>

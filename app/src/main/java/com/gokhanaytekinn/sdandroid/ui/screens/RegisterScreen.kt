@@ -44,6 +44,8 @@ fun RegisterScreen(
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
+    var confirmPassword by remember { mutableStateOf("") }
+    var confirmPasswordVisible by remember { mutableStateOf(false) }
     var termsAccepted by remember { mutableStateOf(false) }
     
     var showTermsDialog by remember { mutableStateOf(false) }
@@ -216,6 +218,51 @@ fun RegisterScreen(
                         unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f),
                         errorBorderColor = MaterialTheme.colorScheme.error
                     ),
+                )
+            }
+            
+            Spacer(modifier = Modifier.height(if (authState.passwordError != null) 32.dp else 16.dp))
+
+            // Confirm Password Field
+            Column {
+                Text(
+                    text = stringResource(R.string.confirm_password_label),
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                OutlinedTextField(
+                    value = confirmPassword,
+                    onValueChange = { 
+                        confirmPassword = it
+                        viewModel.clearError()
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(if (authState.confirmPasswordError != null) 76.dp else 56.dp),
+                    placeholder = { Text(stringResource(R.string.password_placeholder)) },
+                    isError = authState.confirmPasswordError != null,
+                    supportingText = if (authState.confirmPasswordError != null) {
+                        { Text(stringResource(authState.confirmPasswordError!!)) }
+                    } else null,
+                    visualTransformation = if (confirmPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                    singleLine = true,
+                    trailingIcon = {
+                        IconButton(onClick = { confirmPasswordVisible = !confirmPasswordVisible }) {
+                                Icon(
+                                    imageVector = if (confirmPasswordVisible) Icons.Filled.Visibility else Icons.Filled.VisibilityOff,
+                                    contentDescription = if (confirmPasswordVisible) stringResource(R.string.hide_password) else stringResource(R.string.show_password),
+                                    tint = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.5f)
+                                )
+                        }
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = PrimaryBlue,
+                        unfocusedBorderColor = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.2f),
+                        errorBorderColor = MaterialTheme.colorScheme.error
+                    ),
                     shape = RoundedCornerShape(12.dp)
                 )
             }
@@ -300,8 +347,8 @@ fun RegisterScreen(
                 // Register Button
                 Button(
                     onClick = {
-                        if (termsAccepted && email.isNotBlank() && password.isNotBlank() && fullName.isNotBlank()) {
-                            viewModel.register(fullName, email, password, onRegisterSuccess)
+                        if (termsAccepted && email.isNotBlank() && password.isNotBlank() && confirmPassword.isNotBlank() && fullName.isNotBlank()) {
+                            viewModel.register(fullName, email, password, confirmPassword, onRegisterSuccess)
                         }
                     },
                     modifier = Modifier
@@ -310,7 +357,7 @@ fun RegisterScreen(
                     colors = ButtonDefaults.buttonColors(
                         containerColor = PrimaryBlue
                     ),
-                    enabled = !authState.isLoading && termsAccepted && email.isNotBlank() && password.isNotBlank() && fullName.isNotBlank(),
+                    enabled = !authState.isLoading && termsAccepted && email.isNotBlank() && password.isNotBlank() && confirmPassword.isNotBlank() && fullName.isNotBlank(),
                     shape = RoundedCornerShape(12.dp),
                     elevation = ButtonDefaults.buttonElevation(
                         defaultElevation = 4.dp

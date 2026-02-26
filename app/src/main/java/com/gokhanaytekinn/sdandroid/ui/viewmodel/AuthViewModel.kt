@@ -15,6 +15,7 @@ data class AuthState(
     val nameError: Int? = null,
     val emailError: Int? = null,
     val passwordError: Int? = null,
+    val confirmPasswordError: Int? = null,
     val isAuthenticated: Boolean = false,
     val userName: String? = null,
     val userEmail: String? = null,
@@ -83,8 +84,8 @@ class AuthViewModel(context: Context) : ViewModel() {
         }
     }
     
-    fun register(name: String, email: String, password: String, onSuccess: () -> Unit) {
-        if (!validateRegister(name, email, password)) return
+    fun register(name: String, email: String, password: String, confirmPassword: String, onSuccess: () -> Unit) {
+        if (!validateRegister(name, email, password, confirmPassword)) return
         
         viewModelScope.launch {
             _authState.value = _authState.value.copy(isLoading = true, error = null)
@@ -128,11 +129,12 @@ class AuthViewModel(context: Context) : ViewModel() {
         return isValid
     }
     
-    private fun validateRegister(name: String, email: String, password: String): Boolean {
+    private fun validateRegister(name: String, email: String, password: String, confirmPassword: String): Boolean {
         var isValid = true
         var nameErr: Int? = null
         var emailErr: Int? = null
         var passErr: Int? = null
+        var confirmPassErr: Int? = null
         
         if (name.isBlank()) {
             nameErr = com.gokhanaytekinn.sdandroid.R.string.error_name_required
@@ -155,10 +157,19 @@ class AuthViewModel(context: Context) : ViewModel() {
             isValid = false
         }
         
+        if (confirmPassword.isBlank()) {
+            confirmPassErr = com.gokhanaytekinn.sdandroid.R.string.error_password_required
+            isValid = false
+        } else if (password != confirmPassword) {
+            confirmPassErr = com.gokhanaytekinn.sdandroid.R.string.error_passwords_do_not_match
+            isValid = false
+        }
+        
         _authState.value = _authState.value.copy(
             nameError = nameErr,
             emailError = emailErr,
-            passwordError = passErr
+            passwordError = passErr,
+            confirmPasswordError = confirmPassErr
         )
         return isValid
     }
@@ -168,7 +179,8 @@ class AuthViewModel(context: Context) : ViewModel() {
             error = null,
             nameError = null,
             emailError = null,
-            passwordError = null
+            passwordError = null,
+            confirmPasswordError = null
         )
     }
     

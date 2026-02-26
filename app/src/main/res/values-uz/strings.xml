@@ -261,6 +261,7 @@
     <string name="error_email_invalid">Toʻgʻri email manzilini kiriting</string>
     <string name="error_password_required">Parol maydoni toʻldirilishi shart</string>
     <string name="error_password_short">Parol kamida 6 ta belgidan iborat boʻlishi kerak</string>
+    <string name="error_passwords_do_not_match">Parollar mos kelmayapti</string>
 
     <!-- Add/Edit Subscription Screen -->
     <string name="edit_subscription">Obunani oʻzgartirish</string>

@@ -261,7 +261,8 @@
     <string name="error_email_required">Email wajib diisi</string>
     <string name="error_email_invalid">Masukkan email yang valid</string>
     <string name="error_password_required">Kata sandi wajib diisi</string>
-    <string name="error_password_short">Kata sandi harus minimal 6 karakter</string>
+    <string name="error_password_short">Kata sandi minimal harus 6 karakter</string>
+    <string name="error_passwords_do_not_match">Kata sandi tidak cocok</string>
 
     <!-- Add/Edit Subscription Screen -->
     <string name="edit_subscription">Ubah Langganan</string>

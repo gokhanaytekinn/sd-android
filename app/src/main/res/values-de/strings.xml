@@ -88,6 +88,7 @@
     <string name="error_email_invalid">Ungültiges E-Mail-Format</string>
     <string name="error_password_required">Passwort ist erforderlich</string>
     <string name="error_password_short">Passwort muss mindestens 6 Zeichen lang sein</string>
+    <string name="error_passwords_do_not_match">Passwörter stimmen nicht überein</string>
 
     <!-- New keys for localization audit fixes -->
     <string name="edit_subscription">Abonnement bearbeiten</string>

@@ -261,6 +261,7 @@
     <string name="error_email_invalid">Dogry e-poçta salgysyny giriziň</string>
     <string name="error_password_required">Parol meýdançasy zerur</string>
     <string name="error_password_short">Parol iň azyndan 6 belgiden ybarat bolmaly</string>
+    <string name="error_passwords_do_not_match">Parollar gabat gelmeýär</string>
 
     <!-- Add/Edit Subscription Screen -->
     <string name="edit_subscription">Abunalygy Düzet</string>

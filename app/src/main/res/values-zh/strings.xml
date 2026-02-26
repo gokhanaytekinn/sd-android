@@ -258,6 +258,7 @@
     <string name="error_email_invalid">请输入有效的电子邮件</string>
     <string name="error_password_required">密码是必填项</string>
     <string name="error_password_short">密码必须至少包含 6 个字符</string>
+    <string name="error_passwords_do_not_match">密码不匹配</string>
     <!-- Add/Edit Subscription Screen -->
     <string name="edit_subscription">编辑订阅</string>
     <string name="service_name">服务名称</string>

@@ -261,6 +261,7 @@
     <string name="error_email_invalid">Туура электрондук почтаны киргизиңиз</string>
     <string name="error_password_required">Сырсөздү киргизүү зарыл</string>
     <string name="error_password_short">Сырсөз кеминде 6 белгиден турушу керек</string>
+    <string name="error_passwords_do_not_match">Паролдор дал келбейт</string>
 
     <!-- Add/Edit Subscription Screen -->
     <string name="edit_subscription">Жазылууну өзгөртүү</string>

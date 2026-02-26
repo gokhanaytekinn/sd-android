@@ -121,6 +121,7 @@
     <string name="error_email_invalid">Por favor introduce un correo electrónico válido</string>
     <string name="error_password_required">La contraseña es obligatoria</string>
     <string name="error_password_short">La contraseña debe tener mínimo 6 caracteres</string>
+    <string name="error_passwords_do_not_match">Las contraseñas no coinciden</string>
 
     <string name="edit_subscription">Editar suscripción</string>
     <string name="days_remaining">%d días restantes</string>

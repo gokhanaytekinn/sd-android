@@ -274,6 +274,7 @@
     <string name="error_email_invalid">Lütfen geçerli bir e-posta adresi girin</string>
     <string name="error_password_required">Şifre alanı zorunludur</string>
     <string name="error_password_short">Şifre en az 6 karakter olmalıdır</string>
+    <string name="error_passwords_do_not_match">Şifreler eşleşmiyor</string>
     <!-- Abonelik Ekle/Düzenle Ekranı -->
     <string name="edit_subscription">Aboneliği Düzenle</string>
     <string name="service_name">Hizmet Adı</string>

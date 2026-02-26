@@ -261,6 +261,7 @@
     <string name="error_email_invalid">Дұрыс электрондық поштаны енгізіңіз</string>
     <string name="error_password_required">Құпия сөзді енгізу қажет</string>
     <string name="error_password_short">Құпия сөз кемінде 6 таңбадан тұруы керек</string>
+    <string name="error_passwords_do_not_match">Құпия сөздер сәйкес келмейді</string>
 
     <!-- Add/Edit Subscription Screen -->
     <string name="edit_subscription">Жазылымды өңдеу</string>
