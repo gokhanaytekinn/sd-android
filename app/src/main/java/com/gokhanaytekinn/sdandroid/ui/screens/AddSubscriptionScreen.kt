@@ -174,6 +174,9 @@ fun AddSubscriptionScreen(
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     val suggestions = listOf(
+                        Triple("Google", Color(0xFF4285F4), "G"),
+                        Triple("Cursor", Color(0xFF1A1A1A), "C"),
+                        Triple("Claude", Color(0xFFD97757), "C"),
                         Triple("Netflix", NetflixRed, "N"),
                         Triple("Spotify", SpotifyGreen, "S"),
                         Triple("YouTube", Color(0xFFFF0000), "Y"),
