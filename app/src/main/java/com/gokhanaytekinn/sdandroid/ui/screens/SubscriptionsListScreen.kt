@@ -124,45 +124,23 @@ fun SubscriptionsListScreen(
                         Row(
                             horizontalArrangement = Arrangement.spacedBy(16.dp)
                         ) {
-                            // Scan button
+                            // Search icon
                             IconButton(
-                                onClick = {
-                                    val missingPermissions = permissionManager.getMissingPermissions()
-                                    if (missingPermissions.isEmpty()) {
-                                        viewModel.scanDeviceForSubscriptions()
-                                        showScanDialog = true
-                                    } else {
-                                        permissionLauncher.launch(missingPermissions)
-                                    }
-                                },
+                                onClick = onNavigateToSearch,
                                 modifier = Modifier
                                     .size(40.dp)
                                     .clip(CircleShape)
-                                    .background(SuccessColor.copy(alpha = 0.1f))
+                                    .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.Scanner,
-                                    contentDescription = stringResource(R.string.search_placeholder), // Or add a specific "Scan" string
-                                    tint = SuccessColor
-                                )
-                            }
-                            
-                            // Add button
-                            IconButton(
-                                onClick = onNavigateToAddSubscription,
-                                modifier = Modifier
-                                    .size(40.dp)
-                                    .clip(CircleShape)
-                                    .background(PrimaryBlue.copy(alpha = 0.1f))
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Add,
-                                    contentDescription = "Add",
-                                    tint = PrimaryBlue
+                                    imageVector = Icons.Default.Search,
+                                    contentDescription = stringResource(R.string.nav_search),
+                                    tint = MaterialTheme.colorScheme.onSurface
                                 )
                             }
                         }
                     }
+            // Empty replacement because we removed the Scan button partially above and the rest of Add button here
                     
                     // Tabs
                     Row(

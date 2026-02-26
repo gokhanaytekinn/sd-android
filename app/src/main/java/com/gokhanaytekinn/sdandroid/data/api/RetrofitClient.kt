@@ -14,7 +14,17 @@ object RetrofitClient {
             level = HttpLoggingInterceptor.Level.BODY
         }
         
+        val languageInterceptor = okhttp3.Interceptor { chain ->
+            val original = chain.request()
+            val language = java.util.Locale.getDefault().language
+            val request = original.newBuilder()
+                .header("Accept-Language", language)
+                .build()
+            chain.proceed(request)
+        }
+
         return OkHttpClient.Builder()
+            .addInterceptor(languageInterceptor)
             .addInterceptor(AuthInterceptor(tokenManager))
             .addInterceptor(loggingInterceptor)
             .connectTimeout(30, TimeUnit.SECONDS)

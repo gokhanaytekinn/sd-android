@@ -98,15 +98,36 @@ fun DashboardScreen(
                     )
                 }
                 
-                // Profile picture
-                Box(
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clip(CircleShape)
-                        .background(Color(0xFFFFD4B8)),
-                    contentAlignment = Alignment.Center
+                
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Text(text = "👤", fontSize = 20.sp)
+                    // Search icon
+                    IconButton(
+                        onClick = onNavigateToSearch,
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Search,
+                            contentDescription = stringResource(R.string.nav_search),
+                            tint = MaterialTheme.colorScheme.onSurface
+                        )
+                    }
+
+                    // Profile picture
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(Color(0xFFFFD4B8)),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(text = "👤", fontSize = 20.sp)
+                    }
                 }
             }
             
