@@ -44,14 +44,14 @@ fun PremiumUpgradeScreen(
     val features = remember(selectedPlan) {
         when (selectedPlan) {
             SubscriptionPlanType.FREE -> listOf(
-                FeatureData(Icons.Filled.TrackChanges, "feature_auto_capture_title", "feature_auto_capture_free_desc", false),
-                FeatureData(Icons.Filled.AllInclusive, "feature_unlimited_tracking_title", "feature_unlimited_tracking_free_desc", false),
-                FeatureData(Icons.Filled.Insights, "feature_advanced_analytics_title", "feature_advanced_analytics_free_desc", false)
+                FeatureData(Icons.Filled.TrackChanges, R.string.feature_auto_capture_title, R.string.feature_auto_capture_free_desc, false),
+                FeatureData(Icons.Filled.AllInclusive, R.string.feature_unlimited_tracking_title, R.string.feature_unlimited_tracking_free_desc, false),
+                FeatureData(Icons.Filled.Insights, R.string.feature_advanced_analytics_title, R.string.feature_advanced_analytics_free_desc, false)
             )
             else -> listOf(
-                FeatureData(Icons.Filled.TrackChanges, "feature_auto_capture_title", "feature_auto_capture_premium_desc", true),
-                FeatureData(Icons.Filled.AllInclusive, "feature_unlimited_tracking_title", "feature_unlimited_tracking_premium_desc", true),
-                FeatureData(Icons.Filled.Insights, "feature_advanced_analytics_title", "feature_advanced_analytics_premium_desc", true)
+                FeatureData(Icons.Filled.TrackChanges, R.string.feature_auto_capture_title, R.string.feature_auto_capture_premium_desc, true),
+                FeatureData(Icons.Filled.AllInclusive, R.string.feature_unlimited_tracking_title, R.string.feature_unlimited_tracking_premium_desc, true),
+                FeatureData(Icons.Filled.Insights, R.string.feature_advanced_analytics_title, R.string.feature_advanced_analytics_premium_desc, true)
             )
         }
     }
@@ -304,8 +304,8 @@ fun PremiumUpgradeScreen(
 
 data class FeatureData(
     val icon: androidx.compose.ui.graphics.vector.ImageVector,
-    val title: String,
-    val description: String,
+    val title: Int,
+    val description: Int,
     val isEnabled: Boolean
 )
 
@@ -336,13 +336,13 @@ fun FeatureRow(feature: FeatureData) {
         
         Column(modifier = Modifier.weight(1f)) {
             Text(
-                text = feature.title,
+                text = stringResource(feature.title),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 color = if (feature.isEnabled) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
             )
             Text(
-                text = feature.description,
+                text = stringResource(feature.description),
                 fontSize = 13.sp,
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
             )
