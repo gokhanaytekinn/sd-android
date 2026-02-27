@@ -52,6 +52,7 @@ fun SubscriptionsListScreen(
     
     val subscriptions by viewModel.subscriptions.collectAsState()
     val stats by viewModel.stats.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
     val isScanning by viewModel.isScanning.collectAsState()
     val scanProgress by viewModel.scanProgress.collectAsState()
@@ -180,156 +181,104 @@ fun SubscriptionsListScreen(
             }
             
             // Content
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f),
-                contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                // Summary Card
-                if (selectedTab == 0) {
-                    item {
-                        Surface(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .border(
-                                    width = 1.dp,
-                                    color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
-                                    shape = RoundedCornerShape(12.dp)
-                                ),
-                            shape = RoundedCornerShape(12.dp),
-                            color = Color.Transparent
-                        ) {
-                            Row(
+            if (isLoading && subscriptions.isEmpty()) {
+                Box(modifier = Modifier.fillMaxSize().weight(1f)) {
+                    com.gokhanaytekinn.sdandroid.ui.components.SubscriptionListSkeleton()
+                }
+            } else {
+                LazyColumn(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .weight(1f),
+                    contentPadding = PaddingValues(start = 20.dp, end = 20.dp, top = 20.dp, bottom = 20.dp),
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    // Summary Card
+                    if (selectedTab == 0) {
+                        item {
+                            Surface(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(16.dp),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
+                                    .border(
+                                        width = 1.dp,
+                                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
+                                        shape = RoundedCornerShape(12.dp)
+                                    ),
+                                shape = RoundedCornerShape(12.dp),
+                                color = Color.Transparent
                             ) {
-                                Column {
-                                    Text(
-                                        text = stringResource(R.string.total_monthly).uppercase(),
-                                        fontSize = 10.sp,
-                                        fontWeight = FontWeight.Medium,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                        letterSpacing = 1.sp
-                                    )
-                                    Spacer(modifier = Modifier.height(8.dp))
-                                    Text(
-                                        text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
-                                        fontSize = 24.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.onBackground
-                                    )
-                                }
-                                
-                                Box(
+                                Row(
                                     modifier = Modifier
-                                        .size(40.dp)
-                                        .clip(CircleShape)
-                                        .background(PrimaryBlue.copy(alpha = 0.2f))
-                                        .clickable { onNavigateToAnalytics() }, // Add navigation here
-                                    contentAlignment = Alignment.Center
+                                        .fillMaxWidth()
+                                        .padding(16.dp),
+                                    horizontalArrangement = Arrangement.SpaceBetween,
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Icon(
-                                        imageVector = Icons.Default.Analytics,
-                                        contentDescription = null,
-                                        tint = PrimaryBlue
-                                    )
+                                    Column {
+                                        Text(
+                                            text = stringResource(R.string.total_monthly).uppercase(),
+                                            fontSize = 10.sp,
+                                            fontWeight = FontWeight.Medium,
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                            letterSpacing = 1.sp
+                                        )
+                                        Spacer(modifier = Modifier.height(8.dp))
+                                        Text(
+                                            text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
+                                            fontSize = 24.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = MaterialTheme.colorScheme.onBackground
+                                        )
+                                    }
+                                    
+                                    Box(
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                            .clip(CircleShape)
+                                            .background(PrimaryBlue.copy(alpha = 0.2f))
+                                            .clickable { onNavigateToAnalytics() },
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Default.Analytics,
+                                            contentDescription = null,
+                                            tint = PrimaryBlue
+                                        )
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                
-                // Section Header
-                item {
-                    Text(
-                        text = stringResource(R.string.monthly).uppercase(), // "BU AY" -> "THIS MONTH" or use "monthly"
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = Color(0xFF6B7280),
-                        letterSpacing = 1.5.sp
-                    )
-                }
-                
-                // Filtered Content based on selectedTab
-                when (selectedTab) {
-                    0 -> { // Active
-                        val activeSubs = subscriptions.filter { it.isActive && !it.isSuspicious }
-                        if (activeSubs.isEmpty()) {
-                            item {
-                                Box(
-                                    modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.no_active_subscriptions),
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-                            }
-                        } else {
-                            items(activeSubs) { subscription ->
-                                SubscriptionListItemDetailed(
-                                    subscription = subscription,
-                                    currency = selectedCurrency,
-                                    onClick = { onSubscriptionClick(subscription.id) }
-                                )
-                            }
-                        }
+
+                    // Section Header
+                    item {
+                        Text(
+                            text = stringResource(R.string.monthly).uppercase(),
+                            fontSize = 10.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = Color(0xFF6B7280),
+                            letterSpacing = 1.5.sp
+                        )
                     }
-                    1 -> { // Suspicious
-                        val suspiciousSubs = subscriptions.filter { it.isSuspicious }
-                        // Show detected subscriptions that haven't been added yet
-                        
-                        if (suspiciousSubs.isEmpty() && detectedSubscriptions.isEmpty()) {
-                            item {
-                                Box(
-                                    modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.no_suspicious_subscriptions),
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
+                    
+                    // Filtered Content based on selectedTab
+                    when (selectedTab) {
+                        0 -> { // Active
+                            val activeSubs = subscriptions.filter { it.isActive && !it.isSuspicious }
+                            if (activeSubs.isEmpty()) {
+                                item {
+                                    Box(
+                                        modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = stringResource(R.string.no_active_subscriptions),
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
                                 }
-                            }
-                        } else {
-                            if (detectedSubscriptions.isNotEmpty()) {
-                                item { 
-                                    Text(
-                                        text = stringResource(R.string.detected_count, detectedSubscriptions.size),
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = WarningColor,
-                                        modifier = Modifier.padding(bottom = 8.dp)
-                                    ) 
-                                }
-                                items(detectedSubscriptions) { subscription ->
-                                    com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionItem(
-                                        subscription = subscription,
-                                        currency = selectedCurrency,
-                                        onConfirm = { viewModel.confirmDetectedSubscription(subscription) },
-                                        onReject = { viewModel.rejectDetectedSubscription(subscription) }
-                                    )
-                                }
-                                item { Spacer(modifier = Modifier.height(16.dp)) }
-                            }
-                            
-                            if (suspiciousSubs.isNotEmpty()) {
-                                item { 
-                                    Text(
-                                        text = stringResource(R.string.marked_count, suspiciousSubs.size),
-                                        fontSize = 14.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.onSurface,
-                                        modifier = Modifier.padding(bottom = 8.dp)
-                                    ) 
-                                }
-                                items(suspiciousSubs) { subscription ->
+                            } else {
+                                items(activeSubs) { subscription ->
                                     SubscriptionListItemDetailed(
                                         subscription = subscription,
                                         currency = selectedCurrency,
@@ -338,28 +287,86 @@ fun SubscriptionsListScreen(
                                 }
                             }
                         }
-                    }
-                    2 -> { // Cancelled
-                        val cancelledSubs = subscriptions.filter { !it.isActive }
-                        if (cancelledSubs.isEmpty()) {
-                            item {
-                                Box(
-                                    modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.no_cancelled_subscriptions),
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
+                        1 -> { // Suspicious
+                            val suspiciousSubs = subscriptions.filter { it.isSuspicious }
+                            // Show detected subscriptions that haven't been added yet
+                            
+                            if (suspiciousSubs.isEmpty() && detectedSubscriptions.isEmpty()) {
+                                item {
+                                    Box(
+                                        modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = stringResource(R.string.no_suspicious_subscriptions),
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
+                                }
+                            } else {
+                                if (detectedSubscriptions.isNotEmpty()) {
+                                    item { 
+                                        Text(
+                                            text = stringResource(R.string.detected_count, detectedSubscriptions.size),
+                                            fontSize = 14.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = WarningColor,
+                                            modifier = Modifier.padding(bottom = 8.dp)
+                                        ) 
+                                    }
+                                    items(detectedSubscriptions) { subscription ->
+                                        com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionItem(
+                                            subscription = subscription,
+                                            currency = selectedCurrency,
+                                            onConfirm = { viewModel.confirmDetectedSubscription(subscription) },
+                                            onReject = { viewModel.rejectDetectedSubscription(subscription) }
+                                        )
+                                    }
+                                    item { Spacer(modifier = Modifier.height(16.dp)) }
+                                }
+                                
+                                if (suspiciousSubs.isNotEmpty()) {
+                                    item { 
+                                        Text(
+                                            text = stringResource(R.string.marked_count, suspiciousSubs.size),
+                                            fontSize = 14.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = MaterialTheme.colorScheme.onSurface,
+                                            modifier = Modifier.padding(bottom = 8.dp)
+                                        ) 
+                                    }
+                                    items(suspiciousSubs) { subscription ->
+                                        SubscriptionListItemDetailed(
+                                            subscription = subscription,
+                                            currency = selectedCurrency,
+                                            onClick = { onSubscriptionClick(subscription.id) }
+                                        )
+                                    }
                                 }
                             }
-                        } else {
-                            items(cancelledSubs) { subscription ->
-                                SubscriptionListItemDetailed(
-                                    subscription = subscription,
-                                    currency = selectedCurrency,
-                                    onClick = { onSubscriptionClick(subscription.id) }
-                                )
+                        }
+                        2 -> { // Cancelled
+                            val cancelledSubs = subscriptions.filter { !it.isActive }
+                            if (cancelledSubs.isEmpty()) {
+                                item {
+                                    Box(
+                                        modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Text(
+                                            text = stringResource(R.string.no_cancelled_subscriptions),
+                                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                                        )
+                                    }
+                                }
+                            } else {
+                                items(cancelledSubs) { subscription ->
+                                    SubscriptionListItemDetailed(
+                                        subscription = subscription,
+                                        currency = selectedCurrency,
+                                        onClick = { onSubscriptionClick(subscription.id) }
+                                    )
+                                }
                             }
                         }
                     }

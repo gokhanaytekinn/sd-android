@@ -131,53 +131,61 @@ fun DashboardScreen(
                 }
             }
             
-            // Scrollable Content
             LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(horizontal = 24.dp, vertical = 16.dp),
+                modifier = Modifier
+                    .fillMaxSize()
+                    .weight(1f),
+                contentPadding = PaddingValues(24.dp),
                 verticalArrangement = Arrangement.spacedBy(20.dp)
             ) {
                 // Hero Card - Total Spend
-                item {
-                    Surface(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .border(
-                                width = 1.dp,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
-                                shape = RoundedCornerShape(12.dp)
-                            ),
-                        shape = RoundedCornerShape(12.dp),
-                        color = Color.Transparent,
-                        tonalElevation = 0.dp
-                    ) {
-                        Column(
+                if (isLoading && stats.totalMonthlyCost == 0.0) {
+                    item {
+                        com.gokhanaytekinn.sdandroid.ui.components.DashboardSkeleton()
+                    }
+                } else {
+                    item {
+                        Surface(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(24.dp)
+                                .border(
+                                    width = 1.dp,
+                                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                                    shape = RoundedCornerShape(12.dp)
+                                ),
+                            shape = RoundedCornerShape(12.dp),
+                            color = Color.Transparent,
+                            tonalElevation = 0.dp
                         ) {
-                            Text(
-                                text = stringResource(R.string.total_monthly),
-                                fontSize = 14.sp,
-                                color = Color(0xFF9CA3AF),
-                                fontWeight = FontWeight.Medium
-                            )
-                            Spacer(modifier = Modifier.height(12.dp))
-                            Text(
-                                text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
-                                fontSize = 36.sp,
-                                fontWeight = FontWeight.Black,
-                                color = PrimaryBlue
-                            )
+                            Column(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(24.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.total_monthly),
+                                    fontSize = 14.sp,
+                                    color = Color(0xFF9CA3AF),
+                                    fontWeight = FontWeight.Medium
+                                )
+                                Spacer(modifier = Modifier.height(12.dp))
+                                Text(
+                                    text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
+                                    fontSize = 36.sp,
+                                    fontWeight = FontWeight.Black,
+                                    color = PrimaryBlue
+                                )
+                            }
                         }
                     }
                 }
+
                 // Upcoming Payments Section
                 item {
                     Row(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = 12.dp),
+                            .padding(bottom = 0.dp), // Adjusted padding since LazyColumn has spacing
                         horizontalArrangement = Arrangement.SpaceBetween,
                         verticalAlignment = Alignment.CenterVertically
                     ) {
@@ -248,69 +256,68 @@ fun DashboardScreen(
                         }
                     }
                 }
-                if (suspiciousCount > 0) {
-    item {
-                    Surface(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .clickable { onNavigateToSuspicious() },
-                        shape = RoundedCornerShape(12.dp),
 
-                        color = if (isSystemInDarkTheme()) Color(0xFF1E1510) else MaterialTheme.colorScheme.errorContainer,
-                        border = if (!isSystemInDarkTheme()) BorderStroke(1.dp, MaterialTheme.colorScheme.error) else null
-                    ) {
-                        Row(
+                if (suspiciousCount > 0) {
+                    item {
+                        Surface(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(16.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
+                                .clickable { onNavigateToSuspicious() },
+                            shape = RoundedCornerShape(12.dp),
+                            color = if (isSystemInDarkTheme()) Color(0xFF1E1510) else MaterialTheme.colorScheme.errorContainer,
+                            border = if (!isSystemInDarkTheme()) BorderStroke(1.dp, MaterialTheme.colorScheme.error) else null
                         ) {
                             Row(
-                                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(16.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(48.dp)
-                                        .clip(CircleShape)
-                                        .background(WarningColor.copy(alpha = 0.1f)),
-                                    contentAlignment = Alignment.Center
+                                Row(
+                                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                                    verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Icon(
-                                        imageVector = Icons.Default.Warning,
-                                        contentDescription = null,
-                                        tint = WarningColor,
-                                        modifier = Modifier.size(24.dp)
-                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .size(48.dp)
+                                            .clip(CircleShape)
+                                            .background(WarningColor.copy(alpha = 0.1f)),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(
+                                            imageVector = Icons.Default.Warning,
+                                            contentDescription = null,
+                                            tint = WarningColor,
+                                            modifier = Modifier.size(24.dp)
+                                        )
+                                    }
+                                    
+                                    Column {
+                                        Text(
+                                            text = stringResource(R.string.suspicious_subscriptions),
+                                            fontSize = 16.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6) else MaterialTheme.colorScheme.onErrorContainer
+                                        )
+                                        Spacer(modifier = Modifier.height(4.dp))
+                                        Text(
+                                            text = stringResource(R.string.transactions_pending, suspiciousCount),
+                                            fontSize = 12.sp,
+                                            color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6).copy(alpha = 0.6f) else MaterialTheme.colorScheme.onErrorContainer.copy(alpha = 0.8f),
+                                            fontWeight = FontWeight.Medium
+                                        )
+                                    }
                                 }
                                 
-                                Column {
-                                    Text(
-                                        text = stringResource(R.string.suspicious_subscriptions),
-                                        fontSize = 16.sp,
-
-                                        fontWeight = FontWeight.Bold,
-                                        color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6) else MaterialTheme.colorScheme.onErrorContainer
-                                    )
-                                    Spacer(modifier = Modifier.height(4.dp))
-                                    Text(
-                                        text = stringResource(R.string.transactions_pending, suspiciousCount),
-                                        fontSize = 12.sp,
-                                        color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6).copy(alpha = 0.6f) else MaterialTheme.colorScheme.onErrorContainer.copy(alpha = 0.8f),
-                                        fontWeight = FontWeight.Medium
-                                    )
-                                }
+                                Icon(
+                                    imageVector = Icons.Default.ChevronRight,
+                                    contentDescription = null,
+                                    tint = WarningColor.copy(alpha = 0.4f)
+                                )
                             }
-                            
-                            Icon(
-                                imageVector = Icons.Default.ChevronRight,
-                                contentDescription = null,
-                                tint = WarningColor.copy(alpha = 0.4f)
-                            )
                         }
                     }
-    }
                 }
                 
                 // Expensive Subscriptions List
@@ -322,7 +329,6 @@ fun DashboardScreen(
                         color = MaterialTheme.colorScheme.onBackground,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = 12.dp)
                     )
                 }
                 
@@ -339,7 +345,6 @@ fun DashboardScreen(
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
                                 fontSize = 14.sp
                             )
-
                         }
                     }
                 } else {
@@ -376,8 +381,7 @@ fun DashboardScreen(
                         )
                     }
                 }
-                
-                }
+            }
             }
         }
     }

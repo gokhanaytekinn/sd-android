@@ -83,7 +83,7 @@ fun UpcomingSubscriptionsScreen(
         ) {
             when (val state = uiState) {
                 is UpcomingUiState.Loading -> {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center), color = PrimaryBlue)
+                    com.gokhanaytekinn.sdandroid.ui.components.SubscriptionListSkeleton()
                 }
                 is UpcomingUiState.Empty -> {
                     Column(

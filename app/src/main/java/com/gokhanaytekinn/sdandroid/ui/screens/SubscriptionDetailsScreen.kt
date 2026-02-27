@@ -80,10 +80,7 @@ fun SubscriptionDetailsScreen(
             .background(colorScheme.background)
     ) {
         if (isLoading) {
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center),
-                color = colorScheme.primary
-            )
+            com.gokhanaytekinn.sdandroid.ui.components.SubscriptionDetailsSkeleton()
         } else if (error != null && subscription == null) {
             Column(
                 modifier = Modifier.align(Alignment.Center),
