@@ -30,6 +30,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
+import com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard
+import com.gokhanaytekinn.sdandroid.ui.components.SDCard
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
@@ -386,116 +388,15 @@ fun DashboardScreen(
         }
     }
 
-
 @Composable
 fun SubscriptionListItem(
     subscription: Subscription,
     currency: String = "TRY",
-    modifier: Modifier = Modifier
+    onClick: () -> Unit = {}
 ) {
-    Surface(
-        modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        color = Color.Transparent,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.5f))
-    ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                // Icon
-                val iconBg = when (subscription.name) {
-                    "MacFit Gym" -> Color(0xFF10FFFFFF)
-                    "Netflix" -> NetflixRed.copy(alpha = 0.2f)
-                    "Spotify" -> SpotifyGreen.copy(alpha = 0.2f)
-                    else -> MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
-                }
-                
-                val iconColor = when (subscription.name) {
-                    "MacFit Gym" -> MaterialTheme.colorScheme.onSurface
-                    "Netflix" -> NetflixRed
-                    "Spotify" -> SpotifyGreen
-                    else -> MaterialTheme.colorScheme.onSurface
-                }
-                
-                val icon = when (subscription.category) {
-                    "Spor & Sağlık", "Sports & Health" -> Icons.Default.FitnessCenter
-                    "Eğlence", "Entertainment" -> Icons.Default.Movie
-                    "Müzik", "Music" -> Icons.Default.MusicNote
-                    else -> Icons.Default.Star
-                }
-                
-                Box(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(RoundedCornerShape(12.dp))
-                        .background(iconBg),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        tint = iconColor,
-                        modifier = Modifier.size(24.dp)
-                    )
-                }
-                
-                Column {
-                    Text(
-                        text = subscription.name,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = MaterialTheme.colorScheme.onSurface
-                    )
-                    
-                    val isOther = subscription.category == null || 
-                                 subscription.category == "Other" || 
-                                 subscription.category == "Diğer"
-                    
-                    val localizedBillingCycle = when (subscription.billingCycle) {
-                        com.gokhanaytekinn.sdandroid.data.model.BillingCycle.MONTHLY -> stringResource(R.string.monthly)
-                        com.gokhanaytekinn.sdandroid.data.model.BillingCycle.YEARLY -> stringResource(R.string.yearly)
-                        else -> subscription.billingCycle.name
-                    }
-                    
-                    Spacer(modifier = Modifier.height(4.dp))
-                    
-                    val displayText = if (isOther) {
-                        localizedBillingCycle
-                    } else {
-                        val localizedCategory = when (subscription.category) {
-                            "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
-                            "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
-                            "Müzik", "Music" -> stringResource(R.string.category_music)
-                            else -> subscription.category
-                        }
-                        "$localizedCategory • $localizedBillingCycle"
-                    }
-                    
-                    Text(
-                        text = displayText,
-                        fontSize = 12.sp,
-                        color = Color(0xFF9CA3AF),
-                        fontWeight = FontWeight.Medium
-                    )
-                }
-            }
-            
-            Text(
-                text = CurrencyFormatter.formatAmount(subscription.cost, currency),
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.onSurface
-            )
-        }
-    }
+    com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
+        subscription = subscription,
+        currency = currency,
+        onClick = onClick
+    )
 }
-
-

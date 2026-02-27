@@ -130,78 +130,15 @@ fun UpcomingSubscriptionsScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UpcomingSubscriptionItem(
     subscription: Subscription,
     onClick: () -> Unit
 ) {
-    val daysRemaining = DateUtils.calculateDaysRemaining(subscription.nextBillingDate)
-    
-    Card(
-        onClick = onClick,
-        shape = RoundedCornerShape(12.dp),
-        colors = CardDefaults.cardColors(containerColor = SurfaceDark),
-        modifier = Modifier.fillMaxWidth()
-    ) {
-        Row(
-            modifier = Modifier
-                .padding(16.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Icon Placeholder
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .background(Color.White.copy(alpha = 0.1f), RoundedCornerShape(12.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = subscription.name.take(1).uppercase(),
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 20.sp
-                )
-            }
-
-            Spacer(modifier = Modifier.width(16.dp))
-
-            Column(modifier = Modifier.weight(1f)) {
-                Text(
-                    text = subscription.name,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    color = Color.White
-                )
-                Text(
-                    text = DateUtils.formatDate(subscription.nextBillingDate),
-                    fontSize = 13.sp,
-                    color = Color.Gray
-                )
-            }
-
-            Column(horizontalAlignment = Alignment.End) {
-                Text(
-                    text = CurrencyFormatter.formatAmount(subscription.cost, subscription.currency),
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp,
-                    color = PrimaryBlue
-                )
-                
-                val dayText = when {
-                    daysRemaining == 0L -> stringResource(R.string.today)
-                    daysRemaining == 1L -> stringResource(R.string.tomorrow)
-                    else -> "$daysRemaining ${stringResource(R.string.days_left)}"
-                }
-                
-                Text(
-                    text = dayText,
-                    fontSize = 12.sp,
-                    color = if (daysRemaining <= 3) Color(0xFFFF5252) else Color.Gray,
-                    fontWeight = FontWeight.Medium
-                )
-            }
-        }
-    }
+    com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
+        subscription = subscription,
+        currency = subscription.currency,
+        showCountdown = true,
+        onClick = onClick
+    )
 }
