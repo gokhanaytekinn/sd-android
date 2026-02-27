@@ -40,10 +40,7 @@ data class PaymentHistoryItem(
 fun SubscriptionDetailsScreen(
     subscriptionId: String = "",
     onBackClick: () -> Unit = {},
-    onEditClick: () -> Unit = {},
-    onSetReminderClick: () -> Unit = {},
-    onEditPlanClick: () -> Unit = {},
-    onCancelClick: () -> Unit = {}
+    onEditPlanClick: () -> Unit = {}
 ) {
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
@@ -102,7 +99,6 @@ fun SubscriptionDetailsScreen(
 
             // Calculate remaining days
             val daysRemaining = calculateDaysRemaining(sub.nextBillingDate)
-            val daysRemainingText = if (daysRemaining >= 0) stringResource(R.string.days_remaining, daysRemaining) else ""
             val progressValue = calculateProgress(sub.billingCycle.name, daysRemaining)
             val formattedStartDate = formatDateLocalized(context, sub.startDate)
             val formattedRenewalDate = formatDateLocalized(context, sub.nextBillingDate)
@@ -255,54 +251,17 @@ fun SubscriptionDetailsScreen(
                             .padding(horizontal = 16.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        // Main Renewal Card - transparent with border
-                        Surface(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .border(
-                                    width = 1.dp,
-                                    color = borderColor,
-                                    shape = RoundedCornerShape(12.dp)
-                                ),
-                            shape = RoundedCornerShape(12.dp),
-                            color = Color.Transparent
-                        ) {
-                            Column(
-                                modifier = Modifier.padding(20.dp)
-                            ) {
+                        // Main Renewal Card - Using unified SubscriptionCard
+                        com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
+                            subscription = sub,
+                            showDate = true,
+                            bottomContent = {
                                 Text(
                                     text = stringResource(R.string.next_payment),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Medium,
                                     color = colorScheme.onSurfaceVariant
                                 )
-
-                                Spacer(modifier = Modifier.height(8.dp))
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(12.dp)
-                                ) {
-                                    Text(
-                                        text = formattedRenewalDate,
-                                        fontSize = 24.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = colorScheme.onBackground
-                                    )
-                                    if (daysRemainingText.isNotEmpty()) {
-                                        Surface(
-                                            shape = RoundedCornerShape(6.dp),
-                                            color = colorScheme.primary.copy(alpha = 0.2f)
-                                        ) {
-                                            Text(
-                                                text = daysRemainingText,
-                                                fontSize = 12.sp,
-                                                fontWeight = FontWeight.Bold,
-                                                color = colorScheme.primary,
-                                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                                            )
-                                        }
-                                    }
-                                }
 
                                 Spacer(modifier = Modifier.height(16.dp))
 
@@ -316,7 +275,7 @@ fun SubscriptionDetailsScreen(
                                     trackColor = colorScheme.onSurface.copy(alpha = 0.1f)
                                 )
                             }
-                        }
+                        )
 
                         // Secondary Stats Grid - transparent with border
                         Row(

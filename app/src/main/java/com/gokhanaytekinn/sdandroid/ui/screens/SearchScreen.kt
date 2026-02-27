@@ -28,12 +28,7 @@ import com.gokhanaytekinn.sdandroid.R
 
 @Composable
 fun SearchScreen(
-    onBackClick: () -> Unit = {},
-    onFilterClick: () -> Unit = {},
-    onResultClick: (String) -> Unit = {},
-    onNavigateToDashboard: () -> Unit = {},
-    onNavigateToSubscriptions: () -> Unit = {},
-    onNavigateToSettings: () -> Unit = {}
+    onResultClick: (String) -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val application = context.applicationContext as android.app.Application
@@ -46,7 +41,6 @@ fun SearchScreen(
     val isLoading by viewModel.isLoading.collectAsState()
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
     
-    var selectedTab by remember { mutableStateOf(0) } // 0=Subscriptions, 1=Transactions
     
     Box(
         modifier = Modifier
@@ -184,15 +178,11 @@ fun SearchScreen(
             
             // Subscription Results
             items(searchResults) { subscription ->
-                Surface(
-                    onClick = { onResultClick(subscription.id) },
-                    color = Color.Transparent
-                ) {
-                    SubscriptionListItemDetailed(
-                        subscription = subscription,
-                        currency = selectedCurrency
-                    )
-                }
+                SubscriptionListItemDetailed(
+                    subscription = subscription,
+                    currency = selectedCurrency,
+                    onClick = { onResultClick(subscription.id) }
+                )
             }
             }
             

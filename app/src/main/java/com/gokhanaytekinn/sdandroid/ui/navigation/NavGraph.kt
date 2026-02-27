@@ -334,9 +334,6 @@ fun NavGraph(
                     },
                     onEditPlanClick = {
                         navController.navigate(Screen.AddSubscription.createRoute(subscriptionId))
-                    },
-                    onCancelClick = {
-                         // Handled inside the screen
                     }
                 )
             }
@@ -425,27 +422,9 @@ fun NavGraph(
             
             composable(Screen.Search.route) {
                 SearchScreen(
-                    onBackClick = {
-                        navController.popBackStack()
-                    },
                     onResultClick = { id ->
                         // Navigate to subscription or transaction details
                         navController.navigate(Screen.SubscriptionDetails.createRoute(id))
-                    },
-                    onNavigateToDashboard = {
-                        navController.navigate(Screen.Dashboard.route) {
-                            popUpTo(Screen.Dashboard.route) { inclusive = true }
-                        }
-                    },
-                    onNavigateToSubscriptions = {
-                        navController.navigate(Screen.SubscriptionsList.route) {
-                            popUpTo(Screen.Dashboard.route)
-                        }
-                    },
-                    onNavigateToSettings = {
-                        navController.navigate(Screen.AppSettings.route) {
-                            popUpTo(Screen.Dashboard.route)
-                        }
                     }
                 )
             }

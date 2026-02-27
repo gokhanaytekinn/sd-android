@@ -202,87 +202,27 @@ fun SuspiciousTransactionCard(
     onReject: () -> Unit,
     disabled: Boolean = false
 ) {
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        color = MaterialTheme.colorScheme.surface,
-        border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
-    ) {
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(20.dp)
-        ) {
-            // Transaction Info
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
+    com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
+        name = transaction.name,
+        category = transaction.category,
+        cost = transaction.amount,
+        icon = transaction.icon,
+        nextBillingDate = transaction.date, // This will be formatted by the card
+        onClick = {},
+        bottomContent = if (!disabled) {
+            {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    Box(
-                        modifier = Modifier
-                            .size(56.dp)
-                            .clip(RoundedCornerShape(12.dp))
-                            .background(transaction.backgroundColor),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(
-                            text = transaction.icon,
-                            fontSize = if (transaction.icon.length == 1) 20.sp else 28.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = if (transaction.icon.length == 1) Color.White else Color.Black
-                        )
-                    }
+                    Text(
+                        text = "Abonelik mi?",
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = Color(0xFF9db99d)
+                    )
                     
-                    Column {
-                        Text(
-                            text = transaction.name,
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onSurface
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = "${transaction.date} • ${transaction.category}",
-                            fontSize = 12.sp,
-                            color = Color(0xFF9CA3AF),
-                            fontWeight = FontWeight.Medium
-                        )
-                    }
-                }
-                
-                Text(
-                    text = "-${String.format("%.2f", transaction.amount)} ₺",
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-            }
-            
-            Divider(
-                modifier = Modifier.padding(vertical = 16.dp),
-                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
-                thickness = 1.dp
-            )
-            
-            // Action Area
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Abonelik mi?",
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = Color(0xFF9db99d)
-                )
-                
-                if (!disabled) {
                     Row(
                         horizontalArrangement = Arrangement.spacedBy(12.dp)
                     ) {
@@ -323,6 +263,6 @@ fun SuspiciousTransactionCard(
                     }
                 }
             }
-        }
-    }
+        } else null
+    )
 }

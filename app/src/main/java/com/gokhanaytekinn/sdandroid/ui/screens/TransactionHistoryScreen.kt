@@ -184,7 +184,7 @@ fun TransactionHistoryScreen(
             ) {
                 items(listOf("All", "Subscriptions", "Income", "Recurring")) { filter ->
                     val index = listOf("All", "Subscriptions", "Income", "Recurring").indexOf(filter)
-                    FilterChip(
+                    AppFilterChip(
                         text = filter,
                         selected = selectedFilter == index,
                         onClick = { selectedFilter = index }
@@ -239,85 +239,13 @@ fun TransactionHistoryScreen(
 
 @Composable
 fun TransactionItem(transaction: Transaction) {
-    val colorScheme = MaterialTheme.colorScheme
-    Surface(
-        modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        color = colorScheme.surface,
-        tonalElevation = 2.dp
-    ) {
-        Row(
-            modifier = Modifier.padding(12.dp),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Icon
-            Box(
-                modifier = Modifier.size(48.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(48.dp)
-                        .background(
-                            transaction.iconColor.copy(alpha = 0.1f),
-                            RoundedCornerShape(12.dp)
-                        ),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(
-                        text = transaction.icon,
-                        fontSize = 24.sp
-                    )
-                }
-                
-                // Recurring badge
-                if (transaction.isRecurring) {
-                    Box(
-                        modifier = Modifier
-                            .align(Alignment.BottomEnd)
-                            .size(18.dp)
-                            .background(colorScheme.background, CircleShape),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.Autorenew,
-                            contentDescription = null,
-                            tint = colorScheme.primary,
-                            modifier = Modifier.size(14.dp)
-                        )
-                    }
-                }
-            }
-            
-            // Name and Category
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = transaction.name,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = colorScheme.onSurface,
-                    textDecoration = if (transaction.isCancelled) TextDecoration.LineThrough else null
-                )
-                Text(
-                    text = transaction.category,
-                    fontSize = 14.sp,
-                    color = if (transaction.isCancelled) colorScheme.primary else colorScheme.onSurfaceVariant
-                )
-            }
-            
-            // Amount
-            Text(
-                text = transaction.amount,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = when {
-                    transaction.isCancelled -> colorScheme.onSurfaceVariant
-                    transaction.isIncome -> colorScheme.primary
-                    else -> colorScheme.onSurface
-                }
-            )
-        }
-    }
+    com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
+        name = transaction.name,
+        category = transaction.category,
+        cost = transaction.amount.replace("$", "").replace("-", "").replace("+", "").replace(",", "").toDoubleOrNull() ?: 0.0,
+        currency = if (transaction.amount.contains("$")) "USD" else "TRY",
+        icon = transaction.icon,
+        onClick = {},
+        bottomContent = null
+    )
 }

@@ -92,17 +92,17 @@ fun PremiumAnalyticsScreen(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    FilterChip(
+                    AppFilterChip(
                         text = "This Month",
                         selected = selectedPeriod == 0,
                         onClick = { selectedPeriod = 0 }
                     )
-                    FilterChip(
+                    AppFilterChip(
                         text = "Last 3 Months",
                         selected = selectedPeriod == 1,
                         onClick = { selectedPeriod = 1 }
                     )
-                    FilterChip(
+                    AppFilterChip(
                         text = "YTD",
                         selected = selectedPeriod == 2,
                         onClick = { selectedPeriod = 2 }
@@ -384,7 +384,7 @@ fun PremiumAnalyticsScreen(
 }
 
 @Composable
-fun FilterChip(
+fun AppFilterChip(
     text: String,
     selected: Boolean,
     onClick: () -> Unit
