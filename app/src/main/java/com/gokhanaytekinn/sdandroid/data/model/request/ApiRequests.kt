@@ -72,6 +72,10 @@ data class GoogleAuthRequest(
     val idToken: String
 )
 
+data class NotificationSettingsRequest(
+    val enabled: Boolean
+)
+
 data class ForgotPasswordRequest(val email: String)
 
 data class VerifyCodeRequest(val email: String, val code: String)

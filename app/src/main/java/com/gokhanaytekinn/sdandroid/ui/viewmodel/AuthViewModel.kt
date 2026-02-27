@@ -19,6 +19,7 @@ data class AuthState(
     val isAuthenticated: Boolean = false,
     val userName: String? = null,
     val userEmail: String? = null,
+    val notificationsEnabled: Boolean = true,
     val resetEmail: String? = null,
     val isResetCodeVerified: Boolean = false
 )
@@ -46,7 +47,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                         isLoading = false,
                         isAuthenticated = true,
                         userName = user?.name,
-                        userEmail = user?.email
+                        userEmail = user?.email,
+                        notificationsEnabled = user?.notificationsEnabled ?: true
                     )
                 } else {
                     _authState.value = _authState.value.copy(
@@ -72,7 +74,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                     isLoading = false,
                     isAuthenticated = true,
                     userName = authResponse?.user?.name,
-                    userEmail = authResponse?.user?.email
+                    userEmail = authResponse?.user?.email,
+                    notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true
                 )
                 onSuccess()
             } else {
@@ -98,7 +101,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                     isLoading = false,
                     isAuthenticated = true,
                     userName = authResponse?.user?.name,
-                    userEmail = authResponse?.user?.email
+                    userEmail = authResponse?.user?.email,
+                    notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true
                 )
                 onSuccess()
             } else {
@@ -194,7 +198,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                     isLoading = false,
                     isAuthenticated = true,
                     userName = user?.name,
-                    userEmail = user?.email
+                    userEmail = user?.email,
+                    notificationsEnabled = user?.notificationsEnabled ?: true
                 )
                 onSuccess()
             } else {
@@ -265,6 +270,14 @@ class AuthViewModel(context: Context) : ViewModel() {
                     error = result.exceptionOrNull()?.message ?: "Şifre güncellenemedi"
                 )
             }
+        }
+    }
+
+    fun updateNotificationSettings(enabled: Boolean) {
+        viewModelScope.launch {
+            repository.updateNotificationSettings(enabled)
+            // No need to update state immediately if it's local-first, 
+            // but we could refresh user if needed.
         }
     }
 

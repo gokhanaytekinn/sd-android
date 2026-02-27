@@ -345,10 +345,11 @@ fun AppSettingsScreen(
                         SettingsToggleItem(
                             icon = Icons.Filled.Notifications,
                             title = stringResource(R.string.notifications),
-                            checked = notificationsEnabled,
+                            checked = authState.notificationsEnabled,
                             onCheckedChange = { 
                                 scope.launch {
                                     notificationPreferences.setNotificationsEnabled(it)
+                                    authViewModel.updateNotificationSettings(it)
                                 }
                             }
                         )

@@ -12,6 +12,7 @@ data class UserResponse(
     val email: String,
     val name: String?,
     val tier: String?, // FREE, PREMIUM
+    val notificationsEnabled: Boolean = true,
     val createdAt: String?
 )
 

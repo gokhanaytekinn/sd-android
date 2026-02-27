@@ -35,6 +35,9 @@ interface ApiService {
     @PATCH("api/users/fcm-token")
     suspend fun updateFcmToken(@Body request: FcmTokenRequest): Response<Unit>
     
+    @PATCH("api/users/notifications")
+    suspend fun updateNotificationSettings(@Body request: NotificationSettingsRequest): Response<Unit>
+    
     // ============ SUBSCRIPTIONS ============
     
     @GET("api/subscriptions")

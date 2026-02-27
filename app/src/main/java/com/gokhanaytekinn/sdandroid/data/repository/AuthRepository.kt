@@ -115,6 +115,19 @@ class AuthRepository(context: Context) {
             Result.failure(e)
         }
     }
+
+    suspend fun updateNotificationSettings(enabled: Boolean): Result<Unit> {
+        return try {
+            val response = apiService.updateNotificationSettings(NotificationSettingsRequest(enabled))
+            if (response.isSuccessful) {
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Failed to update notification settings"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
     
     suspend fun isLoggedIn(): Boolean {
         return tokenManager.isLoggedIn()
