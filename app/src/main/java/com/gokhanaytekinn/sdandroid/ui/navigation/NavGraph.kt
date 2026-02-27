@@ -29,6 +29,28 @@ import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import androidx.compose.runtime.collectAsState
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.screens.*
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.FabPosition
+import androidx.compose.material3.Surface
+import androidx.compose.material.icons.Icons
+import androidx.compose.ui.window.Popup
+import androidx.compose.ui.window.PopupProperties
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.filled.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
+import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.ui.components.MainActionButton
 
 @Composable
 fun NavGraph(
@@ -60,6 +82,8 @@ fun NavGraph(
     val isScanning by dashboardViewModel.isScanning.collectAsState()
     val scanProgress by dashboardViewModel.scanProgress.collectAsState()
     val detectedSubscriptions by dashboardViewModel.detectedSubscriptions.collectAsState()
+
+    var isMenuExpanded by remember { mutableStateOf(false) }
 
     val permissionLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.RequestMultiplePermissions()
@@ -101,19 +125,16 @@ fun NavGraph(
                             launchSingleTop = true
                             restoreState = true
                         }
-                    },
-                    onScanClick = {
-                        val missingPermissions = permissionManager.getMissingPermissions()
-                        if (missingPermissions.isEmpty()) {
-                            dashboardViewModel.scanDeviceForSubscriptions()
-                            showScanDialog = true
-                        } else {
-                            permissionLauncher.launch(missingPermissions)
-                        }
-                    },
-                    onAddClick = {
-                        navController.navigate(Screen.AddSubscription.route)
                     }
+                )
+            }
+        },
+        floatingActionButtonPosition = FabPosition.End,
+        floatingActionButton = {
+            if (showBottomBar) {
+                MainActionButton(
+                    isMenuExpanded = isMenuExpanded,
+                    onClick = { isMenuExpanded = !isMenuExpanded }
                 )
             }
         }
@@ -427,6 +448,110 @@ fun NavGraph(
                         navController.navigate(Screen.SubscriptionDetails.createRoute(id))
                     }
                 )
+            }
+        }
+
+        // Expanded Menu for FAB
+        if (isMenuExpanded) {
+            Popup(
+                alignment = Alignment.BottomCenter,
+                onDismissRequest = { isMenuExpanded = false },
+                properties = PopupProperties(focusable = true)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(Color.Black.copy(alpha = 0.5f))
+                        .clickable { isMenuExpanded = false }
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
+                            .padding(bottom = 100.dp, end = 20.dp)
+                            .navigationBarsPadding(),
+                        horizontalAlignment = Alignment.End,
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        // Scan Subscription
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp),
+                                color = MaterialTheme.colorScheme.surface,
+                                modifier = Modifier.padding(end = 16.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.menu_scan),
+                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                    fontWeight = FontWeight.Medium
+                                )
+                            }
+                            FloatingActionButton(
+                                onClick = {
+                                    isMenuExpanded = false
+                                    val missingPermissions = permissionManager.getMissingPermissions()
+                                    if (missingPermissions.isEmpty()) {
+                                        dashboardViewModel.scanDeviceForSubscriptions()
+                                        showScanDialog = true
+                                    } else {
+                                        permissionLauncher.launch(missingPermissions)
+                                    }
+                                },
+                                shape = CircleShape,
+                                containerColor = MaterialTheme.colorScheme.surface,
+                                contentColor = PrimaryBlue,
+                                modifier = Modifier.size(48.dp)
+                            ) {
+                                Icon(Icons.Default.DocumentScanner, contentDescription = "Scan")
+                            }
+                        }
+
+                        // Add Manually
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.End
+                        ) {
+                            Surface(
+                                shape = RoundedCornerShape(8.dp),
+                                color = MaterialTheme.colorScheme.surface,
+                                modifier = Modifier.padding(end = 16.dp)
+                            ) {
+                                Text(
+                                    text = stringResource(R.string.menu_add_manually),
+                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
+                                    fontWeight = FontWeight.Medium
+                                )
+                            }
+                            FloatingActionButton(
+                                onClick = {
+                                    isMenuExpanded = false
+                                    navController.navigate(Screen.AddSubscription.route)
+                                },
+                                shape = CircleShape,
+                                containerColor = MaterialTheme.colorScheme.surface,
+                                contentColor = PrimaryBlue,
+                                modifier = Modifier.size(48.dp)
+                            ) {
+                                Icon(Icons.Default.Edit, contentDescription = "Add Manually")
+                            }
+                        }
+                    }
+                    
+                    // Replicate FAB on top of overlay to allow closing
+                    Box(
+                        modifier = Modifier
+                            .align(Alignment.BottomEnd)
+                            .padding(bottom = 20.dp, end = 20.dp)
+                            .navigationBarsPadding() // Account for system navigation bar
+                    ) {
+                        MainActionButton(
+                            isMenuExpanded = isMenuExpanded,
+                            onClick = { isMenuExpanded = false }
+                        )
+                    }
+                }
             }
         }
 
