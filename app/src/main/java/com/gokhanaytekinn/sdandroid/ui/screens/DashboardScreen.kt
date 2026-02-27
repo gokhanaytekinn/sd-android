@@ -454,19 +454,28 @@ fun SubscriptionListItem(
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    val localizedCategory = when (subscription.category) {
-                        "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
-                        "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
-                        "Müzik", "Music" -> stringResource(R.string.category_music)
-                        else -> subscription.category ?: stringResource(R.string.category_other)
+                    
+                    val isOther = subscription.category == null || 
+                                 subscription.category == "Other" || 
+                                 subscription.category == "Diğer"
+                    
+                    if (!isOther) {
+                        Spacer(modifier = Modifier.height(4.dp))
+                        val localizedCategory = when (subscription.category) {
+                            "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
+                            "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
+                            "Müzik", "Music" -> stringResource(R.string.category_music)
+                            else -> subscription.category
+                        }
+                        if (localizedCategory != null) {
+                            Text(
+                                text = localizedCategory,
+                                fontSize = 12.sp,
+                                color = Color(0xFF9CA3AF),
+                                fontWeight = FontWeight.Medium
+                            )
+                        }
                     }
-                    Text(
-                        text = localizedCategory,
-                        fontSize = 12.sp,
-                        color = Color(0xFF9CA3AF),
-                        fontWeight = FontWeight.Medium
-                    )
                 }
             }
             
