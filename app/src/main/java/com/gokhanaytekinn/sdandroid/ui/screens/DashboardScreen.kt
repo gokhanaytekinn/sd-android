@@ -219,43 +219,12 @@ fun DashboardScreen(
                     }
                 } else {
                     items(upcomingSubs) { sub ->
-                        Card(
-                            onClick = { onNavigateToUpcoming() },
-                            shape = RoundedCornerShape(12.dp),
-                            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
-                            modifier = Modifier.fillMaxWidth(),
-                            border = BorderStroke(1.dp, MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .padding(12.dp)
-                                    .fillMaxWidth(),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(36.dp)
-                                        .background(PrimaryBlue.copy(alpha = 0.1f), CircleShape),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(sub.name.take(1).uppercase(), color = PrimaryBlue, fontWeight = FontWeight.Bold)
-                                }
-                                
-                                Spacer(modifier = Modifier.width(12.dp))
-                                
-                                Column(modifier = Modifier.weight(1f)) {
-                                    Text(sub.name, fontWeight = FontWeight.Bold, fontSize = 14.sp)
-                                    Text(DateUtils.formatDate(sub.nextBillingDate), fontSize = 12.sp, color = Color.Gray)
-                                }
-                                
-                                Text(
-                                    CurrencyFormatter.formatAmount(sub.cost, sub.currency),
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 14.sp,
-                                    color = MaterialTheme.colorScheme.onBackground
-                                )
-                            }
-                        }
+                        SubscriptionCard(
+                            subscription = sub,
+                            currency = sub.currency,
+                            showDate = true,
+                            onClick = { onNavigateToUpcoming() }
+                        )
                     }
                 }
 

@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
@@ -91,7 +92,7 @@ fun SubscriptionCard(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -102,15 +103,15 @@ fun SubscriptionCard(
                     // Icon placeholder with brand color
                     Box(
                         modifier = Modifier
-                            .size(48.dp)
-                            .background(brandColor.copy(alpha = 0.1f), RoundedCornerShape(12.dp)),
+                            .size(36.dp)
+                            .background(brandColor.copy(alpha = 0.1f), CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
                         Text(
                             text = icon ?: name.take(1).uppercase(),
                             color = brandColor,
                             fontWeight = FontWeight.Bold,
-                            fontSize = 20.sp
+                            fontSize = 16.sp
                         )
                     }
 
@@ -177,7 +178,7 @@ fun SubscriptionCard(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp)
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
                 ) {
                     bottomContent()
                 }
