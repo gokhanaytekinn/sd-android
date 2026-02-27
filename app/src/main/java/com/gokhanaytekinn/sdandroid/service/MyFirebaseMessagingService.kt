@@ -27,7 +27,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         // Check if message contains a notification payload.
         message.notification?.let {
             Log.d("FCM", "Message Notification Body: ${it.body}")
-            sendNotification(it.title ?: "Hatırlatıcı", it.body ?: "")
+            sendNotification(it.title ?: "Hatırlatıcı", it.body ?: "", message.data)
         }
 
         // Check if message contains a data payload.
@@ -36,20 +36,25 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             val title = message.data["title"] ?: "Hatırlatıcı"
             val body = message.data["body"] ?: ""
             if (message.notification == null) {
-                sendNotification(title, body)
+                sendNotification(title, body, message.data)
             }
         }
     }
 
-    private fun sendNotification(title: String, messageBody: String) {
+    private fun sendNotification(title: String, messageBody: String, data: Map<String, String>? = null) {
         val intent = Intent(this, MainActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+        
+        data?.forEach { (key, value) ->
+            intent.putExtra(key, value)
+        }
+
         val pendingIntent = PendingIntent.getActivity(this, 0, intent,
-                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_ONE_SHOT)
+                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
 
         val channelId = "reminders_channel"
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
-                .setSmallIcon(R.mipmap.ic_launcher) // Corrected from R.drawable
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(messageBody)
                 .setAutoCancel(true)

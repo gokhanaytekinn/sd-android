@@ -27,6 +27,8 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.flow.first
 
 class MainActivity : AppCompatActivity() {
+    private var navigationTrigger = mutableStateOf<String?>(null)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         // Kaydedilmiş dil tercihini uygulama açılmadan ÖNCE uygula
         val languagePreferences = LanguagePreferences(this)
@@ -51,8 +53,15 @@ class MainActivity : AppCompatActivity() {
             
             // Determine initial route based on state
             var startDestination by androidx.compose.runtime.remember { androidx.compose.runtime.mutableStateOf<String?>(null) }
+            val trigger by navigationTrigger
             
             androidx.compose.runtime.LaunchedEffect(Unit) {
+                // Check if there's an initial navigation from the starting intent
+                intent?.getStringExtra("navigate_to")?.let { target ->
+                    navigationTrigger.value = target
+                    intent.removeExtra("navigate_to")
+                }
+                
                 val isOnboardingComplete = onboardingPreferences.isOnboardingComplete()
                 val isLoggedIn = tokenManager.isLoggedIn()
                 
@@ -70,10 +79,30 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     if (startDestination != null) {
                         val navController = rememberNavController()
+                        
+                        // Handle notification navigation triggers
+                        androidx.compose.runtime.LaunchedEffect(trigger) {
+                            trigger?.let { target ->
+                                if (target == "upcoming_subscriptions") {
+                                    navController.navigate(com.gokhanaytekinn.sdandroid.ui.navigation.Screen.UpcomingSubscriptions.route)
+                                }
+                                navigationTrigger.value = null
+                            }
+                        }
+
                         NavGraph(navController = navController, startDestination = startDestination!!)
                     }
                 }
             }
+        }
+    }
+
+    override fun onNewIntent(intent: android.content.Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        intent?.getStringExtra("navigate_to")?.let { target ->
+            navigationTrigger.value = target
+            intent.removeExtra("navigate_to")
         }
     }
 
