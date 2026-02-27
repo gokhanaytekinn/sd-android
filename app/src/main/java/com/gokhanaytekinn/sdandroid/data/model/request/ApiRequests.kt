@@ -73,7 +73,8 @@ data class GoogleAuthRequest(
 )
 
 data class NotificationSettingsRequest(
-    val enabled: Boolean
+    val enabled: Boolean,
+    val language: String? = null
 )
 
 data class ForgotPasswordRequest(val email: String)

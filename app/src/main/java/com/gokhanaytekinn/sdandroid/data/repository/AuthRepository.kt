@@ -116,9 +116,9 @@ class AuthRepository(context: Context) {
         }
     }
 
-    suspend fun updateNotificationSettings(enabled: Boolean): Result<Unit> {
+    suspend fun updateNotificationSettings(enabled: Boolean, language: String? = null): Result<Unit> {
         return try {
-            val response = apiService.updateNotificationSettings(NotificationSettingsRequest(enabled))
+            val response = apiService.updateNotificationSettings(NotificationSettingsRequest(enabled, language))
             if (response.isSuccessful) {
                 Result.success(Unit)
             } else {

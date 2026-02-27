@@ -20,6 +20,7 @@ data class AuthState(
     val userName: String? = null,
     val userEmail: String? = null,
     val notificationsEnabled: Boolean = true,
+    val language: String? = "tr",
     val resetEmail: String? = null,
     val isResetCodeVerified: Boolean = false
 )
@@ -27,6 +28,7 @@ data class AuthState(
 class AuthViewModel(context: Context) : ViewModel() {
     
     private val repository = AuthRepository(context)
+    private val languagePreferences = com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences(context)
     private val appContext = context.applicationContext
     
     private val _authState = MutableStateFlow(AuthState())
@@ -48,7 +50,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                         isAuthenticated = true,
                         userName = user?.name,
                         userEmail = user?.email,
-                        notificationsEnabled = user?.notificationsEnabled ?: true
+                        notificationsEnabled = user?.notificationsEnabled ?: true,
+                        language = user?.language ?: "tr"
                     )
                 } else {
                     _authState.value = _authState.value.copy(
@@ -199,7 +202,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                     isAuthenticated = true,
                     userName = user?.name,
                     userEmail = user?.email,
-                    notificationsEnabled = user?.notificationsEnabled ?: true
+                    notificationsEnabled = user?.notificationsEnabled ?: true,
+                    language = user?.language ?: "tr"
                 )
                 onSuccess()
             } else {
@@ -275,9 +279,9 @@ class AuthViewModel(context: Context) : ViewModel() {
 
     fun updateNotificationSettings(enabled: Boolean) {
         viewModelScope.launch {
-            repository.updateNotificationSettings(enabled)
-            // No need to update state immediately if it's local-first, 
-            // but we could refresh user if needed.
+            val language = com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences(appContext).selectedLanguage.kotlinx.coroutines.flow.first()
+            repository.updateNotificationSettings(enabled, language)
+            _authState.value = _authState.value.copy(notificationsEnabled = enabled, language = language)
         }
     }
 

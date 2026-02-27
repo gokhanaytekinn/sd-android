@@ -492,6 +492,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("tr")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("az", "Azərbaycanca", currentLanguage) {
@@ -500,6 +501,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("az")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("kk", "Қазақша", currentLanguage) {
@@ -508,6 +510,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("kk")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("uz", "Oʻzbekcha", currentLanguage) {
@@ -516,6 +519,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("uz")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("ky", "Кыргызча", currentLanguage) {
@@ -524,6 +528,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("ky")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("tk", "Türkmençe", currentLanguage) {
@@ -532,6 +537,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("tk")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("en", "English", currentLanguage) {
@@ -540,6 +546,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("en")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("es", "Español", currentLanguage) {
@@ -548,6 +555,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("es")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("ru", "Русский", currentLanguage) {
@@ -556,6 +564,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("ru")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("zh", "简体中文", currentLanguage) {
@@ -564,6 +573,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("zh")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("fr", "Français", currentLanguage) {
@@ -572,6 +582,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("fr")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
                     LanguageOption("de", "Deutsch", currentLanguage) {
@@ -580,6 +591,7 @@ fun AppSettingsScreen(
                             showLanguageDialog = false
                             val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags("de")
                             AppCompatDelegate.setApplicationLocales(appLocale)
+                            authViewModel.updateNotificationSettings(authState.notificationsEnabled)
                         }
                     }
 
