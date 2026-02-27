@@ -222,6 +222,16 @@
     <string name="billed_yearly">Yıllık faturalandırılır</string>
     <string name="start_trial">Ücretsiz Denemeyi Başlat</string>
     <string name="restore_purchase">Satın Almayı Geri Yükle</string>
+    <string name="premium_hero_title">Aboneliklerini\nAkıllıca Yönet</string>
+    <string name="premium_hero_subtitle">Size en uygun planı seçerek hemen başlayın.</string>
+    <string name="plan_free">Ücretsiz</string>
+    <string name="plan_monthly_premium">Aylık Premium</string>
+    <string name="plan_yearly_premium">Yıllık Premium</string>
+    <string name="most_popular">En Popüler</string>
+    <string name="secure_payment_footer">Güvenli ödeme altyapısı</string>
+    <string name="current_plan">Mevcut Planınız</string>
+    <string name="upgrade_to_premium_btn">Premium\'a Geç</string>
+    <string name="plans_header">PLANLAR</string>
     
     <!-- Kategoriler -->
     <string name="category_entertainment">Eğlence</string>

@@ -118,80 +118,6 @@ fun AppSettingsScreen(
                 .weight(1f),
             contentPadding = PaddingValues(bottom = 16.dp)
         ) {
-            // Premium Upgrade Card
-            item {
-                Surface(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    shadowElevation = 2.dp,
-                    onClick = onUpgradeClick
-                ) {
-                    Column(
-                        modifier = Modifier.background(
-                            brush = Brush.horizontalGradient(
-                                colors = listOf(
-                                    Color(0xFF389cfa),
-                                    Color(0xFF1e4f8a)
-                                )
-                            )
-                        )
-                    ) {
-                        Box(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(120.dp),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.AutoAwesome,
-                                contentDescription = null,
-                                tint = Color.White,
-                                modifier = Modifier.size(48.dp)
-                            )
-                        }
-                        
-                        Column(
-                            modifier = Modifier.padding(16.dp)
-                        ) {
-                            Text(
-                                text = stringResource(R.string.upgrade_to_premium),
-                                fontSize = 18.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = Color.White
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.premium_desc),
-                                    fontSize = 14.sp,
-                                    color = Color.White.copy(alpha = 0.9f),
-                                    modifier = Modifier.weight(1f)
-                                )
-                                Spacer(modifier = Modifier.width(12.dp))
-                                Button(
-                                    onClick = onUpgradeClick,
-                                    colors = ButtonDefaults.buttonColors(
-                                        containerColor = Color.White,
-                                        contentColor = PrimaryBlue
-                                    ),
-                                    shape = RoundedCornerShape(8.dp)
-                                ) {
-                                    Text(
-                                        text = stringResource(R.string.upgrade),
-                                        fontWeight = FontWeight.SemiBold
-                                    )
-                                }
-                            }
-                        }
-                    }
-                }
-            }
             
             // Section: Hesap
             item {
@@ -212,8 +138,7 @@ fun AppSettingsScreen(
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
                     color = MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f)),
-                    onClick = onProfileClick
+                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
                 ) {
                     Column {
                         // Profile Item
@@ -271,6 +196,7 @@ fun AppSettingsScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
+                                .clickable(onClick = onUpgradeClick)
                                 .padding(16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
@@ -302,9 +228,12 @@ fun AppSettingsScreen(
                                 )
                             }
                             
-                            Surface(
-                                shape = RoundedCornerShape(50),
-                                color = PrimaryBlue.copy(alpha = 0.1f)
+                            Box(
+                                modifier = Modifier
+                                    .background(
+                                        color = PrimaryBlue.copy(alpha = 0.1f),
+                                        shape = RoundedCornerShape(50)
+                                    )
                             ) {
                                 Text(
                                     text = stringResource(R.string.free_plan),
@@ -414,6 +343,7 @@ fun AppSettingsScreen(
                     border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
                 ) {
                     Column {
+
                         // Help Center
                         SettingsNavigationItem(
                             icon = Icons.Filled.Help,

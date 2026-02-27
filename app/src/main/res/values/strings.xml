@@ -223,6 +223,16 @@
     <string name="billed_yearly">Billed yearly</string>
     <string name="start_trial">Start Free Trial</string>
     <string name="restore_purchase">Restore Purchase</string>
+    <string name="premium_hero_title">Manage Your Subscriptions\nSmartly</string>
+    <string name="premium_hero_subtitle">Start immediately by choosing the plan that best suits you.</string>
+    <string name="plan_free">Free</string>
+    <string name="plan_monthly_premium">Monthly Premium</string>
+    <string name="plan_yearly_premium">Yearly Premium</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="secure_payment_footer">Secure payment infrastructure</string>
+    <string name="current_plan">Your Current Plan</string>
+    <string name="upgrade_to_premium_btn">Upgrade to Premium</string>
+    <string name="plans_header">PLANS</string>
     
     <!-- Categories -->
     <string name="category_entertainment">Entertainment</string>

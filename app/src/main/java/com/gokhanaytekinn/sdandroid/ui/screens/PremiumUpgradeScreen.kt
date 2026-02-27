@@ -1,8 +1,13 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -13,20 +18,43 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.*
+
+enum class SubscriptionPlanType {
+    FREE, MONTHLY, YEARLY
+}
 
 @Composable
 fun PremiumUpgradeScreen(
     onCloseClick: () -> Unit = {},
-    onUpgradeClick: (Boolean) -> Unit = {} // true for yearly, false for monthly
+    onUpgradeClick: (SubscriptionPlanType) -> Unit = {}
 ) {
-    var selectedPlan by remember { mutableStateOf(true) } // true=yearly, false=monthly
+    var selectedPlan by remember { mutableStateOf(SubscriptionPlanType.YEARLY) }
+    var showTermsDialog by remember { mutableStateOf(false) }
+    var showPrivacyDialog by remember { mutableStateOf(false) }
     
+    val features = remember(selectedPlan) {
+        when (selectedPlan) {
+            SubscriptionPlanType.FREE -> listOf(
+                FeatureData(Icons.Filled.TrackChanges, "Otomatik Yakalama", "Kısıtlı tarama", false),
+                FeatureData(Icons.Filled.AllInclusive, "Sınırsız Takip", "Maksimum 5 abonelik", false),
+                FeatureData(Icons.Filled.Insights, "Gelişmiş Analiz", "Temel raporlar", false)
+            )
+            else -> listOf(
+                FeatureData(Icons.Filled.TrackChanges, "Otomatik Yakalama", "Gizli ödemeleri anında bulur", true),
+                FeatureData(Icons.Filled.AllInclusive, "Sınırsız Takip", "İstediğin kadar abonelik ekle", true),
+                FeatureData(Icons.Filled.Insights, "Gelişmiş Analiz", "Detaylı harcama raporları", true)
+            )
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -43,39 +71,35 @@ fun PremiumUpgradeScreen(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Spacer(modifier = Modifier.width(40.dp))
-                
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "PREMIUM PLAN",
-                        fontSize = 10.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = PrimaryBlue,
-                        letterSpacing = 2.sp
-                    )
-                }
-                
                 IconButton(
                     onClick = onCloseClick,
                     modifier = Modifier
                         .size(40.dp)
-                        .background(Color.White.copy(alpha = 0.1f), CircleShape)
+                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f), CircleShape)
                 ) {
                     Icon(
                         imageVector = Icons.Filled.Close,
-                        contentDescription = "Close",
-                        tint = Color.White
+                        contentDescription = stringResource(R.string.close),
+                        tint = MaterialTheme.colorScheme.onSurface
                     )
                 }
+                
+                Text(
+                    text = stringResource(R.string.plans_header),
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = PrimaryBlue,
+                    letterSpacing = 2.sp
+                )
+                
+                Spacer(modifier = Modifier.width(40.dp))
             }
             
             LazyColumn(
                 modifier = Modifier
                     .weight(1f)
                     .fillMaxWidth(),
-                contentPadding = PaddingValues(horizontal = 16.dp)
+                contentPadding = PaddingValues(horizontal = 20.dp)
             ) {
                 // Hero Text
                 item {
@@ -85,18 +109,18 @@ fun PremiumUpgradeScreen(
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "Paranın Kontrolü\nSende Olsun",
-                            fontSize = 30.sp,
+                            text = stringResource(R.string.premium_hero_title),
+                            fontSize = 32.sp,
                             fontWeight = FontWeight.Black,
-                            color = Color.White,
+                            color = MaterialTheme.colorScheme.onBackground,
                             textAlign = TextAlign.Center,
-                            lineHeight = 36.sp
+                            lineHeight = 40.sp
                         )
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(12.dp))
                         Text(
-                            text = "Gereksiz ödemeleri durdur, birikimlerini artır.",
-                            fontSize = 14.sp,
-                            color = Color.Gray,
+                            text = stringResource(R.string.premium_hero_subtitle),
+                            fontSize = 15.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textAlign = TextAlign.Center
                         )
                     }
@@ -104,82 +128,57 @@ fun PremiumUpgradeScreen(
                 
                 // Features List
                 item {
-                    Spacer(modifier = Modifier.height(32.dp))
+                    Spacer(modifier = Modifier.height(40.dp))
                     Column(
-                        verticalArrangement = Arrangement.spacedBy(12.dp)
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        FeatureCard(
-                            icon = Icons.Filled.TrackChanges,
-                            title = "Otomatik Yakalama",
-                            description = "Gizli ödemeleri anında bulur"
-                        )
-                        FeatureCard(
-                            icon = Icons.Filled.AllInclusive,
-                            title = "Sınırsız Takip",
-                            description = "İstediğin kadar abonelik ekle"
-                        )
-                        FeatureCard(
-                            icon = Icons.Filled.Insights,
-                            title = "Gelişmiş Analiz",
-                            description = "Detaylı harcama raporları"
-                        )
+                        features.forEach { feature ->
+                            FeatureRow(feature)
+                        }
                     }
-                }
-                
-                // Pricing Section
-                item {
-                    Spacer(modifier = Modifier.height(32.dp))
-                    Text(
-                        text = "Size uygun planı seçin",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        modifier = Modifier.fillMaxWidth(),
-                        textAlign = TextAlign.Center
-                    )
-                    Spacer(modifier = Modifier.height(16.dp))
                 }
                 
                 // Pricing Cards
                 item {
+                    Spacer(modifier = Modifier.height(48.dp))
                     Column(
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        // Yearly Plan (Recommended)
+                        // Free Plan
                         PricingCard(
-                            title = "Yıllık",
-                            price = "₺399.99",
-                            period = "/yıl",
-                            originalPrice = "₺599.99",
-                            badge = "En Avantajlı",
-                            features = listOf(
-                                "12 ay kesintisiz erişim",
-                                "%33 Tasarruf et"
-                            ),
-                            selected = selectedPlan,
-                            onClick = { selectedPlan = true }
+                            title = stringResource(R.string.plan_free),
+                            price = "₺0",
+                            period = "",
+                            badge = null,
+                            selected = selectedPlan == SubscriptionPlanType.FREE,
+                            onClick = { selectedPlan = SubscriptionPlanType.FREE }
                         )
-                        
+
                         // Monthly Plan
                         PricingCard(
-                            title = "Aylık",
-                            price = "₺49.99",
-                            period = "/ay",
-                            originalPrice = null,
+                            title = stringResource(R.string.plan_monthly_premium),
+                            price = "₺99.99",
+                            period = stringResource(R.string.per_month),
                             badge = null,
-                            features = listOf(
-                                "Esnek ödeme planı",
-                                "İstediğin zaman iptal"
-                            ),
-                            selected = !selectedPlan,
-                            onClick = { selectedPlan = false }
+                            selected = selectedPlan == SubscriptionPlanType.MONTHLY,
+                            onClick = { selectedPlan = SubscriptionPlanType.MONTHLY }
+                        )
+
+                        // Yearly Plan
+                        PricingCard(
+                            title = stringResource(R.string.plan_yearly_premium),
+                            price = "₺799.99",
+                            period = stringResource(R.string.per_year),
+                            badge = stringResource(R.string.most_popular),
+                            selected = selectedPlan == SubscriptionPlanType.YEARLY,
+                            onClick = { selectedPlan = SubscriptionPlanType.YEARLY }
                         )
                     }
                 }
                 
                 // Trust Badge
                 item {
-                    Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(32.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.Center,
@@ -188,152 +187,172 @@ fun PremiumUpgradeScreen(
                         Icon(
                             imageVector = Icons.Filled.Lock,
                             contentDescription = null,
-                            tint = Color.Gray,
+                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.5f),
                             modifier = Modifier.size(14.dp)
                         )
-                        Spacer(modifier = Modifier.width(4.dp))
+                        Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            text = "Ödemeleriniz App Store güvencesi altındadır.",
+                            text = stringResource(R.string.secure_payment_footer),
                             fontSize = 12.sp,
-                            color = Color.Gray
+                            color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
                         )
                     }
-                    Spacer(modifier = Modifier.height(120.dp))
+                    Spacer(modifier = Modifier.height(140.dp))
                 }
             }
         }
         
         // Sticky Bottom CTA
-        Column(
+        Surface(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .fillMaxWidth()
-                .background(
-                    brush = androidx.compose.ui.graphics.Brush.verticalGradient(
-                        colors = listOf(
-                            Color.Transparent,
-                            MaterialTheme.colorScheme.background,
-                            MaterialTheme.colorScheme.background
-                        )
-                    )
-                )
-                .padding(16.dp)
+                .fillMaxWidth(),
+            color = MaterialTheme.colorScheme.background.copy(alpha = 0.95f),
+            tonalElevation = 8.dp
         ) {
-            Button(
-                onClick = { onUpgradeClick(selectedPlan) },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(56.dp),
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = PrimaryBlue
-                ),
-                shape = RoundedCornerShape(12.dp)
+            Column(
+                modifier = Modifier.padding(20.dp)
             ) {
-                Text(
-                    text = "Premium'a Geç",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Black,
-                    color = MaterialTheme.colorScheme.background
-                )
-                Spacer(modifier = Modifier.width(8.dp))
-                Icon(
-                    imageVector = Icons.Filled.ArrowForward,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.background
-                )
-            }
-            
-            Spacer(modifier = Modifier.height(12.dp))
-            
-            // Legal Links
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Satın Alımı Geri Yükle",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
-                Text(
-                    text = " • ",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
-                Text(
-                    text = "Kullanım Koşulları",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
-                Text(
-                    text = " • ",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
-                Text(
-                    text = "Gizlilik",
-                    fontSize = 11.sp,
-                    color = Color.Gray
-                )
+                Button(
+                    onClick = { onUpgradeClick(selectedPlan) },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(56.dp),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = if (selectedPlan == SubscriptionPlanType.FREE) MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f) else PrimaryBlue,
+                        contentColor = if (selectedPlan == SubscriptionPlanType.FREE) MaterialTheme.colorScheme.onSurface else Color.White
+                    ),
+                    shape = RoundedCornerShape(14.dp),
+                    enabled = selectedPlan != SubscriptionPlanType.FREE
+                ) {
+                    Text(
+                        text = if (selectedPlan == SubscriptionPlanType.FREE) stringResource(R.string.current_plan) else stringResource(R.string.upgrade_to_premium_btn),
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+                
+                Spacer(modifier = Modifier.height(16.dp))
+                
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceEvenly
+                ) {
+                    LegalText(stringResource(R.string.restore_purchase)) { /* Restore logic */ }
+                    LegalText(stringResource(R.string.terms_of_use_title)) { showTermsDialog = true }
+                    LegalText(stringResource(R.string.privacy_policy_title)) { showPrivacyDialog = true }
+                }
             }
         }
     }
+
+    // Terms of Use Dialog
+    if (showTermsDialog) {
+        AlertDialog(
+            onDismissRequest = { showTermsDialog = false },
+            title = { Text(stringResource(R.string.terms_of_use_title), fontWeight = FontWeight.Bold) },
+            text = {
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(vertical = 8.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.terms_of_use_content),
+                        lineHeight = 20.sp
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showTermsDialog = false }) {
+                    Text(stringResource(R.string.understood), color = PrimaryBlue, fontWeight = FontWeight.Bold)
+                }
+            },
+            shape = RoundedCornerShape(16.dp),
+            containerColor = MaterialTheme.colorScheme.surface
+        )
+    }
+
+    // Privacy Policy Dialog
+    if (showPrivacyDialog) {
+        AlertDialog(
+            onDismissRequest = { showPrivacyDialog = false },
+            title = { Text(stringResource(R.string.privacy_policy_title), fontWeight = FontWeight.Bold) },
+            text = {
+                Column(
+                    modifier = Modifier
+                        .verticalScroll(rememberScrollState())
+                        .padding(vertical = 8.dp)
+                ) {
+                    Text(
+                        text = stringResource(R.string.privacy_dialog_content),
+                        lineHeight = 20.sp
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(onClick = { showPrivacyDialog = false }) {
+                    Text(stringResource(R.string.close), color = PrimaryBlue, fontWeight = FontWeight.Bold)
+                }
+            },
+            shape = RoundedCornerShape(16.dp),
+            containerColor = MaterialTheme.colorScheme.surface
+        )
+    }
 }
 
+data class FeatureData(
+    val icon: androidx.compose.ui.graphics.vector.ImageVector,
+    val title: String,
+    val description: String,
+    val isEnabled: Boolean
+)
+
 @Composable
-fun FeatureCard(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
-    title: String,
-    description: String
-) {
-    Surface(
+fun FeatureRow(feature: FeatureData) {
+    Row(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        color = Color(0xFF1c271c)
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalAlignment = Alignment.CenterVertically
     ) {
-        Row(
-            modifier = Modifier.padding(16.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically
+        Box(
+            modifier = Modifier
+                .size(44.dp)
+                .border(
+                    width = 1.dp,
+                    color = if (feature.isEnabled) PrimaryBlue.copy(alpha = 0.3f) else MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
+                    shape = RoundedCornerShape(12.dp)
+                ),
+            contentAlignment = Alignment.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .size(48.dp)
-                    .background(PrimaryBlue.copy(alpha = 0.1f), RoundedCornerShape(8.dp)),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    tint = PrimaryBlue,
-                    modifier = Modifier.size(24.dp)
-                )
-            }
-            
-            Column(
-                modifier = Modifier.weight(1f)
-            ) {
-                Text(
-                    text = title,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White
-                )
-                Text(
-                    text = description,
-                    fontSize = 12.sp,
-                    color = Color.Gray
-                )
-            }
-            
             Icon(
-                imageVector = Icons.Filled.CheckCircle,
+                imageVector = feature.icon,
                 contentDescription = null,
-                tint = PrimaryBlue,
-                modifier = Modifier.size(24.dp)
+                tint = if (feature.isEnabled) PrimaryBlue else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.4f),
+                modifier = Modifier.size(22.dp)
             )
         }
+        
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = feature.title,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.Bold,
+                color = if (feature.isEnabled) MaterialTheme.colorScheme.onBackground else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f)
+            )
+            Text(
+                text = feature.description,
+                fontSize = 13.sp,
+                color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f)
+            )
+        }
+        
+        Icon(
+            imageVector = if (feature.isEnabled) Icons.Filled.CheckCircle else Icons.Filled.Cancel,
+            contentDescription = null,
+            tint = if (feature.isEnabled) PrimaryBlue else MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.2f),
+            modifier = Modifier.size(20.dp)
+        )
     }
 }
 
@@ -342,143 +361,78 @@ fun PricingCard(
     title: String,
     price: String,
     period: String,
-    originalPrice: String?,
     badge: String?,
-    features: List<String>,
     selected: Boolean,
     onClick: () -> Unit
 ) {
     Surface(
         onClick = onClick,
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
-        color = if (selected) Color(0xFF1c271c) else Color(0xFF1c271c).copy(alpha = 0.6f),
-        border = androidx.compose.foundation.BorderStroke(
+        shape = RoundedCornerShape(16.dp),
+        color = Color.Transparent,
+        border = BorderStroke(
             width = if (selected) 2.dp else 1.dp,
-            color = if (selected) PrimaryBlue else Color(0xFF2a402a)
+            color = if (selected) PrimaryBlue else MaterialTheme.colorScheme.outline.copy(alpha = 0.2f)
         )
     ) {
-        Box {
-            // Badge
+        Box(modifier = Modifier.padding(20.dp)) {
             if (badge != null) {
-                Box(
-                    modifier = Modifier
-                        .align(Alignment.TopCenter)
-                        .offset(y = (-12).dp)
-                        .background(PrimaryBlue, RoundedCornerShape(50))
-                        .padding(horizontal = 12.dp, vertical = 4.dp)
+                Surface(
+                    modifier = Modifier.align(Alignment.TopEnd),
+                    shape = RoundedCornerShape(6.dp),
+                    color = PrimaryBlue
                 ) {
                     Text(
                         text = badge,
                         fontSize = 10.sp,
                         fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.background,
-                        letterSpacing = 1.sp
+                        color = Color.White,
+                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                     )
                 }
             }
             
-            Column(
-                modifier = Modifier.padding(20.dp)
-            ) {
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    Column {
-                        Text(
-                            text = title,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = Color.White
-                        )
-                        if (originalPrice != null) {
-                            Text(
-                                text = originalPrice,
-                                fontSize = 12.sp,
-                                color = Color.Gray,
-                                textDecoration = TextDecoration.LineThrough
-                            )
-                        }
-                    }
-                    
-                    // Radio button
-                    Box(
-                        modifier = Modifier
-                            .size(20.dp)
-                            .clip(CircleShape)
-                            .background(
-                                if (selected) PrimaryBlue else Color.Transparent
-                            )
-                            .then(
-                                if (!selected) Modifier.then(
-                                    Modifier.background(
-                                        color = Color.Transparent,
-                                        shape = CircleShape
-                                    )
-                                ) else Modifier
-                            ),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        if (selected) {
-                            Icon(
-                                imageVector = Icons.Filled.Check,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.background,
-                                modifier = Modifier.size(14.dp)
-                            )
-                        }
-                    }
-                }
+            Column {
+                Text(
+                    text = title,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = if (selected) PrimaryBlue else MaterialTheme.colorScheme.onSurface
+                )
                 
-                Spacer(modifier = Modifier.height(12.dp))
+                Spacer(modifier = Modifier.height(4.dp))
                 
-                Row(
-                    verticalAlignment = Alignment.Bottom
-                ) {
+                Row(verticalAlignment = Alignment.Bottom) {
                     Text(
                         text = price,
-                        fontSize = 32.sp,
+                        fontSize = 28.sp,
                         fontWeight = FontWeight.Black,
-                        color = Color.White
+                        color = MaterialTheme.colorScheme.onBackground
                     )
-                    Text(
-                        text = period,
-                        fontSize = 14.sp,
-                        color = Color.Gray,
-                        modifier = Modifier.padding(bottom = 4.dp)
-                    )
-                }
-                
-                Spacer(modifier = Modifier.height(16.dp))
-                Divider(color = Color(0xFF2a402a))
-                Spacer(modifier = Modifier.height(16.dp))
-                
-                // Features
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    features.forEach { feature ->
-                        Row(
-                            horizontalArrangement = Arrangement.spacedBy(8.dp),
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.Check,
-                                contentDescription = null,
-                                tint = if (selected) PrimaryBlue else Color.Gray,
-                                modifier = Modifier.size(16.dp)
-                            )
-                            Text(
-                                text = feature,
-                                fontSize = 12.sp,
-                                color = Color.White
-                            )
-                        }
+                    if (period.isNotEmpty()) {
+                        Text(
+                            text = period,
+                            fontSize = 14.sp,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                            modifier = Modifier.padding(bottom = 4.dp, start = 2.dp)
+                        )
                     }
                 }
             }
         }
     }
+}
+
+@Composable
+fun LegalText(
+    text: String,
+    onClick: () -> Unit
+) {
+    Text(
+        text = text,
+        fontSize = 11.sp,
+        color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+        textDecoration = TextDecoration.Underline,
+        modifier = Modifier.clickable { onClick() }
+    )
 }
