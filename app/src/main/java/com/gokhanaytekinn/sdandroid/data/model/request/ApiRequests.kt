@@ -8,7 +8,8 @@ data class LoginRequest(
 data class RegisterRequest(
     val email: String,
     val password: String,
-    val name: String? = null
+    val name: String? = null,
+    val language: String? = "tr"
 )
 
 data class SubscriptionRequest(

@@ -43,9 +43,9 @@ class AuthRepository(context: Context) {
         }
     }
     
-    suspend fun register(email: String, password: String, name: String? = null): Result<AuthResponse> {
+    suspend fun register(email: String, password: String, name: String? = null, language: String? = "tr"): Result<AuthResponse> {
         return try {
-            val response = apiService.register(RegisterRequest(email, password, name))
+            val response = apiService.register(RegisterRequest(email, password, name, language))
             if (response.isSuccessful && response.body() != null) {
                 val authResponse = response.body()!!
                 // Save token if registration successful

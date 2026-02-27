@@ -7,6 +7,7 @@ import com.gokhanaytekinn.sdandroid.data.repository.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 data class AuthState(
@@ -53,6 +54,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                         notificationsEnabled = user?.notificationsEnabled ?: true,
                         language = user?.language ?: "tr"
                     )
+                    // Sync local language to backend if they differ
+                    syncLanguageIfNeeded()
                 } else {
                     _authState.value = _authState.value.copy(
                         isLoading = false,
@@ -78,8 +81,10 @@ class AuthViewModel(context: Context) : ViewModel() {
                     isAuthenticated = true,
                     userName = authResponse?.user?.name,
                     userEmail = authResponse?.user?.email,
-                    notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true
+                    notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true,
+                    language = authResponse?.user?.language ?: "tr"
                 )
+                syncLanguageIfNeeded()
                 onSuccess()
             } else {
                 _authState.value = _authState.value.copy(
@@ -96,7 +101,8 @@ class AuthViewModel(context: Context) : ViewModel() {
         viewModelScope.launch {
             _authState.value = _authState.value.copy(isLoading = true, error = null)
             
-            val result = repository.register(email, password, name)
+            val localLanguage = languagePreferences.selectedLanguage.first()
+            val result = repository.register(email, password, name, localLanguage)
             
             if (result.isSuccess) {
                 val authResponse = result.getOrNull()
@@ -105,7 +111,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                     isAuthenticated = true,
                     userName = authResponse?.user?.name,
                     userEmail = authResponse?.user?.email,
-                    notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true
+                    notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true,
+                    language = authResponse?.user?.language ?: localLanguage
                 )
                 onSuccess()
             } else {
@@ -205,6 +212,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                     notificationsEnabled = user?.notificationsEnabled ?: true,
                     language = user?.language ?: "tr"
                 )
+                syncLanguageIfNeeded()
                 onSuccess()
             } else {
                 _authState.value = _authState.value.copy(
@@ -279,7 +287,7 @@ class AuthViewModel(context: Context) : ViewModel() {
 
     fun updateNotificationSettings(enabled: Boolean) {
         viewModelScope.launch {
-            val language = com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences(appContext).selectedLanguage.kotlinx.coroutines.flow.first()
+            val language = com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences(appContext).selectedLanguage.first()
             repository.updateNotificationSettings(enabled, language)
             _authState.value = _authState.value.copy(notificationsEnabled = enabled, language = language)
         }
@@ -289,6 +297,18 @@ class AuthViewModel(context: Context) : ViewModel() {
         viewModelScope.launch {
             repository.logout()
             _authState.value = AuthState()
+        }
+    }
+
+    private fun syncLanguageIfNeeded() {
+        viewModelScope.launch {
+            val localLanguage = languagePreferences.selectedLanguage.first()
+            val backendLanguage = _authState.value.language
+            
+            if (localLanguage != backendLanguage) {
+                repository.updateNotificationSettings(_authState.value.notificationsEnabled, localLanguage)
+                _authState.value = _authState.value.copy(language = localLanguage)
+            }
         }
     }
 }
