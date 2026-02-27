@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         createNotificationChannel()
         checkNotificationPermission()
         getAndSendFCMToken()
+        scheduleReminderWorker()
         
         val themePreferences = ThemePreferences(this)
         val onboardingPreferences = com.gokhanaytekinn.sdandroid.data.preferences.OnboardingPreferences(this)
@@ -139,5 +140,28 @@ class MainActivity : AppCompatActivity() {
                 Log.d("FCM", "User not logged in, skipping token update")
             }
         }
+    }
+
+    private fun scheduleReminderWorker() {
+        val workRequest = androidx.work.PeriodicWorkRequestBuilder<com.gokhanaytekinn.sdandroid.service.ReminderWorker>(
+            1, java.util.concurrent.TimeUnit.DAYS
+        ).setInitialDelay(calculateInitialDelay(), java.util.concurrent.TimeUnit.MILLISECONDS)
+            .addTag("reminder_worker")
+            .build()
+
+        androidx.work.WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            "subscription_reminders",
+            androidx.work.ExistingPeriodicWorkPolicy.KEEP,
+            workRequest
+        )
+    }
+
+    private fun calculateInitialDelay(): Long {
+        val now = java.time.LocalDateTime.now()
+        var scheduledTime = now.withHour(12).withMinute(20).withSecond(0).withNano(0)
+        if (now.isAfter(scheduledTime)) {
+            scheduledTime = scheduledTime.plusDays(1)
+        }
+        return java.time.Duration.between(now, scheduledTime).toMillis()
     }
 }

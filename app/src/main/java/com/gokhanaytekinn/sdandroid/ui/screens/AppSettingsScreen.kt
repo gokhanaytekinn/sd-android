@@ -56,9 +56,10 @@ fun AppSettingsScreen(
     val themePreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.ThemePreferences(context) }
     val languagePreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences(context) }
     val currencyPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences(context) }
+    val notificationPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.NotificationPreferences(context) }
     
     // States
-    var notificationsEnabled by remember { mutableStateOf(true) }
+    val notificationsEnabled by notificationPreferences.notificationsEnabled.collectAsState(initial = true)
     val darkModeEnabled by themePreferences.isDarkMode.collectAsState(initial = true)
     
     // Language state - read from saved preferences (not system locale)
@@ -345,7 +346,11 @@ fun AppSettingsScreen(
                             icon = Icons.Filled.Notifications,
                             title = stringResource(R.string.notifications),
                             checked = notificationsEnabled,
-                            onCheckedChange = { notificationsEnabled = it }
+                            onCheckedChange = { 
+                                scope.launch {
+                                    notificationPreferences.setNotificationsEnabled(it)
+                                }
+                            }
                         )
                         
                         Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
