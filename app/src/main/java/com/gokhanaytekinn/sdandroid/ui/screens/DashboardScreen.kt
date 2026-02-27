@@ -459,23 +459,32 @@ fun SubscriptionListItem(
                                  subscription.category == "Other" || 
                                  subscription.category == "Diğer"
                     
-                    if (!isOther) {
-                        Spacer(modifier = Modifier.height(4.dp))
+                    val localizedBillingCycle = when (subscription.billingCycle) {
+                        com.gokhanaytekinn.sdandroid.data.model.BillingCycle.MONTHLY -> stringResource(R.string.monthly)
+                        com.gokhanaytekinn.sdandroid.data.model.BillingCycle.YEARLY -> stringResource(R.string.yearly)
+                        else -> subscription.billingCycle.name
+                    }
+                    
+                    Spacer(modifier = Modifier.height(4.dp))
+                    
+                    val displayText = if (isOther) {
+                        localizedBillingCycle
+                    } else {
                         val localizedCategory = when (subscription.category) {
                             "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
                             "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
                             "Müzik", "Music" -> stringResource(R.string.category_music)
                             else -> subscription.category
                         }
-                        if (localizedCategory != null) {
-                            Text(
-                                text = localizedCategory,
-                                fontSize = 12.sp,
-                                color = Color(0xFF9CA3AF),
-                                fontWeight = FontWeight.Medium
-                            )
-                        }
+                        "$localizedCategory • $localizedBillingCycle"
                     }
+                    
+                    Text(
+                        text = displayText,
+                        fontSize = 12.sp,
+                        color = Color(0xFF9CA3AF),
+                        fontWeight = FontWeight.Medium
+                    )
                 }
             }
             

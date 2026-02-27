@@ -61,7 +61,11 @@ fun SubscriptionCard(
             }
         }
         
-        if (subscription.category != null) {
+        val isOther = subscription.category == null || 
+                     subscription.category == "Other" || 
+                     subscription.category == "Diğer"
+        
+        if (!isOther) {
             Spacer(modifier = Modifier.height(8.dp))
             Box(
                 modifier = Modifier
@@ -72,7 +76,7 @@ fun SubscriptionCard(
                     .padding(horizontal = 12.dp, vertical = 4.dp)
             ) {
                 Text(
-                    text = subscription.category,
+                    text = subscription.category!!,
                     fontSize = 12.sp,
                     color = Color(0xFF2196F3),
                     fontWeight = FontWeight.Medium

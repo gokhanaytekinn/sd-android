@@ -519,20 +519,31 @@ fun SubscriptionListItemDetailed(
                             color = MaterialTheme.colorScheme.onSurface
                         )
                         Spacer(modifier = Modifier.height(4.dp))
-                        val localizedCategory = when (subscription.category) {
-                            "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
-                            "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
-                            "Müzik", "Music" -> stringResource(R.string.category_music)
-                            else -> subscription.category ?: stringResource(R.string.category_other)
-                        }
+                        val isOther = subscription.category == null || 
+                                     subscription.category == "Other" || 
+                                     subscription.category == "Diğer"
+                        
                         val localizedBillingCycle = when (subscription.billingCycle) {
                             com.gokhanaytekinn.sdandroid.data.model.BillingCycle.MONTHLY -> stringResource(R.string.monthly)
                             com.gokhanaytekinn.sdandroid.data.model.BillingCycle.YEARLY -> stringResource(R.string.yearly)
                             else -> subscription.billingCycle.name
                         }
+                        
                         Row {
+                            val text = if (isOther) {
+                                localizedBillingCycle
+                            } else {
+                                val localizedCategory = when (subscription.category) {
+                                    "Spor & Sağlık", "Sports & Health" -> stringResource(R.string.category_sports)
+                                    "Eğlence", "Entertainment" -> stringResource(R.string.category_entertainment)
+                                    "Müzik", "Music" -> stringResource(R.string.category_music)
+                                    else -> subscription.category
+                                }
+                                "$localizedCategory • $localizedBillingCycle"
+                            }
+                            
                             Text(
-                                text = "$localizedCategory • $localizedBillingCycle",
+                                text = text,
                                 fontSize = 14.sp,
                                 color = Color(0xFF9CA3AF)
                             )
