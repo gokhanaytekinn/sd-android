@@ -35,7 +35,7 @@ import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
 fun AppSettingsScreen(
     onBackClick: () -> Unit = {},
     onProfileClick: () -> Unit = {},
-    onUpgradeClick: () -> Unit = {},
+    onUpgradeClick: (String?) -> Unit = {},
     onCurrencyClick: () -> Unit = {},
     onHelpClick: () -> Unit = {},
     onPrivacyClick: () -> Unit = {},
@@ -196,7 +196,7 @@ fun AppSettingsScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .clickable(onClick = onUpgradeClick)
+                                .clickable(onClick = { onUpgradeClick(authState.tier) })
                                 .padding(16.dp),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
@@ -236,7 +236,7 @@ fun AppSettingsScreen(
                                     )
                             ) {
                                 Text(
-                                    text = stringResource(R.string.free_plan),
+                                    text = if (authState.tier == "PREMIUM") stringResource(R.string.premium_plan) else stringResource(R.string.free_plan),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     color = PrimaryBlue,

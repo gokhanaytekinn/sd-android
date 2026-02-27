@@ -234,6 +234,17 @@
     <string name="upgrade_to_premium_btn">Upgrade to Premium</string>
     <string name="plans_header">PLANS</string>
     
+    <string name="feature_advanced_analytics_free_desc">Basic reports</string>
+    <string name="feature_advanced_analytics_title">Advanced Analytics</string>
+    <string name="feature_auto_capture_title">Automatic Capture</string>
+    <string name="feature_auto_capture_free_desc">Limited scanning</string>
+    <string name="feature_unlimited_tracking_title">Unlimited Tracking</string>
+    <string name="feature_unlimited_tracking_free_desc">Maximum 5 subscriptions</string>
+    <string name="feature_unlimited_tracking_premium_desc">Add as many as you want</string>
+    <string name="premium_plan">Premium Plan</string>
+    <string name="feature_auto_capture_premium_desc">Finds hidden payments instantly</string>
+    <string name="feature_advanced_analytics_premium_desc">Detailed spending reports</string>
+    
     <!-- Categories -->
     <string name="category_entertainment">Entertainment</string>
     <string name="category_music">Music</string>

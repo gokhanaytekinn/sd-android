@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
@@ -61,7 +61,7 @@
     
     <!-- Premium -->
     <string name="upgrade_to_premium">Premiumga oʻting</string>
-    <string name="premium_desc">Barcha obunalaringizni avtomatik skanerlang va %%30 koʻproq tejang.</string>
+    <string name="premium_desc">Barcha obunalaringizni avtomatik skanerlang va 30%% koʻproq tejang.</string>
     <string name="upgrade">Yangilash</string>
     
     <!-- Search -->
@@ -204,7 +204,7 @@
     <string name="choose_plan">Rejangizni tanlang</string>
     <string name="monthly_plan">Oylik reja</string>
     <string name="yearly_plan">Yillik reja</string>
-    <string name="save_percent">%%d tejash</string>
+    <string name="save_percent">%d%% tejash</string>
     <string name="per_month">/oy</string>
     <string name="per_year">/yil</string>
     <string name="billed_monthly">Har oy toʻlanadi</string>
@@ -353,4 +353,52 @@
     
     <string name="privacy_title_6">6. Aloqa</string>
     <string name="privacy_content_6">Savollar boʻyicha bizga yozishingiz mumkin: gokhanaytekinn@yandex.com</string>
+    <string name="cancel_anytime">Istalgan vaqtda bekor qiling</string>
+    <string name="widget_login_required">Kirish</string>
+    <string name="plan_monthly_premium">Oylik Premium</string>
+    <string name="premium_hero_subtitle">Obunalaringizni avtomatik boshqaring va tejang</string>
+    <string name="how_to_add_desc">Yangi xizmat qoshish uchun obunalar royxatidagi + tugmasini bosing.</string>
+    <string name="popular_subscriptions">Mashhur obunalar</string>
+    <string name="widget_upcoming_title">Keyingi tolov</string>
+    <string name="automatic_tracking_desc">Takroriy obunalarni avtomatik topish uchun tranzaksiyalaringizni xavfsiz skanerlayiz.</string>
+    <string name="delete_subscription">Obunani ochirish</string>
+    <string name="version">Versiya %s</string>
+    <string name="account_settings">Hisob sozlamalari</string>
+    <string name="cancel_anytime_desc">Obunalarni bevosita ilova orqali boshqarish mumkin.</string>
+    <string name="start_date">Boshlanish sanasi</string>
+    <string name="widget_upcoming_desc">%1$s uchun %2$s</string>
+    <string name="premium_hero_title">Premiumga o\'ting</string>
+    <string name="date_placeholder">kk/oo/yyyy</string>
+    <string name="already_have_account">Hisobingiz bormi?</string>
+    <string name="save_changes">Ozgarishlarni saqlash</string>
+    <string name="current_plan">Joriy reja</string>
+    <string name="settings_title">Sozlamalar</string>
+    <string name="language_indonesian">Indonez tili</string>
+    <string name="widget_expensive_title">Eng qimmat obuna</string>
+    <string name="secure_payment_footer">Xavfsiz tolov. Istalgan vaqtda bekor qiling.</string>
+    <string name="automatic_tracking">Avtomatik kuzatuv</string>
+    <string name="how_to_add">Obunani qanday qoshish mumkin?</string>
+    <string name="category_technology">Texnologiya</string>
+    <string name="widget_days_left">%d kun qoldi</string>
+    <string name="plan_free">Bepul</string>
+    <string name="name_placeholder">Ismingiz</string>
+    <string name="cancel_subscription">Obunani bekor qilish</string>
+    <string name="upgrade_to_premium_btn">Premiumga o\'ting</string>
+    <string name="most_popular">Eng mashhur</string>
+    <string name="plans_header">Rejangizni tanlang</string>
+    <string name="widget_expensive_desc">%1$s - %2$s/oy</string>
+    <string name="plan_yearly_premium">Yillik Premium</string>
+    <string name="widget_no_data">Obuna yoq</string>
+    <string name="widget_today">Bugun</string>
+    
+    <string name="feature_advanced_analytics_free_desc">Asosiy hisobotlar</string>
+    <string name="feature_advanced_analytics_title">Kengaytirilgan tahlil</string>
+    <string name="feature_auto_capture_title">Avtomatik aniqlash</string>
+    <string name="feature_auto_capture_free_desc">Cheklangan skanerlash</string>
+    <string name="feature_unlimited_tracking_title">Cheksiz kuzatuv</string>
+    <string name="feature_unlimited_tracking_free_desc">Maksimum 5 obuna</string>
+    <string name="feature_unlimited_tracking_premium_desc">Istalgancha qo\'shing</string>
+    <string name="premium_plan">Premium reja</string>
+    <string name="feature_auto_capture_premium_desc">Yashirin to\'lovlarni darhol topadi</string>
+    <string name="feature_advanced_analytics_premium_desc">Batafsil xarajatlar hisoboti</string>
 </resources>

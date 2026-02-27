@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Name -->
     <string name="app_name">Suivi d\'Abonnement</string>
@@ -338,4 +338,65 @@
     
     <string name="privacy_title_6">6. Contact</string>
     <string name="privacy_content_6">Pour des questions concernant notre politique de confidentialité, vous pouvez nous contacter à :\ngokhanaytekinn@yandex.com</string>
+    <string name="current_plan">Plan actuel</string>
+    <string name="widget_no_data">Aucun abonnement</string>
+    <string name="an_error_occurred">Une erreur est survenue</string>
+    <string name="widget_today">Aujourd\'hui</string>
+    <string name="plan_free">Gratuit</string>
+    <string name="automatic_tracking_desc">Nous analysons vos transactions pour trouver automatiquement les abonnements recurrents.</string>
+    <string name="premium_hero_title">Passer a Premium</string>
+    <string name="plan_yearly_premium">Premium Annuel</string>
+    <string name="secure_payment_footer">Paiement securise. Annulez quand vous voulez.</string>
+    <string name="category_technology">Technologie</string>
+    <string name="widget_days_left">%d jours restants</string>
+    <string name="widget_upcoming_desc">%1$s pour %2$s</string>
+    <string name="delete_subscription">Supprimer l\'abonnement</string>
+    <string name="already_have_account">Vous avez deja un compte ?</string>
+    <string name="widget_expensive_title">Abonnement le plus cher</string>
+    <string name="popular_subscriptions">Abonnements populaires</string>
+    <string name="edit_plan">Modifier le plan</string>
+    <string name="automatic_tracking">Suivi automatique</string>
+    <string name="how_to_add_desc">Appuyez sur le bouton + dans la liste des abonnements pour ajouter un nouveau service.</string>
+    <string name="start_date">Date de debut</string>
+    <string name="cancel_anytime">Annuler n\'importe quand</string>
+    <string name="plans_header">Choisissez votre plan</string>
+    <string name="name_placeholder">Votre nom</string>
+    <string name="days_remaining">%d jours restants</string>
+    <string name="turn_off_reminder">Desactiver le rappel</string>
+    <string name="widget_expensive_desc">%1$s - %2$s/mois</string>
+    <string name="plan_monthly_premium">Premium Mensuel</string>
+    <string name="widget_login_required">Connectez-vous</string>
+    <string name="premium_hero_subtitle">Gerez automatiquement vos abonnements et economisez plus</string>
+    <string name="save_changes">Enregistrer les modifications</string>
+    <string name="subscription_id_not_found">ID d\'abonnement introuvable</string>
+    <string name="most_popular">Le plus populaire</string>
+    <string name="reactivate_subscription">Réactiver l\'abonnement</string>
+    <string name="cancel_subscription">Annuler l\'abonnement</string>
+    <string name="set_reminder">Définir un rappel</string>
+    <string name="account_settings">Parametres du compte</string>
+    <string name="settings_title">Parametres</string>
+    <string name="payment_history">Historique des paiements</string>
+    <string name="how_to_add">Comment ajouter un abonnement ?</string>
+    <string name="start_date_label">Date de debut</string>
+    <string name="cancel_subscription_btn">Annuler l\'abonnement</string>
+    <string name="upgrade_to_premium_btn">Passer à Premium</string>
+    <string name="cancel_anytime_desc">Vous pouvez suivre et gérer les abonnements dans les détails de l\'application.</string>
+    <string name="version">Version %s</string>
+    <string name="total_spent">Total depense</string>
+    <string name="widget_upcoming_title">Prochain paiement</string>
+    <string name="go_back">Retour</string>
+    <string name="no_subscriptions_yet">Aucun abonnement ajouté pour l\'instant</string>
+    <string name="language_german">Allemand</string>
+    <string name="language_indonesian">Indonesien</string>
+    
+    <string name="feature_advanced_analytics_free_desc">Rapports de base</string>
+    <string name="feature_advanced_analytics_premium_desc">Rapports de dépenses détaillés</string>
+    <string name="feature_advanced_analytics_title">Analyses avancées</string>
+    <string name="feature_auto_capture_free_desc">Numérisation limitée</string>
+    <string name="feature_auto_capture_premium_desc">Trouve les paiements cachés instantanément</string>
+    <string name="feature_auto_capture_title">Capture automatique</string>
+    <string name="feature_unlimited_tracking_free_desc">Maximum 5 abonnements</string>
+    <string name="feature_unlimited_tracking_premium_desc">Ajoutez-en autant que vous voulez</string>
+    <string name="feature_unlimited_tracking_title">Suivi illimité</string>
+    <string name="premium_plan">Plan Premium</string>
 </resources>

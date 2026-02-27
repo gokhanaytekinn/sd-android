@@ -33,24 +33,25 @@ enum class SubscriptionPlanType {
 
 @Composable
 fun PremiumUpgradeScreen(
+    initialPlan: SubscriptionPlanType = SubscriptionPlanType.FREE,
     onCloseClick: () -> Unit = {},
     onUpgradeClick: (SubscriptionPlanType) -> Unit = {}
 ) {
-    var selectedPlan by remember { mutableStateOf(SubscriptionPlanType.YEARLY) }
+    var selectedPlan by remember { mutableStateOf(initialPlan) }
     var showTermsDialog by remember { mutableStateOf(false) }
     var showPrivacyDialog by remember { mutableStateOf(false) }
     
     val features = remember(selectedPlan) {
         when (selectedPlan) {
             SubscriptionPlanType.FREE -> listOf(
-                FeatureData(Icons.Filled.TrackChanges, "Otomatik Yakalama", "Kısıtlı tarama", false),
-                FeatureData(Icons.Filled.AllInclusive, "Sınırsız Takip", "Maksimum 5 abonelik", false),
-                FeatureData(Icons.Filled.Insights, "Gelişmiş Analiz", "Temel raporlar", false)
+                FeatureData(Icons.Filled.TrackChanges, "feature_auto_capture_title", "feature_auto_capture_free_desc", false),
+                FeatureData(Icons.Filled.AllInclusive, "feature_unlimited_tracking_title", "feature_unlimited_tracking_free_desc", false),
+                FeatureData(Icons.Filled.Insights, "feature_advanced_analytics_title", "feature_advanced_analytics_free_desc", false)
             )
             else -> listOf(
-                FeatureData(Icons.Filled.TrackChanges, "Otomatik Yakalama", "Gizli ödemeleri anında bulur", true),
-                FeatureData(Icons.Filled.AllInclusive, "Sınırsız Takip", "İstediğin kadar abonelik ekle", true),
-                FeatureData(Icons.Filled.Insights, "Gelişmiş Analiz", "Detaylı harcama raporları", true)
+                FeatureData(Icons.Filled.TrackChanges, "feature_auto_capture_title", "feature_auto_capture_premium_desc", true),
+                FeatureData(Icons.Filled.AllInclusive, "feature_unlimited_tracking_title", "feature_unlimited_tracking_premium_desc", true),
+                FeatureData(Icons.Filled.Insights, "feature_advanced_analytics_title", "feature_advanced_analytics_premium_desc", true)
             )
         }
     }

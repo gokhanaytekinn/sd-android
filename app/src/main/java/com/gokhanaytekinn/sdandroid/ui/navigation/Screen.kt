@@ -9,7 +9,11 @@ sealed class Screen(val route: String) {
     object UpcomingSubscriptions : Screen("upcoming_subscriptions")
     object SuspiciousPayments : Screen("suspicious_payments")
     object PremiumAnalytics : Screen("premium_analytics")
-    object PremiumUpgrade : Screen("premium_upgrade")
+    object PremiumUpgrade : Screen("premium_upgrade?plan={plan}") {
+        fun createRoute(plan: String? = "FREE"): String {
+            return "premium_upgrade?plan=$plan"
+        }
+    }
     object SubscriptionDetails : Screen("subscription_details/{id}") {
         fun createRoute(id: String) = "subscription_details/$id"
     }

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
@@ -204,7 +204,7 @@
     <string name="choose_plan">План тандаңыз</string>
     <string name="monthly_plan">Айлык план</string>
     <string name="yearly_plan">Жылдык план</string>
-    <string name="save_percent">%%d үнөмдөө</string>
+    <string name="save_percent">%d%% үнөмдөө</string>
     <string name="per_month">/ай</string>
     <string name="per_year">/жыл</string>
     <string name="billed_monthly">Айына эсептелет</string>
@@ -353,5 +353,53 @@
     <string name="billing_monthly_label">Айына</string>
     <string name="billing_yearly_label">Жылына</string>
     <string name="billing_weekly_label">Аптасына</string>
+    <string name="cancel_anytime">Kaalagan ubakta zhokko chygarynyz</string>
+    <string name="widget_login_required">Kiruu</string>
+    <string name="plan_monthly_premium">Aylyk Premium</string>
+    <string name="premium_hero_subtitle">Jazylmalarynyzdy avtomattyk bashkarynyz</string>
+    <string name="how_to_add_desc">Zhana kyzmatty koshu uchun jazylmalar tiizimindegi + basky basuu.</string>
+    <string name="popular_subscriptions">Popularduu jazylmalar</string>
+    <string name="widget_upcoming_title">Kiinki tolem</string>
+    <string name="automatic_tracking_desc">Kaytalangan jazylmalardy avtomattyk tabu uchun tranzaktsiyalarynyzdy skanerleeibiz.</string>
+    <string name="delete_subscription">Jazylmany zhok kyl</string>
+    <string name="version">Versiya %s</string>
+    <string name="account_settings">Akkount zhondooloru</string>
+    <string name="cancel_anytime_desc">Jazylmalardy tuzdun-tuz koldonmo choojayyndan boshkarasyz.</string>
+    <string name="start_date">Bashtaluu datasy</string>
+    <string name="widget_upcoming_desc">%1$s үчүн %2$s</string>
+    <string name="premium_hero_title">Premiumga otuu</string>
+    <string name="date_placeholder">kk/aa/zhzhzhzh</string>
+    <string name="already_have_account">Akkountuunuz barby?</string>
+    <string name="save_changes">Ozgoruulerdu sakta</string>
+    <string name="current_plan">Uchurdagy plan</string>
+    <string name="settings_title">Zhondoolor</string>
+    <string name="language_indonesian">Indonez tili</string>
+    <string name="widget_expensive_title">En kymba jazyluu</string>
+    <string name="secure_payment_footer">Koopsuz tolem. Kaalagan ubakta zhokko chygarynyz.</string>
+    <string name="automatic_tracking">Avtomattyk kozomoldoo</string>
+    <string name="how_to_add">Jazylmany kantip koshso bolot?</string>
+    <string name="category_technology">Tekhnologiya</string>
+    <string name="widget_days_left">%d kun kaldy</string>
+    <string name="plan_free">Beker</string>
+    <string name="name_placeholder">Atynyz</string>
+    <string name="cancel_subscription">Jazylmaadan bash tart</string>
+    <string name="upgrade_to_premium_btn">Premiumga otuu</string>
+    <string name="most_popular">En popularduu</string>
+    <string name="plans_header">Planynyzy tandanyz</string>
+    <string name="widget_expensive_desc">%1$s - %2$s/ay</string>
+    <string name="plan_yearly_premium">Zhyldyk Premium</string>
+    <string name="widget_no_data">Jazyluu zhok</string>
+    <string name="widget_today">Bugundun</string>
+    
+    <string name="feature_advanced_analytics_free_desc">Негизги отчеттор</string>
+    <string name="feature_advanced_analytics_title">Өркүндөтүлгөн аналитика</string>
+    <string name="feature_auto_capture_title">Автоматтык түрдө аныктоо</string>
+    <string name="feature_auto_capture_free_desc">Чектелген сканерлөө</string>
+    <string name="feature_unlimited_tracking_title">Чексиз көзөмөлдөө</string>
+    <string name="feature_unlimited_tracking_free_desc">Максимум 5 жазылуу</string>
+    <string name="feature_unlimited_tracking_premium_desc">Каалаганыңызча кошуңуз</string>
+    <string name="premium_plan">Premium план</string>
+    <string name="feature_auto_capture_premium_desc">Жашыруун төлөмдөрдү дароо табат</string>
+    <string name="feature_advanced_analytics_premium_desc">Толық чыгымдар отчету</string>
 </resources>
 

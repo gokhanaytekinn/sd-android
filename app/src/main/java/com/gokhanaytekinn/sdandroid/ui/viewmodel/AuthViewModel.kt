@@ -23,7 +23,8 @@ data class AuthState(
     val notificationsEnabled: Boolean = true,
     val language: String? = "tr",
     val resetEmail: String? = null,
-    val isResetCodeVerified: Boolean = false
+    val isResetCodeVerified: Boolean = false,
+    val tier: String? = "FREE"
 )
 
 class AuthViewModel(context: Context) : ViewModel() {
@@ -52,7 +53,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                         userName = user?.name,
                         userEmail = user?.email,
                         notificationsEnabled = user?.notificationsEnabled ?: true,
-                        language = user?.language ?: "tr"
+                        language = user?.language ?: "tr",
+                        tier = user?.tier ?: "FREE"
                     )
                     // Sync local language to backend if they differ
                     syncLanguageIfNeeded()
@@ -82,7 +84,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                     userName = authResponse?.user?.name,
                     userEmail = authResponse?.user?.email,
                     notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true,
-                    language = authResponse?.user?.language ?: "tr"
+                    language = authResponse?.user?.language ?: "tr",
+                    tier = authResponse?.user?.tier ?: "FREE"
                 )
                 syncLanguageIfNeeded()
                 onSuccess()
@@ -112,7 +115,8 @@ class AuthViewModel(context: Context) : ViewModel() {
                     userName = authResponse?.user?.name,
                     userEmail = authResponse?.user?.email,
                     notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true,
-                    language = authResponse?.user?.language ?: localLanguage
+                    language = authResponse?.user?.language ?: localLanguage,
+                    tier = authResponse?.user?.tier ?: "FREE"
                 )
                 onSuccess()
             } else {

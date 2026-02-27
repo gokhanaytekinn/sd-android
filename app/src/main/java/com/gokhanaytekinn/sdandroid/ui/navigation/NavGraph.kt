@@ -293,8 +293,21 @@ fun NavGraph(
                 )
             }
             
-            composable(Screen.PremiumUpgrade.route) {
+            composable(
+                route = Screen.PremiumUpgrade.route,
+                arguments = listOf(
+                    androidx.navigation.navArgument("plan") {
+                        type = androidx.navigation.NavType.StringType
+                        defaultValue = "FREE"
+                        nullable = true
+                    }
+                )
+            ) { backStackEntry ->
+                val planStr = backStackEntry.arguments?.getString("plan") ?: "FREE"
+                val initialPlan = if (planStr == "PREMIUM") SubscriptionPlanType.MONTHLY else SubscriptionPlanType.FREE
+                
                 PremiumUpgradeScreen(
+                    initialPlan = initialPlan,
                     onCloseClick = {
                         navController.popBackStack()
                     },
@@ -341,8 +354,8 @@ fun NavGraph(
                     onBackClick = {
                         navController.popBackStack()
                     },
-                    onUpgradeClick = {
-                        navController.navigate(Screen.PremiumUpgrade.route)
+                    onUpgradeClick = { tier ->
+                        navController.navigate(Screen.PremiumUpgrade.createRoute(tier))
                     },
                     onHelpClick = {
                         navController.navigate(Screen.HelpCenter.route)

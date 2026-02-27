@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
@@ -215,7 +215,7 @@
     <string name="choose_plan">Planını Seç</string>
     <string name="monthly_plan">Aylık Plan</string>
     <string name="yearly_plan">Yıllık Plan</string>
-    <string name="save_percent">%%d Tasarruf</string>
+    <string name="save_percent">%d%% Tasarruf</string>
     <string name="per_month">/ay</string>
     <string name="per_year">/yıl</string>
     <string name="billed_monthly">Aylık faturalandırılır</string>
@@ -393,4 +393,15 @@
     <string name="widget_days_left">%d gün kaldı</string>
     <string name="widget_today">Bugün Ödenecek</string>
 
+    <string name="feature_advanced_analytics_free_desc">Temel raporlar</string>
+    <string name="feature_advanced_analytics_title">Gelismis Analiz</string>
+    <string name="feature_auto_capture_title">Otomatik Yakalama</string>
+    <string name="feature_auto_capture_free_desc">Kisitli tarama</string>
+    <string name="feature_unlimited_tracking_title">Sinirsiz Takip</string>
+    <string name="feature_unlimited_tracking_free_desc">Maksimum 5 abonelik</string>
+    <string name="feature_unlimited_tracking_premium_desc">Istedigin kadar abonelik ekle</string>
+    <string name="premium_plan">Premium Plan</string>
+    <string name="feature_auto_capture_premium_desc">Gizli odemeleri aninda bulur</string>
+    <string name="feature_advanced_analytics_premium_desc">Detayli harcama raporlari</string>
+    <string name="date_placeholder">gg/aa/yyyy</string>
 </resources>
