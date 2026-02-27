@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
+import com.gokhanaytekinn.sdandroid.data.model.BillingCycle
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 import com.gokhanaytekinn.sdandroid.util.DateUtils
@@ -49,6 +50,7 @@ fun SubscriptionCard(
         category = subscription.category ?: "Other",
         cost = subscription.cost,
         currency = currency,
+        billingCycle = subscription.billingCycle,
         icon = subscription.icon,
         nextBillingDate = subscription.nextBillingDate,
         showDate = showDate,
@@ -65,6 +67,7 @@ fun SubscriptionCard(
     category: String,
     cost: Double,
     currency: String = "TRY",
+    billingCycle: BillingCycle = BillingCycle.MONTHLY,
     icon: String? = null,
     nextBillingDate: String? = null,
     showDate: Boolean = false,
@@ -125,10 +128,17 @@ fun SubscriptionCard(
                             color = MaterialTheme.colorScheme.onBackground
                         )
                         
+                        val cycleText = when (billingCycle) {
+                            BillingCycle.MONTHLY -> stringResource(R.string.billing_monthly_label)
+                            BillingCycle.YEARLY -> stringResource(R.string.billing_yearly_label)
+                            BillingCycle.WEEKLY -> stringResource(R.string.billing_weekly_label)
+                            else -> stringResource(R.string.period_monthly)
+                        }
+
                         val categoryText = if (category == "Other" || category == "Diğer") {
-                             stringResource(R.string.period_monthly)
+                             cycleText
                         } else {
-                            "$category • ${stringResource(R.string.period_monthly)}"
+                            "$category • $cycleText"
                         }
                         
                         Text(
