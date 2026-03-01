@@ -12,7 +12,7 @@ android {
         applicationId = "com.gokhanaytekinn.sdandroid"
         minSdk = 26
         targetSdk = 35
-        versionCode = 5
+        versionCode = 6
         versionName = "1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -26,7 +26,7 @@ android {
             buildConfigField("String", "BASE_URL", "\"http://192.168.1.117:8080/\"")
         }
         release {
-            buildConfigField("String", "BASE_URL", "\"https://sd-backend-f2bd.onrender.com/\"")
+            buildConfigField("String", "BASE_URL", "\"http://187.124.16.135/\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
