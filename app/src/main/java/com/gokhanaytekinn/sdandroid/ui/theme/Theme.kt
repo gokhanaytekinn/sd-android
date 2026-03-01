@@ -6,9 +6,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.foundation.LocalIndication
+import androidx.compose.foundation.Indication
+import androidx.compose.foundation.IndicationInstance
+import androidx.compose.foundation.interaction.InteractionSource
+import androidx.compose.ui.graphics.drawscope.ContentDrawScope
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
@@ -67,9 +74,24 @@ fun SDAndroidTheme(
         }
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    CompositionLocalProvider(LocalIndication provides NoIndication) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content
+        )
+    }
+}
+
+private object NoIndication : Indication {
+    @Composable
+    override fun rememberUpdatedInstance(interactionSource: InteractionSource): IndicationInstance {
+        return NoIndicationInstance
+    }
+}
+
+private object NoIndicationInstance : IndicationInstance {
+    override fun ContentDrawScope.drawIndication() {
+        drawContent()
+    }
 }

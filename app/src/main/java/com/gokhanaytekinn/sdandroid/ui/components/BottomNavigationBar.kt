@@ -141,7 +141,11 @@ fun RowScope.BottomNavItem(
 ) {
     Column(
         modifier = modifier
-            .clickable(onClick = onClick)
+            .clickable(
+                interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            )
             .weight(1f),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(6.dp)

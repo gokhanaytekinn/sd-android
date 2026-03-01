@@ -462,7 +462,11 @@ fun NavGraph(
                     modifier = Modifier
                         .fillMaxSize()
                         .background(Color.Black.copy(alpha = 0.5f))
-                        .clickable { isMenuExpanded = false }
+                        .clickable(
+                            interactionSource = remember { androidx.compose.foundation.interaction.MutableInteractionSource() },
+                            indication = null,
+                            onClick = { isMenuExpanded = false }
+                        )
                 ) {
                     Column(
                         modifier = Modifier
