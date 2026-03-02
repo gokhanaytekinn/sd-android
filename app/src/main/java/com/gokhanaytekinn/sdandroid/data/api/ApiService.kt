@@ -141,4 +141,10 @@ interface ApiService {
 
     @POST("api/invitations/{id}/reject")
     suspend fun rejectInvitation(@Path("id") id: String): Response<Unit>
+
+    @DELETE("api/subscriptions/{id}/participants/{email}")
+    suspend fun deleteParticipant(
+        @Path("id") id: String,
+        @Path("email") email: String
+    ): Response<SubscriptionResponse>
 }

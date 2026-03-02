@@ -223,6 +223,20 @@ class SubscriptionRepository(context: Context? = null) {
             Result.failure(e)
         }
     }
+
+    suspend fun removeParticipant(subscriptionId: String, email: String): Result<Subscription> {
+        return try {
+            if (apiService == null) return Result.failure(Exception("API not available"))
+            val response = apiService.deleteParticipant(subscriptionId, email)
+            if (response.isSuccessful && response.body() != null) {
+                Result.success(response.body()!!.toSubscription())
+            } else {
+                Result.failure(Exception("Failed to remove participant"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
     
     // Helper function to convert API response to domain model
     private fun SubscriptionResponse.toSubscription(): Subscription {

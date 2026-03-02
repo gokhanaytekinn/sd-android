@@ -535,7 +535,23 @@ fun SubscriptionDetailsScreen(
                         Spacer(modifier = Modifier.height(16.dp))
                         
                         participants.forEach { participant ->
-                            ParticipantRow(participant, colorScheme)
+                            ParticipantRow(
+                                participant = participant,
+                                colorScheme = colorScheme,
+                                canRemove = sub.isOwner,
+                                onRemove = {
+                                    scope.launch {
+                                        isLoading = true
+                                        val result = repository.removeParticipant(sub.id, participant.email)
+                                        if (result.isSuccess) {
+                                            subscription = result.getOrNull()
+                                        } else {
+                                            error = result.exceptionOrNull()?.message
+                                        }
+                                        isLoading = false
+                                    }
+                                }
+                            )
                         }
                     }
                 }
@@ -668,7 +684,12 @@ private fun formatDateLocalized(context: android.content.Context, dateStr: Strin
 }
 
 @Composable
-fun ParticipantRow(participant: com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant, colorScheme: ColorScheme) {
+fun ParticipantRow(
+    participant: com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant,
+    colorScheme: ColorScheme,
+    canRemove: Boolean = false,
+    onRemove: () -> Unit = {}
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -678,7 +699,8 @@ fun ParticipantRow(participant: com.gokhanaytekinn.sdandroid.data.model.Invitati
     ) {
         Row(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier.weight(1f)
         ) {
             Box(
                 modifier = Modifier
@@ -693,24 +715,53 @@ fun ParticipantRow(participant: com.gokhanaytekinn.sdandroid.data.model.Invitati
                     tint = colorScheme.onSurfaceVariant
                 )
             }
-            Text(
-                text = participant.name ?: participant.email,
-                fontSize = 14.sp,
-                color = colorScheme.onBackground
+            Column {
+                Text(
+                    text = participant.name ?: participant.email,
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = colorScheme.onBackground
+                )
+                if (participant.name != null) {
+                    Text(
+                        text = participant.email,
+                        fontSize = 11.sp,
+                        color = colorScheme.onSurfaceVariant
+                    )
+                }
+            }
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            val (icon, tint) = when (participant.status) {
+                "ACCEPTED" -> Icons.Default.CheckCircle to Color(0xFF4CAF50)
+                "REJECTED" -> Icons.Default.Cancel to colorScheme.error
+                else -> Icons.Default.Pending to colorScheme.onSurfaceVariant
+            }
+
+            Icon(
+                imageVector = icon,
+                contentDescription = participant.status,
+                tint = tint,
+                modifier = Modifier.size(20.dp)
             )
-        }
 
-        val (icon, tint) = when (participant.status) {
-            "ACCEPTED" -> Icons.Default.CheckCircle to Color(0xFF4CAF50)
-            "REJECTED" -> Icons.Default.Cancel to colorScheme.error
-            else -> Icons.Default.Pending to colorScheme.onSurfaceVariant
+            if (canRemove) {
+                IconButton(
+                    onClick = onRemove,
+                    modifier = Modifier.size(32.dp)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.DeleteOutline,
+                        contentDescription = "Remove",
+                        tint = colorScheme.error,
+                        modifier = Modifier.size(20.dp)
+                    )
+                }
+            }
         }
-
-        Icon(
-            imageVector = icon,
-            contentDescription = participant.status,
-            tint = tint,
-            modifier = Modifier.size(20.dp)
-        )
     }
 }
