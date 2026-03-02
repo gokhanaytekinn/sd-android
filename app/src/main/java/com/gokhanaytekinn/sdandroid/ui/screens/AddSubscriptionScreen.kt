@@ -218,7 +218,7 @@ fun AddSubscriptionScreen(
                     }
                     
                     val categories = listOf(
-                        "category_streaming", "category_gaming", "category_software", "category_other"
+                        "category_streaming", "category_gaming", "category_software", "category_shopping", "category_other"
                     )
                     
                     // Select default category if none
@@ -277,13 +277,13 @@ fun AddSubscriptionScreen(
                 ) {
                     data class QuickShortcut(val name: String, val color: Color, val initial: String, val iconRes: Int?, val catKey: String)
                     val suggestions = listOf(
-                        QuickShortcut("Google", Color(0xFF4285F4), "G", R.drawable.ic_google, "category_cloud"),
+                        QuickShortcut("Google", Color(0xFF4285F4), "G", R.drawable.ic_google, "category_software"),
                         QuickShortcut("Cursor", Color(0xFF1A1A1A), "C", R.drawable.ic_cursor, "category_software"),
                         QuickShortcut("Claude", Color(0xFFD97757), "C", R.drawable.ic_claude, "category_software"),
                         QuickShortcut("Netflix", NetflixRed, "N", R.drawable.ic_netflix, "category_streaming"),
-                        QuickShortcut("Spotify", SpotifyGreen, "S", R.drawable.ic_spotify, "category_music"),
+                        QuickShortcut("Spotify", SpotifyGreen, "S", R.drawable.ic_spotify, "category_streaming"),
                         QuickShortcut("YouTube", Color(0xFFFF0000), "Y", R.drawable.ic_youtube, "category_streaming"),
-                        QuickShortcut("Amazon", Color(0xFF00A8E1), "A", R.drawable.ic_amazon, "category_ecommerce"),
+                        QuickShortcut("Amazon", Color(0xFF00A8E1), "A", R.drawable.ic_amazon, "category_shopping"),
                         QuickShortcut("HBO Max", Color(0xFF5A2E81), "H", R.drawable.ic_hbomax, "category_streaming")
                     )
                     

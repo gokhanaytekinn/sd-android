@@ -37,7 +37,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _amount = MutableStateFlow("")
     val amount: StateFlow<String> = _amount.asStateFlow()
     
-    private val _currency = MutableStateFlow("TRY")
+    private val _currency = MutableStateFlow("₺")
     val currency: StateFlow<String> = _currency.asStateFlow()
     
     private val _billingCycle = MutableStateFlow(BillingCycle.MONTHLY)
@@ -241,7 +241,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         _nextBillingDate.value = ""
         _subscriptionId = null
         _isEditMode.value = false
-        _isReminderEnabled.value = false
+        _currency.value = "₺"
         _category.value = "category_other"
         _jointEmails.value = emptyList()
         _participants.value = null

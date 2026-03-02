@@ -253,6 +253,7 @@
     <string name="category_streaming">Movie &amp; TV &amp; Music</string>
     <string name="category_gaming">Gaming</string>
     <string name="category_software">Software</string>
+    <string name="category_shopping">Shopping</string>
     <string name="category_other">Other</string>
     
     <string name="quick_amount">Quick Amount</string>

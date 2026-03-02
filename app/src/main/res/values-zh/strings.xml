@@ -221,6 +221,7 @@
     <string name="category_streaming">电影、电视和音乐</string>
     <string name="category_gaming">游戏</string>
     <string name="category_software">软件</string>
+    <string name="category_shopping">购物</string>
     <string name="category_other">其他</string>
 
     <string name="quick_amount">快速金额</string>

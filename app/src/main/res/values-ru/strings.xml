@@ -204,6 +204,7 @@
     <string name="category_streaming">Кино, ТВ и Музыка</string>
     <string name="category_gaming">Игры</string>
     <string name="category_software">ПО</string>
+    <string name="category_shopping">Покупки</string>
     <string name="category_other">Другое</string>
 
     <string name="quick_amount">Быстрая сумма</string>

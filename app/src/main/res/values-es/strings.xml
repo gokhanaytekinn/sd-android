@@ -117,6 +117,7 @@
     <string name="category_streaming">Cine, TV y Música</string>
     <string name="category_gaming">Juegos</string>
     <string name="category_software">Software</string>
+    <string name="category_shopping">Compras</string>
     <string name="category_other">Otros</string>
 
     <string name="quick_amount">Cantidad Rápida</string>
