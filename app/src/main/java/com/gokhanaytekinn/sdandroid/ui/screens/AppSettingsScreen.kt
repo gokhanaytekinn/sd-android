@@ -29,6 +29,7 @@ import kotlinx.coroutines.launch
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.gokhanaytekinn.sdandroid.data.preferences.settingsDataStore
+import com.gokhanaytekinn.sdandroid.BuildConfig
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
 
 @Composable
@@ -416,9 +417,8 @@ fun AppSettingsScreen(
                         fontWeight = FontWeight.SemiBold
                     )
                 }
-                
                 Text(
-                    text = stringResource(R.string.version_info, "2.4.0", 892),
+                    text = stringResource(R.string.version_info, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE),
                     fontSize = 12.sp,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     modifier = Modifier
