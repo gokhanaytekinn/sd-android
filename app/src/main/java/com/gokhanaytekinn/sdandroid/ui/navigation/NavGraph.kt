@@ -228,9 +228,6 @@ fun NavGraph(
             
             composable(Screen.Dashboard.route) {
                 DashboardScreen(
-                    onNavigateToSuspicious = {
-                        navController.navigate(Screen.SuspiciousPayments.route)
-                    },
                     onNavigateToAllSubscriptions = {
                         navController.navigate(Screen.SubscriptionsList.route)
                     },

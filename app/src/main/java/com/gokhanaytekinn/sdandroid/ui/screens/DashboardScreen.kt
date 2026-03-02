@@ -40,7 +40,6 @@ import com.gokhanaytekinn.sdandroid.util.DateUtils
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
-    onNavigateToSuspicious: () -> Unit = {},
     onNavigateToAllSubscriptions: () -> Unit = {},
     onNavigateToSearch: () -> Unit = {},
     onNavigateToUpcoming: () -> Unit = {}
@@ -55,7 +54,6 @@ fun DashboardScreen(
     val stats by viewModel.stats.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val authState by authViewModel.authState.collectAsState()
-    val suspiciousCount by viewModel.suspiciousCount.collectAsState()
     val upcomingSubs by viewModel.upcomingSubscriptions.collectAsState()
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
     
@@ -99,35 +97,19 @@ fun DashboardScreen(
                 }
                 
                 
-                Row(
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    verticalAlignment = Alignment.CenterVertically
+                // Search icon
+                IconButton(
+                    onClick = onNavigateToSearch,
+                    modifier = Modifier
+                        .size(40.dp)
+                        .clip(CircleShape)
+                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
                 ) {
-                    // Search icon
-                    IconButton(
-                        onClick = onNavigateToSearch,
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = stringResource(R.string.nav_search),
-                            tint = MaterialTheme.colorScheme.onSurface
-                        )
-                    }
-
-                    // Profile picture
-                    Box(
-                        modifier = Modifier
-                            .size(40.dp)
-                            .clip(CircleShape)
-                            .background(Color(0xFFFFD4B8)),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Text(text = "👤", fontSize = 20.sp)
-                    }
+                    Icon(
+                        imageVector = Icons.Default.Search,
+                        contentDescription = stringResource(R.string.nav_search),
+                        tint = MaterialTheme.colorScheme.onSurface
+                    )
                 }
             }
             
@@ -227,68 +209,6 @@ fun DashboardScreen(
                     }
                 }
 
-                if (suspiciousCount > 0) {
-                    item {
-                        Surface(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { onNavigateToSuspicious() },
-                            shape = RoundedCornerShape(12.dp),
-                            color = if (isSystemInDarkTheme()) Color(0xFF1E1510) else MaterialTheme.colorScheme.errorContainer,
-                            border = if (!isSystemInDarkTheme()) BorderStroke(1.dp, MaterialTheme.colorScheme.error) else null
-                        ) {
-                            Row(
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .padding(16.dp),
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Row(
-                                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(48.dp)
-                                            .clip(CircleShape)
-                                            .background(WarningColor.copy(alpha = 0.1f)),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Warning,
-                                            contentDescription = null,
-                                            tint = WarningColor,
-                                            modifier = Modifier.size(24.dp)
-                                        )
-                                    }
-                                    
-                                    Column {
-                                        Text(
-                                            text = stringResource(R.string.suspicious_subscriptions),
-                                            fontSize = 16.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6) else MaterialTheme.colorScheme.onErrorContainer
-                                        )
-                                        Spacer(modifier = Modifier.height(4.dp))
-                                        Text(
-                                            text = stringResource(R.string.transactions_pending, suspiciousCount),
-                                            fontSize = 12.sp,
-                                            color = if (isSystemInDarkTheme()) Color(0xFFFFE7D6).copy(alpha = 0.6f) else MaterialTheme.colorScheme.onErrorContainer.copy(alpha = 0.8f),
-                                            fontWeight = FontWeight.Medium
-                                        )
-                                    }
-                                }
-                                
-                                Icon(
-                                    imageVector = Icons.Default.ChevronRight,
-                                    contentDescription = null,
-                                    tint = WarningColor.copy(alpha = 0.4f)
-                                )
-                            }
-                        }
-                    }
-                }
                 
                 // Expensive Subscriptions List
                 item {
