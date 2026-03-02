@@ -50,6 +50,7 @@ fun SubscriptionDetailsScreen(
     var isLoading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
     var participantToRemove by remember { mutableStateOf<com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant?>(null) }
+    var showDeleteDialog by remember { mutableStateOf(false) }
 
     // Load subscription data
     LaunchedEffect(subscriptionId) {
@@ -506,6 +507,30 @@ fun SubscriptionDetailsScreen(
                                 )
 
                             }
+                            
+                            Spacer(modifier = Modifier.height(12.dp))
+                            
+                            TextButton(
+                                onClick = { showDeleteDialog = true },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp),
+                                colors = ButtonDefaults.textButtonColors(
+                                    contentColor = colorScheme.error
+                                )
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Default.DeleteForever,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = stringResource(R.string.delete_subscription),
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Medium
+                                )
+                            }
                         }
                     }
                 }
@@ -631,10 +656,41 @@ fun SubscriptionDetailsScreen(
                         )
                     }
                 }
-
-
             }
         }
+    }
+    
+    if (showDeleteDialog) {
+        AlertDialog(
+            onDismissRequest = { showDeleteDialog = false },
+            title = { Text(stringResource(R.string.delete_subscription)) },
+            text = { Text(stringResource(R.string.delete_subscription_confirm_desc)) },
+            confirmButton = {
+                Button(
+                    onClick = {
+                        showDeleteDialog = false
+                        scope.launch {
+                            isLoading = true
+                            val result = repository.deleteSubscription(subscriptionId)
+                            if (result.isSuccess) {
+                                onBackClick()
+                            } else {
+                                error = result.exceptionOrNull()?.message
+                                isLoading = false
+                            }
+                        }
+                    },
+                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.error)
+                ) {
+                    Text(stringResource(R.string.confirm))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showDeleteDialog = false }) {
+                    Text(stringResource(R.string.cancel))
+                }
+            }
+        )
     }
 }
 

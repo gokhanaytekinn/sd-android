@@ -179,8 +179,8 @@
     <string name="passwords_match">Passwords match</string>
     <string name="update_password">Update Password</string>
     
-    <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Suspicious Payments</string>
+    <!-- Pending Approval / Suspicious -->
+    <string name="suspicious_payments">Pending Approval</string>
     <string name="transactions_to_review">Transactions to Review</string>
     <string name="swipe_to_review">Swipe left to reject or right to confirm as subscription</string>
     <string name="confirm">Confirm</string>
@@ -204,10 +204,14 @@
     <string name="start_date">Start Date</string>
     <string name="cancel_subscription">Cancel Subscription</string>
     <string name="delete_subscription">Delete Subscription</string>
+    <string name="delete_subscription_confirm_desc">Are you sure you want to completely delete this subscription and all associated data? This action cannot be undone.</string>
     <string name="participants">Participants</string>
     <string name="remove_participant_title">Remove Participant</string>
     <string name="remove_participant_confirm">Are you sure you want to remove %s from this subscription?</string>
     <string name="remove_participant_btn">Remove</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="delete_account_confirm_title">Delete Account</string>
+    <string name="delete_account_confirm_desc">Are you sure you want to completely delete your account and all associated data? This action cannot be undone.</string>
     
     <!-- Premium -->
     <string name="get_premium">Get Premium</string>
@@ -246,19 +250,9 @@
     <string name="feature_auto_capture_premium_desc">Payment reminders</string>
     
     <!-- Categories -->
-    <string name="category_entertainment">Entertainment</string>
-    <string name="category_streaming">Movie &amp; TV</string>
-    <string name="category_music">Music</string>
-    <string name="category_sports">Sports &amp; Health</string>
-    <string name="category_education">Education</string>
-    <string name="category_cloud">Cloud &amp; Productivity</string>
-    <string name="category_ecommerce">Shopping</string>
+    <string name="category_streaming">Movie &amp; TV &amp; Music</string>
     <string name="category_gaming">Gaming</string>
-    <string name="category_news">News &amp; Publishing</string>
-    <string name="category_transport">Transport</string>
-    <string name="category_finance">Finance</string>
-    <string name="category_software">Software &amp; Tools</string>
-    <string name="category_technology">Technology</string>
+    <string name="category_software">Software</string>
     <string name="category_other">Other</string>
     
     <string name="quick_amount">Quick Amount</string>

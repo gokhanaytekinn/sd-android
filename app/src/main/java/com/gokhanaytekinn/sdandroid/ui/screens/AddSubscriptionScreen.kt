@@ -70,22 +70,44 @@ fun AddSubscriptionScreen(
             viewModel.loadSubscription(subscriptionId)
         } else {
             viewModel.resetState()
+            val calendar = Calendar.getInstance()
+            val defaultDate = "${calendar.get(Calendar.DAY_OF_MONTH).toString().padStart(2, '0')}.${(calendar.get(Calendar.MONTH) + 1).toString().padStart(2, '0')}.${calendar.get(Calendar.YEAR)}"
+            viewModel.updateNextBillingDate(defaultDate)
         }
     }
     
     // Date Picker Context
     val calendar = Calendar.getInstance()
-    val year = calendar.get(Calendar.YEAR)
-    val month = calendar.get(Calendar.MONTH)
-    val day = calendar.get(Calendar.DAY_OF_MONTH)
+    var pickerYear = calendar.get(Calendar.YEAR)
+    var pickerMonth = calendar.get(Calendar.MONTH)
+    var pickerDay = calendar.get(Calendar.DAY_OF_MONTH)
     
-    val datePickerDialog = DatePickerDialog(
-        context,
-        { _: DatePicker, selectedYear: Int, selectedMonth: Int, selectedDay: Int ->
-            val formattedDate = "${selectedDay.toString().padStart(2, '0')}.${(selectedMonth + 1).toString().padStart(2, '0')}.$selectedYear"
-            viewModel.updateNextBillingDate(formattedDate)
-        }, year, month, day
-    )
+    // Parse current date if exists
+    if (nextBillingDate.isNotBlank()) {
+        try {
+            val parts = nextBillingDate.split(".")
+            if (parts.size == 3) {
+                pickerDay = parts[0].toInt()
+                pickerMonth = parts[1].toInt() - 1
+                pickerYear = parts[2].toInt()
+            }
+        } catch (e: Exception) {}
+    }
+
+    val datePickerDialog = remember {
+        DatePickerDialog(
+            context,
+            { _: DatePicker, selectedYear: Int, selectedMonth: Int, selectedDay: Int ->
+                val formattedDate = "${selectedDay.toString().padStart(2, '0')}.${(selectedMonth + 1).toString().padStart(2, '0')}.$selectedYear"
+                viewModel.updateNextBillingDate(formattedDate)
+            }, pickerYear, pickerMonth, pickerDay
+        )
+    }
+
+    // Update dialog when picker values change (to ensure it opens with selected date)
+    LaunchedEffect(pickerYear, pickerMonth, pickerDay) {
+        datePickerDialog.updateDate(pickerYear, pickerMonth, pickerDay)
+    }
 
     LaunchedEffect(isSuccess) {
         if (isSuccess) {
@@ -140,106 +162,107 @@ fun AddSubscriptionScreen(
             }
             
             Column(modifier = Modifier.padding(horizontal = 24.dp)) {
-                // Category and Service Name
-                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
-                    // Service Name Input
-                    Column(modifier = Modifier.weight(2f)) {
-                        Text(
-                            text = stringResource(R.string.service_name),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
-                        OutlinedTextField(
-                            value = name,
-                            onValueChange = viewModel::updateName,
-                            modifier = Modifier.fillMaxWidth(),
-                            shape = RoundedCornerShape(12.dp),
-                            placeholder = { Text(stringResource(R.string.service_name_placeholder), color = Color.Gray) },
-                            isError = nameError != null,
-                            supportingText = if (nameError != null) {
-                                { Text(stringResource(nameError!!)) }
-                            } else null,
-                            colors = OutlinedTextFieldDefaults.colors(
-                                focusedBorderColor = PrimaryBlue,
-                                unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
-                                errorBorderColor = MaterialTheme.colorScheme.error,
-                                focusedContainerColor = Color.White.copy(alpha = 0.05f),
-                                unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
-                            ),
-                            singleLine = true
-                        )
+                // Service Name Input
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = stringResource(R.string.service_name),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    OutlinedTextField(
+                        value = name,
+                        onValueChange = viewModel::updateName,
+                        modifier = Modifier.fillMaxWidth(),
+                        shape = RoundedCornerShape(12.dp),
+                        placeholder = { Text(stringResource(R.string.service_name_placeholder), color = Color.Gray) },
+                        isError = nameError != null,
+                        supportingText = if (nameError != null) {
+                            { Text(stringResource(nameError!!)) }
+                        } else null,
+                        colors = OutlinedTextFieldDefaults.colors(
+                            focusedBorderColor = PrimaryBlue,
+                            unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                            errorBorderColor = MaterialTheme.colorScheme.error,
+                            focusedContainerColor = Color.White.copy(alpha = 0.05f),
+                            unfocusedContainerColor = Color.White.copy(alpha = 0.05f),
+                            cursorColor = MaterialTheme.colorScheme.onBackground,
+                            focusedTextColor = MaterialTheme.colorScheme.onBackground,
+                            unfocusedTextColor = MaterialTheme.colorScheme.onBackground
+                        ),
+                        singleLine = true
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(16.dp))
+
+                // Categories (Scrollable Chips)
+                Column(modifier = Modifier.fillMaxWidth()) {
+                    Text(
+                        text = stringResource(R.string.category),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+                    
+                    val getCategoryIcon: (String?) -> androidx.compose.ui.graphics.vector.ImageVector = { cat ->
+                        when (cat) {
+                            "category_streaming" -> Icons.Default.PlayArrow
+                            "category_gaming" -> Icons.Default.Star
+                            "category_software" -> Icons.Default.Build
+                            "category_other" -> Icons.Default.List
+                            else -> Icons.Default.List
+                        }
+                    }
+                    
+                    val categories = listOf(
+                        "category_streaming", "category_gaming", "category_software", "category_other"
+                    )
+                    
+                    // Select default category if none
+                    LaunchedEffect(selectedCategory) {
+                        if (selectedCategory.isNullOrEmpty()) {
+                            viewModel.updateCategory(categories.first())
+                        }
                     }
 
-                    // Category Dropdown
-                    Column(modifier = Modifier.weight(1.2f)) {
-                        Text(
-                            text = stringResource(R.string.category),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
-                            modifier = Modifier.padding(bottom = 8.dp)
-                        )
-                        var categoryExpanded by remember { mutableStateOf(false) }
-                        
-                        val getCategoryIcon: (String?) -> androidx.compose.ui.graphics.vector.ImageVector = { cat ->
-                            when (cat) {
-                                "category_streaming", "category_music" -> Icons.Default.PlayArrow
-                                "category_entertainment", "category_gaming" -> Icons.Default.Star
-                                "category_education" -> Icons.Default.Info
-                                "category_cloud", "category_software", "category_technology" -> Icons.Default.Build
-                                "category_ecommerce" -> Icons.Default.ShoppingCart
-                                "category_finance" -> Icons.Default.AccountBox
-                                "category_transport" -> Icons.Default.LocationOn
-                                "category_sports" -> Icons.Default.Favorite
-                                "category_news", "category_other" -> Icons.Default.List
-                                else -> Icons.Default.List
-                            }
-                        }
-                        
-                        Box {
-                            OutlinedTextField(
-                                value = "",
-                                onValueChange = {},
-                                modifier = Modifier.fillMaxWidth(),
-                                shape = RoundedCornerShape(12.dp),
-                                readOnly = true,
-                                trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = null) },
-                                leadingIcon = {
-                                    Icon(getCategoryIcon(selectedCategory), contentDescription = null, tint = PrimaryBlue)
-                                },
-                                colors = OutlinedTextFieldDefaults.colors(
-                                    focusedBorderColor = PrimaryBlue,
-                                    unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
-                                    focusedContainerColor = Color.White.copy(alpha = 0.05f),
-                                    unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
-                                )
-                            )
-                            Box(modifier = Modifier.matchParentSize().clickable { categoryExpanded = true })
-                            DropdownMenu(
-                                expanded = categoryExpanded,
-                                onDismissRequest = { categoryExpanded = false }
-                            ) {
-                                val categories = listOf(
-                                    "category_streaming", "category_entertainment", "category_music", 
-                                    "category_gaming", "category_education", "category_cloud", 
-                                    "category_ecommerce", "category_finance", "category_software",
-                                    "category_news", "category_transport", "category_sports", 
-                                    "category_technology", "category_other"
-                                )
-                                categories.forEach { catKey ->
-                                    val resId = context.resources.getIdentifier(catKey, "string", context.packageName)
-                                    val catName = if (resId != 0) stringResource(resId) else catKey
-                                    DropdownMenuItem(
-                                        leadingIcon = { Icon(getCategoryIcon(catKey), contentDescription = null, tint = PrimaryBlue) },
-                                        text = { Text(catName) },
-                                        onClick = {
-                                            viewModel.updateCategory(catKey)
-                                            categoryExpanded = false
-                                        }
+                    LazyRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        items(categories) { catKey ->
+                            val resId = context.resources.getIdentifier(catKey, "string", context.packageName)
+                            val catName = if (resId != 0) stringResource(resId) else catKey
+                            val isSelected = selectedCategory == catKey
+                            
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(20.dp))
+                                    .clickable { viewModel.updateCategory(catKey) }
+                                    .background(if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.05f))
+                                    .border(
+                                        1.dp,
+                                        if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.1f),
+                                        RoundedCornerShape(20.dp)
                                     )
-                                }
+                                    .padding(horizontal = 16.dp, vertical = 8.dp)
+                            ) {
+                                Icon(
+                                    imageVector = getCategoryIcon(catKey),
+                                    contentDescription = null,
+                                    tint = if (isSelected) Color.White else PrimaryBlue,
+                                    modifier = Modifier.size(18.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    text = catName,
+                                    fontSize = 14.sp,
+                                    fontWeight = if (isSelected) FontWeight.Medium else FontWeight.Normal,
+                                    color = if (isSelected) Color.White else MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)
+                                )
                             }
                         }
                     }
@@ -376,7 +399,7 @@ fun AddSubscriptionScreen(
                                 expanded = expanded,
                                 onDismissRequest = { expanded = false }
                             ) {
-                                listOf("TRY", "USD", "EUR", "GBP").forEach { curr ->
+                                listOf("₺", "$", "€", "£").forEach { curr ->
                                     DropdownMenuItem(
                                         text = { Text(curr) },
                                         onClick = {
@@ -452,7 +475,17 @@ fun AddSubscriptionScreen(
                     OutlinedTextField(
                         value = nextBillingDate.ifEmpty { stringResource(R.string.date_placeholder) }, // Or "YYYY-MM-DD"
                         onValueChange = {},
-                        modifier = Modifier.fillMaxWidth().clickable { datePickerDialog.show() },
+                        modifier = Modifier.fillMaxWidth().clickable { 
+                            if (nextBillingDate.isNotEmpty()) {
+                                try {
+                                    val parts = nextBillingDate.split(".")
+                                    if (parts.size == 3) {
+                                        datePickerDialog.updateDate(parts[2].toInt(), parts[1].toInt() - 1, parts[0].toInt())
+                                    }
+                                } catch (e: Exception) { }
+                            }
+                            datePickerDialog.show() 
+                        },
                         shape = RoundedCornerShape(12.dp),
                         readOnly = true,
                         enabled = false, // To prevent keyboard but allow click
@@ -470,7 +503,17 @@ fun AddSubscriptionScreen(
                         singleLine = true
                     )
                     // Overlay clickable for datepicker needed because enabled=false blocks click on TF
-                    Box(modifier = Modifier.matchParentSize().clickable { datePickerDialog.show() })
+                    Box(modifier = Modifier.matchParentSize().clickable { 
+                        if (nextBillingDate.isNotEmpty()) {
+                            try {
+                                val parts = nextBillingDate.split(".")
+                                if (parts.size == 3) {
+                                    datePickerDialog.updateDate(parts[2].toInt(), parts[1].toInt() - 1, parts[0].toInt())
+                                }
+                            } catch (e: Exception) { }
+                        }
+                        datePickerDialog.show() 
+                    })
                 }
                 
                 Spacer(modifier = Modifier.height(24.dp))

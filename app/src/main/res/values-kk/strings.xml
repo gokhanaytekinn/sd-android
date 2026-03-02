@@ -177,7 +177,10 @@
     <string name="update_password">Құпия сөзді жаңарту</string>
     
     <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Күдікті төлемдер</string>
+    <string name="suspicious_payments">Растауды күтуде</string>
+    <string name="delete_subscription_confirm_desc">Бұл жазылымды және барлық қатысты деректерді біржола жойғыңыз келетініне сенімдісіз бе? Бұл әрекетті болдырмау мүмкін емес.</string>
+    <string name="delete_account_confirm_title">Тіркелгіні жою</string>
+    <string name="delete_account_confirm_desc">Тіркелгіңізді және барлық қатысты деректерді біржола жойғыңыз келетініне сенімдісіз бе? Бұл әрекетті болдырмау мүмкін емес.</string>
     <string name="transactions_to_review">Қаралатын транзакциялар</string>
     <string name="swipe_to_review">Бас тарту үшін солға, жазылым ретінде растау үшін оңға сырғытыңыз</string>
     <string name="confirm">Растау</string>
@@ -220,19 +223,9 @@
     <string name="restore_purchase">Сатып алуды қалпына келтіру</string>
     
     <!-- Categories -->
-    <string name="category_entertainment">Ойын-сауық</string>
-    <string name="category_streaming">Кино және ТВ</string>
-    <string name="category_music">Музыка</string>
-    <string name="category_sports">Спорт және денсаулық</string>
-    <string name="category_education">Білім</string>
-    <string name="category_cloud">Бұлттық және өнімділік</string>
-    <string name="category_ecommerce">Сауда</string>
+    <string name="category_streaming">Кино және ТВ және Музыка</string>
     <string name="category_gaming">Ойындар</string>
-    <string name="category_news">Жаңалықтар және баспа</string>
-    <string name="category_transport">Көлік</string>
-    <string name="category_finance">Қаржы</string>
-    <string name="category_software">Бағдарламалық қамтамасыз ету және құралдар</string>
-    <string name="category_technology">Технология</string>
+    <string name="category_software">Бағдарламалық қамтамасыз ету</string>
     <string name="category_other">Басқа</string>
 
     <string name="quick_amount">Жылдам сома</string>

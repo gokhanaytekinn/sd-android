@@ -178,7 +178,10 @@
     <string name="update_password">Perbarui Kata Sandi</string>
     
     <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Pembayaran Mencurigakan</string>
+    <string name="suspicious_payments">Persetujuan Tertunda</string>
+    <string name="delete_subscription_confirm_desc">Apakah Anda yakin ingin menghapus langganan ini dan semua data terkait secara permanen? Tindakan ini tidak dapat dibatalkan.</string>
+    <string name="delete_account_confirm_title">Hapus Akun</string>
+    <string name="delete_account_confirm_desc">Apakah Anda yakin ingin menghapus akun Anda dan semua data terkait secara permanen? Tindakan ini tidak dapat dibatalkan.</string>
     <string name="transactions_to_review">Transaksi untuk Diulas</string>
     <string name="swipe_to_review">Geser ke kiri untuk menolak, ke kanan untuk mengonfirmasi sebagai langganan</string>
     <string name="confirm">Konfirmasi</string>
@@ -221,19 +224,9 @@
     <string name="restore_purchase">Pulihkan Pembelian</string>
     
     <!-- Categories -->
-    <string name="category_entertainment">Hiburan</string>
-    <string name="category_streaming">Film &amp; TV</string>
-    <string name="category_music">Musik</string>
-    <string name="category_sports">Olahraga &amp; Kesehatan</string>
-    <string name="category_education">Pendidikan</string>
-    <string name="category_cloud">Cloud &amp; Produktivitas</string>
-    <string name="category_ecommerce">Belanja</string>
+    <string name="category_streaming">Film &amp; TV &amp; Musik</string>
     <string name="category_gaming">Game</string>
-    <string name="category_news">Berita &amp; Penerbitan</string>
-    <string name="category_transport">Transportasi</string>
-    <string name="category_finance">Keuangan</string>
-    <string name="category_software">Perangkat Lunak &amp; Alat</string>
-    <string name="category_technology">Teknologi</string>
+    <string name="category_software">Perangkat Lunak</string>
     <string name="category_other">Lainnya</string>
 
     <string name="quick_amount">Jumlah Cepat</string>

@@ -97,20 +97,7 @@ fun DashboardScreen(
                 }
                 
                 
-                // Search icon
-                IconButton(
-                    onClick = onNavigateToSearch,
-                    modifier = Modifier
-                        .size(40.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Search,
-                        contentDescription = stringResource(R.string.nav_search),
-                        tint = MaterialTheme.colorScheme.onSurface
-                    )
-                }
+                // Search icon removed internally as requested.
             }
             
             LazyColumn(

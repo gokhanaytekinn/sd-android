@@ -182,8 +182,8 @@
     <string name="passwords_match">Şifreler eşleşiyor</string>
     <string name="update_password">Şifreyi Güncelle</string>
     
-    <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Şüpheli Ödemeler</string>
+    <!-- Pending Approval / Suspicious -->
+    <string name="suspicious_payments">Onay Bekleyenler</string>
     <string name="transactions_to_review">İncelenecek İşlemler</string>
     <string name="swipe_to_review">Reddetmek için sola, abonelik olarak onaylamak için sağa kaydırın</string>
     <string name="confirm">Onayla</string>
@@ -207,6 +207,10 @@
     <string name="start_date">Başlangıç Tarihi</string>
     <string name="cancel_subscription">Aboneliği İptal Et</string>
     <string name="delete_subscription">Aboneliği Sil</string>
+    <string name="delete_subscription_confirm_desc">Bu aboneliği ve tüm ilişkili verilerini tamamen silmek istediğinize emin misiniz? Bu işlem geri alınamaz.</string>
+    <string name="delete_account">Hesabı Sil</string>
+    <string name="delete_account_confirm_title">Hesabı Sil</string>
+    <string name="delete_account_confirm_desc">Hesabınızı ve tüm ilişkili verilerinizi tamamen silmek istediğinize emin misiniz? Bu işlem geri alınamaz.</string>
     
     <!-- Premium -->
     <string name="get_premium">Premium Al</string>
@@ -237,19 +241,9 @@
     <string name="plans_header">PLANLAR</string>
     
     <!-- Kategoriler -->
-    <string name="category_entertainment">Eğlence</string>
-    <string name="category_streaming">Dizi &amp; Film</string>
-    <string name="category_music">Müzik</string>
-    <string name="category_sports">Spor &amp; Sağlık</string>
-    <string name="category_education">Eğitim</string>
-    <string name="category_cloud">Bulut &amp; Verimlilik</string>
-    <string name="category_ecommerce">Alışveriş</string>
+    <string name="category_streaming">Dizi &amp; Film &amp; Müzik</string>
     <string name="category_gaming">Oyun</string>
-    <string name="category_news">Haber &amp; Yayıncılık</string>
-    <string name="category_transport">Ulaşım</string>
-    <string name="category_finance">Finans</string>
-    <string name="category_software">Yazılım &amp; Araçlar</string>
-    <string name="category_technology">Teknoloji</string>
+    <string name="category_software">Yazılım</string>
     <string name="category_other">Diğer</string>
 
     <string name="quick_amount">Hızlı Tutar</string>

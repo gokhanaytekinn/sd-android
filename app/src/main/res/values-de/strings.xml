@@ -59,19 +59,9 @@
     <string name="guest_user">Gast</string>
 
     <!-- Categories -->
-    <string name="category_entertainment">Unterhaltung</string>
-    <string name="category_streaming">Filme &amp; TV</string>
-    <string name="category_music">Musik</string>
-    <string name="category_sports">Sport &amp; Gesundheit</string>
-    <string name="category_education">Bildung</string>
-    <string name="category_cloud">Cloud &amp; Produktivität</string>
-    <string name="category_ecommerce">Einkaufen</string>
+    <string name="category_streaming">Filme &amp; TV &amp; Musik</string>
     <string name="category_gaming">Gaming</string>
-    <string name="category_news">Nachrichten &amp; Verlage</string>
-    <string name="category_transport">Transport</string>
-    <string name="category_finance">Finanzen</string>
-    <string name="category_software">Software &amp; Tools</string>
-    <string name="category_technology">Technologie</string>
+    <string name="category_software">Software</string>
     <string name="category_other">Andere</string>
 
     <string name="quick_amount">Schnellbetrag</string>
@@ -355,7 +345,10 @@
     <string name="onboarding_security">Ende-zu-Ende-verschlusselt und sicher</string>
     <string name="plan_free">Kostenlos</string>
     <string name="reset_password_title">Neues Passwort erstellen</string>
-    <string name="suspicious_payments">Verdachtige Zahlungen</string>
+    <string name="suspicious_payments">Ausstehende Genehmigung</string>
+    <string name="delete_subscription_confirm_desc">Möchten Sie dieses Abonnement und alle zugehörigen Daten wirklich dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht werden.</string>
+    <string name="delete_account_confirm_title">Konto löschen</string>
+    <string name="delete_account_confirm_desc">Möchten Sie Ihr Konto und alle zugehörigen Daten wirklich dauerhaft löschen? Diese Aktion kann nicht rückgängig gemacht werden.</string>
     <string name="secure_payment_footer">Sichere Zahlung. Jederzeit kundbar.</string>
     <string name="support">SUPPORT</string>
     <string name="confirm">Bestatigen</string>

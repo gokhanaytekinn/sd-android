@@ -182,4 +182,16 @@ class AuthRepository(context: Context) {
             else Result.failure(Exception("Failed to reset password"))
         } catch (e: Exception) { Result.failure(e) }
     }
+
+    suspend fun deleteAccount(): Result<Unit> {
+        return try {
+            val response = apiService.deleteAccount()
+            if (response.isSuccessful) {
+                tokenManager.clearToken()
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Failed to delete account"))
+            }
+        } catch (e: Exception) { Result.failure(e) }
+    }
 }

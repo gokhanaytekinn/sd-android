@@ -177,7 +177,10 @@
     <string name="update_password">Сырсөздү жаңыртуу</string>
     
     <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Шектүү төлөмдөр</string>
+    <string name="suspicious_payments">Ырастоону күтүүдө</string>
+    <string name="delete_subscription_confirm_desc">Бул жазылууну жана бардык тиешелүү маалыматтарды биратала өчүрүүнү каалайсызбы? Бул аракетти артка кайтаруу мүмкүн эмес.</string>
+    <string name="delete_account_confirm_title">Аккаунтту өчүрүү</string>
+    <string name="delete_account_confirm_desc">Аккаунтуңузду жана бардык тиешелүү маалыматтарды биратала өчүрүүнү каалайсызбы? Бул аракетти артка кайтаруу мүмкүн эмес.</string>
     <string name="transactions_to_review">Карала турган транзакциялар</string>
     <string name="swipe_to_review">Жокко чыгаруу үчүн солго, жазылуу катары ырастоо үчүн оңго сүрүңүз</string>
     <string name="confirm">Ырастоо</string>
@@ -221,17 +224,17 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Көңүл ачуу</string>
-    <string name="category_streaming">Кино жана ТВ</string>
+    <string name="category_streaming">Кино және ТВ және Музыка</string>
     <string name="category_music">Музыка</string>
     <string name="category_sports">Спорт жана ден соолук</string>
     <string name="category_education">Билим</string>
     <string name="category_cloud">Булут жана өндүрүмдүүлүк</string>
     <string name="category_ecommerce">Соода</string>
-    <string name="category_gaming">Оюндар</string>
+    <string name="category_gaming">Ойындар</string>
     <string name="category_news">Жаңылыктар жана басма</string>
     <string name="category_transport">Транспорт</string>
     <string name="category_finance">Каржы</string>
-    <string name="category_software">Программалык камсыздоо жана куралдар</string>
+    <string name="category_software">Программалык камсыздоо</string>
     <string name="category_technology">Технология</string>
     <string name="category_other">Башка</string>
 

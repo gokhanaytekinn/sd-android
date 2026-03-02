@@ -21,6 +21,9 @@ interface ApiService {
     @GET("api/auth/me")
     suspend fun getCurrentUser(): Response<UserResponse>
 
+    @DELETE("api/auth/me")
+    suspend fun deleteAccount(): Response<Unit>
+
     @POST("api/auth/forgot-password")
     suspend fun forgotPassword(@Body request: ForgotPasswordRequest): Response<Unit>
 
@@ -75,6 +78,9 @@ interface ApiService {
     
     @PATCH("api/subscriptions/{id}/cancel")
     suspend fun cancelSubscription(@Path("id") id: String): Response<Unit>
+
+    @DELETE("api/subscriptions/{id}")
+    suspend fun deleteSubscription(@Path("id") id: String): Response<Unit>
     
     // ============ TRANSACTIONS ============
     

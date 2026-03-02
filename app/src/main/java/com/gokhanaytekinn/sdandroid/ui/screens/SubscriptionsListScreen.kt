@@ -129,7 +129,7 @@ fun SubscriptionsListScreen(
                             modifier = Modifier.weight(1f)
                         )
                         TabItem(
-                            text = stringResource(R.string.suspicious),
+                            text = stringResource(R.string.suspicious_payments),
                             selected = selectedTab == 1,
                             onClick = { selectedTab = 1 },
                             modifier = Modifier.weight(1f)

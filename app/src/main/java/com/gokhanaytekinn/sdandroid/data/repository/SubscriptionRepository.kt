@@ -171,7 +171,7 @@ class SubscriptionRepository(context: Context? = null) {
             Result.failure(e)
         }
     }
-    
+
     suspend fun cancelSubscription(id: String): Result<Unit> {
         return try {
             if (apiService == null) {
@@ -182,6 +182,22 @@ class SubscriptionRepository(context: Context? = null) {
                 Result.success(Unit)
             } else {
                 Result.failure(Exception("Failed to cancel subscription"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun deleteSubscription(id: String): Result<Unit> {
+        return try {
+            if (apiService == null) {
+                return Result.failure(Exception("API not available"))
+            }
+            val response = apiService.deleteSubscription(id)
+            if (response.isSuccessful) {
+                Result.success(Unit)
+            } else {
+                Result.failure(Exception("Failed to delete subscription"))
             }
         } catch (e: Exception) {
             Result.failure(e)

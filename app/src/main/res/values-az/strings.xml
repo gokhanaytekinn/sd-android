@@ -177,7 +177,10 @@
     <string name="update_password">Şifrəni Yenilə</string>
     
     <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Şübhəli Ödənişlər</string>
+    <string name="suspicious_payments">Təsdiq Gözləyənlər</string>
+    <string name="delete_subscription_confirm_desc">Bu abunəliyi və bütün əlaqəli məlumatları tamamilə silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz.</string>
+    <string name="delete_account_confirm_title">Hesabı Sil</string>
+    <string name="delete_account_confirm_desc">Hesabınızı və bütün əlaqəli məlumatlarınızı tamamilə silmək istədiyinizə əminsiniz? Bu əməliyyat geri qaytarıla bilməz.</string>
     <string name="transactions_to_review">Araşdırılacaq Əməliyyatlar</string>
     <string name="swipe_to_review">Rədd etmək üçün sola, abunəlik kimi təsdiqləmək üçün sağa sürüşdürün</string>
     <string name="confirm">Təsdiqlə</string>
@@ -219,20 +222,9 @@
     <string name="start_trial">Pulsuz Sınağı Başlat</string>
     <string name="restore_purchase">Satınalmanı bərpa et</string>
     
-    <!-- Categories -->
-    <string name="category_entertainment">Əyləncə</string>
-    <string name="category_streaming">Filmlər &amp; TV</string>
-    <string name="category_music">Musiqi</string>
-    <string name="category_sports">İdman &amp; Sağlamlıq</string>
-    <string name="category_education">Təhsil</string>
-    <string name="category_cloud">Bulud &amp; Məhsuldarlıq</string>
-    <string name="category_ecommerce">Alış-veriş</string>
+    <string name="category_streaming">Kino, TV və Musiqi</string>
     <string name="category_gaming">Oyunlar</string>
-    <string name="category_news">Xəbərlər &amp; Nəşriyyat</string>
-    <string name="category_transport">Nəqliyyat</string>
-    <string name="category_finance">Maliyyə</string>
-    <string name="category_software">Proqram Təminatı &amp; Alətlər</string>
-    <string name="category_technology">Texnologiya</string>
+    <string name="category_software">Proqram Təminatı</string>
     <string name="category_other">Digər</string>
 
     <string name="quick_amount">Sürətli Məbləğ</string>

@@ -304,6 +304,21 @@ class AuthViewModel(context: Context) : ViewModel() {
         }
     }
 
+    fun deleteAccount() {
+        viewModelScope.launch {
+            _authState.value = _authState.value.copy(isLoading = true, error = null)
+            val result = repository.deleteAccount()
+            if (result.isSuccess) {
+                _authState.value = AuthState()
+            } else {
+                _authState.value = _authState.value.copy(
+                    isLoading = false,
+                    error = result.exceptionOrNull()?.message ?: "Hesap silinemedi"
+                )
+            }
+        }
+    }
+
     private fun syncLanguageIfNeeded() {
         viewModelScope.launch {
             val localLanguage = languagePreferences.selectedLanguage.first()

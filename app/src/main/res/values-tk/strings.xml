@@ -177,7 +177,10 @@
     <string name="update_password">Paroly Täzele</string>
     
     <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Şübheli Tölegler</string>
+    <string name="suspicious_payments">Tassyklama garaşylýanlar</string>
+    <string name="delete_subscription_confirm_desc">Bu abunalygy we ähli degişli maglumatlary hemişelik pozmak isleýändigiňize ynamlymy? Bu amaly yzyna gaýtaryp bolmaz.</string>
+    <string name="delete_account_confirm_title">Hasaby poz</string>
+    <string name="delete_account_confirm_desc">Hasabyňyzy we ähli degişli maglumatlary hemişelik pozmak isleýändigiňize ynamlymy? Bu amaly yzyna gaýtaryp bolmaz.</string>
     <string name="transactions_to_review">Barlanmaly Amallar</string>
     <string name="swipe_to_review">Yatyrmak üçin çepe, abunalyk hökmünde tassyklamak üçin saga süýşüriň</string>
     <string name="confirm">Tassyklamak</string>
@@ -220,19 +223,9 @@
     <string name="restore_purchase">Satyn alnanlary Dikelt</string>
     
     <!-- Categories -->
-    <string name="category_entertainment">Gündizine</string>
-    <string name="category_streaming">Kinolar &amp; TV</string>
-    <string name="category_music">Saz</string>
-    <string name="category_sports">Sport &amp; Saglyk</string>
-    <string name="category_education">Bilim</string>
-    <string name="category_cloud">Bulut &amp; Öndürijilik</string>
-    <string name="category_ecommerce">Söwda</string>
+    <string name="category_streaming">Kinolar &amp; TV &amp; Saz</string>
     <string name="category_gaming">Oýunlar</string>
-    <string name="category_news">Täzelikler &amp; Neşirýat</string>
-    <string name="category_transport">Ulag</string>
-    <string name="category_finance">Maliýe</string>
-    <string name="category_software">Programma üpjünçiligi &amp; Gurallar</string>
-    <string name="category_technology">Tehnologiýa</string>
+    <string name="category_software">Programma üpjünçiligi</string>
     <string name="category_other">Başga</string>
 
     <string name="quick_amount">Çalt mukdar</string>

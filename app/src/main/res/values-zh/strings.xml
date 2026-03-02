@@ -178,7 +178,10 @@
     <string name="update_password">更新密码</string>
     
     <!-- Suspicious Payments -->
-    <string name="suspicious_payments">可疑支付</string>
+    <string name="suspicious_payments">待核准</string>
+    <string name="delete_subscription_confirm_desc">您确定要完全删除此订阅及所有相关数据吗？此操作无法撤销。</string>
+    <string name="delete_account_confirm_title">注销账户</string>
+    <string name="delete_account_confirm_desc">您确定要完全注销您的账户及所有相关数据吗？此操作无法撤销。</string>
     <string name="transactions_to_review">待核查交易</string>
     <string name="swipe_to_review">向左滑动拒绝，或向右滑动确认为订阅</string>
     <string name="confirm">确认</string>
@@ -215,20 +218,9 @@
     <string name="start_trial">开始免费试用</string>
     <string name="restore_purchase">恢复购买</string>
     
-    <!-- Categories -->
-    <string name="category_entertainment">娱乐</string>
-    <string name="category_streaming">影视</string>
-    <string name="category_music">音乐</string>
-    <string name="category_sports">运动与健康</string>
-    <string name="category_education">教育</string>
-    <string name="category_cloud">云端与效率</string>
-    <string name="category_ecommerce">购物</string>
+    <string name="category_streaming">电影、电视和音乐</string>
     <string name="category_gaming">游戏</string>
-    <string name="category_news">新闻与出版</string>
-    <string name="category_transport">交通</string>
-    <string name="category_finance">金融</string>
-    <string name="category_software">软件与工具</string>
-    <string name="category_technology">科技</string>
+    <string name="category_software">软件</string>
     <string name="category_other">其他</string>
 
     <string name="quick_amount">快速金额</string>

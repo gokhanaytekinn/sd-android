@@ -177,7 +177,10 @@
     <string name="update_password">Parolni yangilash</string>
     
     <!-- Suspicious Payments -->
-    <string name="suspicious_payments">Shubhali toʻlovlar</string>
+    <string name="suspicious_payments">Tasdiqlash kutilmoqda</string>
+    <string name="delete_subscription_confirm_desc">Ushbu obunani va barcha tegishli maʼlumotlarni butunlay oʻchirib tashlamoqchimisiz? Ushbu amalni bekor qilib boʻlmaydi.</string>
+    <string name="delete_account_confirm_title">Hisobni oʻchirish</string>
+    <string name="delete_account_confirm_desc">Hisobingizni va barcha tegishli maʼlumotlarni butunlay oʻchirib tashlamoqchimisiz? Ushbu amalni bekor qilib boʻlmaydi.</string>
     <string name="transactions_to_review">Koʻrib chiqiladigan tranzaksiyalar</string>
     <string name="swipe_to_review">Bekor qilish uchun chapga, obuna sifatida tasdiqlash uchun oʻngga suring</string>
     <string name="confirm">Tasdiqlash</string>
@@ -220,19 +223,9 @@
     <string name="restore_purchase">Sotib olinganlarni tiklash</string>
     
     <!-- Categories -->
-    <string name="category_entertainment">O\'yin-kulgi</string>
-    <string name="category_streaming">Kinolar &amp; TV</string>
-    <string name="category_music">Musiqa</string>
-    <string name="category_sports">Sport &amp; Sog\'liq</string>
-    <string name="category_education">Ta\'lim</string>
-    <string name="category_cloud">Bulut &amp; Unumdorlik</string>
-    <string name="category_ecommerce">Savdo</string>
+    <string name="category_streaming">Kino, TV va Musiqa</string>
     <string name="category_gaming">O\'yinlar</string>
-    <string name="category_news">Yangiliklar &amp; Nashriyot</string>
-    <string name="category_transport">Transport</string>
-    <string name="category_finance">Moliya</string>
-    <string name="category_software">Dasturiy ta\'minot &amp; Vositalar</string>
-    <string name="category_technology">Texnologiya</string>
+    <string name="category_software">Dasturiy ta\'minot</string>
     <string name="category_other">Boshqa</string>
 
     <string name="quick_amount">Tezkor summa</string>

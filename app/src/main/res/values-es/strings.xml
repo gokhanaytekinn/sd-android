@@ -114,20 +114,9 @@
 
 
     
-    <!-- Categorías -->
-    <string name="category_entertainment">Entretenimiento</string>
-    <string name="category_streaming">Cine y TV</string>
-    <string name="category_music">Música</string>
-    <string name="category_sports">Deporte y Salud</string>
-    <string name="category_education">Educación</string>
-    <string name="category_cloud">Nube y Productividad</string>
-    <string name="category_ecommerce">Compras</string>
+    <string name="category_streaming">Cine, TV y Música</string>
     <string name="category_gaming">Juegos</string>
-    <string name="category_news">Noticias y Publicaciones</string>
-    <string name="category_transport">Transporte</string>
-    <string name="category_finance">Finanzas</string>
-    <string name="category_software">Software y Herramientas</string>
-    <string name="category_technology">Tecnología</string>
+    <string name="category_software">Software</string>
     <string name="category_other">Otros</string>
 
     <string name="quick_amount">Cantidad Rápida</string>
@@ -400,7 +389,10 @@
     <string name="start_trial">Iniciar prueba gratuita</string>
     <string name="subscription_details">Detalles de la suscripción</string>
     <string name="success">Éxito</string>
-    <string name="suspicious_payments">Pagos sospechosos</string>
+    <string name="suspicious_payments">Aprobación Pendiente</string>
+    <string name="delete_subscription_confirm_desc">¿Estás seguro de que deseas eliminar completamente esta suscripción y todos los datos asociados? Esta acción no se puede deshacer.</string>
+    <string name="delete_account_confirm_title">Eliminar Cuenta</string>
+    <string name="delete_account_confirm_desc">¿Estás seguro de que deseas eliminar completamente tu cuenta y todos los datos asociados? Esta action no se puede deshacer.</string>
     <string name="swipe_to_review">Desliza a la izquierda para rechazar o a la derecha para confirmar como suscripción</string>
     <string name="top_subscriptions">Principales suscripciones</string>
     <string name="transaction_history">Historial de transacciones</string>
