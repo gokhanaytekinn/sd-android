@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Катышуучулар</string>
+    <string name="remove_participant_title">Катышуучуну өчүрүү</string>
+    <string name="remove_participant_confirm">Бул жазылуудан %s катышуучусун өчүрүүнү ырастайсызбы?</string>
+    <string name="remove_participant_btn">Өчүрүү</string>
     <string name="joint_users">Биргелешкен колдонуучулар</string>
     <string name="add_email_placeholder">Электрондук почта дарегин кошуңуз</string>
     <string name="remove">Өчүрүү</string>

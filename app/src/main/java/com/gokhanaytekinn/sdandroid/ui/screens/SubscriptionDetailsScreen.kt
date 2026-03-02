@@ -49,6 +49,7 @@ fun SubscriptionDetailsScreen(
     var subscription by remember { mutableStateOf<Subscription?>(null) }
     var isLoading by remember { mutableStateOf(true) }
     var error by remember { mutableStateOf<String?>(null) }
+    var participantToRemove by remember { mutableStateOf<com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant?>(null) }
 
     // Load subscription data
     LaunchedEffect(subscriptionId) {
@@ -540,19 +541,54 @@ fun SubscriptionDetailsScreen(
                                 colorScheme = colorScheme,
                                 canRemove = sub.isOwner,
                                 onRemove = {
-                                    scope.launch {
-                                        isLoading = true
-                                        val result = repository.removeParticipant(sub.id, participant.email)
-                                        if (result.isSuccess) {
-                                            subscription = result.getOrNull()
-                                        } else {
-                                            error = result.exceptionOrNull()?.message
-                                        }
-                                        isLoading = false
-                                    }
+                                    participantToRemove = participant
                                 }
                             )
                         }
+                    }
+                }
+
+                // Confirmation Dialog for Participant Removal
+                item {
+                    if (participantToRemove != null) {
+                        AlertDialog(
+                            onDismissRequest = { participantToRemove = null },
+                            title = { Text(stringResource(R.string.remove_participant_title)) },
+                            text = { 
+                                Text(
+                                    stringResource(
+                                        R.string.remove_participant_confirm, 
+                                        participantToRemove!!.name ?: participantToRemove!!.email
+                                    )
+                                ) 
+                            },
+                            confirmButton = {
+                                Button(
+                                    onClick = {
+                                        val participant = participantToRemove!!
+                                        participantToRemove = null
+                                        scope.launch {
+                                            isLoading = true
+                                            val result = repository.removeParticipant(sub.id, participant.email)
+                                            if (result.isSuccess) {
+                                                subscription = result.getOrNull()
+                                            } else {
+                                                error = result.exceptionOrNull()?.message
+                                            }
+                                            isLoading = false
+                                        }
+                                    },
+                                    colors = ButtonDefaults.buttonColors(containerColor = colorScheme.error)
+                                ) {
+                                    Text(stringResource(R.string.remove_participant_btn))
+                                }
+                            },
+                            dismissButton = {
+                                TextButton(onClick = { participantToRemove = null }) {
+                                    Text(stringResource(R.string.cancel))
+                                }
+                            }
+                        )
                     }
                 }
 

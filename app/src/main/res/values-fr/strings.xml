@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Participants</string>
+    <string name="remove_participant_title">Supprimer le participant</string>
+    <string name="remove_participant_confirm">Êtes-vous sûr de vouloir supprimer %s de cet abonnement ?</string>
+    <string name="remove_participant_btn">Supprimer</string>
     <string name="joint_users">Utilisateurs conjoints</string>
     <string name="add_email_placeholder">Ajouter une adresse e-mail</string>
     <string name="remove">Supprimer</string>

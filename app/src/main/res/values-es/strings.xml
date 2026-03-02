@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Participantes</string>
+    <string name="remove_participant_title">Eliminar participante</string>
+    <string name="remove_participant_confirm">¿Está seguro de que desea eliminar a %s de esta suscripción?</string>
+    <string name="remove_participant_btn">Eliminar</string>
     <string name="joint_users">Usuarios Conjuntos</string>
     <string name="add_email_placeholder">Añadir dirección de correo</string>
     <string name="remove">Eliminar</string>

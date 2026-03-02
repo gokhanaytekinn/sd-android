@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Участники</string>
+    <string name="remove_participant_title">Удалить участника</string>
+    <string name="remove_participant_confirm">Вы уверены, что хотите удалить %s из этой подписки?</string>
+    <string name="remove_participant_btn">Удалить</string>
     <string name="joint_users">Совместные пользователи</string>
     <string name="add_email_placeholder">Добавить адрес электронной почты</string>
     <string name="remove">Удалить</string>

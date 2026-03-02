@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Gatnaşyjylar</string>
+    <string name="remove_participant_title">Gatnaşyjyny aýyr</string>
+    <string name="remove_participant_confirm">%s gatnaşyjyny bu abunalykdan aýyrmak isleýändigiňize ynamlymy?</string>
+    <string name="remove_participant_btn">Aýyr</string>
     <string name="joint_users">Bilelikdäki ulanyjylar</string>
     <string name="add_email_placeholder">E-poçta salgysyny goşuň</string>
     <string name="remove">Aýyr</string>

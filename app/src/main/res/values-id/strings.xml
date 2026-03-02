@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Peserta</string>
+    <string name="remove_participant_title">Hapus Peserta</string>
+    <string name="remove_participant_confirm">Apakah Anda yakin ingin menghapus %s dari langganan ini?</string>
+    <string name="remove_participant_btn">Hapus</string>
     <string name="joint_users">Pengguna Bersama</string>
     <string name="add_email_placeholder">Tambah alamat email</string>
     <string name="remove">Hapus</string>

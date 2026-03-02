@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">İştirakçılar</string>
+    <string name="remove_participant_title">İştirakçını sil</string>
+    <string name="remove_participant_confirm">%s istifadəçisini bu abunədən silmək istədiyinizə əminsiniz?</string>
+    <string name="remove_participant_btn">Sil</string>
     <string name="joint_users">Birgə İstifadəçilər</string>
     <string name="add_email_placeholder">E-poçt ünvanı əlavə edin</string>
     <string name="remove">Sil</string>

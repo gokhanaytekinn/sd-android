@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">参与者</string>
+    <string name="remove_participant_title">删除参与者</string>
+    <string name="remove_participant_confirm">您确定要从此订阅中删除 %s 吗？</string>
+    <string name="remove_participant_btn">删除</string>
     <string name="joint_users">共同用户</string>
     <string name="add_email_placeholder">添加电子邮件地址</string>
     <string name="remove">移除</string>

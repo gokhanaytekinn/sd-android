@@ -209,6 +209,9 @@
     <string name="cancel_subscription">Cancel Subscription</string>
     <string name="delete_subscription">Delete Subscription</string>
     <string name="participants">Participants</string>
+    <string name="remove_participant_title">Remove Participant</string>
+    <string name="remove_participant_confirm">Are you sure you want to remove %s from this subscription?</string>
+    <string name="remove_participant_btn">Remove</string>
     
     <!-- Premium -->
     <string name="get_premium">Get Premium</string>

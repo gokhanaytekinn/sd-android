@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Ishtirokchilar</string>
+    <string name="remove_participant_title">Ishtirokchini o\'chirish</string>
+    <string name="remove_participant_confirm">Ushbu obunadan %s ishtirokchisini o\'chirishni tasdiqlaysizmi?</string>
+    <string name="remove_participant_btn">O\'chirish</string>
     <string name="joint_users">Birgalikdagi foydalanuvchilar</string>
     <string name="add_email_placeholder">Elektron pochta manzilini qo\'shing</string>
     <string name="remove">O\'chirish</string>

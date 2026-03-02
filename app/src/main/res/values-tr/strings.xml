@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Katılımcılar</string>
+    <string name="remove_participant_title">Katılımcıyı Kaldır</string>
+    <string name="remove_participant_confirm">%s kullanıcısını bu abonelikten kaldırmak istediğinize emin misiniz?</string>
+    <string name="remove_participant_btn">Kaldır</string>
     <string name="joint_users">Ortak Kullanıcılar</string>
     <string name="add_email_placeholder">E-posta adresi ekleyin</string>
     <string name="remove">Kaldır</string>

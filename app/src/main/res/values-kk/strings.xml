@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="participants">Қатысушылар</string>
+    <string name="remove_participant_title">Қатысушыны жою</string>
+    <string name="remove_participant_confirm">%s қатысушысын осы жазылымнан жоюды растайсыз ба?</string>
+    <string name="remove_participant_btn">Жою</string>
     <string name="joint_users">Бірлескен пайдаланушылар</string>
     <string name="add_email_placeholder">Электрондық пошта мекенжайын қосыңыз</string>
     <string name="remove">Жою</string>
