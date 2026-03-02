@@ -116,10 +116,24 @@
     
     <!-- Categorías -->
     <string name="category_entertainment">Entretenimiento</string>
+    <string name="category_streaming">Cine y TV</string>
     <string name="category_music">Música</string>
-    <string name="category_sports">Deportes y Salud</string>
-    <string name="category_other">Otro</string>
+    <string name="category_sports">Deporte y Salud</string>
+    <string name="category_education">Educación</string>
+    <string name="category_cloud">Nube y Productividad</string>
+    <string name="category_ecommerce">Compras</string>
+    <string name="category_gaming">Juegos</string>
+    <string name="category_news">Noticias y Publicaciones</string>
+    <string name="category_transport">Transporte</string>
+    <string name="category_finance">Finanzas</string>
+    <string name="category_software">Software y Herramientas</string>
+    <string name="category_technology">Tecnología</string>
+    <string name="category_other">Otros</string>
 
+    <string name="quick_amount">Cantidad Rápida</string>
+    <string name="quick_date">Fecha Rápida</string>
+    <string name="today_btn">Hoy</string>
+    <string name="tomorrow_btn">Mañana</string>
     <!-- Validaciones -->
     <string name="error_name_required">El nombre es obligatorio</string>
     <string name="error_amount_required">El importe es obligatorio</string>
@@ -318,7 +332,7 @@
     <string name="automatic_tracking">Seguimiento automatico</string>
     <string name="cancel_subscription">Cancelar suscripcion</string>
     <string name="how_to_add">Como anadir una suscripcion?</string>
-    <string name="category_technology">Tecnologia</string>
+
     <string name="widget_days_left">%d dias restantes</string>
     <string name="name_placeholder">Tu nombre</string>
     <string name="plans_header">Elige tu Plan</string>

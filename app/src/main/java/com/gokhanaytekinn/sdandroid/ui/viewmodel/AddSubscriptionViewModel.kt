@@ -56,6 +56,9 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _participants = MutableStateFlow<List<InvitationParticipant>?>(null)
     val participants: StateFlow<List<InvitationParticipant>?> = _participants.asStateFlow()
 
+    private val _category = MutableStateFlow("category_other")
+    val category: StateFlow<String> = _category.asStateFlow()
+
     // Validation States
     private val _nameError = MutableStateFlow<Int?>(null)
     val nameError: StateFlow<Int?> = _nameError.asStateFlow()
@@ -105,6 +108,10 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     
     fun updateIsReminderEnabled(value: Boolean) {
         _isReminderEnabled.value = value
+    }
+
+    fun updateCategory(value: String) {
+        _category.value = value
     }
 
     fun addJointEmail(email: String) {
@@ -169,6 +176,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     val rawDate = it.nextBillingDate ?: it.startDate ?: ""
                     _nextBillingDate.value = formatDateForUi(rawDate)
                     _isReminderEnabled.value = it.reminderEnabled
+                    _category.value = it.category ?: "category_other"
                     _jointEmails.value = it.jointEmails ?: emptyList()
                     _participants.value = it.participants
                 }
@@ -197,6 +205,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     nextBillingDate = apiDate,
                     isActive = true,
                     startDate = if (_isEditMode.value) null else apiDate,
+                    category = _category.value,
                     reminderEnabled = _isReminderEnabled.value,
                     jointEmails = _jointEmails.value.ifEmpty { null }
                 )
@@ -233,6 +242,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         _subscriptionId = null
         _isEditMode.value = false
         _isReminderEnabled.value = false
+        _category.value = "category_other"
         _jointEmails.value = emptyList()
         _participants.value = null
     }

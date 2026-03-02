@@ -60,10 +60,24 @@
 
     <!-- Categories -->
     <string name="category_entertainment">Unterhaltung</string>
+    <string name="category_streaming">Filme &amp; TV</string>
     <string name="category_music">Musik</string>
     <string name="category_sports">Sport &amp; Gesundheit</string>
+    <string name="category_education">Bildung</string>
+    <string name="category_cloud">Cloud &amp; Produktivität</string>
+    <string name="category_ecommerce">Einkaufen</string>
+    <string name="category_gaming">Gaming</string>
+    <string name="category_news">Nachrichten &amp; Verlage</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_finance">Finanzen</string>
+    <string name="category_software">Software &amp; Tools</string>
     <string name="category_technology">Technologie</string>
     <string name="category_other">Andere</string>
+
+    <string name="quick_amount">Schnellbetrag</string>
+    <string name="quick_date">Schnelldatum</string>
+    <string name="today_btn">Heute</string>
+    <string name="tomorrow_btn">Morgen</string>
 
     <!-- Settings -->
     <string name="settings_title">Einstellungen</string>

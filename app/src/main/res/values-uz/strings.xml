@@ -220,10 +220,25 @@
     <string name="restore_purchase">Sotib olinganlarni tiklash</string>
     
     <!-- Categories -->
-    <string name="category_entertainment">Koʻngilochar</string>
+    <string name="category_entertainment">O\'yin-kulgi</string>
+    <string name="category_streaming">Kinolar &amp; TV</string>
     <string name="category_music">Musiqa</string>
-    <string name="category_sports">Sport va salomatlik</string>
+    <string name="category_sports">Sport &amp; Sog\'liq</string>
+    <string name="category_education">Ta\'lim</string>
+    <string name="category_cloud">Bulut &amp; Unumdorlik</string>
+    <string name="category_ecommerce">Savdo</string>
+    <string name="category_gaming">O\'yinlar</string>
+    <string name="category_news">Yangiliklar &amp; Nashriyot</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_finance">Moliya</string>
+    <string name="category_software">Dasturiy ta\'minot &amp; Vositalar</string>
+    <string name="category_technology">Texnologiya</string>
     <string name="category_other">Boshqa</string>
+
+    <string name="quick_amount">Tezkor summa</string>
+    <string name="quick_date">Tezkor sana</string>
+    <string name="today_btn">Bugun</string>
+    <string name="tomorrow_btn">Ertaga</string>
     
     <!-- Analytics -->
     <string name="analytics">Tahlil</string>
@@ -385,7 +400,6 @@
     <string name="secure_payment_footer">Xavfsiz tolov. Istalgan vaqtda bekor qiling.</string>
     <string name="automatic_tracking">Avtomatik kuzatuv</string>
     <string name="how_to_add">Obunani qanday qoshish mumkin?</string>
-    <string name="category_technology">Texnologiya</string>
     <string name="widget_days_left">%d kun qoldi</string>
     <string name="plan_free">Bepul</string>
     <string name="name_placeholder">Ismingiz</string>

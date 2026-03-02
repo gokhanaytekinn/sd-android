@@ -221,10 +221,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Ойын-сауық</string>
+    <string name="category_streaming">Кино және ТВ</string>
     <string name="category_music">Музыка</string>
     <string name="category_sports">Спорт және денсаулық</string>
+    <string name="category_education">Білім</string>
+    <string name="category_cloud">Бұлттық және өнімділік</string>
+    <string name="category_ecommerce">Сауда</string>
+    <string name="category_gaming">Ойындар</string>
+    <string name="category_news">Жаңалықтар және баспа</string>
+    <string name="category_transport">Көлік</string>
+    <string name="category_finance">Қаржы</string>
+    <string name="category_software">Бағдарламалық қамтамасыз ету және құралдар</string>
+    <string name="category_technology">Технология</string>
     <string name="category_other">Басқа</string>
-    
+
+    <string name="quick_amount">Жылдам сома</string>
+    <string name="quick_date">Жылдам күн</string>
+    <string name="today_btn">Бүгін</string>
+    <string name="tomorrow_btn">Ертең</string>
     <!-- Analytics -->
     <string name="analytics">Талдау</string>
     <string name="spending_overview">Шығындарға шолу</string>
@@ -385,7 +399,7 @@
     <string name="secure_payment_footer">Qaupsiiz tolem. Kez kelgen uaqytta boldyrmau.</string>
     <string name="automatic_tracking">Avtomatti baqylau</string>
     <string name="how_to_add">Jazylymdy qalai qosug boladii?</string>
-    <string name="category_technology">Technology</string>
+
     <string name="widget_days_left">%d kun qaldy</string>
     <string name="plan_free">Tegin</string>
     <string name="name_placeholder">Atynyz</string>

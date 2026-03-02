@@ -217,10 +217,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">娱乐</string>
+    <string name="category_streaming">影视</string>
     <string name="category_music">音乐</string>
     <string name="category_sports">运动与健康</string>
+    <string name="category_education">教育</string>
+    <string name="category_cloud">云端与效率</string>
+    <string name="category_ecommerce">购物</string>
+    <string name="category_gaming">游戏</string>
+    <string name="category_news">新闻与出版</string>
+    <string name="category_transport">交通</string>
+    <string name="category_finance">金融</string>
+    <string name="category_software">软件与工具</string>
+    <string name="category_technology">科技</string>
     <string name="category_other">其他</string>
-    
+
+    <string name="quick_amount">快速金额</string>
+    <string name="quick_date">快速日期</string>
+    <string name="today_btn">今天</string>
+    <string name="tomorrow_btn">明天</string>
     <!-- Analytics -->
     <string name="analytics">分析</string>
     <string name="spending_overview">支出概览</string>
@@ -388,7 +402,7 @@
     <string name="automatic_tracking">自动追踪</string>
     <string name="cancel_subscription">取消订阅</string>
     <string name="how_to_add">如何添加订阅？</string>
-    <string name="category_technology">科技</string>
+
     <string name="widget_days_left">剩 %d 天</string>
     <string name="name_placeholder">您的姓名</string>
     <string name="plans_header">选择您的计划</string>

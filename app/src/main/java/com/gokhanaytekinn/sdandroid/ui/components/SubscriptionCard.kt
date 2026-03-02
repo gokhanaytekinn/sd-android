@@ -142,6 +142,10 @@ fun SubscriptionCard(
                             }
                         }
                         
+                        val context = androidx.compose.ui.platform.LocalContext.current
+                        val categoryResId = context.resources.getIdentifier(category, "string", context.packageName)
+                        val localizedCategory = if (categoryResId != 0) stringResource(categoryResId) else category
+
                         val cycleText = when (billingCycle) {
                             BillingCycle.MONTHLY -> stringResource(R.string.billing_monthly_label)
                             BillingCycle.YEARLY -> stringResource(R.string.billing_yearly_label)
@@ -149,10 +153,10 @@ fun SubscriptionCard(
                             else -> stringResource(R.string.period_monthly)
                         }
 
-                        val categoryText = if (category == "Other" || category == "Diğer") {
+                        val categoryText = if (category == "Other" || category == "Diğer" || category == "category_other") {
                              cycleText
                         } else {
-                            "$category • $cycleText"
+                            "$localizedCategory • $cycleText"
                         }
                         
                         Text(

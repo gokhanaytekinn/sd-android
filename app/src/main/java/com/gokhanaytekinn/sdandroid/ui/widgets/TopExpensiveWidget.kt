@@ -34,8 +34,9 @@ class TopExpensiveWidget : GlanceAppWidget() {
         val result = repository.getSubscriptions()
         val subscriptions = result.getOrNull() ?: emptyList()
         
-        // Get top 3 expensive
+        // Get top 3 expensive active subscriptions
         val topExpensive = subscriptions
+            .filter { it.isActive }
             .sortedByDescending { it.cost }
             .take(3)
 

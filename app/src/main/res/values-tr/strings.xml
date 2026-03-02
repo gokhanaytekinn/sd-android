@@ -238,10 +238,24 @@
     
     <!-- Kategoriler -->
     <string name="category_entertainment">Eğlence</string>
+    <string name="category_streaming">Dizi &amp; Film</string>
     <string name="category_music">Müzik</string>
     <string name="category_sports">Spor &amp; Sağlık</string>
+    <string name="category_education">Eğitim</string>
+    <string name="category_cloud">Bulut &amp; Verimlilik</string>
+    <string name="category_ecommerce">Alışveriş</string>
+    <string name="category_gaming">Oyun</string>
+    <string name="category_news">Haber &amp; Yayıncılık</string>
+    <string name="category_transport">Ulaşım</string>
+    <string name="category_finance">Finans</string>
+    <string name="category_software">Yazılım &amp; Araçlar</string>
     <string name="category_technology">Teknoloji</string>
     <string name="category_other">Diğer</string>
+
+    <string name="quick_amount">Hızlı Tutar</string>
+    <string name="quick_date">Hızlı Tarih</string>
+    <string name="today_btn">Bugün</string>
+    <string name="tomorrow_btn">Yarın</string>
     
     
     <!-- Transaction History -->
@@ -374,4 +388,42 @@
     <string name="premium_plan">Premium Plan</string>
     <string name="feature_auto_capture_premium_desc">Odeme hatırlatıcıları</string>
     <string name="date_placeholder">gg/aa/yyyy</string>
+    <string name="billing_monthly_label">Aylık</string>
+    <string name="billing_yearly_label">Yıllık</string>
+    <string name="billing_weekly_label">Haftalık</string>
+    <!-- Analytics -->
+    <string name="analytics">Analizler</string>
+    <string name="spending_overview">Harcama Özeti</string>
+    <string name="monthly_trend">Aylık Trend</string>
+    <string name="category_breakdown">Kategori Dağılımı</string>
+    <string name="top_subscriptions">En Pahalı Abonelikler</string>
+    
+    <!-- Scan & Automatic Tracking -->
+    <string name="automatic_tracking">Otomatik Takip</string>
+    <string name="detected_subs_found">Abonelikler Bulundu</string>
+    <string name="detected_subs_title">Tespit Edilen Abonelikler</string>
+    <string name="detected_count">Tespit Edilen</string>
+    <string name="detected_sub_add">Ekle</string>
+    <string name="detected_sub_reject">Reddet</string>
+    <string name="detected_subs_close">Kapat</string>
+    <string name="marked_count">İşaretlendi</string>
+    <string name="menu_scan">Tara</string>
+    <string name="scan">Tara</string>
+    <string name="scan_dialog_completed">Tarama Tamamlandı</string>
+    <string name="scan_dialog_detected_count">Tespit edilen: %.0f</string>
+    <string name="scan_dialog_file_count">Taranan dosya: %.0f</string>
+    <string name="scan_dialog_ok">Tamam</string>
+    <string name="scan_dialog_scanning">Taranıyor…</string>
+    <string name="scan_dialog_sms_count">Taranan SMS: %.0f</string>
+    
+    <!-- Permissions -->
+    <string name="permission_denied_message">İzin reddedildi.</string>
+    <string name="permission_permanently_denied_message">İzin kalıcı olarak reddedildi.</string>
+    <string name="sms_permission_rationale">İşlemleri tarayabilmek için mesaj iznine ihtiyaç var.</string>
+    <string name="storage_permission_rationale">Belgeleri tarayabilmek için depolama iznine izin vermelisin.</string>
+    
+    <!-- Advanced Analytics Premium feature -->
+    <string name="feature_advanced_analytics_title">Gelişmiş Analitik</string>
+    <string name="feature_advanced_analytics_free_desc">Temel Analizler</string>
+    <string name="feature_advanced_analytics_premium_desc">Tam İçgörüler</string>
 </resources>

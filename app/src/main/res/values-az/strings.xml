@@ -221,9 +221,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Əyləncə</string>
+    <string name="category_streaming">Filmlər &amp; TV</string>
     <string name="category_music">Musiqi</string>
     <string name="category_sports">İdman &amp; Sağlamlıq</string>
+    <string name="category_education">Təhsil</string>
+    <string name="category_cloud">Bulud &amp; Məhsuldarlıq</string>
+    <string name="category_ecommerce">Alış-veriş</string>
+    <string name="category_gaming">Oyunlar</string>
+    <string name="category_news">Xəbərlər &amp; Nəşriyyat</string>
+    <string name="category_transport">Nəqliyyat</string>
+    <string name="category_finance">Maliyyə</string>
+    <string name="category_software">Proqram Təminatı &amp; Alətlər</string>
+    <string name="category_technology">Texnologiya</string>
     <string name="category_other">Digər</string>
+
+    <string name="quick_amount">Sürətli Məbləğ</string>
+    <string name="quick_date">Sürətli Tarix</string>
+    <string name="today_btn">Bugün</string>
+    <string name="tomorrow_btn">Sabah</string>
     
     <!-- Analytics -->
     <string name="analytics">Analitika</string>
@@ -385,7 +400,6 @@
     <string name="secure_payment_footer">Tehlukesiz odenis. Istediyiniz vaxt legv edin.</string>
     <string name="automatic_tracking">Avtomatik Izleme</string>
     <string name="how_to_add">Abonelik nasil elave edilir?</string>
-    <string name="category_technology">Texnologiya</string>
     <string name="widget_days_left">%d gun qaldi</string>
     <string name="plan_free">Pulsuz</string>
     <string name="name_placeholder">Adiniz</string>

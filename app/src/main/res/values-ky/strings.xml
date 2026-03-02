@@ -221,10 +221,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Көңүл ачуу</string>
+    <string name="category_streaming">Кино жана ТВ</string>
     <string name="category_music">Музыка</string>
     <string name="category_sports">Спорт жана ден соолук</string>
+    <string name="category_education">Билим</string>
+    <string name="category_cloud">Булут жана өндүрүмдүүлүк</string>
+    <string name="category_ecommerce">Соода</string>
+    <string name="category_gaming">Оюндар</string>
+    <string name="category_news">Жаңылыктар жана басма</string>
+    <string name="category_transport">Транспорт</string>
+    <string name="category_finance">Каржы</string>
+    <string name="category_software">Программалык камсыздоо жана куралдар</string>
+    <string name="category_technology">Технология</string>
     <string name="category_other">Башка</string>
-    
+
+    <string name="quick_amount">Ыкчам сумма</string>
+    <string name="quick_date">Ыкчам күн</string>
+    <string name="today_btn">Бүгүн</string>
+    <string name="tomorrow_btn">Эртең</string>
     <!-- Analytics -->
     <string name="analytics">Аналитика</string>
     <string name="spending_overview">Чыгымдарга сереп</string>
@@ -385,7 +399,7 @@
     <string name="secure_payment_footer">Koopsuz tolem. Kaalagan ubakta zhokko chygarynyz.</string>
     <string name="automatic_tracking">Avtomattyk kozomoldoo</string>
     <string name="how_to_add">Jazylmany kantip koshso bolot?</string>
-    <string name="category_technology">Tekhnologiya</string>
+
     <string name="widget_days_left">%d kun kaldy</string>
     <string name="plan_free">Beker</string>
     <string name="name_placeholder">Atynyz</string>

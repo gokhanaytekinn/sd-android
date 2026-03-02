@@ -247,10 +247,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Entertainment</string>
+    <string name="category_streaming">Movie &amp; TV</string>
     <string name="category_music">Music</string>
     <string name="category_sports">Sports &amp; Health</string>
+    <string name="category_education">Education</string>
+    <string name="category_cloud">Cloud &amp; Productivity</string>
+    <string name="category_ecommerce">Shopping</string>
+    <string name="category_gaming">Gaming</string>
+    <string name="category_news">News &amp; Publishing</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_finance">Finance</string>
+    <string name="category_software">Software &amp; Tools</string>
     <string name="category_technology">Technology</string>
     <string name="category_other">Other</string>
+    
+    <string name="quick_amount">Quick Amount</string>
+    <string name="quick_date">Quick Date</string>
+    <string name="today_btn">Today</string>
+    <string name="tomorrow_btn">Tomorrow</string>
     
     
     <!-- Transaction History -->
@@ -382,4 +396,39 @@
     <string name="widget_days_left">%d days left</string>
     <string name="widget_today">Due Today</string>
 
+    <!-- Analytics -->
+    <string name="analytics">Analytics</string>
+    <string name="spending_overview">Spending Overview</string>
+    <string name="monthly_trend">Monthly Trend</string>
+    <string name="category_breakdown">Category Breakdown</string>
+    <string name="top_subscriptions">Top Subscriptions</string>
+    
+    <!-- Scan & Automatic Tracking -->
+    <string name="automatic_tracking">Automatic Tracking</string>
+    <string name="detected_subs_found">Subscriptions Found</string>
+    <string name="detected_subs_title">Detected Subscriptions</string>
+    <string name="detected_count">Detected Count</string>
+    <string name="detected_sub_add">Add</string>
+    <string name="detected_sub_reject">Reject</string>
+    <string name="detected_subs_close">Close</string>
+    <string name="marked_count">Marked</string>
+    <string name="menu_scan">Scan Menu</string>
+    <string name="scan">Scan</string>
+    <string name="scan_dialog_completed">Scan Completed</string>
+    <string name="scan_dialog_detected_count">Detected count: %.0f</string>
+    <string name="scan_dialog_file_count">Files scanned: %.0f</string>
+    <string name="scan_dialog_ok">OK</string>
+    <string name="scan_dialog_scanning">Scanning…</string>
+    <string name="scan_dialog_sms_count">SMS scanned: %.0f</string>
+    
+    <!-- Permissions -->
+    <string name="permission_denied_message">Permission denied.</string>
+    <string name="permission_permanently_denied_message">Permission permanently denied.</string>
+    <string name="sms_permission_rationale">Need SMS permission for scanning.</string>
+    <string name="storage_permission_rationale">Need Storage permission for scanning documents.</string>
+    
+    <!-- Advanced Analytics Premium feature -->
+    <string name="feature_advanced_analytics_title">Advanced Analytics</string>
+    <string name="feature_advanced_analytics_free_desc">Basic Analysis</string>
+    <string name="feature_advanced_analytics_premium_desc">Full Insights</string>
 </resources>

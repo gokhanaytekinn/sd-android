@@ -223,9 +223,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Divertissement</string>
+    <string name="category_streaming">Films et TV</string>
     <string name="category_music">Musique</string>
-    <string name="category_sports">Sports et Santé</string>
-    <string name="category_other">Autre</string>
+    <string name="category_sports">Sport et Santé</string>
+    <string name="category_education">Éducation</string>
+    <string name="category_cloud">Cloud et Productivité</string>
+    <string name="category_ecommerce">Shopping</string>
+    <string name="category_gaming">Jeux</string>
+    <string name="category_news">Actualités et Édition</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_finance">Finance</string>
+    <string name="category_software">Logiciels et Outils</string>
+    <string name="category_technology">Technologie</string>
+    <string name="category_other">Autres</string>
+
+    <string name="quick_amount">Montant Rapide</string>
+    <string name="quick_date">Date Rapide</string>
+    <string name="today_btn">Aujourd\'hui</string>
+    <string name="tomorrow_btn">Demain</string>
     
     <!-- Analytics -->
     <string name="analytics">Analyses</string>
@@ -354,7 +369,6 @@
     <string name="premium_hero_title">Passer a Premium</string>
     <string name="plan_yearly_premium">Premium Annuel</string>
     <string name="secure_payment_footer">Paiement securise. Annulez quand vous voulez.</string>
-    <string name="category_technology">Technologie</string>
     <string name="widget_days_left">%d jours restants</string>
     <string name="widget_upcoming_desc">%1$s pour %2$s</string>
     <string name="delete_subscription">Supprimer l\'abonnement</string>

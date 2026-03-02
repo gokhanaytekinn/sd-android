@@ -59,7 +59,7 @@ fun DashboardScreen(
     
     // Calculate expensive subscriptions outside of LazyColumn items
     val expensiveSubscriptions = remember(subscriptions) {
-        subscriptions.sortedByDescending { it.cost }.take(3)
+        subscriptions.filter { it.isActive }.sortedByDescending { it.cost }.take(3)
     }
     
     Box(

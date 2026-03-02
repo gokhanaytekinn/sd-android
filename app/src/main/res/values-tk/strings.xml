@@ -220,11 +220,25 @@
     <string name="restore_purchase">Satyn alnanlary Dikelt</string>
     
     <!-- Categories -->
-    <string name="category_entertainment">Gözegçilik</string>
+    <string name="category_entertainment">Gündizine</string>
+    <string name="category_streaming">Kinolar &amp; TV</string>
     <string name="category_music">Saz</string>
     <string name="category_sports">Sport &amp; Saglyk</string>
+    <string name="category_education">Bilim</string>
+    <string name="category_cloud">Bulut &amp; Öndürijilik</string>
+    <string name="category_ecommerce">Söwda</string>
+    <string name="category_gaming">Oýunlar</string>
+    <string name="category_news">Täzelikler &amp; Neşirýat</string>
+    <string name="category_transport">Ulag</string>
+    <string name="category_finance">Maliýe</string>
+    <string name="category_software">Programma üpjünçiligi &amp; Gurallar</string>
+    <string name="category_technology">Tehnologiýa</string>
     <string name="category_other">Başga</string>
-    
+
+    <string name="quick_amount">Çalt mukdar</string>
+    <string name="quick_date">Çalt sene</string>
+    <string name="today_btn">Bugün</string>
+    <string name="tomorrow_btn">Ertir</string>
     <!-- Analytics -->
     <string name="analytics">Analitika</string>
     <string name="spending_overview">Çykdajy Syny</string>
@@ -385,7 +399,7 @@
     <string name="secure_payment_footer">Howpsuz toleg. Islendik wagt yatyr.</string>
     <string name="automatic_tracking">Awtomatik yzarlama</string>
     <string name="how_to_add">Yazylma nadip goshmaly?</string>
-    <string name="category_technology">Tehnologiya</string>
+
     <string name="widget_days_left">%d gun galdy</string>
     <string name="plan_free">Mugt</string>
     <string name="name_placeholder">Adiniz</string>

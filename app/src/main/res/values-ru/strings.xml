@@ -200,9 +200,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Развлечения</string>
+    <string name="category_streaming">Кино и ТВ</string>
     <string name="category_music">Музыка</string>
     <string name="category_sports">Спорт и Здоровье</string>
+    <string name="category_education">Образование</string>
+    <string name="category_cloud">Облако и продуктивность</string>
+    <string name="category_ecommerce">Покупки</string>
+    <string name="category_gaming">Игры</string>
+    <string name="category_news">Новости и издательство</string>
+    <string name="category_transport">Транспорт</string>
+    <string name="category_finance">Финансы</string>
+    <string name="category_software">ПО и инструменты</string>
+    <string name="category_technology">Технологии</string>
     <string name="category_other">Другое</string>
+
+    <string name="quick_amount">Быстрая сумма</string>
+    <string name="quick_date">Быстрая дата</string>
+    <string name="today_btn">Сегодня</string>
+    <string name="tomorrow_btn">Завтра</string>
     
     <!-- Analytics -->
     <string name="analytics">Аналитика</string>
@@ -390,7 +405,7 @@
     <string name="automatic_tracking">Avtomaticheskoye otslezhivaniye</string>
     <string name="cancel_subscription">Otmenit podpisku</string>
     <string name="how_to_add">Kak dobavit podpisku?</string>
-    <string name="category_technology">Tekhnologiya</string>
+
     <string name="widget_days_left">Ostalos %d dney</string>
     <string name="name_placeholder">Vashe imya</string>
     <string name="plans_header">Vyberte plan</string>

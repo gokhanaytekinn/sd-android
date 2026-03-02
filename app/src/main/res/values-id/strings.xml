@@ -222,9 +222,24 @@
     
     <!-- Categories -->
     <string name="category_entertainment">Hiburan</string>
+    <string name="category_streaming">Film &amp; TV</string>
     <string name="category_music">Musik</string>
     <string name="category_sports">Olahraga &amp; Kesehatan</string>
+    <string name="category_education">Pendidikan</string>
+    <string name="category_cloud">Cloud &amp; Produktivitas</string>
+    <string name="category_ecommerce">Belanja</string>
+    <string name="category_gaming">Game</string>
+    <string name="category_news">Berita &amp; Penerbitan</string>
+    <string name="category_transport">Transportasi</string>
+    <string name="category_finance">Keuangan</string>
+    <string name="category_software">Perangkat Lunak &amp; Alat</string>
+    <string name="category_technology">Teknologi</string>
     <string name="category_other">Lainnya</string>
+
+    <string name="quick_amount">Jumlah Cepat</string>
+    <string name="quick_date">Tanggal Cepat</string>
+    <string name="today_btn">Hari Ini</string>
+    <string name="tomorrow_btn">Besok</string>
     
     <!-- Analytics -->
     <string name="analytics">Analitik</string>

@@ -59,6 +59,7 @@ fun AddSubscriptionScreen(
     val isSuccess by viewModel.isSuccess.collectAsState()
     val isEditMode by viewModel.isEditMode.collectAsState()
     val participants by viewModel.participants.collectAsState()
+    val selectedCategory by viewModel.category.collectAsState()
     
     val nameError by viewModel.nameError.collectAsState()
     val amountError by viewModel.amountError.collectAsState()
@@ -139,34 +140,110 @@ fun AddSubscriptionScreen(
             }
             
             Column(modifier = Modifier.padding(horizontal = 24.dp)) {
-                // Service Name Input
-                Text(
-                    text = stringResource(R.string.service_name),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                
-                OutlinedTextField(
-                    value = name,
-                    onValueChange = viewModel::updateName,
-                    modifier = Modifier.fillMaxWidth(),
-                    shape = RoundedCornerShape(12.dp),
-                    placeholder = { Text(stringResource(R.string.service_name_placeholder), color = Color.Gray) },
-                    isError = nameError != null,
-                    supportingText = if (nameError != null) {
-                        { Text(stringResource(nameError!!)) }
-                    } else null,
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = PrimaryBlue,
-                        unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
-                        errorBorderColor = MaterialTheme.colorScheme.error,
-                        focusedContainerColor = Color.White.copy(alpha = 0.05f),
-                        unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
-                    ),
-                    singleLine = true
-                )
+                // Category and Service Name
+                Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(16.dp)) {
+                    // Service Name Input
+                    Column(modifier = Modifier.weight(2f)) {
+                        Text(
+                            text = stringResource(R.string.service_name),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        OutlinedTextField(
+                            value = name,
+                            onValueChange = viewModel::updateName,
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            placeholder = { Text(stringResource(R.string.service_name_placeholder), color = Color.Gray) },
+                            isError = nameError != null,
+                            supportingText = if (nameError != null) {
+                                { Text(stringResource(nameError!!)) }
+                            } else null,
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedBorderColor = PrimaryBlue,
+                                unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                                errorBorderColor = MaterialTheme.colorScheme.error,
+                                focusedContainerColor = Color.White.copy(alpha = 0.05f),
+                                unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
+                            ),
+                            singleLine = true
+                        )
+                    }
+
+                    // Category Dropdown
+                    Column(modifier = Modifier.weight(1.2f)) {
+                        Text(
+                            text = stringResource(R.string.category),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                            modifier = Modifier.padding(bottom = 8.dp)
+                        )
+                        var categoryExpanded by remember { mutableStateOf(false) }
+                        
+                        val getCategoryIcon: (String?) -> androidx.compose.ui.graphics.vector.ImageVector = { cat ->
+                            when (cat) {
+                                "category_streaming", "category_music" -> Icons.Default.PlayArrow
+                                "category_entertainment", "category_gaming" -> Icons.Default.Star
+                                "category_education" -> Icons.Default.Info
+                                "category_cloud", "category_software", "category_technology" -> Icons.Default.Build
+                                "category_ecommerce" -> Icons.Default.ShoppingCart
+                                "category_finance" -> Icons.Default.AccountBox
+                                "category_transport" -> Icons.Default.LocationOn
+                                "category_sports" -> Icons.Default.Favorite
+                                "category_news", "category_other" -> Icons.Default.List
+                                else -> Icons.Default.List
+                            }
+                        }
+                        
+                        Box {
+                            OutlinedTextField(
+                                value = "",
+                                onValueChange = {},
+                                modifier = Modifier.fillMaxWidth(),
+                                shape = RoundedCornerShape(12.dp),
+                                readOnly = true,
+                                trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = null) },
+                                leadingIcon = {
+                                    Icon(getCategoryIcon(selectedCategory), contentDescription = null, tint = PrimaryBlue)
+                                },
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = PrimaryBlue,
+                                    unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                                    focusedContainerColor = Color.White.copy(alpha = 0.05f),
+                                    unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
+                                )
+                            )
+                            Box(modifier = Modifier.matchParentSize().clickable { categoryExpanded = true })
+                            DropdownMenu(
+                                expanded = categoryExpanded,
+                                onDismissRequest = { categoryExpanded = false }
+                            ) {
+                                val categories = listOf(
+                                    "category_streaming", "category_entertainment", "category_music", 
+                                    "category_gaming", "category_education", "category_cloud", 
+                                    "category_ecommerce", "category_finance", "category_software",
+                                    "category_news", "category_transport", "category_sports", 
+                                    "category_technology", "category_other"
+                                )
+                                categories.forEach { catKey ->
+                                    val resId = context.resources.getIdentifier(catKey, "string", context.packageName)
+                                    val catName = if (resId != 0) stringResource(resId) else catKey
+                                    DropdownMenuItem(
+                                        leadingIcon = { Icon(getCategoryIcon(catKey), contentDescription = null, tint = PrimaryBlue) },
+                                        text = { Text(catName) },
+                                        onClick = {
+                                            viewModel.updateCategory(catKey)
+                                            categoryExpanded = false
+                                        }
+                                    )
+                                }
+                            }
+                        }
+                    }
+                }
                 
                 Spacer(modifier = Modifier.height(16.dp))
                 
@@ -175,40 +252,52 @@ fun AddSubscriptionScreen(
                     horizontalArrangement = Arrangement.spacedBy(16.dp),
                     modifier = Modifier.fillMaxWidth()
                 ) {
+                    data class QuickShortcut(val name: String, val color: Color, val initial: String, val iconRes: Int?, val catKey: String)
                     val suggestions = listOf(
-                        Triple("Google", Color(0xFF4285F4), "G"),
-                        Triple("Cursor", Color(0xFF1A1A1A), "C"),
-                        Triple("Claude", Color(0xFFD97757), "C"),
-                        Triple("Netflix", NetflixRed, "N"),
-                        Triple("Spotify", SpotifyGreen, "S"),
-                        Triple("YouTube", Color(0xFFFF0000), "Y"),
-                        Triple("Amazon", Color(0xFF00A8E1), "A"),
-                        Triple("HBO Max", Color(0xFF5A2E81), "H")
+                        QuickShortcut("Google", Color(0xFF4285F4), "G", R.drawable.ic_google, "category_cloud"),
+                        QuickShortcut("Cursor", Color(0xFF1A1A1A), "C", R.drawable.ic_cursor, "category_software"),
+                        QuickShortcut("Claude", Color(0xFFD97757), "C", R.drawable.ic_claude, "category_software"),
+                        QuickShortcut("Netflix", NetflixRed, "N", R.drawable.ic_netflix, "category_streaming"),
+                        QuickShortcut("Spotify", SpotifyGreen, "S", R.drawable.ic_spotify, "category_music"),
+                        QuickShortcut("YouTube", Color(0xFFFF0000), "Y", R.drawable.ic_youtube, "category_streaming"),
+                        QuickShortcut("Amazon", Color(0xFF00A8E1), "A", R.drawable.ic_amazon, "category_ecommerce"),
+                        QuickShortcut("HBO Max", Color(0xFF5A2E81), "H", R.drawable.ic_hbomax, "category_streaming")
                     )
                     
-                    items(suggestions) { (appName, color, initial) ->
+                    items(suggestions) { shortcut ->
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
-                            modifier = Modifier.clickable { viewModel.updateName(appName) }
+                            modifier = Modifier.clickable { 
+                                viewModel.updateName(shortcut.name)
+                                viewModel.updateCategory(shortcut.catKey)
+                            }
                         ) {
                             Box(
                                 modifier = Modifier
                                     .size(48.dp)
                                     .clip(RoundedCornerShape(12.dp))
-                                    .background(color.copy(alpha = 0.2f))
-                                    .border(1.dp, color.copy(alpha = 0.3f), RoundedCornerShape(12.dp)),
+                                    .background(shortcut.color.copy(alpha = 0.2f))
+                                    .border(1.dp, shortcut.color.copy(alpha = 0.3f), RoundedCornerShape(12.dp)),
                                 contentAlignment = Alignment.Center
                             ) {
-                                Text(
-                                    text = initial,
-                                    color = color,
-                                    fontWeight = FontWeight.Bold,
-                                    fontSize = 20.sp
-                                )
+                                if (shortcut.iconRes != null) {
+                                     androidx.compose.foundation.Image(
+                                         painter = androidx.compose.ui.res.painterResource(id = shortcut.iconRes),
+                                         contentDescription = shortcut.name,
+                                         modifier = Modifier.size(24.dp)
+                                     )
+                                } else {
+                                    Text(
+                                        text = shortcut.initial,
+                                        color = shortcut.color,
+                                        fontWeight = FontWeight.Bold,
+                                        fontSize = 20.sp
+                                    )
+                                }
                             }
                             Spacer(modifier = Modifier.height(6.dp))
                             Text(
-                                text = appName,
+                                text = shortcut.name,
                                 fontSize = 12.sp,
                                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
                             )
