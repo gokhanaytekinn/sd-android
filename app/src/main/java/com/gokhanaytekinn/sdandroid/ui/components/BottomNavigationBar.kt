@@ -74,25 +74,25 @@ fun BottomNavigationBar(
             BottomNavItem(
                 icon = Icons.Default.Dashboard,
                 label = stringResource(R.string.nav_dashboard),
-                selected = currentRoute == Screen.Dashboard.route,
+                selected = currentRoute?.startsWith(Screen.Dashboard.route.split("?")[0]) == true,
                 onClick = { onNavigate(Screen.Dashboard.route) }
             )
             BottomNavItem(
                 icon = Icons.Default.List,
                 label = stringResource(R.string.subscriptions),
-                selected = currentRoute == Screen.SubscriptionsList.route,
+                selected = currentRoute?.startsWith(Screen.SubscriptionsList.route.split("?")[0]) == true,
                 onClick = { onNavigate(Screen.SubscriptionsList.route) }
             )
             BottomNavItem(
                 icon = Icons.Default.Notifications,
                 label = stringResource(R.string.nav_upcoming),
-                selected = currentRoute == Screen.UpcomingSubscriptions.route,
+                selected = currentRoute?.startsWith(Screen.UpcomingSubscriptions.route.split("?")[0]) == true,
                 onClick = { onNavigate(Screen.UpcomingSubscriptions.route) }
             )
             BottomNavItem(
                 icon = Icons.Default.Settings,
                 label = stringResource(R.string.nav_settings),
-                selected = currentRoute == Screen.AppSettings.route,
+                selected = currentRoute?.startsWith(Screen.AppSettings.route.split("?")[0]) == true,
                 onClick = { onNavigate(Screen.AppSettings.route) }
             )
         }

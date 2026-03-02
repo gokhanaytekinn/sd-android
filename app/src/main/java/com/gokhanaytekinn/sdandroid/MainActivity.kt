@@ -85,8 +85,14 @@ class MainActivity : AppCompatActivity() {
                         // Handle notification navigation triggers as one-time actions
                         androidx.compose.runtime.LaunchedEffect(navController) {
                             navigationActions.collect { target ->
-                                if (target == "upcoming_subscriptions") {
-                                    navController.navigate(com.gokhanaytekinn.sdandroid.ui.navigation.Screen.UpcomingSubscriptions.route)
+                                try {
+                                    if (target == "upcoming_subscriptions") {
+                                        navController.navigate(com.gokhanaytekinn.sdandroid.ui.navigation.Screen.UpcomingSubscriptions.route)
+                                    } else {
+                                        navController.navigate(target)
+                                    }
+                                } catch (e: Exception) {
+                                    Log.e("Navigation", "Failed to navigate to $target", e)
                                 }
                             }
                         }

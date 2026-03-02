@@ -38,6 +38,7 @@ import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
 
 @Composable
 fun SubscriptionsListScreen(
+    initialTab: Int = 0,
     onSubscriptionClick: (String) -> Unit = {},
     onNavigateToSearch: () -> Unit = {},
     onNavigateToAnalytics: () -> Unit = {}
@@ -56,7 +57,7 @@ fun SubscriptionsListScreen(
     val detectedSubscriptions by viewModel.detectedSubscriptions.collectAsState()
     val pendingInvitations by viewModel.pendingInvitations.collectAsState()
     
-    var selectedTab by remember { mutableStateOf(0) }
+    var selectedTab by remember { mutableStateOf(initialTab) }
     var showScanDialog by remember { mutableStateOf(false) }
     var showResultsDialog by remember { mutableStateOf(false) }
     var showPermissionRationale by remember { mutableStateOf(false) }

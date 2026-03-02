@@ -241,8 +241,18 @@ fun NavGraph(
             }
             
             
-            composable(Screen.SubscriptionsList.route) {
+            composable(
+                route = Screen.SubscriptionsList.route,
+                arguments = listOf(
+                    androidx.navigation.navArgument("tab") {
+                        type = androidx.navigation.NavType.IntType
+                        defaultValue = 0
+                    }
+                )
+            ) { backStackEntry ->
+                val initialTab = backStackEntry.arguments?.getInt("tab") ?: 0
                 SubscriptionsListScreen(
+                    initialTab = initialTab,
                     onSubscriptionClick = { subscriptionId ->
                         navController.navigate(Screen.SubscriptionDetails.createRoute(subscriptionId))
                     },

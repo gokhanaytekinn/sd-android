@@ -5,7 +5,9 @@ sealed class Screen(val route: String) {
     object Login : Screen("login")
     object Register : Screen("register")
     object Dashboard : Screen("dashboard")
-    object SubscriptionsList : Screen("subscriptions_list")
+    object SubscriptionsList : Screen("subscriptions_list?tab={tab}") {
+        fun createRoute(tab: Int = 0) = "subscriptions_list?tab=$tab"
+    }
     object UpcomingSubscriptions : Screen("upcoming_subscriptions")
     object SuspiciousPayments : Screen("suspicious_payments")
     object PremiumAnalytics : Screen("premium_analytics")
