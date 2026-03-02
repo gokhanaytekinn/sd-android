@@ -34,18 +34,12 @@ import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
 @Composable
 fun AppSettingsScreen(
     onBackClick: () -> Unit = {},
-    onProfileClick: () -> Unit = {},
     onUpgradeClick: (String?) -> Unit = {},
-    onCurrencyClick: () -> Unit = {},
     onHelpClick: () -> Unit = {},
     onPrivacyClick: () -> Unit = {},
-    onLogoutClick: () -> Unit = {},
-    onNavigateToDashboard: () -> Unit = {},
-    onNavigateToSubscriptions: () -> Unit = {},
-    onNavigateToSearch: () -> Unit = {}
+    onLogoutClick: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
-    val activity = context as? android.app.Activity
     val scope = rememberCoroutineScope()
     
     // ViewModels
@@ -59,7 +53,6 @@ fun AppSettingsScreen(
     val notificationPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.NotificationPreferences(context) }
     
     // States
-    val notificationsEnabled by notificationPreferences.notificationsEnabled.collectAsState(initial = true)
     val darkModeEnabled by themePreferences.isDarkMode.collectAsState(initial = true)
     
     // Language state - read from saved preferences (not system locale)

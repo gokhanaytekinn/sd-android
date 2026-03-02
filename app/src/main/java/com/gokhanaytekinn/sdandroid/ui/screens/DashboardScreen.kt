@@ -43,7 +43,6 @@ fun DashboardScreen(
     onNavigateToSuspicious: () -> Unit = {},
     onNavigateToAllSubscriptions: () -> Unit = {},
     onNavigateToSearch: () -> Unit = {},
-    onNavigateToSettings: () -> Unit = {},
     onNavigateToUpcoming: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -55,7 +54,6 @@ fun DashboardScreen(
     val subscriptions by viewModel.subscriptions.collectAsState()
     val stats by viewModel.stats.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
-    val error by viewModel.error.collectAsState()
     val authState by authViewModel.authState.collectAsState()
     val suspiciousCount by viewModel.suspiciousCount.collectAsState()
     val upcomingSubs by viewModel.upcomingSubscriptions.collectAsState()

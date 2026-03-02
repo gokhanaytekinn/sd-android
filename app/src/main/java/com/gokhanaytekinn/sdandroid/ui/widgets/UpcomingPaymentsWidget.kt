@@ -157,7 +157,7 @@ class UpcomingPaymentsWidget : GlanceAppWidget() {
                 else -> dateStr
             }
         } catch (e: Exception) {
-            dateStr ?: ""
+            dateStr
         }
     }
 }

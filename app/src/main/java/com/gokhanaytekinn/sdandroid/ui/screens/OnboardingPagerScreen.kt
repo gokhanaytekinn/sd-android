@@ -23,21 +23,21 @@ import androidx.compose.runtime.remember
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.data.preferences.OnboardingPreferences
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
-import com.google.accompanist.pager.*
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.ui.draw.clip
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalPagerApi::class)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingPagerScreen(
     onComplete: () -> Unit
 ) {
     val context = LocalContext.current
     val onboardingPreferences = remember { OnboardingPreferences(context) }
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(pageCount = { 3 })
     val coroutineScope = rememberCoroutineScope()
-    
-    var currentPage by remember { mutableIntStateOf(0) }
-    val pageCount = 3
     
     Column(
         modifier = Modifier
@@ -74,7 +74,6 @@ fun OnboardingPagerScreen(
             
             // HorizontalPager
             HorizontalPager(
-                count = 3,
                 state = pagerState,
                 modifier = Modifier.weight(1f)
             ) { page ->
@@ -85,19 +84,26 @@ fun OnboardingPagerScreen(
                 }
             }
             
-            // Page indicators
-            HorizontalPagerIndicator(
-                pagerState = pagerState,
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .padding(16.dp),
-                activeColor = PrimaryBlue,
-                inactiveColor = Color(0xFFdbe1e6),
-                indicatorWidth = 48.dp,
-                indicatorHeight = 6.dp,
-                spacing = 12.dp,
-                indicatorShape = RoundedCornerShape(50)
-            )
+            // Page indicators (Simple custom implementation since Accompanist version is deprecated)
+            Row(
+                Modifier
+                    .height(50.dp)
+                    .fillMaxWidth()
+                    .align(Alignment.CenterHorizontally),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                repeat(3) { iteration ->
+                    val color = if (pagerState.currentPage == iteration) PrimaryBlue else Color(0xFFdbe1e6)
+                    val width = if (pagerState.currentPage == iteration) 48.dp else 12.dp
+                    Box(
+                        modifier = Modifier
+                            .padding(horizontal = 6.dp)
+                            .clip(RoundedCornerShape(50))
+                            .background(color)
+                            .size(width = width, height = 6.dp)
+                    )
+                }
+            }
             
             // Bottom button
             Button(

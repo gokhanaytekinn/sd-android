@@ -237,9 +237,6 @@ fun NavGraph(
                     onNavigateToSearch = {
                         navController.navigate(Screen.Search.route)
                     },
-                    onNavigateToSettings = {
-                        navController.navigate(Screen.AppSettings.route)
-                    },
                     onNavigateToUpcoming = {
                         navController.navigate(Screen.UpcomingSubscriptions.route)
                     }
@@ -252,19 +249,11 @@ fun NavGraph(
                     onSubscriptionClick = { subscriptionId ->
                         navController.navigate(Screen.SubscriptionDetails.createRoute(subscriptionId))
                     },
-                    onNavigateToDashboard = {
-                        navController.navigate(Screen.Dashboard.route) {
-                            popUpTo(Screen.Dashboard.route) { inclusive = true }
-                        }
-                    },
                     onNavigateToSearch = {
                         navController.navigate(Screen.Search.route)
                     },
-                    onNavigateToSettings = {
-                        navController.navigate(Screen.AppSettings.route)
-                    },
-                    onNavigateToAddSubscription = {
-                        navController.navigate(Screen.AddSubscription.route)
+                    onNavigateToAnalytics = {
+                        navController.navigate(Screen.PremiumAnalytics.route)
                     }
                 )
             }
@@ -384,21 +373,6 @@ fun NavGraph(
                     onLogoutClick = {
                         navController.navigate(Screen.Login.route) {
                             popUpTo(0) { inclusive = true }
-                        }
-                    },
-                    onNavigateToDashboard = {
-                        navController.navigate(Screen.Dashboard.route) {
-                            popUpTo(Screen.Dashboard.route) { inclusive = true }
-                        }
-                    },
-                    onNavigateToSubscriptions = {
-                        navController.navigate(Screen.SubscriptionsList.route) {
-                            popUpTo(Screen.Dashboard.route)
-                        }
-                    },
-                    onNavigateToSearch = {
-                        navController.navigate(Screen.Search.route) {
-                            popUpTo(Screen.Dashboard.route)
                         }
                     }
                 )

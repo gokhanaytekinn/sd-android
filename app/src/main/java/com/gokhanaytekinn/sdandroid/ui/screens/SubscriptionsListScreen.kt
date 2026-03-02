@@ -39,10 +39,7 @@ import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
 @Composable
 fun SubscriptionsListScreen(
     onSubscriptionClick: (String) -> Unit = {},
-    onNavigateToDashboard: () -> Unit = {},
     onNavigateToSearch: () -> Unit = {},
-    onNavigateToSettings: () -> Unit = {},
-    onNavigateToAddSubscription: () -> Unit = {},
     onNavigateToAnalytics: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -63,22 +60,6 @@ fun SubscriptionsListScreen(
     var showScanDialog by remember { mutableStateOf(false) }
     var showResultsDialog by remember { mutableStateOf(false) }
     var showPermissionRationale by remember { mutableStateOf(false) }
-    
-    val permissionManager = remember { PermissionManager(context) }
-    
-    // İzin launcher'ı
-    val permissionLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        val allGranted = permissions.values.all { it }
-        if (allGranted) {
-            viewModel.scanDeviceForSubscriptions()
-            showScanDialog = true
-        } else {
-            // İzin verilmedi
-            showPermissionRationale = true
-        }
-    }
     
     // Tarama tamamlandığında sonuç dialog'u göster
     LaunchedEffect(detectedSubscriptions) {

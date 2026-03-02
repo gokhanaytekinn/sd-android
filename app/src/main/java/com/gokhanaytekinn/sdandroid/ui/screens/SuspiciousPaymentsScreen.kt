@@ -162,7 +162,7 @@ fun SuspiciousPaymentsScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            itemsIndexed(allItems) { index, item ->
+            itemsIndexed(allItems) { _, item ->
                 SuspiciousTransactionCard(
                     transaction = item,
                     onConfirm = {

@@ -107,7 +107,7 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         // Navigate to add subscription screen (placeholder)
     }
     
-    fun onSubscriptionClick(id: String) {
+    fun onSubscriptionClick() {
         // Navigate to subscription detail screen (placeholder)
     }
     
