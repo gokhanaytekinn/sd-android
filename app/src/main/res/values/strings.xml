@@ -16,15 +16,13 @@
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
     <string name="unknown_error">Unknown error</string>
-    <string name="scan">Scan</string>
-    <string name="menu_scan">Scan</string>
     <string name="menu_add_manually">Add Manually</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Track Your Subscriptions</string>
     <string name="onboarding_desc_1">View and control all your subscriptions in one place. Never miss a payment again.</string>
-    <string name="onboarding_title_2">Auto-Capture Payments</string>
-    <string name="onboarding_desc_2">Scans your SMS and notifications to list your subscriptions in seconds.</string>
+    <string name="onboarding_title_2">Manage Easily</string>
+    <string name="onboarding_desc_2">Track your subscriptions and manage them in one place.</string>
     <string name="onboarding_security">End-to-end encrypted and secure</string>
     <string name="onboarding_title_3">End Unnecessary Expenses</string>
     <string name="onboarding_desc_3">Cancel forgotten subscriptions, get notified before payment dates.</string>
@@ -67,7 +65,7 @@
     
     <!-- Premium -->
     <string name="upgrade_to_premium">Upgrade to Premium</string>
-    <string name="premium_desc">Auto-scan all your subscriptions and save 30%% more.</string>
+    <string name="premium_desc">Use all advanced features and start saving more.</string>
     <string name="upgrade">Upgrade</string>
     
     <!-- Search -->
@@ -197,8 +195,6 @@
     <string name="no_active_subscriptions">No active subscriptions found</string>
     <string name="no_suspicious_subscriptions">No suspicious subscriptions found</string>
     <string name="no_cancelled_subscriptions">No cancelled subscriptions found</string>
-    <string name="detected_count">Detected (%d)</string>
-    <string name="marked_count">Marked (%d)</string>
     <string name="add_subscription">Add Subscription</string>
     <string name="service_name_placeholder">e.g. Netflix</string>
     <string name="subscription_details">Subscription Details</string>
@@ -241,16 +237,13 @@
     <string name="upgrade_to_premium_btn">Upgrade to Premium</string>
     <string name="plans_header">PLANS</string>
     
-    <string name="feature_advanced_analytics_free_desc">Basic reports</string>
-    <string name="feature_advanced_analytics_title">Advanced Analytics</string>
-    <string name="feature_auto_capture_title">Automatic Capture</string>
-    <string name="feature_auto_capture_free_desc">Limited scanning</string>
+    <string name="feature_auto_capture_title">Easy Management</string>
+    <string name="feature_auto_capture_free_desc">Simple interface</string>
     <string name="feature_unlimited_tracking_title">Unlimited Tracking</string>
     <string name="feature_unlimited_tracking_free_desc">Maximum 5 subscriptions</string>
     <string name="feature_unlimited_tracking_premium_desc">Add as many as you want</string>
     <string name="premium_plan">Premium Plan</string>
-    <string name="feature_auto_capture_premium_desc">Finds hidden payments instantly</string>
-    <string name="feature_advanced_analytics_premium_desc">Detailed spending reports</string>
+    <string name="feature_auto_capture_premium_desc">Payment reminders</string>
     
     <!-- Categories -->
     <string name="category_entertainment">Entertainment</string>
@@ -259,12 +252,6 @@
     <string name="category_technology">Technology</string>
     <string name="category_other">Other</string>
     
-    <!-- Analytics -->
-    <string name="analytics">Analytics</string>
-    <string name="spending_overview">Spending Overview</string>
-    <string name="monthly_trend">Monthly Trend</string>
-    <string name="category_breakdown">Category Breakdown</string>
-    <string name="top_subscriptions">Top Subscriptions</string>
     
     <!-- Transaction History -->
     <string name="transaction_history">Transaction History</string>
@@ -330,23 +317,6 @@
     <string name="go_back">Go Back</string>
     <string name="subscription_id_not_found">Subscription ID not found</string>
     <string name="no_subscriptions_yet">No subscriptions added yet</string>
-    <string name="sms_permission_rationale">SMS permission is required to automatically detect subscription notifications on your device.\nThis way, you don\'t have to enter your subscriptions manually.</string>
-    <string name="storage_permission_rationale">Storage permission is required to scan invoice and subscription documents on your device.\nThis way, subscription information can be automatically detected from PDF and other files.</string>
-    <string name="permission_denied_message">Device scanning cannot be performed without permission.\nYou can add your subscriptions manually if you wish.</string>
-    <string name="permission_permanently_denied_message">Permission denied. Please enable permissions from the application settings.</string>
-
-    <!-- Scan Dialogs -->
-    <string name="scan_dialog_scanning">Scanning Device...</string>
-    <string name="scan_dialog_completed">Scan Completed</string>
-    <string name="scan_dialog_sms_count">SMS: %d messages scanned</string>
-    <string name="scan_dialog_file_count">File: %d files scanned</string>
-    <string name="scan_dialog_detected_count">%d subscriptions detected</string>
-    <string name="scan_dialog_ok">OK</string>
-    <string name="detected_subs_title">Detected Subscriptions</string>
-    <string name="detected_subs_found">%d subscriptions found</string>
-    <string name="detected_subs_close">Close</string>
-    <string name="detected_sub_reject">Reject</string>
-    <string name="detected_sub_add">Add</string>
     <string name="billing_monthly_label">Monthly</string>
     <string name="billing_yearly_label">Yearly</string>
     <string name="billing_weekly_label">Weekly</string>
@@ -358,8 +328,7 @@
     <string name="popular_questions">Popular Questions</string>
     <string name="how_to_add">How do I add a subscription?</string>
     <string name="how_to_add_desc">Click the plus icon in the all subscriptions list to add a new service.</string>
-    <string name="automatic_tracking">Automatic Tracking</string>
-    <string name="automatic_tracking_desc">We securely scan your transactions to automatically find recurring subscriptions.</string>
+    <string name="automatic_tracking_desc">You can manually add or update your subscriptions to track them.</string>
     <string name="cancel_anytime">Cancel Anytime</string>
     <string name="cancel_anytime_desc">You can track and manage subscriptions directly through the app details.</string>
     
@@ -370,7 +339,7 @@
     <string name="faq_a2">Yes, all your data is stored encrypted on your device. Sub Tracker does not share your personal data with third parties.</string>
     
     <string name="faq_q3">How do I connect my bank account?</string>
-    <string name="faq_a3">Currently, instead of direct bank integration, we provide automatic tracking via SMS and notification reading permissions. Bank integration will be coming soon.</string>
+    <string name="faq_a3">Our application currently supports manual entries. Bank and SMS scanning features have been removed for security reasons.</string>
     
     <string name="faq_q4">Can I get a refund?</string>
     <string name="faq_a4">Google Play/App Store policies apply to in-app purchases. You can make your refund requests through the respective store.</string>

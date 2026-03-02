@@ -45,13 +45,11 @@ fun PremiumUpgradeScreen(
         when (selectedPlan) {
             SubscriptionPlanType.FREE -> listOf(
                 FeatureData(Icons.Filled.TrackChanges, R.string.feature_auto_capture_title, R.string.feature_auto_capture_free_desc, false),
-                FeatureData(Icons.Filled.AllInclusive, R.string.feature_unlimited_tracking_title, R.string.feature_unlimited_tracking_free_desc, false),
-                FeatureData(Icons.Filled.Insights, R.string.feature_advanced_analytics_title, R.string.feature_advanced_analytics_free_desc, false)
+                FeatureData(Icons.Filled.AllInclusive, R.string.feature_unlimited_tracking_title, R.string.feature_unlimited_tracking_free_desc, false)
             )
             else -> listOf(
                 FeatureData(Icons.Filled.TrackChanges, R.string.feature_auto_capture_title, R.string.feature_auto_capture_premium_desc, true),
-                FeatureData(Icons.Filled.AllInclusive, R.string.feature_unlimited_tracking_title, R.string.feature_unlimited_tracking_premium_desc, true),
-                FeatureData(Icons.Filled.Insights, R.string.feature_advanced_analytics_title, R.string.feature_advanced_analytics_premium_desc, true)
+                FeatureData(Icons.Filled.AllInclusive, R.string.feature_unlimited_tracking_title, R.string.feature_unlimited_tracking_premium_desc, true)
             )
         }
     }

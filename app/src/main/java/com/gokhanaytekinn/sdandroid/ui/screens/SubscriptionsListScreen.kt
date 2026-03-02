@@ -25,23 +25,18 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
-import com.gokhanaytekinn.sdandroid.ui.components.ScanningDialog
-import com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionsDialog
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.ui.screens.DashboardViewModel
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 import com.gokhanaytekinn.sdandroid.util.DateUtils
-import com.gokhanaytekinn.sdandroid.util.PermissionManager
 import com.gokhanaytekinn.sdandroid.R
-import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
 
 @Composable
 fun SubscriptionsListScreen(
     initialTab: Int = 0,
     onSubscriptionClick: (String) -> Unit = {},
-    onNavigateToSearch: () -> Unit = {},
-    onNavigateToAnalytics: () -> Unit = {}
+    onNavigateToSearch: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
     val application = context.applicationContext as android.app.Application
@@ -52,23 +47,9 @@ fun SubscriptionsListScreen(
     val stats by viewModel.stats.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
-    val isScanning by viewModel.isScanning.collectAsState()
-    val scanProgress by viewModel.scanProgress.collectAsState()
-    val detectedSubscriptions by viewModel.detectedSubscriptions.collectAsState()
     val pendingInvitations by viewModel.pendingInvitations.collectAsState()
     
     var selectedTab by remember { mutableStateOf(initialTab) }
-    var showScanDialog by remember { mutableStateOf(false) }
-    var showResultsDialog by remember { mutableStateOf(false) }
-    var showPermissionRationale by remember { mutableStateOf(false) }
-    
-    // Tarama tamamlandığında sonuç dialog'u göster
-    LaunchedEffect(detectedSubscriptions) {
-        if (detectedSubscriptions.isNotEmpty() && !isScanning) {
-            showScanDialog = false
-            showResultsDialog = true
-        }
-    }
     
     // Refresh subscriptions when screen is shown
     LaunchedEffect(Unit) {
@@ -214,20 +195,6 @@ fun SubscriptionsListScreen(
                                         )
                                     }
                                     
-                                    Box(
-                                        modifier = Modifier
-                                            .size(40.dp)
-                                            .clip(CircleShape)
-                                            .background(PrimaryBlue.copy(alpha = 0.2f))
-                                            .clickable { onNavigateToAnalytics() },
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Analytics,
-                                            contentDescription = null,
-                                            tint = PrimaryBlue
-                                        )
-                                    }
                                 }
                             }
                         }
@@ -273,7 +240,7 @@ fun SubscriptionsListScreen(
                         1 -> { // Suspicious
                              val suspiciousSubs = subscriptions.filter { it.isSuspicious }
                              
-                             if (suspiciousSubs.isEmpty() && detectedSubscriptions.isEmpty() && pendingInvitations.isEmpty()) {
+                             if (suspiciousSubs.isEmpty() && pendingInvitations.isEmpty()) {
                                  item {
                                      Box(
                                          modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
@@ -306,32 +273,11 @@ fun SubscriptionsListScreen(
                                      }
                                      item { Spacer(modifier = Modifier.height(16.dp)) }
                                  }
-
-                                 if (detectedSubscriptions.isNotEmpty()) {
-                                    item { 
-                                        Text(
-                                            text = stringResource(R.string.detected_count, detectedSubscriptions.size),
-                                            fontSize = 14.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            color = WarningColor,
-                                            modifier = Modifier.padding(bottom = 8.dp)
-                                        ) 
-                                    }
-                                    items(detectedSubscriptions) { subscription ->
-                                        com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionItem(
-                                            subscription = subscription,
-                                            currency = selectedCurrency,
-                                            onConfirm = { viewModel.confirmDetectedSubscription(subscription) },
-                                            onReject = { viewModel.rejectDetectedSubscription(subscription) }
-                                        )
-                                    }
-                                    item { Spacer(modifier = Modifier.height(16.dp)) }
-                                }
                                 
                                 if (suspiciousSubs.isNotEmpty()) {
                                     item { 
                                         Text(
-                                            text = stringResource(R.string.marked_count, suspiciousSubs.size),
+                                            text = stringResource(R.string.results_found, suspiciousSubs.size),
                                             fontSize = 14.sp,
                                             fontWeight = FontWeight.Bold,
                                             color = MaterialTheme.colorScheme.onSurface,
@@ -378,56 +324,6 @@ fun SubscriptionsListScreen(
         }
     }
     
-    // Tarama Dialog'u
-    if (showScanDialog) {
-        ScanningDialog(
-            isScanning = isScanning,
-            progress = scanProgress,
-            onDismiss = { 
-                showScanDialog = false
-                // Do not clear detected subscriptions here, they go to the Suspicious tab
-            }
-        )
-    }
-    
-    // Sonuç Dialog'u
-    if (showResultsDialog) {
-        DetectedSubscriptionsDialog(
-            detectedSubscriptions = detectedSubscriptions,
-            scannedFileCount = scanProgress?.filesScanned ?: 0,
-            onConfirm = { subscription ->
-                viewModel.confirmDetectedSubscription(subscription)
-            },
-            onReject = { subscription ->
-                viewModel.rejectDetectedSubscription(subscription)
-            },
-            onDismiss = {
-                showResultsDialog = false
-                // Do not clear detected subscriptions here, they go to the Suspicious tab
-            },
-            currency = selectedCurrency
-        )
-    }
-    
-    // İzin Açıklama Dialog'u
-    if (showPermissionRationale) {
-        AlertDialog(
-            onDismissRequest = { showPermissionRationale = false },
-            title = { Text(stringResource(R.string.error)) }, // Or add "Permission Required" to strings
-            text = { 
-                Text(
-                    text = "${stringResource(R.string.sms_permission_rationale)}\n\n${stringResource(R.string.storage_permission_rationale)}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            },
-            confirmButton = {
-                TextButton(onClick = { showPermissionRationale = false }) {
-                    Text(stringResource(R.string.done))
-                }
-            }
-        )
-    }
 }
 
 @Composable

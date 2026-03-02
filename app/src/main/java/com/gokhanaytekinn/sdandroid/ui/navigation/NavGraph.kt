@@ -21,10 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.res.stringResource
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
-import com.gokhanaytekinn.sdandroid.ui.components.ScanningDialog
-import com.gokhanaytekinn.sdandroid.ui.components.DetectedSubscriptionsDialog
 import com.gokhanaytekinn.sdandroid.ui.screens.DashboardViewModel
-import com.gokhanaytekinn.sdandroid.util.PermissionManager
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import androidx.compose.runtime.collectAsState
 import com.gokhanaytekinn.sdandroid.R
@@ -72,37 +69,11 @@ fun NavGraph(
     }
     
     val currencyPreferences = remember { CurrencyPreferences(context) }
-    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
 
-    val permissionManager = remember { PermissionManager(context) }
-    var showScanDialog by remember { mutableStateOf(false) }
-    var showResultsDialog by remember { mutableStateOf(false) }
-    var showPermissionRationale by remember { mutableStateOf(false) }
     
-    val isScanning by dashboardViewModel.isScanning.collectAsState()
-    val scanProgress by dashboardViewModel.scanProgress.collectAsState()
-    val detectedSubscriptions by dashboardViewModel.detectedSubscriptions.collectAsState()
 
     var isMenuExpanded by remember { mutableStateOf(false) }
 
-    val permissionLauncher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.RequestMultiplePermissions()
-    ) { permissions ->
-        val allGranted = permissions.values.all { it }
-        if (allGranted) {
-            dashboardViewModel.scanDeviceForSubscriptions()
-            showScanDialog = true
-        } else {
-            showPermissionRationale = true
-        }
-    }
-
-    androidx.compose.runtime.LaunchedEffect(detectedSubscriptions) {
-        if (detectedSubscriptions.isNotEmpty() && !isScanning) {
-            showScanDialog = false
-            showResultsDialog = true
-        }
-    }
 
     val showBottomBar = currentRoute in listOf(
         Screen.Dashboard.route,
@@ -138,42 +109,6 @@ fun NavGraph(
                     verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     if (isMenuExpanded) {
-                        // Scan Subscription
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.End
-                        ) {
-                            Surface(
-                                shape = RoundedCornerShape(8.dp),
-                                color = MaterialTheme.colorScheme.surface,
-                                modifier = Modifier.padding(end = 16.dp)
-                            ) {
-                                Text(
-                                    text = stringResource(R.string.menu_scan),
-                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
-                                    fontWeight = FontWeight.Medium
-                                )
-                            }
-                            FloatingActionButton(
-                                onClick = {
-                                    isMenuExpanded = false
-                                    val missingPermissions = permissionManager.getMissingPermissions()
-                                    if (missingPermissions.isEmpty()) {
-                                        dashboardViewModel.scanDeviceForSubscriptions()
-                                        showScanDialog = true
-                                    } else {
-                                        permissionLauncher.launch(missingPermissions)
-                                    }
-                                },
-                                shape = CircleShape,
-                                containerColor = MaterialTheme.colorScheme.surface,
-                                contentColor = PrimaryBlue,
-                                modifier = Modifier.size(48.dp)
-                            ) {
-                                Icon(Icons.Default.DocumentScanner, contentDescription = "Scan")
-                            }
-                        }
-
                         // Add Manually
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -332,9 +267,6 @@ fun NavGraph(
                     },
                     onNavigateToSearch = {
                         navController.navigate(Screen.Search.route)
-                    },
-                    onNavigateToAnalytics = {
-                        navController.navigate(Screen.PremiumAnalytics.route)
                     }
                 )
             }
@@ -376,14 +308,6 @@ fun NavGraph(
                     }
                 )
             }
-            composable(Screen.PremiumAnalytics.route) {
-                PremiumAnalyticsScreen(
-                    onBackClick = {
-                        navController.popBackStack()
-                    }
-                )
-            }
-            
             composable(
                 route = Screen.PremiumUpgrade.route,
                 arguments = listOf(
@@ -475,14 +399,6 @@ fun NavGraph(
                 )
             }
             
-            composable(Screen.OnboardingAutomaticTracking.route) {
-                OnboardingAutomaticTrackingScreen(
-                    onContinueClick = {
-                        navController.navigate(Screen.OnboardingSavings.route)
-                    }
-                )
-            }
-            
             composable(Screen.OnboardingSavings.route) {
                 OnboardingSavingsScreen(
                     onBackClick = {
@@ -521,46 +437,4 @@ fun NavGraph(
         }
     }
 
-    // Global Dialogs for Scanning
-    if (showScanDialog) {
-        ScanningDialog(
-            isScanning = isScanning,
-            progress = scanProgress,
-            onDismiss = { showScanDialog = false }
-        )
-    }
-    
-    if (showResultsDialog) {
-        DetectedSubscriptionsDialog(
-            detectedSubscriptions = detectedSubscriptions,
-            scannedFileCount = scanProgress?.filesScanned ?: 0,
-            onConfirm = { subscription ->
-                dashboardViewModel.confirmDetectedSubscription(subscription)
-            },
-            onReject = { subscription ->
-                dashboardViewModel.rejectDetectedSubscription(subscription)
-            },
-            onDismiss = { showResultsDialog = false },
-            currency = selectedCurrency
-        )
-    }
-    
-    if (showPermissionRationale) {
-        AlertDialog(
-            onDismissRequest = { showPermissionRationale = false },
-            title = { Text(stringResource(R.string.error)) },
-            text = { 
-                Text(
-                    text = "${stringResource(R.string.sms_permission_rationale)}\n\n${stringResource(R.string.storage_permission_rationale)}",
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
-            },
-            confirmButton = {
-                TextButton(onClick = { showPermissionRationale = false }) {
-                    Text(stringResource(R.string.done))
-                }
-            }
-        )
-    }
 }

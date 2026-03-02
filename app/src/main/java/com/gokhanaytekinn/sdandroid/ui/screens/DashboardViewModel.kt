@@ -7,8 +7,6 @@ import com.gokhanaytekinn.sdandroid.data.model.BillingCycle
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.data.model.SubscriptionStats
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
-import com.gokhanaytekinn.sdandroid.util.DeviceSubscriptionScanner
-import com.gokhanaytekinn.sdandroid.util.PermissionManager
 import com.gokhanaytekinn.sdandroid.util.DateUtils
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,8 +16,6 @@ import kotlinx.coroutines.launch
 class DashboardViewModel(application: Application) : AndroidViewModel(application) {
     
     private val repository = SubscriptionRepository(application.applicationContext)
-    private val deviceScanner = DeviceSubscriptionScanner(application.applicationContext)
-    private val permissionManager = PermissionManager(application.applicationContext)
     
     private val _subscriptions = MutableStateFlow<List<Subscription>>(emptyList())
     val subscriptions: StateFlow<List<Subscription>> = _subscriptions.asStateFlow()
@@ -46,16 +42,6 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     // Upcoming subscriptions for preview
     private val _upcomingSubscriptions = MutableStateFlow<List<Subscription>>(emptyList())
     val upcomingSubscriptions: StateFlow<List<Subscription>> = _upcomingSubscriptions.asStateFlow()
-    
-    // Scanning state
-    private val _isScanning = MutableStateFlow(false)
-    val isScanning: StateFlow<Boolean> = _isScanning.asStateFlow()
-    
-    private val _scanProgress = MutableStateFlow<DeviceSubscriptionScanner.ScanProgress?>(null)
-    val scanProgress: StateFlow<DeviceSubscriptionScanner.ScanProgress?> = _scanProgress.asStateFlow()
-    
-    private val _detectedSubscriptions = MutableStateFlow<List<DeviceSubscriptionScanner.DetectedSubscription>>(emptyList())
-    val detectedSubscriptions: StateFlow<List<DeviceSubscriptionScanner.DetectedSubscription>> = _detectedSubscriptions.asStateFlow()
     
     private val _pendingInvitations = MutableStateFlow<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>>(emptyList())
     val pendingInvitations: StateFlow<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>> = _pendingInvitations.asStateFlow()
@@ -171,105 +157,6 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
             }
             _isLoading.value = false
         }
-    }
-    
-    /**
-     * Cihazı tara ve abonelikleri tespit et
-     */
-    fun scanDeviceForSubscriptions() {
-        viewModelScope.launch {
-            try {
-                _isScanning.value = true
-                _error.value = null
-                
-                // Progress'i gözlemle
-                viewModelScope.launch {
-                    deviceScanner.progress.collect { progress ->
-                        _scanProgress.value = progress
-                    }
-                }
-                
-                // Taramayı başlat
-                val detected = deviceScanner.scanDevice()
-                _detectedSubscriptions.value = detected
-                
-            } catch (e: SecurityException) {
-                _error.value = "İzin verilmedi. Lütfen gerekli izinleri verin."
-            } catch (e: Exception) {
-                _error.value = "Tarama sırasında hata oluştu: ${e.message}"
-            } finally {
-                _isScanning.value = false
-            }
-        }
-    }
-    
-    /**
-     * Tespit edilen aboneliği onayla ve ekle
-     */
-    fun confirmDetectedSubscription(detected: DeviceSubscriptionScanner.DetectedSubscription) {
-        viewModelScope.launch {
-            try {
-                val billingCycle = when (detected.billingCycle) {
-                    "MONTHLY" -> BillingCycle.MONTHLY
-                    "YEARLY" -> BillingCycle.YEARLY
-                    "WEEKLY" -> BillingCycle.WEEKLY
-                    else -> BillingCycle.MONTHLY
-                }
-                
-                // Subscription objesi oluştur
-                val subscription = Subscription(
-                    id = "",
-                    name = detected.serviceName,
-                    cost = detected.amount,
-                    currency = "TRY",
-                    billingCycle = billingCycle,
-                    nextBillingDate = null,
-                    isActive = true,
-                    isSuspicious = false,
-                    icon = null
-                )
-                
-                // API'ye ekle
-                val result = repository.createSubscription(subscription)
-                
-                if (result.isSuccess) {
-                    // Başarılı, listeyi yenile
-                    loadSubscriptions()
-                    
-                    // Tespit edilenler listesinden kaldır
-                    _detectedSubscriptions.value = _detectedSubscriptions.value.filter {
-                        it.serviceName != detected.serviceName
-                    }
-                } else {
-                    _error.value = "Abonelik eklenemedi: ${result.exceptionOrNull()?.message}"
-                }
-            } catch (e: Exception) {
-                _error.value = "Abonelik eklenemedi: ${e.message}"
-            }
-        }
-    }
-    
-    /**
-     * Tespit edilen aboneliği reddet
-     */
-    fun rejectDetectedSubscription(detected: DeviceSubscriptionScanner.DetectedSubscription) {
-        _detectedSubscriptions.value = _detectedSubscriptions.value.filter {
-            it.serviceName != detected.serviceName
-        }
-    }
-    
-    /**
-     * Tüm tespit edilen abonelikleri temizle
-     */
-    fun clearDetectedSubscriptions() {
-        _detectedSubscriptions.value = emptyList()
-    }
-    
-    /**
-     * İzinleri kontrol et
-     */
-    fun hasRequiredPermissions(): Boolean {
-        return permissionManager.hasAllPermissions()
     }
 }
 

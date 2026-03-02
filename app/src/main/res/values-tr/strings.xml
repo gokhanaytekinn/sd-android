@@ -20,15 +20,13 @@
     <string name="show_password">Şifreyi göster</string>
     <string name="hide_password">Şifreyi gizle</string>
     <string name="unknown_error">Bilinmeyen hata</string>
-    <string name="scan">Tara</string>
-    <string name="menu_scan">Tara</string>
     <string name="menu_add_manually">Manuel Ekle</string>
     
     <!-- Onboarding -->
     <string name="onboarding_title_1">Aboneliklerini Takip Et</string>
     <string name="onboarding_desc_1">Tüm aboneliklerini tek bir yerde görüntüle ve kontrol et. Bir daha hiçbir ödemeyi kaçırma.</string>
-    <string name="onboarding_title_2">Ödemelerini Otomatik Yakalar</string>
-    <string name="onboarding_desc_2">SMS ve bildirimlerini tarayarak aboneliklerini saniyeler içinde listeler.</string>
+    <string name="onboarding_title_2">Kolay Yönetim</string>
+    <string name="onboarding_desc_2">Aboneliklerinizi tek bir yerden kolayca takip edebilir ve yönetebilirsiniz.</string>
     <string name="onboarding_security">Uçtan uca şifreli ve güvenli</string>
     <string name="onboarding_title_3">Gereksiz Harcamalara Son</string>
     <string name="onboarding_desc_3">Unuttuğun abonelikleri iptal et, ödeme günlerinden önce bildirim al.</string>
@@ -71,7 +69,7 @@
     
     <!-- Premium -->
     <string name="upgrade_to_premium">Premium\'a Yükselt</string>
-    <string name="premium_desc">Tüm aboneliklerini otomatik tara ve %%30 daha fazla tasarruf et.</string>
+    <string name="premium_desc">Tüm gelişmiş özellikleri kullanın ve daha fazla tasarruf etmeye başlayın.</string>
     <string name="upgrade">Yükselt</string>
     
     <!-- Search -->
@@ -200,8 +198,6 @@
     <string name="no_active_subscriptions">Aktif abonelik bulunmuyor</string>
     <string name="no_suspicious_subscriptions">Şüpheli abonelik bulunmuyor</string>
     <string name="no_cancelled_subscriptions">İptal edilen abonelik bulunmuyor</string>
-    <string name="detected_count">Tespit Edilenler (%d)</string>
-    <string name="marked_count">İşaretlenenler (%d)</string>
     <string name="add_subscription">Abonelik Ekle</string>
     <string name="service_name_placeholder">örn. Netflix</string>
     <string name="subscription_details">Abonelik Detayları</string>
@@ -247,12 +243,6 @@
     <string name="category_technology">Teknoloji</string>
     <string name="category_other">Diğer</string>
     
-    <!-- Analytics -->
-    <string name="analytics">Analitik</string>
-    <string name="spending_overview">Harcama Özeti</string>
-    <string name="monthly_trend">Aylık Trend</string>
-    <string name="category_breakdown">Kategori Dağılımı</string>
-    <string name="top_subscriptions">En Çok Harcanan</string>
     
     <!-- Transaction History -->
     <string name="transaction_history">İşlem Geçmişi</string>
@@ -317,26 +307,6 @@
     <string name="go_back">Geri Dön</string>
     <string name="subscription_id_not_found">Abonelik ID bulunamadı</string>
     <string name="no_subscriptions_yet">Henüz abonelik eklenmemiş</string>
-    <string name="sms_permission_rationale">SMS izni, cihazınızdaki abonelik bildirimlerini otomatik olarak tespit etmek için gereklidir.\nBu sayede aboneliklerinizi manuel olarak girmek zorunda kalmazsınız.</string>
-    <string name="storage_permission_rationale">Depolama izni, cihazınızdaki fatura ve abonelik belgelerini taramak için gereklidir.\nBu sayede PDF ve diğer dosyalardan abonelik bilgisi otomatik olarak tespit edilebilir.</string>
-    <string name="permission_denied_message">İzin verilmeden cihaz taraması yapılamaz.\nİsterseniz aboneliklerinizi manuel olarak ekleyebilirsiniz.</string>
-    <string name="permission_permanently_denied_message">İzin verilmedi. Lütfen uygulama ayarlarından izinleri etkinleştirin.</string>
-
-    <!-- Scan Dialogs -->
-    <string name="scan_dialog_scanning">Cihaz Taranıyor...</string>
-    <string name="scan_dialog_completed">Tarama Tamamlandı</string>
-    <string name="scan_dialog_sms_count">SMS: %d mesaj tarandı</string>
-    <string name="scan_dialog_file_count">Dosya: %d dosya tarandı</string>
-    <string name="scan_dialog_detected_count">%d abonelik tespit edildi</string>
-    <string name="scan_dialog_ok">Tamam</string>
-    <string name="detected_subs_title">Tespit Edilen Abonelikler</string>
-    <string name="detected_subs_found">%d abonelik bulundu</string>
-    <string name="detected_subs_close">Kapat</string>
-    <string name="detected_sub_reject">Reddet</string>
-    <string name="detected_sub_add">Ekle</string>
-    <string name="billing_monthly_label">Aylık</string>
-    <string name="billing_yearly_label">Yıllık</string>
-    <string name="billing_weekly_label">Haftalık</string>
 
 
     <!-- Help Center Content -->
@@ -345,8 +315,6 @@
     <string name="popular_questions">Popüler Sorular</string>
     <string name="how_to_add">Nasıl abonelik eklerim?</string>
     <string name="how_to_add_desc">Yeni bir servis eklemek için tüm abonelikler listesindeki artı simgesine tıklayın.</string>
-    <string name="automatic_tracking">Otomatik Takip</string>
-    <string name="automatic_tracking_desc">Yinelenen abonelikleri otomatik olarak bulmak için işlemlerinizi güvenli bir şekilde tararız.</string>
     <string name="cancel_anytime">İstediğiniz Zaman İptal Edin</string>
     <string name="cancel_anytime_desc">Aboneliklerinizi doğrudan uygulama detayları üzerinden takip edebilir ve yönetebilirsiniz.</string>
     
@@ -357,7 +325,7 @@
     <string name="faq_a2">Evet, tüm verileriniz cihazınızda şifrelenmiş olarak saklanır. Sub Tracker, kişisel verilerinizi üçüncü taraflarla paylaşmaz.</string>
     
     <string name="faq_q3">Banka hesabımı nasıl bağlarım?</string>
-    <string name="faq_a3">Şu an için doğrudan banka entegrasyonu yerine, SMS ve bildirim okuma izni ile otomatik takip sağlıyoruz. Banka entegrasyonu yakında gelecek.</string>
+    <string name="faq_a3">Uygulamamız şu an için manuel girişleri desteklemektedir. Banka ve SMS tarama özellikleri güvenlik nedeniyle kaldırılmıştır.</string>
     
     <string name="faq_q4">Para iadesi alabilir miyim?</string>
     <string name="faq_a4">Uygulama içi satın alımlarda Google Play/App Store politikaları geçerlidir. İade taleplerinizi ilgili mağaza üzerinden yapabilirsiniz.</string>
@@ -365,8 +333,6 @@
     <string name="faq_q5">Hatırlatıcılar çalışmıyor, ne yapmalıyım?</string>
     <string name="faq_a5">Cihaz ayarlarından uygulamanın bildirim izinlerinin açık olduğundan emin olun. Ayrıca pil tasarrufu modunun bildirimleri engellemediğini kontrol edin.</string>
     
-    <string name="faq_q6">Şüpheli işlem bildirimi nedir?</string>
-    <string name="faq_a6">Uygulama, normal harcama düzeninizin dışındaki veya tanımlanamayan ödemeleri tespit ettiğinde sizi uyarır. Bu işlemleri \'Şüpheli İşlemler\' ekranından inceleyebilirsiniz.</string>
 
     <!-- Privacy Policy Content -->
     <string name="privacy_policy_title">Gizlilik Politikası</string>
@@ -400,15 +366,12 @@
     <string name="widget_days_left">%d gün kaldı</string>
     <string name="widget_today">Bugün Ödenecek</string>
 
-    <string name="feature_advanced_analytics_free_desc">Temel raporlar</string>
-    <string name="feature_advanced_analytics_title">Gelismis Analiz</string>
-    <string name="feature_auto_capture_title">Otomatik Yakalama</string>
-    <string name="feature_auto_capture_free_desc">Kisitli tarama</string>
+    <string name="feature_auto_capture_title">Kolay Yonetim</string>
+    <string name="feature_auto_capture_free_desc">Basit arayuz</string>
     <string name="feature_unlimited_tracking_title">Sinirsiz Takip</string>
     <string name="feature_unlimited_tracking_free_desc">Maksimum 5 abonelik</string>
     <string name="feature_unlimited_tracking_premium_desc">Istedigin kadar abonelik ekle</string>
     <string name="premium_plan">Premium Plan</string>
-    <string name="feature_auto_capture_premium_desc">Gizli odemeleri aninda bulur</string>
-    <string name="feature_advanced_analytics_premium_desc">Detayli harcama raporlari</string>
+    <string name="feature_auto_capture_premium_desc">Odeme hatırlatıcıları</string>
     <string name="date_placeholder">gg/aa/yyyy</string>
 </resources>

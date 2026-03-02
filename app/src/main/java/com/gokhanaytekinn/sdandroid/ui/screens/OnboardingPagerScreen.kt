@@ -36,7 +36,7 @@ fun OnboardingPagerScreen(
 ) {
     val context = LocalContext.current
     val onboardingPreferences = remember { OnboardingPreferences(context) }
-    val pagerState = rememberPagerState(pageCount = { 3 })
+    val pagerState = rememberPagerState(pageCount = { 2 })
     val coroutineScope = rememberCoroutineScope()
     
     Column(
@@ -55,7 +55,7 @@ fun OnboardingPagerScreen(
                     .padding(top = 16.dp),
                 horizontalArrangement = Arrangement.End
             ) {
-                if (pagerState.currentPage < 2) {
+                if (pagerState.currentPage < 1) {
                     TextButton(onClick = {
                         coroutineScope.launch {
                             onboardingPreferences.markOnboardingComplete()
@@ -79,12 +79,11 @@ fun OnboardingPagerScreen(
             ) { page ->
                 when (page) {
                     0 -> OnboardingPage1Content()
-                    1 -> OnboardingPage2Content()
-                    2 -> OnboardingPage3Content()
+                    1 -> OnboardingSavingsContent()
                 }
             }
             
-            // Page indicators (Simple custom implementation since Accompanist version is deprecated)
+            // Page indicators
             Row(
                 Modifier
                     .height(50.dp)
@@ -92,7 +91,7 @@ fun OnboardingPagerScreen(
                     .align(Alignment.CenterHorizontally),
                 horizontalArrangement = Arrangement.Center
             ) {
-                repeat(3) { iteration ->
+                repeat(2) { iteration ->
                     val color = if (pagerState.currentPage == iteration) PrimaryBlue else Color(0xFFdbe1e6)
                     val width = if (pagerState.currentPage == iteration) 48.dp else 12.dp
                     Box(
@@ -108,7 +107,7 @@ fun OnboardingPagerScreen(
             // Bottom button
             Button(
                 onClick = {
-                    if (pagerState.currentPage < 2) {
+                    if (pagerState.currentPage < 1) {
                         coroutineScope.launch {
                             pagerState.animateScrollToPage(pagerState.currentPage + 1)
                         }
@@ -132,7 +131,7 @@ fun OnboardingPagerScreen(
                 )
             ) {
                 Text(
-                    text = if (pagerState.currentPage == 2) 
+                    text = if (pagerState.currentPage == 1) 
                         stringResource(R.string.get_started) 
                     else 
                         stringResource(R.string.continue_btn),
@@ -189,14 +188,4 @@ fun OnboardingPage1Content() {
             lineHeight = 24.sp
         )
     }
-}
-
-@Composable
-fun OnboardingPage2Content() {
-    OnboardingAutomaticTrackingContent()
-}
-
-@Composable
-fun OnboardingPage3Content() {
-    OnboardingSavingsContent()
 }
