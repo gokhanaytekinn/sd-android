@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Peserta</string>
+    <string name="joint_users">Pengguna Bersama</string>
+    <string name="add_email_placeholder">Tambah alamat email</string>
+    <string name="remove">Hapus</string>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
     

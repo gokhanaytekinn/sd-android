@@ -139,6 +139,7 @@ fun UpcomingSubscriptionItem(
         subscription = subscription,
         currency = subscription.currency,
         showCountdown = true,
+        isJoint = !subscription.participants.isNullOrEmpty(),
         onClick = onClick
     )
 }

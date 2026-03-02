@@ -255,6 +255,7 @@ fun SubscriptionDetailsScreen(
                         com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
                             subscription = sub,
                             showDate = true,
+                            isJoint = !sub.participants.isNullOrEmpty(),
                             bottomContent = {
                                 Text(
                                     text = stringResource(R.string.next_payment),
@@ -350,157 +351,191 @@ fun SubscriptionDetailsScreen(
                 // Action Buttons
                 item {
                     Spacer(modifier = Modifier.height(24.dp))
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(horizontal = 16.dp),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
-                        Button(
-                            onClick = {
-                                if (!isLoading) {
-                                    scope.launch {
-                                        isLoading = true
-                                        val newStatus = !sub.reminderEnabled
-                                        val updatedSubscription = sub.copy(reminderEnabled = newStatus)
-                                        val result = repository.updateSubscription(subscriptionId, updatedSubscription)
-                                        if (result.isSuccess) {
-                                            subscription = result.getOrNull()
-                                        } else {
-                                            error = result.exceptionOrNull()?.message
-                                        }
-                                        isLoading = false
-                                    }
-                                }
-                            },
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(48.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.surfaceVariant else colorScheme.primary,
-                                contentColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.onSurfaceVariant else colorScheme.onPrimary
-                            ),
-                            shape = RoundedCornerShape(12.dp)
-                        ) {
-                            Icon(
-                                imageVector = if (sub.reminderEnabled) Icons.Default.NotificationsOff else Icons.Default.NotificationsActive,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = if (sub.reminderEnabled) stringResource(R.string.turn_off_reminder) else stringResource(R.string.set_reminder),
-                                fontSize = 13.sp,
-                                fontWeight = FontWeight.Bold,
-                                maxLines = 1
-                            )
-
-                        }
-
-                        OutlinedButton(
-                            onClick = onEditPlanClick,
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(48.dp),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                contentColor = colorScheme.onBackground
-                            ),
-                            shape = RoundedCornerShape(12.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Filled.Edit,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = stringResource(R.string.edit_plan),
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium
-                            )
-
-                        }
-                    }
-                    
-                    Spacer(modifier = Modifier.height(12.dp))
-                    
-                    if (sub.status == "CANCELLED") {
-                        Button(
-                            onClick = {
-                                if (!isLoading) {
-                                    scope.launch {
-                                        isLoading = true
-                                        val result = repository.approveSubscription(subscriptionId)
-                                        if (result.isSuccess) {
-                                            // Update local state with the new subscription data
-                                            subscription = result.getOrNull()
-                                        } else {
-                                            error = result.exceptionOrNull()?.message
-                                        }
-                                        isLoading = false
-                                    }
-                                }
-                            },
+                    if (sub.isOwner) {
+                        Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(horizontal = 16.dp)
-                                .height(48.dp),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = AccentColor
-                            ),
-                            shape = RoundedCornerShape(12.dp)
+                                .padding(horizontal = 16.dp),
+                            horizontalArrangement = Arrangement.spacedBy(12.dp)
                         ) {
-                            Icon(
-                                imageVector = Icons.Filled.CheckCircle,
-                                contentDescription = null,
-                                modifier = Modifier.size(20.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = stringResource(R.string.reactivate_subscription),
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium
-                            )
-
-                        }
-                    } else {
-                        OutlinedButton(
-                            onClick = {
-                                if (!isLoading) {
-                                    scope.launch {
-                                        isLoading = true
-                                        val result = repository.cancelSubscription(subscriptionId)
-                                        if (result.isSuccess) {
-                                            onBackClick()
-                                        } else {
-                                            error = result.exceptionOrNull()?.message
+                            Button(
+                                onClick = {
+                                    if (!isLoading) {
+                                        scope.launch {
+                                            isLoading = true
+                                            val newStatus = !sub.reminderEnabled
+                                            val updatedSubscription = sub.copy(reminderEnabled = newStatus)
+                                            val result = repository.updateSubscription(subscriptionId, updatedSubscription)
+                                            if (result.isSuccess) {
+                                                subscription = result.getOrNull()
+                                            } else {
+                                                error = result.exceptionOrNull()?.message
+                                            }
                                             isLoading = false
                                         }
                                     }
-                                }
-                            },
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(horizontal = 16.dp)
-                                .height(48.dp),
-                            colors = ButtonDefaults.outlinedButtonColors(
-                                contentColor = colorScheme.error
-                            ),
-                            border = androidx.compose.foundation.BorderStroke(1.dp, colorScheme.error),
-                            shape = RoundedCornerShape(12.dp)
+                                },
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .height(48.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.surfaceVariant else colorScheme.primary,
+                                    contentColor = if (sub.reminderEnabled) MaterialTheme.colorScheme.onSurfaceVariant else colorScheme.onPrimary
+                                ),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Icon(
+                                    imageVector = if (sub.reminderEnabled) Icons.Default.NotificationsOff else Icons.Default.NotificationsActive,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = if (sub.reminderEnabled) stringResource(R.string.turn_off_reminder) else stringResource(R.string.set_reminder),
+                                    fontSize = 13.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    maxLines = 1
+                                )
+
+                            }
+
+                            OutlinedButton(
+                                onClick = onEditPlanClick,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .height(48.dp),
+                                colors = ButtonDefaults.outlinedButtonColors(
+                                    contentColor = colorScheme.onBackground
+                                ),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Edit,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = stringResource(R.string.edit_plan),
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Medium
+                                )
+
+                            }
+                        }
+                    }
+                    
+                    if (sub.isOwner) {
+                        Spacer(modifier = Modifier.height(12.dp))
+                        if (sub.status == "CANCELLED") {
+                            Button(
+                                onClick = {
+                                    if (!isLoading) {
+                                        scope.launch {
+                                            isLoading = true
+                                            val result = repository.approveSubscription(subscriptionId)
+                                            if (result.isSuccess) {
+                                                // Update local state with the new subscription data
+                                                subscription = result.getOrNull()
+                                            } else {
+                                                error = result.exceptionOrNull()?.message
+                                            }
+                                            isLoading = false
+                                        }
+                                    }
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp)
+                                    .height(48.dp),
+                                colors = ButtonDefaults.buttonColors(
+                                    containerColor = AccentColor
+                                ),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.CheckCircle,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = stringResource(R.string.reactivate_subscription),
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Medium
+                                )
+
+                            }
+                        } else {
+                            OutlinedButton(
+                                onClick = {
+                                    if (!isLoading) {
+                                        scope.launch {
+                                            isLoading = true
+                                            val result = repository.cancelSubscription(subscriptionId)
+                                            if (result.isSuccess) {
+                                                onBackClick()
+                                            } else {
+                                                error = result.exceptionOrNull()?.message
+                                                isLoading = false
+                                            }
+                                        }
+                                    }
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 16.dp)
+                                    .height(48.dp),
+                                colors = ButtonDefaults.outlinedButtonColors(
+                                    contentColor = colorScheme.error
+                                ),
+                                border = androidx.compose.foundation.BorderStroke(1.dp, colorScheme.error),
+                                shape = RoundedCornerShape(12.dp)
+                            ) {
+                                Icon(
+                                    imageVector = Icons.Filled.Cancel,
+                                    contentDescription = null,
+                                    modifier = Modifier.size(20.dp)
+                                )
+                                Spacer(modifier = Modifier.width(8.dp))
+                                Text(
+                                    text = stringResource(R.string.cancel_subscription_btn),
+                                    fontSize = 14.sp,
+                                    fontWeight = FontWeight.Medium
+                                )
+
+                            }
+                        }
+                    }
+                }
+
+                // Participants Section
+                item {
+                    val participants = sub.participants
+                    if (!participants.isNullOrEmpty()) {
+                        Spacer(modifier = Modifier.height(32.dp))
+                        Row(
+                            modifier = Modifier.padding(horizontal = 16.dp),
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                            verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.Cancel,
+                                imageVector = Icons.Filled.People,
                                 contentDescription = null,
+                                tint = colorScheme.onSurfaceVariant,
                                 modifier = Modifier.size(20.dp)
                             )
-                            Spacer(modifier = Modifier.width(8.dp))
                             Text(
-                                text = stringResource(R.string.cancel_subscription_btn),
-                                fontSize = 14.sp,
-                                fontWeight = FontWeight.Medium
+                                text = stringResource(R.string.participants),
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorScheme.onBackground
                             )
-
+                        }
+                        Spacer(modifier = Modifier.height(16.dp))
+                        
+                        participants.forEach { participant ->
+                            ParticipantRow(participant, colorScheme)
                         }
                     }
                 }
@@ -632,3 +667,50 @@ private fun formatDateLocalized(context: android.content.Context, dateStr: Strin
     }
 }
 
+@Composable
+fun ParticipantRow(participant: com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant, colorScheme: ColorScheme) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Row(
+            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(32.dp)
+                    .background(colorScheme.surfaceVariant, CircleShape),
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp),
+                    tint = colorScheme.onSurfaceVariant
+                )
+            }
+            Text(
+                text = participant.name ?: participant.email,
+                fontSize = 14.sp,
+                color = colorScheme.onBackground
+            )
+        }
+
+        val (icon, tint) = when (participant.status) {
+            "ACCEPTED" -> Icons.Default.CheckCircle to Color(0xFF4CAF50)
+            "REJECTED" -> Icons.Default.Cancel to colorScheme.error
+            else -> Icons.Default.Pending to colorScheme.onSurfaceVariant
+        }
+
+        Icon(
+            imageVector = icon,
+            contentDescription = participant.status,
+            tint = tint,
+            modifier = Modifier.size(20.dp)
+        )
+    }
+}

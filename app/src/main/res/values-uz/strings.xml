@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Ishtirokchilar</string>
+    <string name="joint_users">Birgalikdagi foydalanuvchilar</string>
+    <string name="add_email_placeholder">Elektron pochta manzilini qo\'shing</string>
+    <string name="remove">O\'chirish</string>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
     

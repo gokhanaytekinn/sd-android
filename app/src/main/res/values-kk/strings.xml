@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Қатысушылар</string>
+    <string name="joint_users">Бірлескен пайдаланушылар</string>
+    <string name="add_email_placeholder">Электрондық пошта мекенжайын қосыңыз</string>
+    <string name="remove">Жою</string>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
     

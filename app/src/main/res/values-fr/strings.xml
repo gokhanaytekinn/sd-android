@@ -1,5 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Participants</string>
+    <string name="joint_users">Utilisateurs conjoints</string>
+    <string name="add_email_placeholder">Ajouter une adresse e-mail</string>
+    <string name="remove">Supprimer</string>
     <!-- App Name -->
     <string name="app_name">Suivi d\'Abonnement</string>
     
@@ -147,7 +151,7 @@
     <string name="terms_of_use_content">1. Acceptation\nEn utilisant Suivi d\'Abonnement, vous acceptez ces conditions.\n\n2. Portée du service\nL\'application est un outil pour vous aider à suivre vos abonnements. Ce n\'est pas un conseil financier.\n\n3. Responsabilité de l\'utilisateur\nVous êtes responsable de la sécurité des informations de votre compte et de l\'exactitude des données que vous ajoutez.\n\n4. Changements\nNous nous réservons le droit de modifier les fonctionnalités de l\'application et ces conditions à tout moment.\n\n5. Résiliation\nNous pouvons mettre fin à votre accès au service en cas de violation des conditions.</string>
     <string name="understood">Compris</string>
     <string name="privacy_dialog_content">Dernière mise à jour : 20 février 2026\n\n1. Introduction\nNous accordons de l\'importance à la confidentialité de vos données.\n\n2. Données collectées\nLes informations d\'abonnement, les préférences d\'utilisation et les informations de base sur l\'appareil sont traitées.\n\n3. Utilisation des données\nVos données sont uniquement utilisées pour envoyer des rappels et améliorer les performances de l\'application.\n\n4. Sécurité des données\nVos données sont protégées par des méthodes de chiffrement standard de l\'industrie.\n\n5. Contact\nPour des questions : gokhanaytekinn@yandex.com</string>
-
+155: 
     <!-- Forgot Password Screens -->
     <string name="forgot_password_desc">Entrez votre adresse email enregistrée pour réinitialiser votre mot de passe. Nous vous enverrons un code de vérification.</string>
     <string name="email_address_label">Adresse email</string>
@@ -255,7 +259,7 @@
     <string name="try_again">Réessayer</string>
     <string name="no_results">Aucun résultat trouvé</string>
     <string name="date_placeholder">AAAA-MM-JJ</string>
-
+262: 
     <!-- Validations -->
     <string name="error_name_required">Le nom est requis</string>
     <string name="error_amount_required">Le montant est requis</string>
@@ -277,7 +281,7 @@
     <string name="period_monthly">mois</string>
     <string name="period_yearly">an</string>
     <string name="period_weekly">semaine</string>
-
+284: 
     <!-- Help Center Content -->
     <string name="help_center_title">Centre d\'aide</string>
     <string name="help_search_placeholder">Comment pouvons-nous vous aider ?</string>
@@ -300,11 +304,11 @@
     
     <string name="faq_q6">Qu\'est-ce qu\'une notification de transaction suspecte ?</string>
     <string name="faq_a6">L\'application vous avertit lorsqu\'elle détecte des paiements en dehors de vos habitudes de dépense normales ou des frais non identifiés. Vous pouvez réviser ces transactions sur l\'écran \'Transactions suspectes\'.</string>
-
+307: 
     <!-- Privacy Policy Content -->
     <string name="privacy_policy_title">Politique de confidentialité</string>
     <string name="privacy_last_updated">Dernière mise à jour : 20 février 2026</string>
-
+311: 
     <!-- Scan Dialogs -->
     <string name="scan_dialog_scanning">Analyse de l’appareil...</string>
     <string name="scan_dialog_completed">Analyse terminée</string>

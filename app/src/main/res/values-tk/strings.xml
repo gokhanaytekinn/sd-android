@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Gatnaşyjylar</string>
+    <string name="joint_users">Bilelikdäki ulanyjylar</string>
+    <string name="add_email_placeholder">E-poçta salgysyny goşuň</string>
+    <string name="remove">Aýyr</string>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
     

@@ -28,7 +28,10 @@ data class SuspiciousTransaction(
     val category: String,
     val amount: Double,
     val icon: String,
-    val backgroundColor: Color
+    val backgroundColor: Color,
+    val subscriptionId: String? = null,
+    val invitationId: String? = null,
+    val isInvitation: Boolean = false
 )
 
 @Composable
@@ -39,8 +42,25 @@ fun SuspiciousPaymentsScreen(
     val viewModel: com.gokhanaytekinn.sdandroid.ui.viewmodel.SuspiciousPaymentsViewModel = remember { com.gokhanaytekinn.sdandroid.ui.viewmodel.SuspiciousPaymentsViewModel(context) }
     
     val suspiciousTransactions by viewModel.suspiciousTransactions.collectAsState()
+    val pendingInvitations by viewModel.pendingInvitations.collectAsState()
+    
+    val allItems = remember(suspiciousTransactions, pendingInvitations) {
+        pendingInvitations.map { inv ->
+            SuspiciousTransaction(
+                name = inv.subscriptionName ?: "Abonelik Daveti",
+                date = inv.createdAt.split("T")[0],
+                category = "Ortak Abonelik",
+                amount = 0.0,
+                icon = "📩",
+                backgroundColor = PrimaryBlue,
+                invitationId = inv.id,
+                isInvitation = true
+            )
+        } + suspiciousTransactions
+    }
+
     val currentStep by viewModel.currentStep.collectAsState()
-    val totalSteps = viewModel.totalSteps
+    val totalSteps = allItems.size
     
     Column(
         modifier = Modifier
@@ -135,7 +155,6 @@ fun SuspiciousPaymentsScreen(
             lineHeight = 20.sp
         )
         
-        // Transaction Cards
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
@@ -143,26 +162,16 @@ fun SuspiciousPaymentsScreen(
             contentPadding = PaddingValues(16.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            itemsIndexed(suspiciousTransactions.take(currentStep)) { index, transaction ->
-                if (index == currentStep - 1) {
-                    SuspiciousTransactionCard(
-                        transaction = transaction,
-                        onConfirm = {
-                            viewModel.onConfirmTransaction(transaction)
-                        },
-                        onReject = {
-                            viewModel.onRejectTransaction()
-                        }
-                    )
-                } else {
-                    // Already confirmed transactions
-                    SuspiciousTransactionCard(
-                        transaction = transaction,
-                        onConfirm = {},
-                        onReject = {},
-                        disabled = true
-                    )
-                }
+            itemsIndexed(allItems) { index, item ->
+                SuspiciousTransactionCard(
+                    transaction = item,
+                    onConfirm = {
+                        viewModel.onConfirmTransaction(item)
+                    },
+                    onReject = {
+                        viewModel.onRejectTransaction(item)
+                    }
+                )
             }
             
             // Info Note
@@ -208,6 +217,7 @@ fun SuspiciousTransactionCard(
         cost = transaction.amount,
         icon = transaction.icon,
         nextBillingDate = transaction.date, // This will be formatted by the card
+        isJoint = transaction.isInvitation,
         onClick = {},
         bottomContent = if (!disabled) {
             {

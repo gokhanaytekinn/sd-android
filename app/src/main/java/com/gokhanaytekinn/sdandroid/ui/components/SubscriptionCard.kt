@@ -40,7 +40,7 @@ fun SubscriptionCard(
     subscription: Subscription,
     currency: String = "TRY",
     showDate: Boolean = false,
-    showCountdown: Boolean = false,
+    isJoint: Boolean = false,
     onClick: () -> Unit = {},
     modifier: Modifier = Modifier,
     bottomContent: @Composable (ColumnScope.() -> Unit)? = null
@@ -53,6 +53,7 @@ fun SubscriptionCard(
         billingCycle = subscription.billingCycle,
         icon = subscription.icon,
         nextBillingDate = subscription.nextBillingDate,
+        isJoint = isJoint,
         showDate = showDate,
         showCountdown = showCountdown,
         onClick = onClick,
@@ -68,8 +69,7 @@ fun SubscriptionCard(
     cost: Double,
     currency: String = "TRY",
     billingCycle: BillingCycle = BillingCycle.MONTHLY,
-    icon: String? = null,
-    nextBillingDate: String? = null,
+    isJoint: Boolean = false,
     showDate: Boolean = false,
     showCountdown: Boolean = false,
     onClick: () -> Unit = {},
@@ -121,12 +121,23 @@ fun SubscriptionCard(
                     Spacer(modifier = Modifier.width(16.dp))
 
                     Column {
-                        Text(
-                            text = name,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = name,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 16.sp,
+                                color = MaterialTheme.colorScheme.onBackground
+                            )
+                            if (isJoint) {
+                                Spacer(modifier = Modifier.width(4.dp))
+                                Icon(
+                                    imageVector = Icons.Default.Group,
+                                    contentDescription = "Joint Subscription",
+                                    modifier = Modifier.size(16.dp),
+                                    tint = MaterialTheme.colorScheme.primary
+                                )
+                            }
+                        }
                         
                         val cycleText = when (billingCycle) {
                             BillingCycle.MONTHLY -> stringResource(R.string.billing_monthly_label)

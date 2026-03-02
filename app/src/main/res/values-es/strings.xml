@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Participantes</string>
+    <string name="joint_users">Usuarios Conjuntos</string>
+    <string name="add_email_placeholder">Añadir dirección de correo</string>
+    <string name="remove">Eliminar</string>
     <!-- App Name -->
     <string name="app_name">Detector de Suscripciones</string>
     

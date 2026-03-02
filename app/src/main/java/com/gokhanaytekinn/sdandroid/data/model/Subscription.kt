@@ -1,5 +1,11 @@
 package com.gokhanaytekinn.sdandroid.data.model
 
+data class InvitationParticipant(
+    val email: String,
+    val name: String?,
+    val status: String
+)
+
 data class Subscription(
     val id: String,
     val name: String,
@@ -15,7 +21,10 @@ data class Subscription(
     val icon: String? = null,
     val status: String? = null,
     val tier: String? = null,
-    val reminderEnabled: Boolean = false
+    val reminderEnabled: Boolean = false,
+    val jointEmails: List<String>? = null,
+    val isOwner: Boolean = true,
+    val participants: List<InvitationParticipant>? = null
 )
 
 enum class BillingCycle {

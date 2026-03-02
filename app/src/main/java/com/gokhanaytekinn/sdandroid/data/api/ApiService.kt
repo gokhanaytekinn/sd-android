@@ -130,4 +130,15 @@ interface ApiService {
     
     @POST("api/conversions/downgrade")
     suspend fun downgradeToFree(): Response<Unit>
+
+    // ============ INVITATIONS ============
+
+    @GET("api/invitations/pending")
+    suspend fun getPendingInvitations(): Response<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>>
+
+    @POST("api/invitations/{id}/accept")
+    suspend fun acceptInvitation(@Path("id") id: String): Response<Unit>
+
+    @POST("api/invitations/{id}/reject")
+    suspend fun rejectInvitation(@Path("id") id: String): Response<Unit>
 }

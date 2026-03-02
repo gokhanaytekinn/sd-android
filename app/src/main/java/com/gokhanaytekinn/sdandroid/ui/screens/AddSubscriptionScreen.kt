@@ -53,10 +53,12 @@ fun AddSubscriptionScreen(
     val billingCycle by viewModel.billingCycle.collectAsState()
     val nextBillingDate by viewModel.nextBillingDate.collectAsState()
     val isReminderEnabled by viewModel.isReminderEnabled.collectAsState()
+    val jointEmails by viewModel.jointEmails.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
     val error by viewModel.error.collectAsState()
     val isSuccess by viewModel.isSuccess.collectAsState()
     val isEditMode by viewModel.isEditMode.collectAsState()
+    val participants by viewModel.participants.collectAsState()
     
     val nameError by viewModel.nameError.collectAsState()
     val amountError by viewModel.amountError.collectAsState()
@@ -416,7 +418,91 @@ fun AddSubscriptionScreen(
                         )
                     )
                 }
-                
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                // Joint Subscriptions (New Section)
+                Text(
+                    text = stringResource(R.string.joint_users),
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+
+                var emailInput by remember { mutableStateOf("") }
+
+                OutlinedTextField(
+                    value = emailInput,
+                    onValueChange = { emailInput = it },
+                    modifier = Modifier.fillMaxWidth(),
+                    shape = RoundedCornerShape(12.dp),
+                    placeholder = { Text(stringResource(R.string.add_email_placeholder), color = Color.Gray) },
+                    trailingIcon = {
+                        IconButton(onClick = {
+                            if (emailInput.isNotBlank()) {
+                                viewModel.addJointEmail(emailInput)
+                                emailInput = ""
+                            }
+                        }) {
+                            Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add))
+                        }
+                    },
+                    colors = OutlinedTextFieldDefaults.colors(
+                        focusedBorderColor = PrimaryBlue,
+                        unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
+                        focusedContainerColor = Color.White.copy(alpha = 0.05f),
+                        unfocusedContainerColor = Color.White.copy(alpha = 0.05f)
+                    ),
+                    singleLine = true,
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
+                )
+
+                Spacer(modifier = Modifier.height(8.dp))
+
+                val combinedDisplayList = remember(jointEmails, participants) {
+                    val list = mutableListOf<Triple<String, String?, String?>>() // email, status, name
+                    participants?.forEach { list.add(Triple(it.email, it.status, it.name)) }
+                    jointEmails.forEach { email ->
+                        if (participants?.none { it.email == email } != false) {
+                            list.add(Triple(email, null, null))
+                        }
+                    }
+                    list
+                }
+
+                combinedDisplayList.forEach { (email, status, name) ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 4.dp)
+                            .background(Color.White.copy(alpha = 0.05f), RoundedCornerShape(8.dp))
+                            .padding(horizontal = 12.dp, vertical = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                            Text(
+                                text = name ?: email,
+                                color = MaterialTheme.colorScheme.onBackground,
+                                fontSize = 14.sp
+                            )
+                            
+                            if (status != null) {
+                                val (icon, tint) = when (status) {
+                                    "ACCEPTED" -> Icons.Default.CheckCircle to Color(0xFF4CAF50)
+                                    "REJECTED" -> Icons.Default.Cancel to MaterialTheme.colorScheme.error
+                                    else -> Icons.Default.Pending to Color.Gray
+                                }
+                                Icon(icon, contentDescription = status, tint = tint, modifier = Modifier.size(16.dp))
+                            }
+                        }
+                        
+                        IconButton(onClick = { viewModel.removeJointEmail(email) }, modifier = Modifier.size(24.dp)) {
+                            Icon(Icons.Default.Close, contentDescription = stringResource(R.string.remove), tint = Color.Gray, modifier = Modifier.size(16.dp))
+                        }
+                    }
+                }
                 if (error != null) {
                     Spacer(modifier = Modifier.height(16.dp))
                     Text(

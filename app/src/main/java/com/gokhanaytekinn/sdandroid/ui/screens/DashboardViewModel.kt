@@ -57,10 +57,14 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     private val _detectedSubscriptions = MutableStateFlow<List<DeviceSubscriptionScanner.DetectedSubscription>>(emptyList())
     val detectedSubscriptions: StateFlow<List<DeviceSubscriptionScanner.DetectedSubscription>> = _detectedSubscriptions.asStateFlow()
     
+    private val _pendingInvitations = MutableStateFlow<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>>(emptyList())
+    val pendingInvitations: StateFlow<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>> = _pendingInvitations.asStateFlow()
+    
     init {
         loadSubscriptions()
         loadSuspiciousCount()
         loadUpcomingSubscriptions()
+        loadPendingInvitations()
     }
     
     fun loadSubscriptions() {
@@ -76,6 +80,7 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
                 _error.value = result.exceptionOrNull()?.message ?: "Failed to load subscriptions"
             }
             
+            loadPendingInvitations()
             _isLoading.value = false
         }
     }
@@ -129,6 +134,42 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
                 } ?: emptyList()
                 _upcomingSubscriptions.value = filtered.take(3)
             }
+        }
+    }
+
+    fun loadPendingInvitations() {
+        viewModelScope.launch {
+            val result = repository.getPendingInvitations()
+            if (result.isSuccess) {
+                _pendingInvitations.value = result.getOrNull() ?: emptyList()
+                _suspiciousCount.value = (_subscriptions.value.count { it.isSuspicious }) + _pendingInvitations.value.size
+            }
+        }
+    }
+
+    fun acceptInvitation(invitationId: String) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val result = repository.acceptInvitation(invitationId)
+            if (result.isSuccess) {
+                loadSubscriptions()
+            } else {
+                _error.value = "Davetiye kabul edilemedi"
+            }
+            _isLoading.value = false
+        }
+    }
+
+    fun rejectInvitation(invitationId: String) {
+        viewModelScope.launch {
+            _isLoading.value = true
+            val result = repository.rejectInvitation(invitationId)
+            if (result.isSuccess) {
+                loadPendingInvitations()
+            } else {
+                _error.value = "Davetiye reddedilemedi"
+            }
+            _isLoading.value = false
         }
     }
     

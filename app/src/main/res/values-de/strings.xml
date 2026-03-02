@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Teilnehmer</string>
+    <string name="joint_users">Gemeinsame Nutzer</string>
+    <string name="add_email_placeholder">E-Mail-Adresse hinzufügen</string>
+    <string name="remove">Entfernen</string>
     <string name="app_name">Abonnement-Tracker</string>
 
     <!-- Onboarding -->

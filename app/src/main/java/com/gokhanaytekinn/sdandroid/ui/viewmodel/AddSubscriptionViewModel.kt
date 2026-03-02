@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.gokhanaytekinn.sdandroid.data.model.BillingCycle
+import com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -48,6 +49,12 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     
     private val _isReminderEnabled = MutableStateFlow(false)
     val isReminderEnabled: StateFlow<Boolean> = _isReminderEnabled.asStateFlow()
+
+    private val _jointEmails = MutableStateFlow<List<String>>(emptyList())
+    val jointEmails: StateFlow<List<String>> = _jointEmails.asStateFlow()
+
+    private val _participants = MutableStateFlow<List<InvitationParticipant>?>(null)
+    val participants: StateFlow<List<InvitationParticipant>?> = _participants.asStateFlow()
 
     // Validation States
     private val _nameError = MutableStateFlow<Int?>(null)
@@ -98,6 +105,16 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     
     fun updateIsReminderEnabled(value: Boolean) {
         _isReminderEnabled.value = value
+    }
+
+    fun addJointEmail(email: String) {
+        if (email.isNotBlank() && !_jointEmails.value.contains(email)) {
+            _jointEmails.value = _jointEmails.value + email
+        }
+    }
+
+    fun removeJointEmail(email: String) {
+        _jointEmails.value = _jointEmails.value - email
     }
 
     private fun validate(): Boolean {
@@ -152,6 +169,8 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     val rawDate = it.nextBillingDate ?: it.startDate ?: ""
                     _nextBillingDate.value = formatDateForUi(rawDate)
                     _isReminderEnabled.value = it.reminderEnabled
+                    _jointEmails.value = it.jointEmails ?: emptyList()
+                    _participants.value = it.participants
                 }
             } else {
                 _error.value = "Abonelik bilgileri yüklenemedi: ${result.exceptionOrNull()?.message}"
@@ -178,7 +197,8 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     nextBillingDate = apiDate,
                     isActive = true,
                     startDate = if (_isEditMode.value) null else apiDate,
-                    reminderEnabled = _isReminderEnabled.value
+                    reminderEnabled = _isReminderEnabled.value,
+                    jointEmails = _jointEmails.value.ifEmpty { null }
                 )
 
                 val result = if (_isEditMode.value && _subscriptionId != null) {
@@ -213,6 +233,8 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         _subscriptionId = null
         _isEditMode.value = false
         _isReminderEnabled.value = false
+        _jointEmails.value = emptyList()
+        _participants.value = null
     }
 
     private fun formatDateForApi(uiDate: String): String? {

@@ -17,6 +17,12 @@ data class UserResponse(
     val createdAt: String?
 )
 
+data class InvitationParticipant(
+    val email: String,
+    val name: String?,
+    val status: String // PENDING, ACCEPTED, REJECTED
+)
+
 data class SubscriptionResponse(
     val id: String,
     val name: String,
@@ -37,7 +43,10 @@ data class SubscriptionResponse(
     val approvedBy: String?,
     val userId: String?,
     val createdAt: String?,
-    val updatedAt: String?
+    val updatedAt: String?,
+    val jointEmails: List<String>? = null,
+    val owner: Boolean? = true,
+    val participants: List<InvitationParticipant>? = null
 )
 
 data class TransactionResponse(

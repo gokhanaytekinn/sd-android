@@ -21,14 +21,49 @@ class SuspiciousPaymentsViewModel(context: Context) : ViewModel() {
     private val repository = SubscriptionRepository(context)
     
     // Initial mock data as per request, but managed in ViewModel
-    private val _suspiciousTransactions = MutableStateFlow<List<SuspiciousTransaction>>(
-        listOf(
-            SuspiciousTransaction("Netflix", "24 Ekim", "Eğlence", 129.99, "N", NetflixRed),
-            SuspiciousTransaction("Spotify", "22 Ekim", "Müzik", 39.99, "🎵", SpotifyGreen),
-            SuspiciousTransaction("Adobe Inc.", "15 Ekim", "Yazılım", 350.00, "Ae", AdobeRed)
-        )
-    )
+    private val _suspiciousTransactions = MutableStateFlow<List<SuspiciousTransaction>>(emptyList())
     val suspiciousTransactions: StateFlow<List<SuspiciousTransaction>> = _suspiciousTransactions.asStateFlow()
+
+    private val _pendingInvitations = MutableStateFlow<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>>(emptyList())
+    val pendingInvitations: StateFlow<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>> = _pendingInvitations.asStateFlow()
+
+    private val _isLoading = MutableStateFlow(false)
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
+
+    init {
+        loadData()
+    }
+
+    fun loadData() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            
+            val transactionsResult = repository.getSuspiciousSubscriptions()
+            if (transactionsResult.isSuccess) {
+                _suspiciousTransactions.value = transactionsResult.getOrNull()?.map { it.toSuspiciousTransaction() } ?: emptyList()
+            }
+
+            val invitationsResult = repository.getPendingInvitations()
+            if (invitationsResult.isSuccess) {
+                _pendingInvitations.value = invitationsResult.getOrNull() ?: emptyList()
+            }
+            
+            _isLoading.value = false
+        }
+    }
+
+    private fun Subscription.toSuspiciousTransaction(): SuspiciousTransaction {
+        return SuspiciousTransaction(
+            name = name,
+            date = nextBillingDate ?: "",
+            category = category ?: "Eğlence",
+            amount = cost,
+            icon = icon ?: "N",
+            backgroundColor = AdobeRed, // Default color or logic based on name
+            subscriptionId = id,
+            isInvitation = false
+        )
+    }
     
     private val _currentStep = MutableStateFlow(1)
     val currentStep: StateFlow<Int> = _currentStep.asStateFlow()
@@ -37,24 +72,31 @@ class SuspiciousPaymentsViewModel(context: Context) : ViewModel() {
     
     fun onConfirmTransaction(transaction: SuspiciousTransaction) {
         viewModelScope.launch {
-            // Add to subscriptions
-            val newSubscription = Subscription(
-                id = UUID.randomUUID().toString(),
-                name = transaction.name,
-                cost = transaction.amount,
-                currency = "TRY",
-                billingCycle = com.gokhanaytekinn.sdandroid.data.model.BillingCycle.MONTHLY,
-                nextBillingDate = transaction.date,
-                icon = transaction.icon
-            )
-            repository.createSubscription(newSubscription)
-            
-            advanceStep()
+            if (transaction.isInvitation) {
+                transaction.invitationId?.let { id ->
+                    repository.acceptInvitation(id)
+                }
+            } else {
+                transaction.subscriptionId?.let { id ->
+                    repository.approveSubscription(id)
+                }
+            }
+            loadData()
         }
     }
     
-    fun onRejectTransaction() {
-        advanceStep()
+    fun onRejectTransaction(transaction: SuspiciousTransaction) {
+        viewModelScope.launch {
+            if (transaction.isInvitation) {
+                transaction.invitationId?.let { id ->
+                    repository.rejectInvitation(id)
+                }
+            } else {
+                // For direct suspicious transactions, rejection is currently advancing step
+                advanceStep() 
+            }
+            loadData()
+        }
     }
     
     private fun advanceStep() {

@@ -30,7 +30,8 @@ data class Transaction(
     val isRecurring: Boolean = false,
     val isCancelled: Boolean = false,
     val icon: String = "💳",
-    val iconColor: Color = PrimaryBlue
+    val iconColor: Color = PrimaryBlue,
+    val isJoint: Boolean = false
 )
 
 @Composable
@@ -245,6 +246,7 @@ fun TransactionItem(transaction: Transaction) {
         cost = transaction.amount.replace("$", "").replace("-", "").replace("+", "").replace(",", "").toDoubleOrNull() ?: 0.0,
         currency = if (transaction.amount.contains("$")) "USD" else "TRY",
         icon = transaction.icon,
+        isJoint = transaction.isJoint,
         onClick = {},
         bottomContent = null
     )

@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Участники</string>
+    <string name="joint_users">Совместные пользователи</string>
+    <string name="add_email_placeholder">Добавить адрес электронной почты</string>
+    <string name="remove">Удалить</string>
     <!-- App Name -->
     <string name="app_name">Детектор Подписок</string>
     

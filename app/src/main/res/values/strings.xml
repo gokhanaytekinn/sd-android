@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="joint_users">Joint Users</string>
+    <string name="add_email_placeholder">Add email address</string>
+    <string name="remove">Remove</string>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
     
@@ -205,6 +208,7 @@
     <string name="start_date">Start Date</string>
     <string name="cancel_subscription">Cancel Subscription</string>
     <string name="delete_subscription">Delete Subscription</string>
+    <string name="participants">Participants</string>
     
     <!-- Premium -->
     <string name="get_premium">Get Premium</string>

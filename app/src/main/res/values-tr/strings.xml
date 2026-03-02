@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">Katılımcılar</string>
+    <string name="joint_users">Ortak Kullanıcılar</string>
+    <string name="add_email_placeholder">E-posta adresi ekleyin</string>
+    <string name="remove">Kaldır</string>
     <!-- App Name -->
     <string name="app_name">Sub Tracker</string>
     

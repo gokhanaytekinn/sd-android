@@ -57,6 +57,7 @@ fun SubscriptionsListScreen(
     val isScanning by viewModel.isScanning.collectAsState()
     val scanProgress by viewModel.scanProgress.collectAsState()
     val detectedSubscriptions by viewModel.detectedSubscriptions.collectAsState()
+    val pendingInvitations by viewModel.pendingInvitations.collectAsState()
     
     var selectedTab by remember { mutableStateOf(0) }
     var showScanDialog by remember { mutableStateOf(false) }
@@ -288,23 +289,43 @@ fun SubscriptionsListScreen(
                             }
                         }
                         1 -> { // Suspicious
-                            val suspiciousSubs = subscriptions.filter { it.isSuspicious }
-                            // Show detected subscriptions that haven't been added yet
-                            
-                            if (suspiciousSubs.isEmpty() && detectedSubscriptions.isEmpty()) {
-                                item {
-                                    Box(
-                                        modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
-                                        contentAlignment = Alignment.Center
-                                    ) {
-                                        Text(
-                                            text = stringResource(R.string.no_suspicious_subscriptions),
-                                            color = MaterialTheme.colorScheme.onSurfaceVariant
-                                        )
-                                    }
-                                }
-                            } else {
-                                if (detectedSubscriptions.isNotEmpty()) {
+                             val suspiciousSubs = subscriptions.filter { it.isSuspicious }
+                             
+                             if (suspiciousSubs.isEmpty() && detectedSubscriptions.isEmpty() && pendingInvitations.isEmpty()) {
+                                 item {
+                                     Box(
+                                         modifier = Modifier.fillMaxWidth().padding(top = 32.dp),
+                                         contentAlignment = Alignment.Center
+                                     ) {
+                                         Text(
+                                             text = stringResource(R.string.no_suspicious_subscriptions),
+                                             color = MaterialTheme.colorScheme.onSurfaceVariant
+                                         )
+                                     }
+                                 }
+                             } else {
+                                 // Show Pending Invitations First
+                                 if (pendingInvitations.isNotEmpty()) {
+                                     item {
+                                         Text(
+                                             text = "Bekleyen Davetiyeler (${pendingInvitations.size})",
+                                             fontSize = 14.sp,
+                                             fontWeight = FontWeight.Bold,
+                                             color = PrimaryBlue,
+                                             modifier = Modifier.padding(bottom = 8.dp)
+                                         )
+                                     }
+                                     items(pendingInvitations) { invitation ->
+                                         InvitationListItem(
+                                             invitation = invitation,
+                                             onAccept = { viewModel.acceptInvitation(invitation.id) },
+                                             onReject = { viewModel.rejectInvitation(invitation.id) }
+                                         )
+                                     }
+                                     item { Spacer(modifier = Modifier.height(16.dp)) }
+                                 }
+
+                                 if (detectedSubscriptions.isNotEmpty()) {
                                     item { 
                                         Text(
                                             text = stringResource(R.string.detected_count, detectedSubscriptions.size),
@@ -462,7 +483,50 @@ fun SubscriptionListItemDetailed(
         subscription = subscription,
         currency = currency,
         showDate = true,
+        isJoint = !subscription.participants.isNullOrEmpty(),
         onClick = onClick,
         modifier = modifier
+    )
+}
+
+@Composable
+fun InvitationListItem(
+    invitation: com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation,
+    onAccept: () -> Unit,
+    onReject: () -> Unit
+) {
+    com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
+        name = invitation.subscriptionName ?: "Abonelik Daveti",
+        category = "Ortak Abonelik",
+        cost = 0.0,
+        icon = "📩",
+        nextBillingDate = invitation.createdAt.split("T")[0],
+        isJoint = true,
+        onClick = {},
+        bottomContent = {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                OutlinedButton(
+                    onClick = onReject,
+                    modifier = Modifier.height(32.dp).padding(end = 8.dp),
+                    contentPadding = PaddingValues(horizontal = 12.dp),
+                    shape = RoundedCornerShape(4.dp)
+                ) {
+                    Text("Reddet", fontSize = 12.sp)
+                }
+                Button(
+                    onClick = onAccept,
+                    modifier = Modifier.height(32.dp),
+                    contentPadding = PaddingValues(horizontal = 12.dp),
+                    shape = RoundedCornerShape(4.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = PrimaryBlue)
+                ) {
+                    Text("Kabul Et", fontSize = 12.sp)
+                }
+            }
+        }
     )
 }

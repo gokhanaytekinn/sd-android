@@ -1,5 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="participants">参与者</string>
+    <string name="joint_users">共同用户</string>
+    <string name="add_email_placeholder">添加电子邮件地址</string>
+    <string name="remove">移除</string>
     <!-- App Name -->
     <string name="app_name">订阅追踪器</string>
     

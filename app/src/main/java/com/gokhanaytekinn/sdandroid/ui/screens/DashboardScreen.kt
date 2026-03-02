@@ -223,6 +223,7 @@ fun DashboardScreen(
                             subscription = sub,
                             currency = sub.currency,
                             showDate = true,
+                            isJoint = !sub.participants.isNullOrEmpty(),
                             onClick = { onNavigateToUpcoming() }
                         )
                     }
@@ -366,6 +367,7 @@ fun SubscriptionListItem(
     com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(
         subscription = subscription,
         currency = currency,
+        isJoint = !subscription.participants.isNullOrEmpty(),
         onClick = onClick
     )
 }

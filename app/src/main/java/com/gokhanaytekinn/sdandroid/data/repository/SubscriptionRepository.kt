@@ -98,7 +98,8 @@ class SubscriptionRepository(context: Context? = null) {
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.name,
                 startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
-                reminderEnabled = subscription.reminderEnabled
+                reminderEnabled = subscription.reminderEnabled,
+                jointEmails = subscription.jointEmails
             )
             val response = apiService.createSubscription(request)
             if (response.isSuccessful && response.body() != null) {
@@ -124,7 +125,8 @@ class SubscriptionRepository(context: Context? = null) {
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.name,
                 startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
-                reminderEnabled = subscription.reminderEnabled
+                reminderEnabled = subscription.reminderEnabled,
+                jointEmails = subscription.jointEmails
             )
             val response = apiService.updateSubscription(id, request)
             if (response.isSuccessful && response.body() != null) {
@@ -185,6 +187,42 @@ class SubscriptionRepository(context: Context? = null) {
             Result.failure(e)
         }
     }
+
+    suspend fun getPendingInvitations(): Result<List<com.gokhanaytekinn.sdandroid.data.model.SubscriptionInvitation>> {
+        return try {
+            if (apiService == null) return Result.failure(Exception("API not available"))
+            val response = apiService.getPendingInvitations()
+            if (response.isSuccessful && response.body() != null) {
+                Result.success(response.body()!!)
+            } else {
+                Result.failure(Exception("Failed to get invitations"))
+            }
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun acceptInvitation(id: String): Result<Unit> {
+        return try {
+            if (apiService == null) return Result.failure(Exception("API not available"))
+            val response = apiService.acceptInvitation(id)
+            if (response.isSuccessful) Result.success(Unit)
+            else Result.failure(Exception("Failed to accept invitation"))
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    suspend fun rejectInvitation(id: String): Result<Unit> {
+        return try {
+            if (apiService == null) return Result.failure(Exception("API not available"))
+            val response = apiService.rejectInvitation(id)
+            if (response.isSuccessful) Result.success(Unit)
+            else Result.failure(Exception("Failed to reject invitation"))
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
     
     // Helper function to convert API response to domain model
     private fun SubscriptionResponse.toSubscription(): Subscription {
@@ -205,7 +243,12 @@ class SubscriptionRepository(context: Context? = null) {
             icon = icon,
             status = status,
             tier = tier,
-            reminderEnabled = reminderEnabled
+            reminderEnabled = reminderEnabled,
+            jointEmails = jointEmails,
+            isOwner = owner ?: true,
+            participants = participants?.map { 
+                com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant(it.email, it.name, it.status)
+            }
         )
     }
 }
