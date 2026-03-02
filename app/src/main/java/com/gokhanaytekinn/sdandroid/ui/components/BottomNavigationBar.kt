@@ -48,52 +48,63 @@ import androidx.compose.ui.window.PopupProperties
 @Composable
 fun BottomNavigationBar(
     currentRoute: String?,
+    isDimmed: Boolean = false,
     onNavigate: (String) -> Unit
 ) {
-    Surface(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(
-                color = MaterialTheme.colorScheme.surface,
-                shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-            )
-            .border(
-                width = 1.dp,
-                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
-                shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
-            )
-    ) {
-        Row(
+    Box {
+        Surface(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(horizontal = 12.dp, vertical = 12.dp)
-                .padding(bottom = 8.dp),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+                .background(
+                    color = MaterialTheme.colorScheme.surface,
+                    shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+                )
+                .border(
+                    width = 1.dp,
+                    color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
+                    shape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+                )
         ) {
-            BottomNavItem(
-                icon = Icons.Default.Dashboard,
-                label = stringResource(R.string.nav_dashboard),
-                selected = currentRoute?.startsWith(Screen.Dashboard.route.split("?")[0]) == true,
-                onClick = { onNavigate(Screen.Dashboard.route) }
-            )
-            BottomNavItem(
-                icon = Icons.Default.List,
-                label = stringResource(R.string.subscriptions),
-                selected = currentRoute?.startsWith(Screen.SubscriptionsList.route.split("?")[0]) == true,
-                onClick = { onNavigate(Screen.SubscriptionsList.route) }
-            )
-            BottomNavItem(
-                icon = Icons.Default.Notifications,
-                label = stringResource(R.string.nav_upcoming),
-                selected = currentRoute?.startsWith(Screen.UpcomingSubscriptions.route.split("?")[0]) == true,
-                onClick = { onNavigate(Screen.UpcomingSubscriptions.route) }
-            )
-            BottomNavItem(
-                icon = Icons.Default.Settings,
-                label = stringResource(R.string.nav_settings),
-                selected = currentRoute?.startsWith(Screen.AppSettings.route.split("?")[0]) == true,
-                onClick = { onNavigate(Screen.AppSettings.route) }
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 12.dp, vertical = 12.dp)
+                    .padding(bottom = 8.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                BottomNavItem(
+                    icon = Icons.Default.Dashboard,
+                    label = stringResource(R.string.nav_dashboard),
+                    selected = currentRoute?.startsWith(Screen.Dashboard.route.split("?")[0]) == true,
+                    onClick = { onNavigate(Screen.Dashboard.route) }
+                )
+                BottomNavItem(
+                    icon = Icons.Default.List,
+                    label = stringResource(R.string.subscriptions),
+                    selected = currentRoute?.startsWith(Screen.SubscriptionsList.route.split("?")[0]) == true,
+                    onClick = { onNavigate(Screen.SubscriptionsList.route) }
+                )
+                BottomNavItem(
+                    icon = Icons.Default.Notifications,
+                    label = stringResource(R.string.nav_upcoming),
+                    selected = currentRoute?.startsWith(Screen.UpcomingSubscriptions.route.split("?")[0]) == true,
+                    onClick = { onNavigate(Screen.UpcomingSubscriptions.route) }
+                )
+                BottomNavItem(
+                    icon = Icons.Default.Settings,
+                    label = stringResource(R.string.nav_settings),
+                    selected = currentRoute?.startsWith(Screen.AppSettings.route.split("?")[0]) == true,
+                    onClick = { onNavigate(Screen.AppSettings.route) }
+                )
+            }
+        }
+        
+        if (isDimmed) {
+            Box(
+                modifier = Modifier
+                    .matchParentSize()
+                    .background(Color.Black.copy(alpha = 0.5f))
             )
         }
     }
