@@ -22,6 +22,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.stringResource
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
+import com.gokhanaytekinn.sdandroid.data.model.SubscriptionStatus
+import com.gokhanaytekinn.sdandroid.data.model.BillingCycle
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
 import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
@@ -429,7 +431,7 @@ fun SubscriptionDetailsScreen(
                     
                     if (sub.isOwner) {
                         Spacer(modifier = Modifier.height(12.dp))
-                        if (sub.status == "CANCELLED") {
+                        if (sub.status == SubscriptionStatus.CANCELLED.value) {
                             Button(
                                 onClick = {
                                     if (!isLoading) {

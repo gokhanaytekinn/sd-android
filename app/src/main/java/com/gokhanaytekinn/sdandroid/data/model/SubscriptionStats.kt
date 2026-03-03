@@ -4,5 +4,5 @@ data class SubscriptionStats(
     val totalMonthlyCost: Double,
     val totalYearlyCost: Double,
     val activeCount: Int,
-    val currency: String = "USD"
+    val currency: Int = 1
 )

@@ -11,7 +11,7 @@ sealed class Screen(val route: String) {
     object UpcomingSubscriptions : Screen("upcoming_subscriptions")
     object SuspiciousPayments : Screen("suspicious_payments")
     object PremiumUpgrade : Screen("premium_upgrade?plan={plan}") {
-        fun createRoute(plan: String? = "FREE"): String {
+        fun createRoute(plan: Int? = 1): String {
             return "premium_upgrade?plan=$plan"
         }
     }

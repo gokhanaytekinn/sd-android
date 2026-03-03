@@ -11,7 +11,7 @@ data class UserResponse(
     val id: String,
     val email: String,
     val name: String?,
-    val tier: String?, // FREE, PREMIUM
+    val tier: Int?, // FREE, PREMIUM
     val notificationsEnabled: Boolean = true,
     val language: String? = "tr",
     val createdAt: String?
@@ -27,14 +27,14 @@ data class SubscriptionResponse(
     val id: String,
     val name: String,
     val icon: String?,
-    val tier: String?,
+    val tier: Int?,
     val amount: Double,
-    val currency: String,
-    val billingCycle: String,
+    val currency: Int,
+    val billingCycle: Int,
     val startDate: String?,
     val endDate: String?,
     val renewalDate: String?,
-    val status: String, // ACTIVE, SUSPENDED, CANCELLED, PENDING_APPROVAL
+    val status: Int, // ACTIVE = 1, SUSPENDED = 2, CANCELLED = 3, PENDING_APPROVAL = 4
     val isSuspicious: Boolean = false,
     val suspiciousReason: String?,
     val isApproved: Boolean = false,
@@ -54,9 +54,9 @@ data class TransactionResponse(
     val subscriptionId: String?,
     val userId: String?,
     val amount: Double,
-    val currency: String?,
-    val type: String,
-    val status: String,
+    val currency: Int?,
+    val type: Int,
+    val status: Int,
     val description: String?,
     val metadata: Map<String, Any>?,
     val createdAt: String,

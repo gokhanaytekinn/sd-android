@@ -245,7 +245,7 @@ fun TransactionItem(transaction: Transaction) {
         name = transaction.name,
         category = transaction.category,
         cost = transaction.amount.replace("$", "").replace("-", "").replace("+", "").replace(",", "").toDoubleOrNull() ?: 0.0,
-        currency = if (transaction.amount.contains("$")) "USD" else "TRY",
+        currency = if (transaction.amount.contains("$")) 2 else 1,
         icon = transaction.icon,
         isJoint = transaction.isJoint,
         onClick = {},

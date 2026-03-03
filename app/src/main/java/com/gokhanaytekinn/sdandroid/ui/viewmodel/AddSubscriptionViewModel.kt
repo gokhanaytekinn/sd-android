@@ -47,8 +47,8 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _amount = MutableStateFlow("")
     val amount: StateFlow<String> = _amount.asStateFlow()
     
-    private val _currency = MutableStateFlow("₺")
-    val currency: StateFlow<String> = _currency.asStateFlow()
+    private val _currency = MutableStateFlow(1)
+    val currency: StateFlow<Int> = _currency.asStateFlow()
     
     private val _billingCycle = MutableStateFlow(BillingCycle.MONTHLY)
     val billingCycle: StateFlow<BillingCycle> = _billingCycle.asStateFlow()
@@ -102,7 +102,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         if (finalValue.isNotBlank()) _amountError.value = null
     }
     
-    fun updateCurrency(value: String) {
+    fun updateCurrency(value: Int) {
         _currency.value = value
         _currencyError.value = null
     }
@@ -146,17 +146,14 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
             _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_required
             isValid = false
         } else {
-            val amountValue = _amount.value.toDoubleOrNull() ?: 0.0
+            val amountValue = _amount.value.replace(',', '.').toDoubleOrNull() ?: 0.0
             if (amountValue <= 0.0) {
                 _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_invalid
                 isValid = false
             }
         }
         
-        if (_currency.value.isBlank()) {
-            _currencyError.value = com.gokhanaytekinn.sdandroid.R.string.error_currency_required
-            isValid = false
-        }
+        // Removed currency string empty check because it is an Int now.
         
         if (_nextBillingDate.value.isBlank()) {
             _dateError.value = com.gokhanaytekinn.sdandroid.R.string.error_date_required
@@ -263,7 +260,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         _nextBillingDate.value = ""
         _subscriptionId = null
         _isEditMode.value = false
-        _currency.value = "₺"
+        _currency.value = 1
         _category.value = "category_other"
         _jointEmails.value = emptyList()
         _participants.value = null

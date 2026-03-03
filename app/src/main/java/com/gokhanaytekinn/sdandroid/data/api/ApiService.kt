@@ -45,7 +45,7 @@ interface ApiService {
     
     @GET("api/subscriptions")
     suspend fun getSubscriptions(
-        @Query("status") status: String? = null,
+        @Query("status") status: Int? = null,
         @Query("isSuspicious") isSuspicious: Boolean? = null
     ): Response<List<SubscriptionResponse>>
     
@@ -86,8 +86,8 @@ interface ApiService {
     
     @GET("api/transactions")
     suspend fun getTransactions(
-        @Query("type") type: String? = null,
-        @Query("status") status: String? = null,
+        @Query("type") type: Int? = null,
+        @Query("status") status: Int? = null,
         @Query("page") page: Int = 0,
         @Query("size") size: Int = 10
     ): Response<PageTransactionResponse>
@@ -102,7 +102,7 @@ interface ApiService {
     
     @GET("api/reminders")
     suspend fun getReminders(
-        @Query("type") type: String? = null,
+        @Query("type") type: Int? = null,
         @Query("isRead") isRead: Boolean? = null
     ): Response<List<ReminderResponse>>
     

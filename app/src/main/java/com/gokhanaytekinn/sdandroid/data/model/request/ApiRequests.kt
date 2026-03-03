@@ -15,10 +15,10 @@ data class RegisterRequest(
 data class SubscriptionRequest(
     val name: String,
     val icon: String?,
-    val tier: String? = null,
+    val tier: Int? = null,
     val amount: Double,
-    val currency: String,
-    val billingCycle: String,
+    val currency: Int,
+    val billingCycle: Int,
     val startDate: String,
     val reminderEnabled: Boolean = false,
     val jointEmails: List<String>? = null
@@ -27,10 +27,10 @@ data class SubscriptionRequest(
 data class SubscriptionUpdateRequest(
     val name: String? = null,
     val icon: String? = null,
-    val tier: String? = null,
+    val tier: Int? = null,
     val amount: Double? = null,
-    val currency: String? = null,
-    val billingCycle: String? = null,
+    val currency: Int? = null,
+    val billingCycle: Int? = null,
     val startDate: String? = null,
     val reminderEnabled: Boolean? = null,
     val jointEmails: List<String>? = null
@@ -43,8 +43,8 @@ data class FlagSuspiciousRequest(
 data class TransactionRequest(
     val subscriptionId: String?,
     val amount: Double,
-    val currency: String,
-    val type: String, // SUBSCRIPTION_PAYMENT, REFUND, UPGRADE, DOWNGRADE
+    val currency: Int,
+    val type: Int, // 1: PAYMENT, 2: REFUND, 3: UPGRADE, 4: DOWNGRADE
     val description: String? = null
 )
 
@@ -63,8 +63,8 @@ data class ReminderUpdateRequest(
 
 data class ConversionRequest(
     val amount: Double,
-    val currency: String,
-    val billingCycle: String
+    val currency: Int,
+    val billingCycle: Int
 )
 
 data class FcmTokenRequest(

@@ -417,7 +417,7 @@ fun AddSubscriptionScreen(
                         var expanded by remember { mutableStateOf(false) }
                         Box {
                             OutlinedTextField(
-                                value = currency,
+                                value = CurrencyFormatter.getCurrencySymbol(currency),
                                 onValueChange = {},
                                 modifier = Modifier.fillMaxWidth(),
                                 shape = RoundedCornerShape(12.dp),
@@ -439,11 +439,11 @@ fun AddSubscriptionScreen(
                                 expanded = expanded,
                                 onDismissRequest = { expanded = false }
                             ) {
-                                listOf("₺", "$", "€", "£").forEach { curr ->
+                                listOf(1, 2, 3, 4, 5, 6, 7).forEach { currCode ->
                                     DropdownMenuItem(
-                                        text = { Text(curr) },
+                                        text = { Text(CurrencyFormatter.getCurrencySymbol(currCode)) },
                                         onClick = {
-                                            viewModel.updateCurrency(curr)
+                                            viewModel.updateCurrency(currCode)
                                             expanded = false
                                         }
                                     )

@@ -16,7 +16,7 @@ class SubscriptionRepository(context: Context? = null) {
     private val apiService: ApiService? = tokenManager?.let { RetrofitClient.createApiService(it) }
     
     suspend fun getSubscriptions(
-        status: String? = null,
+        status: Int? = null,
         isSuspicious: Boolean? = null
     ): Result<List<Subscription>> {
         return try {
@@ -92,11 +92,11 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = SubscriptionRequest(
                 name = subscription.name,
-                icon = subscription.iconUrl ?: subscription.icon,
+                icon = subscription.icon,
                 tier = subscription.tier,
                 amount = subscription.cost,
                 currency = subscription.currency,
-                billingCycle = subscription.billingCycle.name,
+                billingCycle = subscription.billingCycle.value,
                 startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
                 reminderEnabled = subscription.reminderEnabled,
                 jointEmails = subscription.jointEmails
@@ -119,11 +119,11 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = com.gokhanaytekinn.sdandroid.data.model.request.SubscriptionUpdateRequest(
                 name = subscription.name,
-                icon = subscription.iconUrl ?: subscription.icon,
+                icon = subscription.icon,
                 tier = subscription.tier,
                 amount = subscription.cost,
                 currency = subscription.currency,
-                billingCycle = subscription.billingCycle.name,
+                billingCycle = subscription.billingCycle.value,
                 startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
                 reminderEnabled = subscription.reminderEnabled,
                 jointEmails = subscription.jointEmails
@@ -261,14 +261,10 @@ class SubscriptionRepository(context: Context? = null) {
             name = name,
             cost = amount,
             currency = currency,
-            billingCycle = try {
-                BillingCycle.valueOf(billingCycle)
-            } catch (e: Exception) {
-                BillingCycle.MONTHLY
-            },
+            billingCycle = BillingCycle.fromValue(billingCycle),
             nextBillingDate = renewalDate,
             startDate = startDate,
-            isActive = status == "ACTIVE",
+            isActive = status == 1,
             isSuspicious = isSuspicious,
             icon = icon,
             status = status,

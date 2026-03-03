@@ -31,11 +31,12 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import com.gokhanaytekinn.sdandroid.data.preferences.settingsDataStore
 import com.gokhanaytekinn.sdandroid.BuildConfig
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
+import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 
 @Composable
 fun AppSettingsScreen(
     onBackClick: () -> Unit = {},
-    onUpgradeClick: (String?) -> Unit = {},
+    onUpgradeClick: (Int?) -> Unit = {},
     onHelpClick: () -> Unit = {},
     onPrivacyClick: () -> Unit = {},
     onLogoutClick: () -> Unit = {}
@@ -63,7 +64,7 @@ fun AppSettingsScreen(
     val isPremium by premiumPreferences.isPremium.collectAsState(initial = false)
     
     // Currency state - load from preferences
-    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
+    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = 1)
     
     // Dialog states
     var showLanguageDialog by remember { mutableStateOf(false) }
@@ -287,7 +288,7 @@ fun AppSettingsScreen(
                         SettingsNavigationItem(
                             icon = Icons.Filled.Payments,
                             title = stringResource(R.string.currency),
-                            value = "$selectedCurrency (${getCurrencySymbol(selectedCurrency)})",
+                            value = CurrencyFormatter.getCurrencySymbol(selectedCurrency),
                             onClick = { showCurrencyDialog = true }
                         )
                         
@@ -582,27 +583,45 @@ fun AppSettingsScreen(
             title = { Text(stringResource(R.string.select_currency)) },
             text = {
                 Column {
-                    CurrencyOption("TRY", "₺", selectedCurrency) {
+                    CurrencyOption(1, "TRY", selectedCurrency) {
                         scope.launch {
-                            currencyPreferences.setCurrency("TRY")
+                            currencyPreferences.setCurrency(1)
                             showCurrencyDialog = false
                         }
                     }
-                    CurrencyOption("USD", "$", selectedCurrency) {
+                    CurrencyOption(2, "USD", selectedCurrency) {
                          scope.launch {
-                            currencyPreferences.setCurrency("USD")
+                            currencyPreferences.setCurrency(2)
                             showCurrencyDialog = false
                         }
                     }
-                    CurrencyOption("EUR", "€", selectedCurrency) {
+                    CurrencyOption(3, "EUR", selectedCurrency) {
                          scope.launch {
-                            currencyPreferences.setCurrency("EUR")
+                            currencyPreferences.setCurrency(3)
                             showCurrencyDialog = false
                         }
                     }
-                    CurrencyOption("GBP", "£", selectedCurrency) {
+                    CurrencyOption(4, "GBP", selectedCurrency) {
                          scope.launch {
-                            currencyPreferences.setCurrency("GBP")
+                            currencyPreferences.setCurrency(4)
+                            showCurrencyDialog = false
+                        }
+                    }
+                    CurrencyOption(5, "RUB", selectedCurrency) {
+                         scope.launch {
+                            currencyPreferences.setCurrency(5)
+                            showCurrencyDialog = false
+                        }
+                    }
+                    CurrencyOption(6, "AZN", selectedCurrency) {
+                         scope.launch {
+                            currencyPreferences.setCurrency(6)
+                            showCurrencyDialog = false
+                        }
+                    }
+                    CurrencyOption(7, "KZT", selectedCurrency) {
+                         scope.launch {
+                            currencyPreferences.setCurrency(7)
                             showCurrencyDialog = false
                         }
                     }
@@ -684,9 +703,9 @@ fun LanguageOption(
 
 @Composable
 fun CurrencyOption(
-    code: String,
-    symbol: String,
-    selectedCode: String,
+    code: Int,
+    name: String,
+    selectedCode: Int,
     onClick: () -> Unit
 ) {
     Row(
@@ -697,7 +716,8 @@ fun CurrencyOption(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text("$code ($symbol)", fontSize = 16.sp)
+        val symbol = com.gokhanaytekinn.sdandroid.util.CurrencyFormatter.getCurrencySymbol(code)
+        Text("$name ($symbol)", fontSize = 16.sp)
         if (code == selectedCode) {
             Icon(
                 imageVector = Icons.Filled.Check,
@@ -705,16 +725,6 @@ fun CurrencyOption(
                 tint = PrimaryBlue
             )
         }
-    }
-}
-
-fun getCurrencySymbol(currency: String): String {
-    return when(currency) {
-        "TRY" -> "₺"
-        "USD" -> "$"
-        "EUR" -> "€"
-        "GBP" -> "£"
-        else -> currency
     }
 }
 

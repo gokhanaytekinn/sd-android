@@ -24,7 +24,7 @@ data class AuthState(
     val language: String? = "tr",
     val resetEmail: String? = null,
     val isResetCodeVerified: Boolean = false,
-    val tier: String? = "FREE"
+    val tier: Int? = 1
 )
 
 class AuthViewModel(context: Context) : ViewModel() {
@@ -55,9 +55,9 @@ class AuthViewModel(context: Context) : ViewModel() {
                         userEmail = user?.email,
                         notificationsEnabled = user?.notificationsEnabled ?: true,
                         language = user?.language ?: "tr",
-                        tier = user?.tier ?: "FREE"
+                        tier = user?.tier ?: 1
                     )
-                    premiumPreferences.setPremiumStatus(user?.tier == "PREMIUM")
+                    premiumPreferences.setPremiumStatus(user?.tier == 2)
                     // Sync local language to backend if they differ
                     syncLanguageIfNeeded()
                 } else {
@@ -87,7 +87,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                     userEmail = authResponse?.user?.email,
                     notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true,
                     language = authResponse?.user?.language ?: "tr",
-                    tier = authResponse?.user?.tier ?: "FREE"
+                    tier = authResponse?.user?.tier ?: 1
                 )
                 syncLanguageIfNeeded()
                 onSuccess()
@@ -118,7 +118,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                     userEmail = authResponse?.user?.email,
                     notificationsEnabled = authResponse?.user?.notificationsEnabled ?: true,
                     language = authResponse?.user?.language ?: localLanguage,
-                    tier = authResponse?.user?.tier ?: "FREE"
+                    tier = authResponse?.user?.tier ?: 1
                 )
                 onSuccess()
             } else {
@@ -216,9 +216,10 @@ class AuthViewModel(context: Context) : ViewModel() {
                     userName = user?.name,
                     userEmail = user?.email,
                     notificationsEnabled = user?.notificationsEnabled ?: true,
-                    language = user?.language ?: "tr"
+                    language = user?.language ?: "tr",
+                    tier = user?.tier ?: 1
                 )
-                premiumPreferences.setPremiumStatus(user?.tier == "PREMIUM")
+                premiumPreferences.setPremiumStatus(user?.tier == 2)
                 syncLanguageIfNeeded()
                 onSuccess()
             } else {

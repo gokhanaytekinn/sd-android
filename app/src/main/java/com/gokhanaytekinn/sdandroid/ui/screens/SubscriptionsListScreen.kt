@@ -46,7 +46,7 @@ fun SubscriptionsListScreen(
     val subscriptions by viewModel.subscriptions.collectAsState()
     val stats by viewModel.stats.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
-    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
+    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = 1)
     val pendingInvitations by viewModel.pendingInvitations.collectAsState()
     
     var selectedTab by remember { mutableStateOf(initialTab) }
@@ -353,7 +353,7 @@ fun TabItem(
 @Composable
 fun SubscriptionListItemDetailed(
     subscription: Subscription,
-    currency: String = "TRY",
+    currency: Int = 1,
     modifier: Modifier = Modifier,
     onClick: () -> Unit = {}
 ) {

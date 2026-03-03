@@ -312,8 +312,8 @@ fun NavGraph(
                     }
                 )
             ) { backStackEntry ->
-                val planStr = backStackEntry.arguments?.getString("plan") ?: "FREE"
-                val initialPlan = if (planStr == "PREMIUM") SubscriptionPlanType.MONTHLY else SubscriptionPlanType.FREE
+                val planStr = backStackEntry.arguments?.getString("plan") ?: "1"
+                val initialPlan = if (planStr == "2") SubscriptionPlanType.MONTHLY else SubscriptionPlanType.FREE
                 
                 PremiumUpgradeScreen(
                     initialPlan = initialPlan,

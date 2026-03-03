@@ -2,7 +2,7 @@ package com.gokhanaytekinn.sdandroid.util
 
 object CurrencyFormatter {
     
-    fun formatAmount(amount: Double, currencyCode: String): String {
+    fun formatAmount(amount: Double, currencyCode: Int): String {
         val symbol = getCurrencySymbol(currencyCode)
         val formattedAmount = formatAmountLocalized(amount)
         
@@ -18,16 +18,16 @@ object CurrencyFormatter {
         return decimalFormat.format(amount)
     }
     
-    fun getCurrencySymbol(currencyCode: String): String {
+    fun getCurrencySymbol(currencyCode: Int): String {
         return when (currencyCode) {
-            "TRY" -> "₺"
-            "USD" -> "$"
-            "EUR" -> "€"
-            "GBP" -> "£"
-            "RUB" -> "₽"
-            "AZN" -> "₼"
-            "KZT" -> "₸"
-            else -> currencyCode
+            1 -> "₺"
+            2 -> "$"
+            3 -> "€"
+            4 -> "£"
+            5 -> "₽"
+            6 -> "₼"
+            7 -> "₸"
+            else -> "₺"
         }
     }
     

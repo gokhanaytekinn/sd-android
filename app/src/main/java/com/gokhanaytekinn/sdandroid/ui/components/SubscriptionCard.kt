@@ -38,7 +38,7 @@ fun getBrandColor(name: String): Color {
 @Composable
 fun SubscriptionCard(
     subscription: Subscription,
-    currency: String = "TRY",
+    currency: Int = 1,
     showDate: Boolean = false,
     showCountdown: Boolean = false,
     isJoint: Boolean = false,
@@ -68,7 +68,7 @@ fun SubscriptionCard(
     name: String,
     category: String,
     cost: Double,
-    currency: String = "TRY",
+    currency: Int = 1,
     billingCycle: BillingCycle = BillingCycle.MONTHLY,
     icon: String? = null,
     nextBillingDate: String? = null,

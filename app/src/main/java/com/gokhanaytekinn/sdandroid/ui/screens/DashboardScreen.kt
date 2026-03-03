@@ -55,7 +55,7 @@ fun DashboardScreen(
     val isLoading by viewModel.isLoading.collectAsState()
     val authState by authViewModel.authState.collectAsState()
     val upcomingSubs by viewModel.upcomingSubscriptions.collectAsState()
-    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
+    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = 1)
     
     // Calculate expensive subscriptions outside of LazyColumn items
     val expensiveSubscriptions = remember(subscriptions) {
@@ -264,7 +264,7 @@ fun DashboardScreen(
 @Composable
 fun SubscriptionListItem(
     subscription: Subscription,
-    currency: String = "TRY",
+    currency: Int = 1,
     onClick: () -> Unit = {}
 ) {
     com.gokhanaytekinn.sdandroid.ui.components.SubscriptionCard(

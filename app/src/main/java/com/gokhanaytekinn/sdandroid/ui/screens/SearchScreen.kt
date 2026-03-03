@@ -39,7 +39,7 @@ fun SearchScreen(
     val searchResults by viewModel.searchResults.collectAsState()
     val recentSearches by viewModel.recentSearches.collectAsState(initial = emptyList())
     val isLoading by viewModel.isLoading.collectAsState()
-    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
+    val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = 1)
     
     
     Box(
