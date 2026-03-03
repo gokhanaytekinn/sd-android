@@ -1,20 +1,20 @@
-# Android Uygulaması (Frontend) Changelog
+# Android Uygulaması (Frontend) Sürüm Notları
 
-Tüm değişiklikler ve versiyon notları tarih sırasına göre aşağıda özetlenmiştir.
+Uygulamamıza eklenen yeni özellikler, geliştirmeler ve hata düzeltmeleri aşağıda özetlenmiştir.
 
-## [2026-03-03]
-- **Feature/Refactor:** Abonelik ekleme ve düzenleme (Add & Edit Subscription) ekranlarında tam tarih (g/a/y) kullanmak yerine sadece **Gün** ve **Ay** (Yıllık abonelikler için) seçmeye olanak sağlayan yapıya geçildi. UI, ViewModels ve API Request DTO'ları tamamen senkronize edildi (`billingDay`, `billingMonth` alanları eklendi).
-- **UI/UX:** Abonelik detay ekranındaki gereksiz "Ödeme Geçmişi (Payment History)" sekmesi kaldırılarak arayüz sadeleştirildi.
-- **Bug Fix:** Premium paket seçildiğinde ödeme popup ekranı (Billing Flow) gelmesi yerine yanlışlıkla ayarlar ekranına yönlendirmesine sebep olan UI hatası onarıldı (`launchBillingFlow` eklendi).
-- **Bug Fix:** Çeşitli Kotlin model (Type Mismatch) ve UI kütüphanesi referans (Unresolved reference) derleme hataları giderildi.
+## [03.03.2026]
+- **Yenilik:** Abonelik eklerken veya düzenlerken artık gereksiz yere tam tarih seçmek zorunda değilsiniz. Sadece gün ve seçtiğiniz döngüye göre ay seçimi yapabileceğiniz daha kolay bir yapıya geçtik.
+- **Geliştirme:** Abonelik detay ekranını sadeleştirmek adına kullanılmayan "Ödeme Geçmişi" bölümü tamamen kaldırıldı.
+- **Hata Düzeltme:** Premium paket satın alma işlemi sırasında çıkan ödeme ekranının bazen yanlışlıkla ayarlar menüsüne yönlendirmesi sorunu giderildi.
+- **Hata Düzeltme:** Uygulama performansını etkileyen ve çökmeye sebep olabilen bazı altyapı hataları onarıldı.
 
-## [2026-03-01]
-- **Bug Fix:** Sadece Release (yayın) build’inde ortaya çıkan "Google Login" yetkilendirme hatası; SHA-1 fingerprint ve Firebase/Google Cloud Console yapılandırmalarıyla düzeltildi.
-- **Bug Fix:** Network Security Policy sebebiyle (Cleartext communication) dış adrese/port'a (187.124.16.135) HTTP üzerinden çıkılamama hatası erişim izni ayarlarıyla çözüldü.
+## [01.03.2026]
+- **Hata Düzeltme:** Bazı kullanıcılarımızın Google ile Giriş Yaparken karşılaştığı yetkilendirme (hata) sorunu kalıcı olarak çözüldü.
+- **Hata Düzeltme:** Uygulamanın çeşitli dış ağlarla iletişim kurmasını engelleyen güvenlik duvarı bazlı bir bağlantı sorunu giderildi.
 
-## [2026-02-27]
-- **Bug Fix:** Proje genelindeki dil dosyalarında (`strings.xml`) oluşan biçimlendirme hataları ve yanlış kaçış (escape sequences) karakterlerinden kaynaklı derleme hatalarının tamamı temizlendi.
-- **UI/UX:** Alt gezinme (Bottom Navigation) tuşlarında ve diğer clickable ikonlarda tıklama sırasında beliren yarı saydam/gri dikdörtgen dalgalanma (ripple effect) iptal edildi, daha akıcı ve estetik hale getirildi.
+## [27.02.2026]
+- **Hata Düzeltme:** Çeşitli ekranlardaki yabancı dil (çeviri) metinlerinde görülen harf ve karakter hataları düzeltildi.
+- **Geliştirme:** Alt menüdeki (Gezinti Çubuğu) butonlara tıklandığında ortaya çıkan göze batan gri renkli dalgalanma efekti kaldırılarak daha akıcı ve şık bir görünüm sağlandı.
 
-## [2026-02-26]
-- **UI/UX:** Kayan işlem düğmesi (FAB) ve menüsü için dönme (rotate), animasyonlu açılış/staggered items ve arka planı karartma (dimming) gibi pürüzsüz etkileşim animasyonları projeye kazandırıldı. Kritik ek layout sorunları giderildi.
+## [26.02.2026]
+- **Geliştirme:** Ana ekrandaki ekleme (Artı) butonuna pürüzsüz dönme ve açılış animasyonları eklendi. Menü artık daha yumuşak ve şık bir karartma efektiyle açılıyor. Bazı tasarım kaymaları düzeltildi.
