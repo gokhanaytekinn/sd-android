@@ -7,15 +7,22 @@ import com.gokhanaytekinn.sdandroid.data.model.BillingCycle
 import com.gokhanaytekinn.sdandroid.data.model.InvitationParticipant
 import com.gokhanaytekinn.sdandroid.data.model.Subscription
 import com.gokhanaytekinn.sdandroid.data.repository.SubscriptionRepository
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch
 import java.util.UUID
 
 class AddSubscriptionViewModel(application: Application) : AndroidViewModel(application) {
 
     private val repository = SubscriptionRepository(application)
+
+
+    private val premiumPreferences = com.gokhanaytekinn.sdandroid.data.preferences.PremiumPreferences(application)
 
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
@@ -25,6 +32,9 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
 
     private val _isSuccess = MutableStateFlow(false)
     val isSuccess: StateFlow<Boolean> = _isSuccess.asStateFlow()
+
+    private val _showInterstitialAd = MutableSharedFlow<Boolean>()
+    val showInterstitialAd: SharedFlow<Boolean> = _showInterstitialAd.asSharedFlow()
     
     private var _subscriptionId: String? = null
     private val _isEditMode = MutableStateFlow(false)
@@ -218,6 +228,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 
                 if (result.isSuccess) {
                     _isSuccess.value = true
+                    checkInterstitialAdCondition()
                 } else {
                     _error.value = result.exceptionOrNull()?.message ?: "Bir hata oluştu"
                 }
@@ -225,6 +236,17 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 _error.value = e.message
             } finally {
                 _isLoading.value = false
+            }
+        }
+    }
+    
+    private suspend fun checkInterstitialAdCondition() {
+        val isPremium = premiumPreferences.isPremium.first()
+        if (!isPremium) {
+            premiumPreferences.incrementAdsCounter()
+            val counter = premiumPreferences.adsCounter.first()
+            if (counter > 0 && counter % 3 == 0) {
+                _showInterstitialAd.emit(true)
             }
         }
     }

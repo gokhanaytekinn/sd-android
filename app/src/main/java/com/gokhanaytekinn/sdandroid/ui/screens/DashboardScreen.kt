@@ -36,12 +36,12 @@ import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 import com.gokhanaytekinn.sdandroid.util.DateUtils
+import com.gokhanaytekinn.sdandroid.ui.components.BannerAdView
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
     onNavigateToAllSubscriptions: () -> Unit = {},
-    onNavigateToSearch: () -> Unit = {},
     onNavigateToUpcoming: () -> Unit = {}
 ) {
     val context = androidx.compose.ui.platform.LocalContext.current
@@ -196,7 +196,6 @@ fun DashboardScreen(
                     }
                 }
 
-                
                 // Expensive Subscriptions List
                 item {
                     Text(
@@ -259,10 +258,9 @@ fun DashboardScreen(
                     }
                 }
             }
-            }
         }
     }
-
+}
 @Composable
 fun SubscriptionListItem(
     subscription: Subscription,

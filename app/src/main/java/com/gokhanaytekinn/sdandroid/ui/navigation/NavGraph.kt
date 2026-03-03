@@ -21,6 +21,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.ui.res.stringResource
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
+import com.gokhanaytekinn.sdandroid.ui.components.BannerAdView
 import com.gokhanaytekinn.sdandroid.ui.screens.DashboardViewModel
 import com.gokhanaytekinn.sdandroid.data.preferences.CurrencyPreferences
 import androidx.compose.runtime.collectAsState
@@ -58,20 +59,14 @@ fun NavGraph(
     val currentRoute = navBackStackEntry?.destination?.route
     
     val context = androidx.compose.ui.platform.LocalContext.current
-    val application = context.applicationContext as android.app.Application
     val authViewModel: com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel = androidx.lifecycle.viewmodel.compose.viewModel {
         com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel(context)
     }
     
-    // Shared ViewModel for scanning across the app
-    val dashboardViewModel: DashboardViewModel = androidx.lifecycle.viewmodel.compose.viewModel {
-        DashboardViewModel(application)
-    }
-    
-    val currencyPreferences = remember { CurrencyPreferences(context) }
+    val premiumPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.PremiumPreferences(context) }
+    val isPremium by premiumPreferences.isPremium.collectAsState(initial = false)
 
     
-
     var isMenuExpanded by remember { mutableStateOf(false) }
 
 
@@ -83,8 +78,10 @@ fun NavGraph(
         Screen.AppSettings.route
     )
 
-    Scaffold(
-        bottomBar = {
+    Column(modifier = Modifier.fillMaxSize()) {
+        Scaffold(
+            modifier = Modifier.weight(1f),
+            bottomBar = {
             if (showBottomBar) {
                 BottomNavigationBar(
                     currentRoute = currentRoute,
@@ -239,9 +236,6 @@ fun NavGraph(
                 DashboardScreen(
                     onNavigateToAllSubscriptions = {
                         navController.navigate(Screen.SubscriptionsList.route)
-                    },
-                    onNavigateToSearch = {
-                        navController.navigate(Screen.Search.route)
                     },
                     onNavigateToUpcoming = {
                         navController.navigate(Screen.UpcomingSubscriptions.route)
@@ -437,4 +431,15 @@ fun NavGraph(
         }
     }
 
+    // Sabit Banner Reklam (Bottom Navigation'ın altında)
+    if (showBottomBar && !isPremium) {
+        Box(modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background)) {
+            BannerAdView(
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .fillMaxWidth()
+            )
+        }
+    }
+}
 }

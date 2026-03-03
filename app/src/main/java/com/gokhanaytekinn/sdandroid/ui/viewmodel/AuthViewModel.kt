@@ -31,6 +31,7 @@ class AuthViewModel(context: Context) : ViewModel() {
     
     private val repository = AuthRepository(context)
     private val languagePreferences = com.gokhanaytekinn.sdandroid.data.preferences.LanguagePreferences(context)
+    private val premiumPreferences = com.gokhanaytekinn.sdandroid.data.preferences.PremiumPreferences(context)
     private val appContext = context.applicationContext
     
     private val _authState = MutableStateFlow(AuthState())
@@ -56,6 +57,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                         language = user?.language ?: "tr",
                         tier = user?.tier ?: "FREE"
                     )
+                    premiumPreferences.setPremiumStatus(user?.tier == "PREMIUM")
                     // Sync local language to backend if they differ
                     syncLanguageIfNeeded()
                 } else {
@@ -216,6 +218,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                     notificationsEnabled = user?.notificationsEnabled ?: true,
                     language = user?.language ?: "tr"
                 )
+                premiumPreferences.setPremiumStatus(user?.tier == "PREMIUM")
                 syncLanguageIfNeeded()
                 onSuccess()
             } else {
@@ -300,6 +303,7 @@ class AuthViewModel(context: Context) : ViewModel() {
     fun logout() {
         viewModelScope.launch {
             repository.logout()
+            premiumPreferences.setPremiumStatus(false)
             _authState.value = AuthState()
         }
     }
@@ -309,6 +313,7 @@ class AuthViewModel(context: Context) : ViewModel() {
             _authState.value = _authState.value.copy(isLoading = true, error = null)
             val result = repository.deleteAccount()
             if (result.isSuccess) {
+                premiumPreferences.setPremiumStatus(false)
                 _authState.value = AuthState()
             } else {
                 _authState.value = _authState.value.copy(

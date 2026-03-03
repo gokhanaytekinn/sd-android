@@ -35,6 +35,8 @@ import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AddSubscriptionViewModel
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 import com.gokhanaytekinn.sdandroid.util.CurrencyVisualTransformation
+import com.gokhanaytekinn.sdandroid.ui.components.InterstitialAdManager
+import kotlinx.coroutines.flow.collectLatest
 import java.util.Calendar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -65,6 +67,13 @@ fun AddSubscriptionScreen(
     val amountError by viewModel.amountError.collectAsState()
     val currencyError by viewModel.currencyError.collectAsState()
     val dateError by viewModel.dateError.collectAsState()
+    
+    val adManager = remember { InterstitialAdManager(context) }
+    
+    LaunchedEffect(Unit) {
+        adManager.loadAd()
+    }
+
     LaunchedEffect(subscriptionId) {
         if (subscriptionId != null) {
             viewModel.loadSubscription(subscriptionId)
@@ -109,10 +118,41 @@ fun AddSubscriptionScreen(
         datePickerDialog.updateDate(pickerYear, pickerMonth, pickerDay)
     }
 
+    var pendingNavigateBack by remember { mutableStateOf(false) }
+
     LaunchedEffect(isSuccess) {
         if (isSuccess) {
-            onBackClick()
-            viewModel.resetState()
+            pendingNavigateBack = true
+        }
+    }
+
+    LaunchedEffect(Unit) {
+        viewModel.showInterstitialAd.collectLatest { shouldShow ->
+            if (shouldShow) {
+                // Reklamı göster, kapanınca geri dön
+                adManager.showAd(context as android.app.Activity) {
+                    if (pendingNavigateBack) {
+                        onBackClick()
+                        viewModel.resetState()
+                        pendingNavigateBack = false
+                    }
+                }
+            }
+        }
+    }
+
+    // Eğer başarılı olduysa ve reklam tetiklenmediyse (hemen dön)
+    // LaunchedEffect flow emit gecikmesi nedeniyle küçük bir delay ile kontrol etmek faydalı olabilir,
+    // ancak viewModel tarafında checkInterstitialAdCondition() reklamEmit edilecekse hemen ediyor.
+    // Bu nedenle pendingNavigateBack duruma göre işlenecektir. Ek olarak 500ms sonra reklam açılmadıysa dönülür:
+    LaunchedEffect(pendingNavigateBack) {
+        if (pendingNavigateBack) {
+            kotlinx.coroutines.delay(500)
+            if (pendingNavigateBack) {
+                onBackClick()
+                viewModel.resetState()
+                pendingNavigateBack = false
+            }
         }
     }
 

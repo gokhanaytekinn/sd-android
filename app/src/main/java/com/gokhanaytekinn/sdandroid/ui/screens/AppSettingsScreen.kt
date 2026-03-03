@@ -59,6 +59,9 @@ fun AppSettingsScreen(
     // Language state - read from saved preferences (not system locale)
     val currentLanguage by languagePreferences.selectedLanguage.collectAsState(initial = "tr")
     
+    val premiumPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.PremiumPreferences(context) }
+    val isPremium by premiumPreferences.isPremium.collectAsState(initial = false)
+    
     // Currency state - load from preferences
     val selectedCurrency by currencyPreferences.selectedCurrency.collectAsState(initial = "TRY")
     
@@ -226,15 +229,15 @@ fun AppSettingsScreen(
                             Box(
                                 modifier = Modifier
                                     .background(
-                                        color = PrimaryBlue.copy(alpha = 0.1f),
+                                        color = if (isPremium) PrimaryBlue.copy(alpha = 0.1f) else Color.Gray.copy(alpha = 0.1f),
                                         shape = RoundedCornerShape(50)
                                     )
                             ) {
                                 Text(
-                                    text = if (authState.tier == "PREMIUM") stringResource(R.string.premium_plan) else stringResource(R.string.free_plan),
+                                    text = if (isPremium) stringResource(R.string.premium_plan) else stringResource(R.string.free_plan),
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    color = PrimaryBlue,
+                                    color = if (isPremium) PrimaryBlue else Color.Gray,
                                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                                 )
                             }
@@ -353,6 +356,20 @@ fun AppSettingsScreen(
                             icon = Icons.Filled.Policy,
                             title = stringResource(R.string.privacy_policy),
                             onClick = onPrivacyClick
+                        )
+                        
+                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
+
+                        // Test Premium Toggle
+                        SettingsToggleItem(
+                            icon = Icons.Filled.Star,
+                            title = "Developer: Toggle Premium",
+                            checked = isPremium,
+                            onCheckedChange = { 
+                                scope.launch {
+                                    premiumPreferences.setPremiumStatus(it)
+                                }
+                            }
                         )
                     }
                 }

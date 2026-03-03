@@ -40,6 +40,9 @@ class MainActivity : AppCompatActivity() {
         }
         val appLocale = LocaleListCompat.forLanguageTags(savedLanguage)
         AppCompatDelegate.setApplicationLocales(appLocale)
+        
+        // AdMob SDK Başlatma
+        com.google.android.gms.ads.MobileAds.initialize(this)
 
         super.onCreate(savedInstanceState)
         

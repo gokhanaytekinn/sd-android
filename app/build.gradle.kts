@@ -24,9 +24,17 @@ android {
     buildTypes {
         debug {
             buildConfigField("String", "BASE_URL", "\"http://192.168.1.117:8080/\"")
+            // Test AdMob IDs (Burası test reklamları içindir, değiştirmeyin)
+            manifestPlaceholders["admobAppId"] = "ca-app-pub-3940256099942544~3347511713"
+            buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-3940256099942544/6300978111\"")
+            buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"ca-app-pub-3940256099942544/1033173712\"")
         }
         release {
             buildConfigField("String", "BASE_URL", "\"http://187.124.16.135/\"")
+            // Gerçek AdMob IDs (Buraya kendi gerçek AdMob kimliklerinizi girmelisiniz)
+            manifestPlaceholders["admobAppId"] = "ca-app-pub-9378769298209012~7994164067"
+            buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9378769298209012/4825075246\"")
+            buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"ca-app-pub-9378769298209012/5204853779\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -114,4 +122,7 @@ dependencies {
     // Jetpack Glance for Widgets
     implementation("androidx.glance:glance-appwidget:1.0.0")
     implementation("androidx.glance:glance-material3:1.0.0")
+
+    // AdMob
+    implementation("com.google.android.gms:play-services-ads:23.0.0")
 }
