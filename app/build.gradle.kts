@@ -35,7 +35,8 @@ android {
             manifestPlaceholders["admobAppId"] = "ca-app-pub-9378769298209012~7994164067"
             buildConfigField("String", "ADMOB_BANNER_ID", "\"ca-app-pub-9378769298209012/4825075246\"")
             buildConfigField("String", "ADMOB_INTERSTITIAL_ID", "\"ca-app-pub-9378769298209012/5204853779\"")
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

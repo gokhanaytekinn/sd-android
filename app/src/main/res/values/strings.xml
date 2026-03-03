@@ -255,6 +255,16 @@
     <string name="category_software">Software</string>
     <string name="category_shopping">Shopping</string>
     <string name="category_other">Other</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_music">Music</string>
+    <string name="category_sports">Sports &amp; Health</string>
+    <string name="category_education">Education</string>
+    <string name="category_cloud">Cloud &amp; Productivity</string>
+    <string name="category_ecommerce">E-commerce</string>
+    <string name="category_news">News &amp; Publishing</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_finance">Finance</string>
+    <string name="category_technology">Technology</string>
     
     <string name="quick_amount">Quick Amount</string>
     <string name="quick_date">Quick Date</string>
