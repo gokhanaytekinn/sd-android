@@ -368,7 +368,7 @@ fun AppSettingsScreen(
                             checked = isPremium,
                             onCheckedChange = { 
                                 scope.launch {
-                                    premiumPreferences.setPremiumStatus(it)
+                                    premiumPreferences.setPremium(it)
                                 }
                             }
                         )

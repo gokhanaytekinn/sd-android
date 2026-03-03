@@ -57,7 +57,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                         language = user?.language ?: "tr",
                         tier = user?.tier ?: 1
                     )
-                    premiumPreferences.setPremiumStatus(user?.tier == 2)
+                    premiumPreferences.setPremium(user?.tier == 2)
                     // Sync local language to backend if they differ
                     syncLanguageIfNeeded()
                 } else {
@@ -219,7 +219,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                     language = user?.language ?: "tr",
                     tier = user?.tier ?: 1
                 )
-                premiumPreferences.setPremiumStatus(user?.tier == 2)
+                premiumPreferences.setPremium(user?.tier == 2)
                 syncLanguageIfNeeded()
                 onSuccess()
             } else {
@@ -304,7 +304,7 @@ class AuthViewModel(context: Context) : ViewModel() {
     fun logout() {
         viewModelScope.launch {
             repository.logout()
-            premiumPreferences.setPremiumStatus(false)
+            premiumPreferences.setPremium(false)
             _authState.value = AuthState()
         }
     }
@@ -314,7 +314,7 @@ class AuthViewModel(context: Context) : ViewModel() {
             _authState.value = _authState.value.copy(isLoading = true, error = null)
             val result = repository.deleteAccount()
             if (result.isSuccess) {
-                premiumPreferences.setPremiumStatus(false)
+                premiumPreferences.setPremium(false)
                 _authState.value = AuthState()
             } else {
                 _authState.value = _authState.value.copy(

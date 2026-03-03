@@ -164,14 +164,6 @@ fun DashboardScreen(
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onBackground
                         )
-                        
-                        Text(
-                            text = stringResource(R.string.view_all),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = PrimaryBlue,
-                            modifier = Modifier.clickable { onNavigateToUpcoming() }
-                        )
                     }
                 }
                 

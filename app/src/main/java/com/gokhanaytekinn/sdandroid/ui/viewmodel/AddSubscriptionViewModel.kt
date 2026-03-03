@@ -202,6 +202,20 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
             _error.value = null
             
             try {
+                // Check Premium Limit
+                val isPremiumValue = premiumPreferences.isPremium.first()
+                if (!isPremiumValue && !_isEditMode.value) {
+                    val currentSubsResult = repository.getSubscriptions()
+                    if (currentSubsResult.isSuccess) {
+                        val activeCount = currentSubsResult.getOrNull()?.filter { it.isActive }?.size ?: 0
+                        if (activeCount >= 4) {
+                            _error.value = "Ücretsiz planda en fazla 4 aktif abonelik ekleyebilirsiniz. Lütfen Premium'a geçin."
+                            _isLoading.value = false
+                            return@launch
+                        }
+                    }
+                }
+
                 val apiDate = formatDateForApi(_nextBillingDate.value)
                 val subscription = Subscription(
                     id = _subscriptionId ?: UUID.randomUUID().toString(),

@@ -137,6 +137,10 @@ interface ApiService {
     @POST("api/conversions/downgrade")
     suspend fun downgradeToFree(): Response<Unit>
 
+    // ============ IN-APP PURCHASES ============
+    @POST("api/purchases/verify")
+    suspend fun verifyPurchase(@Body request: PurchaseRequest): Response<UserResponse>
+
     // ============ INVITATIONS ============
 
     @GET("api/invitations/pending")

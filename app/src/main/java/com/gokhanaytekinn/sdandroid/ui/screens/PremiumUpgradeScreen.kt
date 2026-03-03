@@ -1,5 +1,6 @@
 package com.gokhanaytekinn.sdandroid.ui.screens
 
+import android.app.Activity
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -37,6 +38,10 @@ fun PremiumUpgradeScreen(
     onCloseClick: () -> Unit = {},
     onUpgradeClick: (SubscriptionPlanType) -> Unit = {}
 ) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val premiumPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.PremiumPreferences(context) }
+    val billingManager = remember { com.gokhanaytekinn.sdandroid.util.BillingManager(context, premiumPreferences) }
+    
     var selectedPlan by remember { mutableStateOf(initialPlan) }
     var showTermsDialog by remember { mutableStateOf(false) }
     var showPrivacyDialog by remember { mutableStateOf(false) }
@@ -213,7 +218,13 @@ fun PremiumUpgradeScreen(
                 modifier = Modifier.padding(20.dp)
             ) {
                 Button(
-                    onClick = { onUpgradeClick(selectedPlan) },
+                    onClick = { 
+                        val activity = context as? Activity
+                        if (activity != null) {
+                            val productId = if (selectedPlan == SubscriptionPlanType.MONTHLY) "premium_monthly" else "premium_yearly"
+                            billingManager.launchBillingFlow(activity, productId)
+                        }
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(56.dp),

@@ -23,7 +23,7 @@ class PremiumPreferences(private val context: Context) {
         preferences[IS_PREMIUM_KEY] ?: false
     }
 
-    suspend fun setPremiumStatus(isPremium: Boolean) {
+    suspend fun setPremium(isPremium: Boolean) {
         context.premiumDataStore.edit { preferences ->
             preferences[IS_PREMIUM_KEY] = isPremium
         }

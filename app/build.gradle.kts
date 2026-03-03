@@ -12,7 +12,7 @@ android {
         applicationId = "com.gokhanaytekinn.sdandroid"
         minSdk = 26
         targetSdk = 35
-        versionCode = 10
+        versionCode = 11
         versionName = "1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -126,4 +126,7 @@ dependencies {
 
     // AdMob
     implementation("com.google.android.gms:play-services-ads:23.0.0")
+
+    // Google Play Billing
+    implementation("com.android.billingclient:billing-ktx:6.1.0")
 }

@@ -42,6 +42,8 @@ fun SubscriptionsListScreen(
     val application = context.applicationContext as android.app.Application
     val viewModel: DashboardViewModel = remember { DashboardViewModel(application) }
     val currencyPreferences = remember { CurrencyPreferences(context) }
+    val premiumPreferences = remember { com.gokhanaytekinn.sdandroid.data.preferences.PremiumPreferences(context) }
+    val isPremium by premiumPreferences.isPremium.collectAsState(initial = false)
     
     val subscriptions by viewModel.subscriptions.collectAsState()
     val stats by viewModel.stats.collectAsState()
@@ -105,8 +107,47 @@ fun SubscriptionsListScreen(
                             }
                         }
                     }
-            // Empty replacement because we removed the Scan button partially above and the rest of Add button here
-                    
+            // Subscription limit UI
+                    if (!isPremium && selectedTab == 0) {
+                        val activeSubCount = subscriptions.filter { it.isActive }.size
+                        val limit = 4
+                        val progress = (activeSubCount.toFloat() / limit).coerceIn(0f, 1f)
+                        
+                        Column(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 20.dp)
+                                .padding(bottom = 16.dp)
+                        ) {
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    text = if (activeSubCount >= limit) "Limit Doldu" else "Ücretsiz Plan Kullanımı",
+                                    fontSize = 12.sp,
+                                    color = if (activeSubCount >= limit) MaterialTheme.colorScheme.error else MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                Text(
+                                    text = "$activeSubCount / $limit",
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = if (activeSubCount >= limit) MaterialTheme.colorScheme.error else PrimaryBlue
+                                )
+                            }
+                            Spacer(modifier = Modifier.height(6.dp))
+                            LinearProgressIndicator(
+                                progress = progress,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(8.dp)
+                                    .clip(RoundedCornerShape(4.dp)),
+                                color = if (activeSubCount >= limit) MaterialTheme.colorScheme.error else PrimaryBlue,
+                                trackColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f)
+                            )
+                        }
+                    }
                     // Tabs
                     Row(
                         modifier = Modifier
