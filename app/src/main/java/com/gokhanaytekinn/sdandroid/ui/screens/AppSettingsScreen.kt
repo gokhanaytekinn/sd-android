@@ -359,19 +359,7 @@ fun AppSettingsScreen(
                             onClick = onPrivacyClick
                         )
                         
-                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
 
-                        // Test Premium Toggle
-                        SettingsToggleItem(
-                            icon = Icons.Filled.Star,
-                            title = "Developer: Toggle Premium",
-                            checked = isPremium,
-                            onCheckedChange = { 
-                                scope.launch {
-                                    premiumPreferences.setPremium(it)
-                                }
-                            }
-                        )
                     }
                 }
             }

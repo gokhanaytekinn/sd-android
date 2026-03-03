@@ -3,8 +3,11 @@
 Uygulamamıza eklenen yeni özellikler, geliştirmeler ve hata düzeltmeleri aşağıda özetlenmiştir.
 
 ## [03.03.2026]
-- **Yenilik:** Abonelik eklerken veya düzenlerken artık gereksiz yere tam tarih seçmek zorunda değilsiniz. Sadece gün ve seçtiğiniz döngüye göre ay seçimi yapabileceğiniz daha kolay bir yapıya geçtik.
-- **Geliştirme:** Abonelik detay ekranını sadeleştirmek adına kullanılmayan "Ödeme Geçmişi" bölümü tamamen kaldırıldı.
+- **Yenilik:** Abonelik detay ekranına abonelik yenilemesine kaç gün kaldığını gösteren geri sayım sayacı eklendi.
+- **Geliştirme:** Abonelik eklerken veya düzenlerken tam tarih seçmek yerine, sadece "ödeme döngüsü günü ve ayı" seçilebilecek daha kolay bir tasarıma geçildi.
+- **Geliştirme:** Abonelik detay ekranındaki "Toplam Harcama" ve "Başlangıç" etiketleri, "Abonelik Fiyatı" ve "Yenilenme Döngüsü" olarak daha anlaşılır hale getirildi. Tarih alanlarından yıl bilgisi gibi gereksiz detaylar kaldırıldı.
+- **Geliştirme:** Uygulamanın desteklediği 13 farklı dil, eklenen bu yeni metinler ve özellikler için eksiksiz olarak güncellendi.
+- **Geliştirme:** Abonelik detay ekranını sadeleştirmek adına kullanılmayan "Ödeme Geçmişi" bölümü ile sağ üstteki eski "Her ayın 1'i" yazısı tamamen kaldırıldı. Ayarlar menüsündeki geliştirici seçenekleri gizlendi.
 - **Hata Düzeltme:** Premium paket satın alma işlemi sırasında çıkan ödeme ekranının bazen yanlışlıkla ayarlar menüsüne yönlendirmesi sorunu giderildi.
 - **Hata Düzeltme:** Uygulama performansını etkileyen ve çökmeye sebep olabilen bazı altyapı hataları onarıldı.
 

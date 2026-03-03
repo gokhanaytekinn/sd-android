@@ -106,8 +106,11 @@
     <!-- New keys for localization audit fixes -->
     <string name="edit_subscription">Abonnement bearbeiten</string>
     <string name="days_remaining">Noch %d Tage</string>
-    <string name="total_spent">Gesamtausgaben</string>
-    <string name="start_date_label">Startdatum</string>
+    <string name="total_spent">Abonnementpreis</string>
+    <string name="start_date_label">Verlängerungszyklus</string>
+    <string name="days_left_for_renewal">Noch %d Tage bis zur nächsten Verlängerung</string>
+    <string name="payment_recurrence_day">Zahlungszyklustag</string>
+    <string name="payment_recurrence_day_month">Zahlungszyklustag und Monat</string>
     <string name="turn_off_reminder">Benachrichtigung ausschalten</string>
     <string name="set_reminder">Erinnerung einstellen</string>
     <string name="edit_plan">Plan bearbeiten</string>

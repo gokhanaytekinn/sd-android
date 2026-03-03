@@ -292,8 +292,11 @@
     <string name="period_yearly">tahun</string>
     <string name="period_weekly">minggu</string>
     <string name="days_remaining">%d hari tersisa</string>
-    <string name="total_spent">Total Pengeluaran</string>
-    <string name="start_date_label">Tanggal Mulai</string>
+    <string name="total_spent">Harga Langganan</string>
+    <string name="start_date_label">Siklus Pembaruan</string>
+    <string name="days_left_for_renewal">%d hari tersisa untuk pembaruan berikutnya</string>
+    <string name="payment_recurrence_day">Hari Pengulangan Pembayaran</string>
+    <string name="payment_recurrence_day_month">Hari dan Bulan Pengulangan Pembayaran</string>
     <string name="turn_off_reminder">Matikan Pengingat</string>
     <string name="set_reminder">Atur Pengingat</string>
     <string name="edit_plan">Ubah Paket</string>

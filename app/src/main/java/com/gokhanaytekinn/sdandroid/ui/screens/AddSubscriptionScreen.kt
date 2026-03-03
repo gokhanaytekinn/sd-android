@@ -483,8 +483,13 @@ fun AddSubscriptionScreen(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
+                    val nextPaymentLabel = if (billingCycle == BillingCycle.YEARLY) {
+                        stringResource(R.string.payment_recurrence_day_month)
+                    } else {
+                        stringResource(R.string.payment_recurrence_day)
+                    }
                     Text(
-                        text = stringResource(R.string.next_payment),
+                        text = nextPaymentLabel,
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium,
                         color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)
@@ -498,18 +503,8 @@ fun AddSubscriptionScreen(
                             color = PrimaryBlue
                         )
                     } else {
-                        val dayLabel = when (billingDay) {
-                            1 -> "1'i"
-                            2 -> "2'si"
-                            3, 4, 5 -> "${billingDay}'i"
-                            6 -> "6'sı"
-                            7, 8 -> "${billingDay}'i"
-                            9 -> "9'u"
-                            10 -> "10'u"
-                            else -> "${billingDay}"
-                        }
                         Text(
-                            text = if (billingDay > 0) "Her ayın $dayLabel" else stringResource(R.string.select_day),
+                            text = if (billingDay > 0) billingDay.toString() else stringResource(R.string.select_day),
                             fontSize = 14.sp,
                             fontWeight = FontWeight.Bold,
                             color = PrimaryBlue

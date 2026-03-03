@@ -254,8 +254,16 @@ fun SubscriptionDetailsScreen(
                             showDate = true,
                             isJoint = !sub.participants.isNullOrEmpty(),
                             bottomContent = {
+                                val daysLeftText = if (daysRemaining > 0) {
+                                    stringResource(R.string.days_left_for_renewal, daysRemaining)
+                                } else if (daysRemaining == 0) {
+                                    stringResource(R.string.today)
+                                } else {
+                                    stringResource(R.string.next_payment)
+                                }
+
                                 Text(
-                                    text = stringResource(R.string.next_payment),
+                                    text = daysLeftText,
                                     fontSize = 14.sp,
                                     fontWeight = FontWeight.Medium,
                                     color = colorScheme.onSurfaceVariant
@@ -681,7 +689,7 @@ private fun formatDateLocalized(context: android.content.Context, dateStr: Strin
     return try {
         val date = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE)
         val locale = context.resources.configuration.locales[0]
-        val formatter = DateTimeFormatter.ofPattern("d MMMM yyyy", locale)
+        val formatter = DateTimeFormatter.ofPattern("d MMMM", locale)
         date.format(formatter)
     } catch (e: Exception) {
         dateStr

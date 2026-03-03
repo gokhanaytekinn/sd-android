@@ -304,8 +304,11 @@
     <string name="period_yearly">yıl</string>
     <string name="period_weekly">hafta</string>
     <string name="days_remaining">%d gün kaldı</string>
-    <string name="total_spent">Toplam Harcama</string>
-    <string name="start_date_label">Başlangıç</string>
+    <string name="total_spent">Abonelik Fiyatı</string>
+    <string name="start_date_label">Yenilenme Döngüsü</string>
+    <string name="days_left_for_renewal">Bir sonraki yenilemeye %d gün kaldı</string>
+    <string name="payment_recurrence_day">Ödeme Tekrar Günü</string>
+    <string name="payment_recurrence_day_month">Ödeme Tekrar Günü ve Ayı</string>
     <string name="turn_off_reminder">Hatırlatıcıyı Kapat</string>
     <string name="set_reminder">Hatırlatıcı Kur</string>
     <string name="edit_plan">Planı Düzenle</string>

@@ -326,8 +326,11 @@
     <string name="period_yearly">year</string>
     <string name="period_weekly">week</string>
     <string name="days_remaining">%d days left</string>
-    <string name="total_spent">Total Spent</string>
-    <string name="start_date_label">Start Date</string>
+    <string name="total_spent">Subscription Price</string>
+    <string name="start_date_label">Renewal Cycle</string>
+    <string name="days_left_for_renewal">%d days left until next renewal</string>
+    <string name="payment_recurrence_day">Payment Recurrence Day</string>
+    <string name="payment_recurrence_day_month">Payment Recurrence Day and Month</string>
     <string name="turn_off_reminder">Turn Off Reminder</string>
     <string name="set_reminder">Set Reminder</string>
     <string name="edit_plan">Edit Plan</string>
