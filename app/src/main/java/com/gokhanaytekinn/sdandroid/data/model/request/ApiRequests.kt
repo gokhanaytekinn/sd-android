@@ -19,7 +19,8 @@ data class SubscriptionRequest(
     val amount: Double,
     val currency: Int,
     val billingCycle: Int,
-    val startDate: String,
+    val billingDay: Int,
+    val billingMonth: Int? = null,
     val reminderEnabled: Boolean = false,
     val jointEmails: List<String>? = null
 )
@@ -31,7 +32,8 @@ data class SubscriptionUpdateRequest(
     val amount: Double? = null,
     val currency: Int? = null,
     val billingCycle: Int? = null,
-    val startDate: String? = null,
+    val billingDay: Int? = null,
+    val billingMonth: Int? = null,
     val reminderEnabled: Boolean? = null,
     val jointEmails: List<String>? = null
 )

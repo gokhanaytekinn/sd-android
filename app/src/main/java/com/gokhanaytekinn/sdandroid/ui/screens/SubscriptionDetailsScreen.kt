@@ -32,12 +32,6 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
-data class PaymentHistoryItem(
-    val date: String,
-    val amount: String,
-    val isLatest: Boolean = false
-)
-
 @Composable
 fun SubscriptionDetailsScreen(
     subscriptionId: String = "",
@@ -105,7 +99,6 @@ fun SubscriptionDetailsScreen(
             val daysRemaining = calculateDaysRemaining(sub.nextBillingDate)
             val progressValue = calculateProgress(sub.billingCycle.name, daysRemaining)
             val formattedStartDate = formatDateLocalized(context, sub.startDate)
-            val formattedRenewalDate = formatDateLocalized(context, sub.nextBillingDate)
 
 
             // Period text
@@ -619,49 +612,9 @@ fun SubscriptionDetailsScreen(
                     }
                 }
 
-                // Payment History Header
-                item {
-                    Spacer(modifier = Modifier.height(32.dp))
-                    Row(
-                        modifier = Modifier.padding(horizontal = 16.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.History,
-                            contentDescription = null,
-                            tint = colorScheme.onSurfaceVariant,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Text(
-                            text = stringResource(R.string.payment_history),
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = colorScheme.onBackground
-                        )
-
-                    }
-                    Spacer(modifier = Modifier.height(16.dp))
-                }
-
-                // TODO: Replace with real transaction data from API
-                // For now show a placeholder based on subscription data
-                item {
-                    if (sub.nextBillingDate != null) {
-                        PaymentHistoryRow(
-                            PaymentHistoryItem(
-                                date = formattedRenewalDate,
-                                amount = priceText,
-                                isLatest = true
-                            ),
-                            colorScheme
-                        )
-                    }
-                }
             }
         }
     }
-    
     if (showDeleteDialog) {
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },
@@ -692,48 +645,6 @@ fun SubscriptionDetailsScreen(
                     Text(stringResource(R.string.cancel))
                 }
             }
-        )
-    }
-}
-
-@Composable
-fun PaymentHistoryRow(item: PaymentHistoryItem, colorScheme: ColorScheme) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Row(
-            horizontalArrangement = Arrangement.spacedBy(16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Timeline dot
-            Box(
-                modifier = Modifier
-                    .size(if (item.isLatest) 20.dp else 14.dp)
-                    .background(
-                        if (item.isLatest) colorScheme.primary else colorScheme.onSurfaceVariant,
-                        CircleShape
-                    )
-            )
-
-            Column {
-                Text(
-                    text = item.date,
-                    fontSize = 14.sp,
-                    fontWeight = if (item.isLatest) FontWeight.SemiBold else FontWeight.Medium,
-                    color = colorScheme.onBackground
-                )
-            }
-        }
-
-        Text(
-            text = item.amount,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.Medium,
-            color = if (item.isLatest) colorScheme.onBackground else colorScheme.onSurfaceVariant
         )
     }
 }

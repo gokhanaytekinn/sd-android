@@ -97,7 +97,8 @@ class SubscriptionRepository(context: Context? = null) {
                 amount = subscription.cost,
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.value,
-                startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
+                billingDay = subscription.billingDay ?: 1,
+                billingMonth = subscription.billingMonth,
                 reminderEnabled = subscription.reminderEnabled,
                 jointEmails = subscription.jointEmails
             )
@@ -124,7 +125,8 @@ class SubscriptionRepository(context: Context? = null) {
                 amount = subscription.cost,
                 currency = subscription.currency,
                 billingCycle = subscription.billingCycle.value,
-                startDate = subscription.startDate ?: subscription.nextBillingDate ?: "",
+                billingDay = subscription.billingDay,
+                billingMonth = subscription.billingMonth,
                 reminderEnabled = subscription.reminderEnabled,
                 jointEmails = subscription.jointEmails
             )

@@ -34,6 +34,8 @@ data class SubscriptionResponse(
     val startDate: String?,
     val endDate: String?,
     val renewalDate: String?,
+    val billingDay: Int?,
+    val billingMonth: Int?,
     val status: Int, // ACTIVE = 1, SUSPENDED = 2, CANCELLED = 3, PENDING_APPROVAL = 4
     val isSuspicious: Boolean = false,
     val suspiciousReason: String?,

@@ -27,6 +27,8 @@ data class Subscription(
     val currency: Int,
     val billingCycle: BillingCycle,
     val nextBillingDate: String? = null,
+    val billingDay: Int? = null,
+    val billingMonth: Int? = null,
     val startDate: String? = null,
     val endDate: String? = null,
     val category: String? = null,

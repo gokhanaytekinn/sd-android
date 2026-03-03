@@ -53,9 +53,11 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _billingCycle = MutableStateFlow(BillingCycle.MONTHLY)
     val billingCycle: StateFlow<BillingCycle> = _billingCycle.asStateFlow()
     
-    // YYYY-MM-DD
-    private val _nextBillingDate = MutableStateFlow("")
-    val nextBillingDate: StateFlow<String> = _nextBillingDate.asStateFlow()
+    private val _billingDay = MutableStateFlow(1)
+    val billingDay: StateFlow<Int> = _billingDay.asStateFlow()
+
+    private val _billingMonth = MutableStateFlow<Int?>(null)
+    val billingMonth: StateFlow<Int?> = _billingMonth.asStateFlow()
     
     private val _isReminderEnabled = MutableStateFlow(false)
     val isReminderEnabled: StateFlow<Boolean> = _isReminderEnabled.asStateFlow()
@@ -102,20 +104,25 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         if (finalValue.isNotBlank()) _amountError.value = null
     }
     
+    fun updateBillingCycle(value: BillingCycle) {
+        _billingCycle.value = value
+    }
+
     fun updateCurrency(value: Int) {
         _currency.value = value
         _currencyError.value = null
     }
     
-    fun updateBillingCycle(value: BillingCycle) {
-        _billingCycle.value = value
+    fun updateBillingDay(value: Int) {
+        _billingDay.value = value
+        _dateError.value = null
     }
     
-    fun updateNextBillingDate(value: String) {
-        _nextBillingDate.value = value
-        if (value.isNotBlank()) _dateError.value = null
+    fun updateBillingMonth(value: Int?) {
+        _billingMonth.value = value
+        _dateError.value = null
     }
-    
+
     fun updateIsReminderEnabled(value: Boolean) {
         _isReminderEnabled.value = value
     }
@@ -155,7 +162,12 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         
         // Removed currency string empty check because it is an Int now.
         
-        if (_nextBillingDate.value.isBlank()) {
+        if (_billingDay.value == 0) {
+            _dateError.value = com.gokhanaytekinn.sdandroid.R.string.error_date_required
+            isValid = false
+        }
+        
+        if (_billingCycle.value == BillingCycle.YEARLY && _billingMonth.value == null) {
             _dateError.value = com.gokhanaytekinn.sdandroid.R.string.error_date_required
             isValid = false
         }
@@ -180,8 +192,8 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     _amount.value = amountStr
                     _currency.value = it.currency
                     _billingCycle.value = it.billingCycle
-                    val rawDate = it.nextBillingDate ?: it.startDate ?: ""
-                    _nextBillingDate.value = formatDateForUi(rawDate)
+                    _billingDay.value = it.billingDay ?: 1
+                    _billingMonth.value = it.billingMonth
                     _isReminderEnabled.value = it.reminderEnabled
                     _category.value = it.category ?: "category_other"
                     _jointEmails.value = it.jointEmails ?: emptyList()
@@ -216,16 +228,15 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     }
                 }
 
-                val apiDate = formatDateForApi(_nextBillingDate.value)
                 val subscription = Subscription(
                     id = _subscriptionId ?: UUID.randomUUID().toString(),
                     name = _name.value,
                     cost = _amount.value.replace(',', '.').toDoubleOrNull() ?: 0.0,
                     currency = _currency.value,
                     billingCycle = _billingCycle.value,
-                    nextBillingDate = apiDate,
+                    billingDay = _billingDay.value,
+                    billingMonth = _billingMonth.value,
                     isActive = true,
-                    startDate = if (_isEditMode.value) null else apiDate,
                     category = _category.value,
                     reminderEnabled = _isReminderEnabled.value,
                     jointEmails = _jointEmails.value.ifEmpty { null }
@@ -271,7 +282,8 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         _dateError.value = null
         _name.value = ""
         _amount.value = ""
-        _nextBillingDate.value = ""
+        _billingDay.value = java.util.Calendar.getInstance().get(java.util.Calendar.DAY_OF_MONTH)
+        _billingMonth.value = null
         _subscriptionId = null
         _isEditMode.value = false
         _currency.value = 1

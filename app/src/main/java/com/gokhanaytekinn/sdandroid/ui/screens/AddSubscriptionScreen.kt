@@ -53,7 +53,6 @@ fun AddSubscriptionScreen(
     val amount by viewModel.amount.collectAsState()
     val currency by viewModel.currency.collectAsState()
     val billingCycle by viewModel.billingCycle.collectAsState()
-    val nextBillingDate by viewModel.nextBillingDate.collectAsState()
     val isReminderEnabled by viewModel.isReminderEnabled.collectAsState()
     val jointEmails by viewModel.jointEmails.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
@@ -66,7 +65,6 @@ fun AddSubscriptionScreen(
     val nameError by viewModel.nameError.collectAsState()
     val amountError by viewModel.amountError.collectAsState()
     val currencyError by viewModel.currencyError.collectAsState()
-    val dateError by viewModel.dateError.collectAsState()
     
     val adManager = remember { InterstitialAdManager(context) }
     
@@ -79,44 +77,21 @@ fun AddSubscriptionScreen(
             viewModel.loadSubscription(subscriptionId)
         } else {
             viewModel.resetState()
-            val calendar = Calendar.getInstance()
-            val defaultDate = "${calendar.get(Calendar.DAY_OF_MONTH).toString().padStart(2, '0')}.${(calendar.get(Calendar.MONTH) + 1).toString().padStart(2, '0')}.${calendar.get(Calendar.YEAR)}"
-            viewModel.updateNextBillingDate(defaultDate)
+            val calendar = java.util.Calendar.getInstance()
+            viewModel.updateBillingDay(calendar.get(java.util.Calendar.DAY_OF_MONTH))
+            viewModel.updateBillingMonth(calendar.get(java.util.Calendar.MONTH) + 1)
         }
     }
     
-    // Date Picker Context
-    val calendar = Calendar.getInstance()
-    var pickerYear = calendar.get(Calendar.YEAR)
-    var pickerMonth = calendar.get(Calendar.MONTH)
-    var pickerDay = calendar.get(Calendar.DAY_OF_MONTH)
+    // Day and Month Selection State
+    val days = (1..31).toList()
+    val months = listOf(
+        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
+        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+    )
     
-    // Parse current date if exists
-    if (nextBillingDate.isNotBlank()) {
-        try {
-            val parts = nextBillingDate.split(".")
-            if (parts.size == 3) {
-                pickerDay = parts[0].toInt()
-                pickerMonth = parts[1].toInt() - 1
-                pickerYear = parts[2].toInt()
-            }
-        } catch (e: Exception) {}
-    }
-
-    val datePickerDialog = remember {
-        DatePickerDialog(
-            context,
-            { _: DatePicker, selectedYear: Int, selectedMonth: Int, selectedDay: Int ->
-                val formattedDate = "${selectedDay.toString().padStart(2, '0')}.${(selectedMonth + 1).toString().padStart(2, '0')}.$selectedYear"
-                viewModel.updateNextBillingDate(formattedDate)
-            }, pickerYear, pickerMonth, pickerDay
-        )
-    }
-
-    // Update dialog when picker values change (to ensure it opens with selected date)
-    LaunchedEffect(pickerYear, pickerMonth, pickerDay) {
-        datePickerDialog.updateDate(pickerYear, pickerMonth, pickerDay)
-    }
+    val billingDay by viewModel.billingDay.collectAsState()
+    val billingMonth by viewModel.billingMonth.collectAsState()
 
     var pendingNavigateBack by remember { mutableStateOf(false) }
 
@@ -502,58 +477,101 @@ fun AddSubscriptionScreen(
                 
                 Spacer(modifier = Modifier.height(24.dp))
                 
-                // Next Payment Date
-                Text(
-                    text = stringResource(R.string.next_payment),
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
-                
-                Box {
-                    OutlinedTextField(
-                        value = nextBillingDate.ifEmpty { stringResource(R.string.date_placeholder) }, // Or "YYYY-MM-DD"
-                        onValueChange = {},
-                        modifier = Modifier.fillMaxWidth().clickable { 
-                            if (nextBillingDate.isNotEmpty()) {
-                                try {
-                                    val parts = nextBillingDate.split(".")
-                                    if (parts.size == 3) {
-                                        datePickerDialog.updateDate(parts[2].toInt(), parts[1].toInt() - 1, parts[0].toInt())
-                                    }
-                                } catch (e: Exception) { }
-                            }
-                            datePickerDialog.show() 
-                        },
-                        shape = RoundedCornerShape(12.dp),
-                        readOnly = true,
-                        enabled = false, // To prevent keyboard but allow click
-                        isError = dateError != null,
-                        supportingText = if (dateError != null) {
-                            { Text(stringResource(dateError!!)) }
-                        } else null,
-                        colors = OutlinedTextFieldDefaults.colors(
-                            disabledTextColor = MaterialTheme.colorScheme.onBackground,
-                            disabledBorderColor = if (dateError != null) MaterialTheme.colorScheme.error else Color.White.copy(alpha = 0.1f),
-                            disabledContainerColor = Color.White.copy(alpha = 0.05f),
-                            disabledTrailingIconColor = Color.Gray
-                        ),
-                        trailingIcon = { Icon(Icons.Default.CalendarToday, contentDescription = null) },
-                        singleLine = true
+                // Next Payment Date (Simplified to Day/Month Selection)
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = stringResource(R.string.next_payment),
+                        fontSize = 16.sp,
+                        fontWeight = FontWeight.Medium,
+                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)
                     )
-                    // Overlay clickable for datepicker needed because enabled=false blocks click on TF
-                    Box(modifier = Modifier.matchParentSize().clickable { 
-                        if (nextBillingDate.isNotEmpty()) {
-                            try {
-                                val parts = nextBillingDate.split(".")
-                                if (parts.size == 3) {
-                                    datePickerDialog.updateDate(parts[2].toInt(), parts[1].toInt() - 1, parts[0].toInt())
-                                }
-                            } catch (e: Exception) { }
+                    
+                    if (billingCycle == BillingCycle.YEARLY) {
+                        Text(
+                            text = if (billingMonth != null) "${billingDay} ${months[billingMonth!! - 1]}" else stringResource(R.string.select_date),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = PrimaryBlue
+                        )
+                    } else {
+                        val dayLabel = when (billingDay) {
+                            1 -> "1'i"
+                            2 -> "2'si"
+                            3, 4, 5 -> "${billingDay}'i"
+                            6 -> "6'sı"
+                            7, 8 -> "${billingDay}'i"
+                            9 -> "9'u"
+                            10 -> "10'u"
+                            else -> "${billingDay}"
                         }
-                        datePickerDialog.show() 
-                    })
+                        Text(
+                            text = if (billingDay > 0) "Her ayın $dayLabel" else stringResource(R.string.select_day),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = PrimaryBlue
+                        )
+                    }
+                }
+                
+                Spacer(modifier = Modifier.height(12.dp))
+                
+                // Day Selector (1-31)
+                LazyRow(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    items(days) { day ->
+                        val isSelected = billingDay == day
+                        Box(
+                            modifier = Modifier
+                                .size(40.dp)
+                                .clip(CircleShape)
+                                .background(if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.05f))
+                                .border(1.dp, if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.1f), CircleShape)
+                                .clickable { viewModel.updateBillingDay(day) },
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Text(
+                                text = day.toString(),
+                                fontSize = 14.sp,
+                                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                                color = if (isSelected) Color.White else MaterialTheme.colorScheme.onBackground
+                            )
+                        }
+                    }
+                }
+                
+                if (billingCycle == BillingCycle.YEARLY) {
+                    Spacer(modifier = Modifier.height(16.dp))
+                    // Month Selector
+                    LazyRow(
+                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        items((1..12).toList()) { month ->
+                            val isSelected = billingMonth == month
+                            Box(
+                                modifier = Modifier
+                                    .clip(RoundedCornerShape(12.dp))
+                                    .background(if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.05f))
+                                    .border(1.dp, if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.1f), RoundedCornerShape(12.dp))
+                                    .clickable { viewModel.updateBillingMonth(month) }
+                                    .padding(horizontal = 16.dp, vertical = 8.dp),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                Text(
+                                    text = months[month - 1],
+                                    fontSize = 14.sp,
+                                    fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal,
+                                    color = if (isSelected) Color.White else MaterialTheme.colorScheme.onBackground
+                                )
+                            }
+                        }
+                    }
                 }
                 
                 Spacer(modifier = Modifier.height(24.dp))
