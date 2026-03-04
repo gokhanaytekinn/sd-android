@@ -55,7 +55,7 @@ class SuspiciousPaymentsViewModel(context: Context) : ViewModel() {
     private fun Subscription.toSuspiciousTransaction(): SuspiciousTransaction {
         return SuspiciousTransaction(
             name = name,
-            date = nextBillingDate ?: "",
+            date = this.getNextRenewalDate()?.toString() ?: "",
             category = category ?: "Eğlence",
             amount = cost,
             icon = icon ?: "N",

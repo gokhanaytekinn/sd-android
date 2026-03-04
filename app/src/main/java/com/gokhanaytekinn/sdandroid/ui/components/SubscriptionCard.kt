@@ -53,7 +53,7 @@ fun SubscriptionCard(
         currency = currency,
         billingCycle = subscription.billingCycle,
         icon = subscription.icon,
-        nextBillingDate = subscription.nextBillingDate,
+        nextBillingDate = subscription.getNextRenewalDate()?.toString(),
         isJoint = isJoint,
         showDate = showDate,
         showCountdown = showCountdown,

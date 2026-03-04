@@ -26,10 +26,8 @@ data class Subscription(
     val cost: Double,
     val currency: Int,
     val billingCycle: BillingCycle,
-    val nextBillingDate: String? = null,
     val billingDay: Int? = null,
     val billingMonth: Int? = null,
-    val startDate: String? = null,
     val endDate: String? = null,
     val category: String? = null,
     val icon: String? = null,
@@ -41,7 +39,26 @@ data class Subscription(
     val jointEmails: List<String>? = null,
     val isOwner: Boolean = true,
     val participants: List<InvitationParticipant>? = null
-)
+) {
+    fun getNextRenewalDate(): java.time.LocalDate? {
+        if (billingDay == null) return null
+        val now = java.time.LocalDate.now()
+        return if (billingCycle == BillingCycle.YEARLY && billingMonth != null) {
+            var target = java.time.LocalDate.of(now.year, billingMonth, minOf(billingDay, java.time.LocalDate.of(now.year, billingMonth, 1).lengthOfMonth()))
+            if (target.isBefore(now)) {
+                target = target.plusYears(1)
+            }
+            target
+        } else {
+            var target = now.withDayOfMonth(minOf(billingDay, now.lengthOfMonth()))
+            if (target.isBefore(now)) {
+                target = target.plusMonths(1)
+                target = target.withDayOfMonth(minOf(billingDay, target.lengthOfMonth()))
+            }
+            target
+        }
+    }
+}
 
 enum class BillingCycle(val value: Int) {
     MONTHLY(1),

@@ -52,7 +52,7 @@ class UpcomingPaymentsWidget : GlanceAppWidget() {
         val sevenDaysLater = today.plusDays(7)
 
         return subscriptions.filter { sub ->
-            sub.nextBillingDate?.let { dateStr ->
+            sub.getNextRenewalDate()?.toString()?.let { dateStr ->
                 try {
                     val renewalDate = LocalDate.parse(dateStr, DateTimeFormatter.ISO_LOCAL_DATE)
                     !renewalDate.isBefore(today) && !renewalDate.isAfter(sevenDaysLater)
@@ -60,7 +60,7 @@ class UpcomingPaymentsWidget : GlanceAppWidget() {
                     false
                 }
             } ?: false
-        }.sortedBy { it.nextBillingDate }
+        }.sortedBy { it.getNextRenewalDate() }
     }
 
     @Composable
@@ -124,8 +124,9 @@ class UpcomingPaymentsWidget : GlanceAppWidget() {
                         fontSize = 14.sp
                     )
                 )
+                val formattedDateStr = sub.getNextRenewalDate()?.toString()
                 Text(
-                    text = formatDateRelative(sub.nextBillingDate, context), 
+                    text = formatDateRelative(formattedDateStr, context), 
                     style = TextStyle(
                         fontSize = 12.sp,
                         color = ColorProvider(Color.White.copy(alpha = 0.7f))

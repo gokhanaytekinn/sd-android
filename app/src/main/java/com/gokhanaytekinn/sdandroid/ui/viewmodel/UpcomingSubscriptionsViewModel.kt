@@ -28,8 +28,8 @@ class UpcomingSubscriptionsViewModel(application: Application) : AndroidViewMode
             val result = repository.getUpcomingSubscriptions()
             if (result.isSuccess) {
                 val subscriptions = result.getOrDefault(emptyList()).filter {
-                    DateUtils.isWithinNextDays(it.nextBillingDate, 10)
-                }
+                    it.getNextRenewalDate() != null && DateUtils.isWithinNextDays(it.getNextRenewalDate()?.toString(), 10)
+                }.sortedBy { it.getNextRenewalDate() }
                 if (subscriptions.isEmpty()) {
                     _uiState.value = UpcomingUiState.Empty
                 } else {

@@ -115,10 +115,11 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
             val result = repository.getUpcomingSubscriptions()
             if (result.isSuccess) {
                 // Filter locally for safety (max 10 days) and take only first 3 for preview
-                val filtered = result.getOrNull()?.filter { 
-                    DateUtils.isWithinNextDays(it.nextBillingDate, 10)
-                } ?: emptyList()
-                _upcomingSubscriptions.value = filtered.take(3)
+                val allSubscriptions = result.getOrNull() ?: emptyList()
+                val upcomingSubs = allSubscriptions.filter { 
+                    it.getNextRenewalDate() != null && DateUtils.isWithinNextDays(it.getNextRenewalDate()?.toString(), 10)
+                }.sortedBy { it.getNextRenewalDate() }.take(3)
+                _upcomingSubscriptions.value = upcomingSubs
             }
         }
     }

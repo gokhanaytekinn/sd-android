@@ -96,9 +96,10 @@ fun SubscriptionDetailsScreen(
             val sub = subscription!!
 
             // Calculate remaining days
-            val daysRemaining = calculateDaysRemaining(sub.nextBillingDate)
+            val nextBillingDateStr = sub.getNextRenewalDate()?.toString()
+            val daysRemaining = calculateDaysRemaining(nextBillingDateStr)
             val progressValue = calculateProgress(sub.billingCycle.name, daysRemaining)
-            val formattedStartDate = formatDateLocalized(context, sub.startDate)
+            val formattedRenewalDate = formatDateLocalized(context, nextBillingDateStr)
 
 
             // Period text
@@ -342,7 +343,7 @@ fun SubscriptionDetailsScreen(
 
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
-                                        text = formattedStartDate,
+                                        text = formattedRenewalDate,
                                         fontSize = 18.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = colorScheme.onBackground
