@@ -22,6 +22,7 @@ data class InvitationParticipant(
 data class Subscription(
     val id: String,
     val suspiciousReason: String? = null,
+    val responseMessage: String? = null,
     val name: String,
     val cost: Double,
     val currency: Int,

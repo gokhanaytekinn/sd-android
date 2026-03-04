@@ -92,7 +92,8 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = SubscriptionRequest(
                 name = subscription.name,
-                icon = subscription.category ?: subscription.icon,
+                icon = subscription.icon,
+                category = subscription.category ?: "category_other",
                 tier = subscription.tier,
                 amount = subscription.cost,
                 currency = subscription.currency,
@@ -120,7 +121,8 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = com.gokhanaytekinn.sdandroid.data.model.request.SubscriptionUpdateRequest(
                 name = subscription.name,
-                icon = subscription.category ?: subscription.icon,
+                icon = subscription.icon,
+                category = subscription.category,
                 tier = subscription.tier,
                 amount = subscription.cost,
                 currency = subscription.currency,
@@ -260,6 +262,7 @@ class SubscriptionRepository(context: Context? = null) {
     private fun SubscriptionResponse.toSubscription(): Subscription {
         return Subscription(
             id = id,
+            responseMessage = message,
             name = name,
             cost = amount,
             currency = currency,
@@ -269,7 +272,7 @@ class SubscriptionRepository(context: Context? = null) {
             isActive = status == 1,
             isSuspicious = isSuspicious,
             icon = icon,
-            category = icon,
+            category = category ?: icon,
             status = status,
             tier = tier,
             reminderEnabled = reminderEnabled,

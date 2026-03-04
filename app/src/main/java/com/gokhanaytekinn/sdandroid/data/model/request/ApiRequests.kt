@@ -15,6 +15,7 @@ data class RegisterRequest(
 data class SubscriptionRequest(
     val name: String,
     val icon: String?,
+    val category: String,
     val tier: Int? = null,
     val amount: Double,
     val currency: Int,
@@ -28,6 +29,7 @@ data class SubscriptionRequest(
 data class SubscriptionUpdateRequest(
     val name: String? = null,
     val icon: String? = null,
+    val category: String? = null,
     val tier: Int? = null,
     val amount: Double? = null,
     val currency: Int? = null,

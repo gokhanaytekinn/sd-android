@@ -64,6 +64,7 @@ fun AddSubscriptionScreen(
     val isLoading by viewModel.isLoading.collectAsState()
     val error by viewModel.error.collectAsState()
     val isSuccess by viewModel.isSuccess.collectAsState()
+    val successMessage by viewModel.successMessage.collectAsState()
     val isEditMode by viewModel.isEditMode.collectAsState()
     val participants by viewModel.participants.collectAsState()
     val selectedCategory by viewModel.category.collectAsState()
@@ -121,8 +122,12 @@ fun AddSubscriptionScreen(
 
     var pendingNavigateBack by remember { mutableStateOf(false) }
 
-    LaunchedEffect(isSuccess) {
-        if (isSuccess) {
+    LaunchedEffect(isSuccess, successMessage) {
+        if (successMessage != null) {
+            android.widget.Toast.makeText(context, successMessage, android.widget.Toast.LENGTH_LONG).show()
+            pendingNavigateBack = true
+            viewModel.clearSuccessMessage()
+        } else if (isSuccess) {
             pendingNavigateBack = true
         }
     }
@@ -265,12 +270,8 @@ fun AddSubscriptionScreen(
                         "category_streaming", "category_gaming", "category_software", "category_shopping", "category_other"
                     )
                     
-                    // Select default category if none
-                    LaunchedEffect(selectedCategory) {
-                        if (selectedCategory.isNullOrEmpty()) {
-                            viewModel.updateCategory(categories.first())
-                        }
-                    }
+                    // Kategori seçimi kullanıcının kendisine bırakılmalı
+
 
                     LazyRow(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),

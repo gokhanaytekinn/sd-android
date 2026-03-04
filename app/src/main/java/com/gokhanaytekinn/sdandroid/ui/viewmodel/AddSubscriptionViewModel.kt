@@ -36,6 +36,9 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _isSuccess = MutableStateFlow(false)
     val isSuccess: StateFlow<Boolean> = _isSuccess.asStateFlow()
 
+    private val _successMessage = MutableStateFlow<String?>(null)
+    val successMessage: StateFlow<String?> = _successMessage.asStateFlow()
+
     private val _showInterstitialAd = MutableSharedFlow<Boolean>()
     val showInterstitialAd: SharedFlow<Boolean> = _showInterstitialAd.asSharedFlow()
     
@@ -71,7 +74,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _participants = MutableStateFlow<List<InvitationParticipant>?>(null)
     val participants: StateFlow<List<InvitationParticipant>?> = _participants.asStateFlow()
 
-    private val _category = MutableStateFlow("category_other")
+    private val _category = MutableStateFlow("")
     val category: StateFlow<String> = _category.asStateFlow()
 
     // Validation States
@@ -183,6 +186,11 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
             isValid = false
         }
         
+        if (_category.value.isBlank()) {
+            _error.value = "Lütfen bir kategori seçin" // Fallback string
+            isValid = false
+        }
+        
         if (firstErrorField != null) {
             viewModelScope.launch {
                 focusChannel.send(firstErrorField!!)
@@ -212,7 +220,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                     _billingDay.value = it.billingDay ?: 1
                     _billingMonth.value = it.billingMonth
                     _isReminderEnabled.value = it.reminderEnabled
-                    _category.value = it.category ?: "category_other"
+                    _category.value = it.category ?: ""
                     _jointEmails.value = it.jointEmails ?: emptyList()
                     _participants.value = it.participants
                 }
@@ -266,7 +274,12 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
                 }
                 
                 if (result.isSuccess) {
-                    _isSuccess.value = true
+                    val savedSub = result.getOrNull()
+                    if (savedSub?.responseMessage != null) {
+                        _successMessage.value = savedSub.responseMessage
+                    } else {
+                        _isSuccess.value = true
+                    }
                     checkInterstitialAdCondition()
                 } else {
                     _error.value = result.exceptionOrNull()?.message ?: "Bir hata oluştu"
@@ -281,6 +294,11 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     
     fun clearError() {
         _error.value = null
+    }
+
+    fun clearSuccessMessage() {
+        _successMessage.value = null
+        _isSuccess.value = false
     }
 
     private suspend fun checkInterstitialAdCondition() {
@@ -308,7 +326,7 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         _subscriptionId = null
         _isEditMode.value = false
         _currency.value = 1
-        _category.value = "category_other"
+        _category.value = ""
         _jointEmails.value = emptyList()
         _participants.value = null
     }

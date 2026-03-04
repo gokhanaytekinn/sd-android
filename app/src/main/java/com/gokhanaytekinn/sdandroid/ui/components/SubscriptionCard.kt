@@ -107,18 +107,37 @@ fun SubscriptionCard(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     // Icon placeholder with brand color
+                    val iconRes = when (name.trim().lowercase()) {
+                        "google" -> R.drawable.ic_google
+                        "cursor" -> R.drawable.ic_cursor
+                        "claude" -> R.drawable.ic_claude
+                        "netflix" -> R.drawable.ic_netflix
+                        "spotify" -> R.drawable.ic_spotify
+                        "youtube" -> R.drawable.ic_youtube
+                        "amazon" -> R.drawable.ic_amazon
+                        "hbo max" -> R.drawable.ic_hbomax
+                        else -> null
+                    }
                     Box(
                         modifier = Modifier
                             .size(36.dp)
                             .background(brandColor.copy(alpha = 0.1f), CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text(
-                            text = icon ?: name.take(1).uppercase(),
-                            color = brandColor,
-                            fontWeight = FontWeight.Bold,
-                            fontSize = 16.sp
-                        )
+                        if (iconRes != null) {
+                            androidx.compose.foundation.Image(
+                                painter = androidx.compose.ui.res.painterResource(id = iconRes),
+                                contentDescription = name,
+                                modifier = Modifier.size(24.dp)
+                            )
+                        } else {
+                            Text(
+                                text = name.take(1).uppercase(),
+                                color = brandColor,
+                                fontWeight = FontWeight.Bold,
+                                fontSize = 16.sp
+                            )
+                        }
                     }
 
                     Spacer(modifier = Modifier.width(16.dp))

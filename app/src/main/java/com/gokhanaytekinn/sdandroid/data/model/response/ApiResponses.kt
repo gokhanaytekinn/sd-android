@@ -27,6 +27,8 @@ data class SubscriptionResponse(
     val id: String,
     val name: String,
     val icon: String?,
+    val category: String?,
+    val message: String?,
     val tier: Int?,
     val amount: Double,
     val currency: Int,
