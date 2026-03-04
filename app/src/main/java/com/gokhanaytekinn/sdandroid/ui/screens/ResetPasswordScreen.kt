@@ -12,6 +12,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -22,9 +27,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.ui.components.ErrorDialog
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
+import kotlinx.coroutines.flow.collectLatest
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun ResetPasswordScreen(
     viewModel: AuthViewModel,
@@ -42,6 +49,18 @@ fun ResetPasswordScreen(
     // Simple validation
     val isPasswordValid = password.length >= 6
     val doPasswordsMatch = password == confirmPassword && password.isNotEmpty()
+    
+    val focusRequesterPassword = remember { FocusRequester() }
+    val bringIntoViewRequesterPassword = remember { BringIntoViewRequester() }
+    
+    LaunchedEffect(Unit) {
+        viewModel.focusEvent.collectLatest { field ->
+            if (field == "password") {
+                bringIntoViewRequesterPassword.bringIntoView()
+                focusRequesterPassword.requestFocus()
+            }
+        }
+    }
     
     Box(
         modifier = Modifier
@@ -119,7 +138,10 @@ fun ResetPasswordScreen(
                     onValueChange = { password = it },
                     placeholder = stringResource(R.string.password_placeholder),
                     visible = passwordVisible,
-                    onToggleVisibility = { passwordVisible = !passwordVisible }
+                    onToggleVisibility = { passwordVisible = !passwordVisible },
+                    modifier = Modifier
+                        .bringIntoViewRequester(bringIntoViewRequesterPassword)
+                        .focusRequester(focusRequesterPassword)
                 )
                 
                 Spacer(modifier = Modifier.height(20.dp))
@@ -174,12 +196,9 @@ fun ResetPasswordScreen(
                 }
                 
                 if (authState.error != null) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = authState.error!!,
-                        color = MaterialTheme.colorScheme.error,
-                        fontSize = 14.sp,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    ErrorDialog(
+                        errorMessage = authState.error!!,
+                        onDismiss = { viewModel.clearGeneralError() }
                     )
                 }
                 
@@ -206,12 +225,13 @@ private fun PasswordTextField(
     onValueChange: (String) -> Unit,
     placeholder: String,
     visible: Boolean,
-    onToggleVisibility: () -> Unit
+    onToggleVisibility: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         placeholder = { Text(placeholder, color = Color(0xFF94A3B8)) },
         leadingIcon = {
             Icon(

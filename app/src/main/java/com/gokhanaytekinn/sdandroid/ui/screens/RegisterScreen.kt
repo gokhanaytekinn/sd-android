@@ -14,6 +14,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -28,10 +33,12 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.foundation.text.ClickableText
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.ui.components.ErrorDialog
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
 import com.gokhanaytekinn.sdandroid.R
+import kotlinx.coroutines.flow.collectLatest
 
-@OptIn(ExperimentalLayoutApi::class)
+@OptIn(ExperimentalLayoutApi::class, ExperimentalFoundationApi::class)
 @Composable
 fun RegisterScreen(
     viewModel: AuthViewModel,
@@ -50,6 +57,39 @@ fun RegisterScreen(
     
     var showTermsDialog by remember { mutableStateOf(false) }
     var showPrivacyDialog by remember { mutableStateOf(false) }
+    
+    val focusRequesterName = remember { FocusRequester() }
+    val focusRequesterEmail = remember { FocusRequester() }
+    val focusRequesterPassword = remember { FocusRequester() }
+    val focusRequesterConfirmPassword = remember { FocusRequester() }
+    
+    val bringIntoViewRequesterName = remember { BringIntoViewRequester() }
+    val bringIntoViewRequesterEmail = remember { BringIntoViewRequester() }
+    val bringIntoViewRequesterPassword = remember { BringIntoViewRequester() }
+    val bringIntoViewRequesterConfirmPassword = remember { BringIntoViewRequester() }
+    
+    LaunchedEffect(Unit) {
+        viewModel.focusEvent.collectLatest { field ->
+            when (field) {
+                "name" -> {
+                    bringIntoViewRequesterName.bringIntoView()
+                    focusRequesterName.requestFocus()
+                }
+                "email" -> {
+                    bringIntoViewRequesterEmail.bringIntoView()
+                    focusRequesterEmail.requestFocus()
+                }
+                "password" -> {
+                    bringIntoViewRequesterPassword.bringIntoView()
+                    focusRequesterPassword.requestFocus()
+                }
+                "confirmPassword" -> {
+                    bringIntoViewRequesterConfirmPassword.bringIntoView()
+                    focusRequesterConfirmPassword.requestFocus()
+                }
+            }
+        }
+    }
     
     Column(
         modifier = Modifier
@@ -115,16 +155,18 @@ fun RegisterScreen(
                     color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
-                OutlinedTextField(
-                    value = fullName,
-                    onValueChange = { 
-                        fullName = it
-                        viewModel.clearError() 
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(if (authState.nameError != null) 76.dp else 56.dp),
-                    placeholder = { Text(stringResource(R.string.full_name_placeholder)) },
+                    OutlinedTextField(
+                        value = fullName,
+                        onValueChange = { 
+                            fullName = it
+                            viewModel.clearError() 
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .bringIntoViewRequester(bringIntoViewRequesterName)
+                            .focusRequester(focusRequesterName)
+                            .height(if (authState.nameError != null) 76.dp else 56.dp),
+                        placeholder = { Text(stringResource(R.string.full_name_placeholder)) },
                     isError = authState.nameError != null,
                     supportingText = if (authState.nameError != null) {
                         { Text(stringResource(authState.nameError!!)) }
@@ -151,16 +193,18 @@ fun RegisterScreen(
                     color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
-                OutlinedTextField(
-                    value = email,
-                    onValueChange = { 
-                        email = it
-                        viewModel.clearError()
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(if (authState.emailError != null) 76.dp else 56.dp),
-                    placeholder = { Text(stringResource(R.string.email_placeholder)) },
+                    OutlinedTextField(
+                        value = email,
+                        onValueChange = { 
+                            email = it
+                            viewModel.clearError()
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .bringIntoViewRequester(bringIntoViewRequesterEmail)
+                            .focusRequester(focusRequesterEmail)
+                            .height(if (authState.emailError != null) 76.dp else 56.dp),
+                        placeholder = { Text(stringResource(R.string.email_placeholder)) },
                     isError = authState.emailError != null,
                     supportingText = if (authState.emailError != null) {
                         { Text(stringResource(authState.emailError!!)) }
@@ -187,16 +231,18 @@ fun RegisterScreen(
                     color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
-                OutlinedTextField(
-                    value = password,
-                    onValueChange = { 
-                        password = it
-                        viewModel.clearError()
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(if (authState.passwordError != null) 76.dp else 56.dp),
-                    placeholder = { Text(stringResource(R.string.password_placeholder)) },
+                    OutlinedTextField(
+                        value = password,
+                        onValueChange = { 
+                            password = it
+                            viewModel.clearError()
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .bringIntoViewRequester(bringIntoViewRequesterPassword)
+                            .focusRequester(focusRequesterPassword)
+                            .height(if (authState.passwordError != null) 76.dp else 56.dp),
+                        placeholder = { Text(stringResource(R.string.password_placeholder)) },
                     isError = authState.passwordError != null,
                     supportingText = if (authState.passwordError != null) {
                         { Text(stringResource(authState.passwordError!!)) }
@@ -233,16 +279,18 @@ fun RegisterScreen(
                     color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
-                OutlinedTextField(
-                    value = confirmPassword,
-                    onValueChange = { 
-                        confirmPassword = it
-                        viewModel.clearError()
-                    },
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(if (authState.confirmPasswordError != null) 76.dp else 56.dp),
-                    placeholder = { Text(stringResource(R.string.password_placeholder)) },
+                    OutlinedTextField(
+                        value = confirmPassword,
+                        onValueChange = { 
+                            confirmPassword = it
+                            viewModel.clearError()
+                        },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .bringIntoViewRequester(bringIntoViewRequesterConfirmPassword)
+                            .focusRequester(focusRequesterConfirmPassword)
+                            .height(if (authState.confirmPasswordError != null) 76.dp else 56.dp),
+                        placeholder = { Text(stringResource(R.string.password_placeholder)) },
                     isError = authState.confirmPasswordError != null,
                     supportingText = if (authState.confirmPasswordError != null) {
                         { Text(stringResource(authState.confirmPasswordError!!)) }
@@ -379,14 +427,11 @@ fun RegisterScreen(
                     }
                 }
                 
-                // Error Message
+                // Error Message Dialog
                 if (authState.error != null) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = authState.error!!,
-                        color = MaterialTheme.colorScheme.error,
-                        fontSize = 14.sp,
-                        modifier = Modifier.fillMaxWidth()
+                    ErrorDialog(
+                        errorMessage = authState.error!!,
+                        onDismiss = { viewModel.clearGeneralError() }
                     )
                 }
                 

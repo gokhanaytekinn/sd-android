@@ -21,6 +21,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -35,11 +40,12 @@ import com.gokhanaytekinn.sdandroid.ui.theme.*
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AddSubscriptionViewModel
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
 import com.gokhanaytekinn.sdandroid.util.CurrencyVisualTransformation
+import com.gokhanaytekinn.sdandroid.ui.components.ErrorDialog
 import com.gokhanaytekinn.sdandroid.ui.components.InterstitialAdManager
 import kotlinx.coroutines.flow.collectLatest
 import java.util.Calendar
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun AddSubscriptionScreen(
     subscriptionId: String? = null,
@@ -68,8 +74,28 @@ fun AddSubscriptionScreen(
     
     val adManager = remember { InterstitialAdManager(context) }
     
+    val focusRequesterName = remember { FocusRequester() }
+    val focusRequesterAmount = remember { FocusRequester() }
+    val bringIntoViewRequesterName = remember { BringIntoViewRequester() }
+    val bringIntoViewRequesterAmount = remember { BringIntoViewRequester() }
+    
     LaunchedEffect(Unit) {
         adManager.loadAd()
+    }
+    
+    LaunchedEffect(Unit) {
+        viewModel.focusEvent.collectLatest { field ->
+            when (field) {
+                "name" -> {
+                    bringIntoViewRequesterName.bringIntoView()
+                    focusRequesterName.requestFocus()
+                }
+                "amount" -> {
+                    bringIntoViewRequesterAmount.bringIntoView()
+                    focusRequesterAmount.requestFocus()
+                }
+            }
+        }
     }
 
     LaunchedEffect(subscriptionId) {
@@ -189,7 +215,10 @@ fun AddSubscriptionScreen(
                     OutlinedTextField(
                         value = name,
                         onValueChange = viewModel::updateName,
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .bringIntoViewRequester(bringIntoViewRequesterName)
+                            .focusRequester(focusRequesterName),
                         shape = RoundedCornerShape(12.dp),
                         placeholder = { Text(stringResource(R.string.service_name_placeholder), color = Color.Gray) },
                         isError = nameError != null,
@@ -359,7 +388,10 @@ fun AddSubscriptionScreen(
                         OutlinedTextField(
                             value = amount,
                             onValueChange = viewModel::updateAmount,
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .bringIntoViewRequester(bringIntoViewRequesterAmount)
+                                .focusRequester(focusRequesterAmount),
                             shape = RoundedCornerShape(12.dp),
                             placeholder = { Text("0,00", color = Color.Gray) },
                             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Decimal),
@@ -667,12 +699,11 @@ fun AddSubscriptionScreen(
                         }
                     }
                 }
+                
                 if (error != null) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = error ?: "",
-                        color = MaterialTheme.colorScheme.error,
-                        fontSize = 14.sp
+                    ErrorDialog(
+                        errorMessage = error!!,
+                        onDismiss = { viewModel.clearError() }
                     )
                 }
             }

@@ -76,22 +76,6 @@ fun SubscriptionDetailsScreen(
     ) {
         if (isLoading) {
             com.gokhanaytekinn.sdandroid.ui.components.SubscriptionDetailsSkeleton()
-        } else if (error != null && subscription == null) {
-            Column(
-                modifier = Modifier.align(Alignment.Center),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(
-                    text = (error ?: stringResource(R.string.an_error_occurred)).toString(),
-                    color = colorScheme.error,
-                    fontSize = 16.sp
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Button(onClick = onBackClick) {
-                    Text(stringResource(R.string.go_back))
-                }
-
-            }
         } else if (subscription != null) {
             val sub = subscription!!
 
@@ -624,6 +608,19 @@ fun SubscriptionDetailsScreen(
             }
         }
     }
+
+    if (error != null) {
+        com.gokhanaytekinn.sdandroid.ui.components.ErrorDialog(
+            errorMessage = error!!,
+            onDismiss = {
+                error = null
+                if (subscription == null) {
+                    onBackClick()
+                }
+            }
+        )
+    }
+
     if (showDeleteDialog) {
         AlertDialog(
             onDismissRequest = { showDeleteDialog = false },

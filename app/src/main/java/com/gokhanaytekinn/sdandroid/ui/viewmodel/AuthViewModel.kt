@@ -8,6 +8,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch
 
 data class AuthState(
@@ -36,6 +38,10 @@ class AuthViewModel(context: Context) : ViewModel() {
     
     private val _authState = MutableStateFlow(AuthState())
     val authState: StateFlow<AuthState> = _authState.asStateFlow()
+
+    private val focusChannel = Channel<String>()
+    val focusEvent = focusChannel.receiveAsFlow()
+
 
     init {
         restoreSession()
@@ -146,6 +152,14 @@ class AuthViewModel(context: Context) : ViewModel() {
         }
         
         _authState.value = _authState.value.copy(emailError = emailErr, passwordError = passErr)
+        
+        if (!isValid) {
+            val firstError = if (emailErr != null) "email" else if (passErr != null) "password" else null
+            firstError?.let {
+                viewModelScope.launch { focusChannel.send(it) }
+            }
+        }
+        
         return isValid
     }
     
@@ -191,6 +205,20 @@ class AuthViewModel(context: Context) : ViewModel() {
             passwordError = passErr,
             confirmPasswordError = confirmPassErr
         )
+        
+        if (!isValid) {
+            val firstError = when {
+                nameErr != null -> "name"
+                emailErr != null -> "email"
+                passErr != null -> "password"
+                confirmPassErr != null -> "confirmPassword"
+                else -> null
+            }
+            firstError?.let {
+                viewModelScope.launch { focusChannel.send(it) }
+            }
+        }
+        
         return isValid
     }
     
@@ -202,6 +230,10 @@ class AuthViewModel(context: Context) : ViewModel() {
             passwordError = null,
             confirmPasswordError = null
         )
+    }
+    
+    fun clearGeneralError() {
+        _authState.value = _authState.value.copy(error = null)
     }
     
     fun signInWithGoogle(idToken: String, onSuccess: () -> Unit) {
@@ -234,6 +266,7 @@ class AuthViewModel(context: Context) : ViewModel() {
     fun forgotPassword(email: String, onSuccess: () -> Unit) {
         if (email.isBlank()) {
             _authState.value = _authState.value.copy(emailError = com.gokhanaytekinn.sdandroid.R.string.error_email_required)
+            viewModelScope.launch { focusChannel.send("email") }
             return
         }
 
@@ -254,7 +287,12 @@ class AuthViewModel(context: Context) : ViewModel() {
 
     fun verifyCode(code: String, onSuccess: () -> Unit) {
         val email = _authState.value.resetEmail ?: return
-        if (code.length != 6) return
+        if (code.length != 6) {
+             viewModelScope.launch { focusChannel.send("code") }
+             // We can also set a specific error here if needed, but UI keeps handling it or we just focus.
+             // Currently verification logic in viewmodel assumes 6 chars without setting field error.
+             return
+        }
 
         viewModelScope.launch {
             _authState.value = _authState.value.copy(isLoading = true, error = null)
@@ -273,6 +311,10 @@ class AuthViewModel(context: Context) : ViewModel() {
 
     fun resetPassword(code: String, newPassword: String, onSuccess: () -> Unit) {
         val email = _authState.value.resetEmail ?: return
+        if (newPassword.isBlank() || newPassword.length < 6) {
+             viewModelScope.launch { focusChannel.send("password") }
+             // UI has its own validation but we ensure focus occurs here if called directly.
+        }
         
         viewModelScope.launch {
             _authState.value = _authState.value.copy(isLoading = true, error = null)

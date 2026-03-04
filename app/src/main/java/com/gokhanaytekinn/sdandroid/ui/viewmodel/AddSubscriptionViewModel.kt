@@ -11,9 +11,12 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.launch
 import java.util.UUID
 
@@ -84,6 +87,9 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
     private val _dateError = MutableStateFlow<Int?>(null)
     val dateError: StateFlow<Int?> = _dateError.asStateFlow()
 
+    private val focusChannel = Channel<String>()
+    val focusEvent = focusChannel.receiveAsFlow()
+
     fun updateName(value: String) {
         _name.value = value
         if (value.isNotBlank()) _nameError.value = null
@@ -143,20 +149,24 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
 
     private fun validate(): Boolean {
         var isValid = true
+        var firstErrorField: String? = null
         
         if (_name.value.isBlank()) {
             _nameError.value = com.gokhanaytekinn.sdandroid.R.string.error_name_required
             isValid = false
+            if (firstErrorField == null) firstErrorField = "name"
         }
         
         if (_amount.value.isBlank()) {
             _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_required
             isValid = false
+            if (firstErrorField == null) firstErrorField = "amount"
         } else {
             val amountValue = _amount.value.replace(',', '.').toDoubleOrNull() ?: 0.0
             if (amountValue <= 0.0) {
                 _amountError.value = com.gokhanaytekinn.sdandroid.R.string.error_amount_invalid
                 isValid = false
+                if (firstErrorField == null) firstErrorField = "amount"
             }
         }
         
@@ -165,11 +175,18 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         if (_billingDay.value == 0) {
             _dateError.value = com.gokhanaytekinn.sdandroid.R.string.error_date_required
             isValid = false
+            // Date is not a text input, so no explicit focus requester string for now
         }
         
         if (_billingCycle.value == BillingCycle.YEARLY && _billingMonth.value == null) {
             _dateError.value = com.gokhanaytekinn.sdandroid.R.string.error_date_required
             isValid = false
+        }
+        
+        if (firstErrorField != null) {
+            viewModelScope.launch {
+                focusChannel.send(firstErrorField!!)
+            }
         }
         
         return isValid
@@ -262,6 +279,10 @@ class AddSubscriptionViewModel(application: Application) : AndroidViewModel(appl
         }
     }
     
+    fun clearError() {
+        _error.value = null
+    }
+
     private suspend fun checkInterstitialAdCondition() {
         val isPremium = premiumPreferences.isPremium.first()
         if (!isPremium) {

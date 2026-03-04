@@ -14,6 +14,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -22,9 +27,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.ui.components.ErrorDialog
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
+import kotlinx.coroutines.flow.collectLatest
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun ForgotPasswordScreen(
     viewModel: AuthViewModel,
@@ -34,6 +41,18 @@ fun ForgotPasswordScreen(
     val authState by viewModel.authState.collectAsState()
     
     var email by remember { mutableStateOf("") }
+    
+    val focusRequesterEmail = remember { FocusRequester() }
+    val bringIntoViewRequesterEmail = remember { BringIntoViewRequester() }
+    
+    LaunchedEffect(Unit) {
+        viewModel.focusEvent.collectLatest { field ->
+            if (field == "email") {
+                bringIntoViewRequesterEmail.bringIntoView()
+                focusRequesterEmail.requestFocus()
+            }
+        }
+    }
     
     Box(
         modifier = Modifier
@@ -116,7 +135,10 @@ fun ForgotPasswordScreen(
                 OutlinedTextField(
                     value = email,
                     onValueChange = { email = it },
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .bringIntoViewRequester(bringIntoViewRequesterEmail)
+                        .focusRequester(focusRequesterEmail),
                     placeholder = { Text(stringResource(R.string.email_placeholder), color = Color(0xFF94A3B8)) },
                     leadingIcon = {
                         Icon(
@@ -185,12 +207,9 @@ fun ForgotPasswordScreen(
                 }
                 
                 if (authState.error != null) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = authState.error!!,
-                        color = MaterialTheme.colorScheme.error,
-                        fontSize = 14.sp,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    ErrorDialog(
+                        errorMessage = authState.error!!,
+                        onDismiss = { viewModel.clearGeneralError() }
                     )
                 }
                 

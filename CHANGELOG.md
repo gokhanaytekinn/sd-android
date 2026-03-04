@@ -3,6 +3,8 @@
 Uygulamamıza eklenen yeni özellikler, geliştirmeler ve hata düzeltmeleri aşağıda özetlenmiştir.
 
 ## [04.03.2026]
+- **Yenilik:** İşlem sırasında oluşan genel hatalar (örn. internet yok, sunucu hatası) sayfanın alt kısmında kaybolmak yerine şık bir uyarı penceresi (Popup) içinde gösteriliyor.
+- **Yenilik:** Kayıt, giriş veya abonelik eklerken eksik/hatalı giriş yaptığınızda sistem otomatik olarak sayfayı o alana kaydırıyor ve odaklanıyor.
 - **Geliştirme:** Uygulamanın daha hızlı ve pürüzsüz çalışması için arka plandaki tarih hesaplamaları yenilendi, uygulamayı yavaşlatan gereksiz veriler temizlendi.
 
 ## [03.03.2026]

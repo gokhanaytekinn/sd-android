@@ -16,6 +16,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
@@ -26,9 +29,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gokhanaytekinn.sdandroid.R
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.ui.components.ErrorDialog
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
+import kotlinx.coroutines.flow.collectLatest
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
 fun VerificationCodeScreen(
     viewModel: AuthViewModel,
@@ -50,6 +55,16 @@ fun VerificationCodeScreen(
     
     val codeDigits = remember { mutableStateListOf("", "", "", "", "", "") }
     val focusRequesters = remember { List(6) { FocusRequester() } }
+    val bringIntoViewRequesterFirstDigit = remember { BringIntoViewRequester() }
+    
+    LaunchedEffect(Unit) {
+        viewModel.focusEvent.collectLatest { field ->
+            if (field == "code") {
+                bringIntoViewRequesterFirstDigit.bringIntoView()
+                focusRequesters[0].requestFocus()
+            }
+        }
+    }
     
     Box(
         modifier = Modifier
@@ -138,6 +153,7 @@ fun VerificationCodeScreen(
                             },
                             modifier = Modifier
                                 .width(50.dp)
+                                .then(if (index == 0) Modifier.bringIntoViewRequester(bringIntoViewRequesterFirstDigit) else Modifier)
                                 .focusRequester(focusRequesters[index]),
                             textStyle = LocalTextStyle.current.copy(
                                 textAlign = TextAlign.Center,
@@ -188,12 +204,9 @@ fun VerificationCodeScreen(
                 }
                 
                 if (authState.error != null) {
-                    Spacer(modifier = Modifier.height(16.dp))
-                    Text(
-                        text = authState.error!!,
-                        color = MaterialTheme.colorScheme.error,
-                        fontSize = 14.sp,
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
+                    ErrorDialog(
+                        errorMessage = authState.error!!,
+                        onDismiss = { viewModel.clearGeneralError() }
                     )
                 }
                 

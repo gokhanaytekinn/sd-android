@@ -10,6 +10,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.relocation.BringIntoViewRequester
+import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -27,10 +32,13 @@ import androidx.credentials.exceptions.GetCredentialException
 import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.gokhanaytekinn.sdandroid.ui.theme.PrimaryBlue
+import com.gokhanaytekinn.sdandroid.ui.components.ErrorDialog
 import com.gokhanaytekinn.sdandroid.ui.viewmodel.AuthViewModel
 import com.gokhanaytekinn.sdandroid.R
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun LoginScreen(
     viewModel: AuthViewModel,
@@ -77,6 +85,26 @@ fun LoginScreen(
     LaunchedEffect(authState.error) {
         authState.error?.let {
             // Error will be shown in Snackbar
+        }
+    }
+    
+    val focusRequesterEmail = remember { FocusRequester() }
+    val focusRequesterPassword = remember { FocusRequester() }
+    val bringIntoViewRequesterEmail = remember { BringIntoViewRequester() }
+    val bringIntoViewRequesterPassword = remember { BringIntoViewRequester() }
+
+    LaunchedEffect(Unit) {
+        viewModel.focusEvent.collectLatest { field ->
+            when (field) {
+                "email" -> {
+                    bringIntoViewRequesterEmail.bringIntoView()
+                    focusRequesterEmail.requestFocus()
+                }
+                "password" -> {
+                    bringIntoViewRequesterPassword.bringIntoView()
+                    focusRequesterPassword.requestFocus()
+                }
+            }
         }
     }
     
@@ -155,6 +183,8 @@ fun LoginScreen(
                         },
                         modifier = Modifier
                             .fillMaxWidth()
+                            .bringIntoViewRequester(bringIntoViewRequesterEmail)
+                            .focusRequester(focusRequesterEmail)
                             .height(if (authState.emailError != null) 76.dp else 56.dp),
                         placeholder = { Text(stringResource(R.string.email_placeholder)) },
                         isError = authState.emailError != null,
@@ -191,6 +221,8 @@ fun LoginScreen(
                         },
                         modifier = Modifier
                             .fillMaxWidth()
+                            .bringIntoViewRequester(bringIntoViewRequesterPassword)
+                            .focusRequester(focusRequesterPassword)
                             .height(if (authState.passwordError != null) 76.dp else 56.dp),
                         placeholder = { Text(stringResource(R.string.password_placeholder)) },
                         isError = authState.passwordError != null,
@@ -274,14 +306,11 @@ fun LoginScreen(
                     }
                 }
                 
-                // Error Message
+                // Error Message Dialog
                 if (authState.error != null) {
-                    Spacer(modifier = Modifier.height(8.dp))
-                    Text(
-                        text = authState.error!!,
-                        color = MaterialTheme.colorScheme.error,
-                        fontSize = 14.sp,
-                        modifier = Modifier.fillMaxWidth()
+                    ErrorDialog(
+                        errorMessage = authState.error!!,
+                        onDismiss = { viewModel.clearGeneralError() }
                     )
                 }
                 
