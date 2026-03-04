@@ -2,6 +2,9 @@
 
 Uygulamamıza eklenen yeni özellikler, geliştirmeler ve hata düzeltmeleri aşağıda özetlenmiştir.
 
+## [04.03.2026]
+- **Geliştirme:** Uygulamanın daha hızlı ve pürüzsüz çalışması için arka plandaki tarih hesaplamaları yenilendi, uygulamayı yavaşlatan gereksiz veriler temizlendi.
+
 ## [03.03.2026]
 - **Yenilik:** Abonelik detay ekranına abonelik yenilemesine kaç gün kaldığını gösteren geri sayım sayacı eklendi.
 - **Geliştirme:** Abonelik eklerken veya düzenlerken tam tarih seçmek yerine, sadece "ödeme döngüsü günü ve ayı" seçilebilecek daha kolay bir tasarıma geçildi.
