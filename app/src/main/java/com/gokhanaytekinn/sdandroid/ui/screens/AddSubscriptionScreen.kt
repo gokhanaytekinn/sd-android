@@ -478,39 +478,18 @@ fun AddSubscriptionScreen(
                 Spacer(modifier = Modifier.height(24.dp))
                 
                 // Next Payment Date (Simplified to Day/Month Selection)
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    val nextPaymentLabel = if (billingCycle == BillingCycle.YEARLY) {
-                        stringResource(R.string.payment_recurrence_day_month)
-                    } else {
-                        stringResource(R.string.payment_recurrence_day)
-                    }
-                    Text(
-                        text = nextPaymentLabel,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium,
-                        color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f)
-                    )
-                    
-                    if (billingCycle == BillingCycle.YEARLY) {
-                        Text(
-                            text = if (billingMonth != null) "${billingDay} ${months[billingMonth!! - 1]}" else stringResource(R.string.select_date),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = PrimaryBlue
-                        )
-                    } else {
-                        Text(
-                            text = if (billingDay > 0) billingDay.toString() else stringResource(R.string.select_day),
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = PrimaryBlue
-                        )
-                    }
+                val nextPaymentLabel = if (billingCycle == BillingCycle.YEARLY) {
+                    stringResource(R.string.payment_recurrence_day_month)
+                } else {
+                    stringResource(R.string.payment_recurrence_day)
                 }
+                Text(
+                    text = nextPaymentLabel,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.8f),
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
                 
                 Spacer(modifier = Modifier.height(12.dp))
                 

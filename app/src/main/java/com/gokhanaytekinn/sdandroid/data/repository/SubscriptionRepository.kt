@@ -92,7 +92,7 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = SubscriptionRequest(
                 name = subscription.name,
-                icon = subscription.icon,
+                icon = subscription.category ?: subscription.icon,
                 tier = subscription.tier,
                 amount = subscription.cost,
                 currency = subscription.currency,
@@ -120,7 +120,7 @@ class SubscriptionRepository(context: Context? = null) {
             }
             val request = com.gokhanaytekinn.sdandroid.data.model.request.SubscriptionUpdateRequest(
                 name = subscription.name,
-                icon = subscription.icon,
+                icon = subscription.category ?: subscription.icon,
                 tier = subscription.tier,
                 amount = subscription.cost,
                 currency = subscription.currency,
@@ -265,10 +265,13 @@ class SubscriptionRepository(context: Context? = null) {
             currency = currency,
             billingCycle = BillingCycle.fromValue(billingCycle),
             nextBillingDate = renewalDate,
+            billingDay = billingDay,
+            billingMonth = billingMonth,
             startDate = startDate,
             isActive = status == 1,
             isSuspicious = isSuspicious,
             icon = icon,
+            category = icon,
             status = status,
             tier = tier,
             reminderEnabled = reminderEnabled,
