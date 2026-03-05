@@ -1,166 +1,123 @@
-# SD Android - Subscription Management App
+# 1. Proje Başlığı
 
-A modern Android application built with Jetpack Compose for managing and tracking subscriptions.
+**Sub Tracker Android App**
 
-## Features
+# 2. Proje Açıklaması
 
-- **Onboarding Screen**: Welcome experience for new users
-- **Dashboard**: Overview of all active subscriptions with statistics
-- **Subscription Management**: Track monthly and yearly subscriptions
-- **API-Ready**: Integrated API interfaces for backend communication
+> [!NOTE]
+> Bu uygulamanın kodlanması, MVVM mimari kurgusu ve Jetpack Compose tasarımlarının tamamı %100 oranında Yapay Zeka (AI) kullanılarak hayata geçirilmiştir.
 
-## Tech Stack
+**Sub Tracker**, kullanıcıların tüm tekrarlayan aboneliklerini, aidatlarını ve düzenli ödemelerini kolayca takip edip yönetebileceği modern bir Android uygulamasıdır. Güncel Kotlin ve Jetpack Compose teknolojileri ile inşa edilmiş, üst düzey kullanıcı deneyimi sunan arayüzü sayesinde harcamalarınız artık tam kontrolünüz altında.
 
-- **Language**: Kotlin
-- **UI Framework**: Jetpack Compose
-- **Architecture**: MVVM with Repository Pattern
-- **Networking**: Retrofit2 + OkHttp3
-- **Async**: Kotlin Coroutines
-- **Navigation**: Jetpack Navigation Compose
+# 3. Özellikler
 
-## Requirements
+- **Gelişmiş Abonelik Takibi:** Aktif ve pasif tüm aboneliklerinizi tek bir çatı altında gruplayıp listeleme imkanı.
+- **Hatırlatıcılar ve Bildirimler:** Ödeme tarihlerinden önce gönderilen otomatik bildirimler sayesinde gecikme faizi ve istenmeyen kesinti riskini ortadan kaldırma.
+- **Çoklu Dil Desteği:** Kullanıcıların konforu için İngilizce, Türkçe, Almanca, Fransızca, İspanyolca gibi birçok dilde %100 yerelleştirilmiş dil desteği.
+- **Ücretsiz ve Premium Seçenekler:** Uygulama içi ücretsiz özellikler ve sınırların ötesine geçmek isteyenler için Premium plan alternatifleri.
 
-- Android Studio Hedgehog | 2023.1.1 or newer
-- JDK 17
-- Gradle 8.2
-- Android SDK:
-  - compileSdk: 34
-  - minSdk: 26
-  - targetSdk: 35
+# 4. Teknolojiler
 
-## Project Structure
+Mobil İstemci, Android ekosisteminin en güncel ve en kararlı teknolojilerine dayanmaktadır:
 
-```
-app/
-├── src/main/
-│   ├── java/com/gokhanaytekinn/sdandroid/
-│   │   ├── data/
-│   │   │   ├── api/           # API service interfaces
-│   │   │   ├── model/         # Data models
-│   │   │   └── repository/    # Repository layer
-│   │   ├── ui/
-│   │   │   ├── components/    # Reusable UI components
-│   │   │   ├── screens/       # Screen composables
-│   │   │   ├── theme/         # Theme and styling
-│   │   │   └── navigation/    # Navigation setup
-│   │   └── MainActivity.kt
-│   └── res/                   # Android resources
-└── build.gradle.kts
-```
+- **Dil:** Kotlin
+- **Arayüz ve Bileşenler:** Android SDK, Jetpack Compose, Material Design 3
+- **Ağ ve Asenkron İşlemler:** Retrofit, OkHttp, Kotlin Coroutines, Flow
+- **Bağımlılık Enjeksiyonu:** Hilt (Dagger-Hilt)
+- **Gelir Modeli ve Analitik:** Google Play Faturalandırma Kütüphanesi, Google AdMob, Firebase
 
-## Building the Project
+# 5. Mimari
 
-1. Clone the repository:
-```bash
-git clone https://github.com/gokhanaytekinn/sd-android.git
-cd sd-android
-```
+**İstemci (Mobil) Mimarisi:**
+Uygulama, **MVVM (Model-View-ViewModel)** tasarım deseni üzerine kurulmuştur ve **Temiz Mimari (Clean Architecture)** kurallarını referans alır:
+- **Arayüz Katmanı (Jetpack Compose):** Sadece arayüzün çizildiği, veriden bağımsız olan en dış katman.
+- **ViewModel Katmanı:** Ekranların durumlarını tutan ve kullanıcı etkileşimlerini servis katmanına bağlayan katman.
+- **Veri (Repository) Katmanı:** Uzak bir sunucudan (API) gelen verilerin toplanması, modellenmesi ve uygulama geneline asenkron aktarılmasından sorumlu olan katman.
 
-2. Open the project in Android Studio:
-   - File → Open → Select the project folder
+# 6. Proje Yapısı
 
-3. Sync Gradle:
-   - Android Studio will automatically prompt you to sync
-   - Or click "Sync Project with Gradle Files" in the toolbar
-
-4. Build and run:
-   - Select a device/emulator
-   - Click the "Run" button or press Shift+F10
-
-## Reusable Components
-
-### SDButton
-A customizable button component supporting both solid and outlined styles:
-
-```kotlin
-SDButton(
-    text = "Get Started",
-    onClick = { /* action */ },
-    outlined = false,  // true for outlined style
-    backgroundColor = Color(0xFF2196F3),
-    textColor = Color.White
-)
-```
-
-### SDCard
-A reusable card component with customizable elevation and corner radius:
-
-```kotlin
-SDCard(
-    backgroundColor = Color.White,
-    elevation = 4.dp,
-    cornerRadius = 16.dp
-) {
-    // Card content
-}
-```
-
-### SubscriptionCard
-Displays subscription information with cost and billing cycle:
-
-```kotlin
-SubscriptionCard(
-    subscription = subscription,
-    onClick = { /* handle click */ }
-)
-```
-
-## API Integration
-
-The app includes ready-to-use API interfaces:
-
-### Subscription API
-- `GET /api/subscriptions` - Fetch all subscriptions
-- `GET /api/subscriptions/{id}` - Get subscription details
-- `POST /api/subscriptions` - Create new subscription
-- `PUT /api/subscriptions/{id}` - Update subscription
-- `DELETE /api/subscriptions/{id}` - Delete subscription
-- `GET /api/subscriptions/stats` - Get subscription statistics
-
-### Auth API
-- `POST /api/auth/login` - User login
-- `POST /api/auth/register` - User registration
-- `POST /api/auth/logout` - User logout
-- `GET /api/auth/me` - Get current user
-
-To connect to your backend, update the `BASE_URL` in `ApiClient.kt`:
-
-```kotlin
-private const val BASE_URL = "https://your-api-url.com/"
-```
-
-## Screens
-
-### 1. Onboarding Screen
-First-time user experience with:
-- Welcome message
-- App description
-- "Get Started" button to navigate to Dashboard
-
-### 2. Dashboard Screen
-Main screen showing:
-- Total monthly cost statistic
-- Active subscriptions count
-- List of recent subscriptions
-- Floating action button to add new subscriptions
-
-## Navigation Flow
+Projenin `app/src/main/` içerisindeki paket mimarisi:
 
 ```
-Onboarding → Dashboard
+com.gokhanaytekinn.sdandroid/
+├── ui/              # Jetpack Compose ekranları, temalar, bileşenler
+├── viewmodel/       # MVVM Durum (State) ve ViewModel sınıfları
+├── data/            # Retrofit servisleri, ağ verisi modelleri, Repository sınıfları
+├── di/              # Hilt Enjeksiyon modülleri (Ağ Modülü vs.)
+├── model/           # Uygulama içi veri yapıları
+└── util/            # Sabitler, para birimi biçimlendirici vb. yardımcı araçlar
 ```
 
-The app uses Jetpack Navigation Compose for screen transitions. Routes are defined in `Screen.kt` and navigation graph in `NavGraph.kt`.
+# 7. Kurulum
 
-## Future Enhancements
+Projeyi kendi ortamınızda test edebilmeniz için ihtiyacınız olan adımlar:
 
-- Suspicious subscription verification
-- Premium dashboard features
-- Subscription categories and filtering
-- Payment reminders and notifications
-- Analytics and spending insights
-- Multi-currency support
+1. Android Studio'nun güncel sürümünü bilgisayarınıza kurun.
+2. Bu depoyu indirin ve `sd-android` klasörünü Android Studio üzerinden içe aktarın (Aç seçeneğiyle).
+3. Gradle senkronizasyonunun tamamlanmasını bekleyin.
+4. "Çalıştır (Run)" tuşuna basarak uygulamanızı fiziksel cihazda ya da simülatörde test edebilirsiniz. (Minimum SDK: 26+)
 
-## License
+# 8. Yapılandırma
 
-This project is part of a portfolio/assignment and is available for educational purposes.
+Sorunsuz bir kurulum için yapılandırma gereksinimleri:
+
+- **Firebase Yapılandırması:** Analitik ve yapılandırmalar için `app/` dizininin içine geçerli bir `google-services.json` dosyasının konulması zorunludur. (Proje içerisinde mevcuttur).
+- **Arka Uç Adresi (URL):** Uygulamanın bağlı kalacağı servisin IP adresi API servis konfigürasyonu içerisindeki sabitten (örn. `Constants.BASE_URL`) ayarlanmalıdır.
+
+# 9. Uygulama Ekranları
+
+Uygulamanın arayüz tasarımı, modern ve akıcı bir kullanıcı deneyimi hedeflenerek geliştirilmiştir. Uygulamanın çeşitli özelliklerini (Giriş Yap, Özel Listelemeler, Profil, Kontrol Paneli vs.) yansıtan ekran görüntüleri, proje ana dizinindeki `Ekranlar/` klasöründe yer almaktadır.
+
+# 10. Gelir Modeli
+
+Proje, hem ücretsiz temel sürüme hem de ücretli ekstra özelliklere sahip bir iş modeli üzerine kurulmuştur:
+- **Reklamlar (AdMob):** Ücretsiz kullanıcılar için uygulama esnasında geçiş reklamları sunulmaktadır.
+- **Uygulama İçi Satın Alma:** Kullanıcıların reklamlardan kurtulmasını sağlayan, **Google Play Faturalandırma** desteği entegre edilmiş Abonelik planları bulunmaktadır.
+
+# 11. Arka Uç Entegrasyonu
+
+Uygulama, güvenli veri alışverişini Spring Boot tabanlı merkezi bir arka uçla ile sağlar:
+- HTTP REST protokolü üzerinden Retrofit kullanılarak `application/json` formatıyla haberleşilir.
+- Kullanıcıya tahsis edilmiş JSON Web Token (JWT) anahtarı, `NetworkInterceptor` aracılığı ile tüm kimlik doğrulaması gereken isteklere dahil edilir.
+
+# 12. Test Durumu
+
+Kararlı sürümlerin müşterilere ulaştırılması için:
+- **Kapalı Test:** Uygulama şu anda Google Play Console üzerinden, farklı cihaz konfigürasyonlarına sahip kullanıcılardan oluşan bir gruba kapalı test şeklinde sunulmaktadır. Sorunların giderilmesini takiben açık üretime geçecektir.
+
+# 13. Yol Haritası
+
+Uygulamanın kullanıcı tarafında gelişmesi hedeflenen modülleri:
+- Gelişmiş ana ekran istatistiksel görselleştirme eklentileri (Kategori grafik sınırları vs).
+- Sık kullanılan abonelik firmalarının logolarını kapsayan daha geniş simge seti (Spotify, Netflix vb.).
+- Kullanıcıların kendi abonelik listelerini aile üyeleriyle ortak tek havuzda birleştirebileceği "Paylaşımlı Abonelik" ekranları.
+
+# 14. Katkı Sağlama
+
+Projeye katkıda bulunarak ekibi genişletmek isterseniz:
+1. Depoyu kendi Github hesabınıza atın ("Fork").
+2. Dal oluşturun (`git checkout -b ozellik/MukemmelHizmet`).
+3. Değişiklikleri kayıt altına alın (`git commit -m 'Mukemmel Hizmet özelliği getirildi'`).
+4. Bu depoya "Değişiklik Birleştirme İsteği (Pull Request)" oluşturarak birleşme teklifi yollayın.
+
+# 15. Lisans
+
+Telif Hakkı (c) 2026 Gökhan Aytekin
+
+Tüm hakları saklıdır.
+
+Bu depo yalnızca görüntüleme ve eğitim amaçlı olarak herkese açık bir şekilde paylaşılmıştır.
+
+Yazarın açık yazılı izni olmadan şunları yapamazsınız:
+- Bu kodu üretim ortamında kullanmak
+- Kodun önemli kısımlarını kopyalamak
+- Kodu yeniden dağıtmak
+- Kodu değiştirmek ve dağıtmak
+
+Bu kodu kullanmak isterseniz, lütfen yazarla iletişime geçin.
+
+# 16. İletişim
+
+Geri dönüşleriniz ve ticari işbirlikleri için:
+- Bu Github sayfasındaki "Sorunlar (Issues)" bölümünü kullanarak takip kartı oluşturabilirsiniz.
+- Veya geliştirici yetkilisine doğrudan e-mail bağlantıları aracılığıyla ulaşabilirsiniz.
