@@ -32,6 +32,8 @@ import com.gokhanaytekinn.sdandroid.data.preferences.settingsDataStore
 import com.gokhanaytekinn.sdandroid.BuildConfig
 import com.gokhanaytekinn.sdandroid.ui.components.BottomNavigationBar
 import com.gokhanaytekinn.sdandroid.util.CurrencyFormatter
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.text.style.TextAlign
 
 @Composable
 fun AppSettingsScreen(
@@ -74,42 +76,19 @@ fun AppSettingsScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(Color(0xFF0F172A)) // Very dark blue-gray (iOS-like)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-        // Top App Bar
-        Surface(
-            modifier = Modifier.fillMaxWidth(),
-            color = MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
-            tonalElevation = 1.dp
-        ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                IconButton(onClick = onBackClick) {
-                    Icon(
-                        imageVector = Icons.Filled.ArrowBack,
-                        contentDescription = stringResource(R.string.back),
-                        tint = MaterialTheme.colorScheme.onBackground
-                    )
-                }
-                
-                Text(
-                    text = stringResource(R.string.settings),
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
-                
-                Spacer(modifier = Modifier.width(48.dp))
-            }
-        }
+        // iOS Style Header
+        Text(
+            text = stringResource(R.string.settings),
+            fontSize = 32.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White,
+            modifier = Modifier.padding(start = 16.dp, top = 24.dp, bottom = 8.dp)
+        )
         
         LazyColumn(
             modifier = Modifier
@@ -118,15 +97,14 @@ fun AppSettingsScreen(
             contentPadding = PaddingValues(bottom = 16.dp)
         ) {
             
-            // Section: Hesap
+            // Section: HESAP
             item {
                 Text(
-                    text = stringResource(R.string.account),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    letterSpacing = 1.5.sp,
-                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp)
+                    text = stringResource(R.string.account).uppercase(),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
                 )
             }
             
@@ -135,200 +113,81 @@ fun AppSettingsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533), // Sub-surface iOS dark
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
                 ) {
-                    Column {
-                        // Profile Item
-                        Row(
+                    // Profile Item
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Box(
                             modifier = Modifier
-                                .fillMaxWidth()
-                                .padding(16.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
+                                .size(60.dp)
+                                .clip(CircleShape)
+                                .background(Color(0xFF2C3E50)),
+                            contentAlignment = Alignment.Center
                         ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(48.dp)
-                                        .clip(CircleShape)
-                                        .background(PrimaryBlue.copy(alpha = 0.2f)),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Text(
-                                        text = (authState.userName?.take(1) ?: "G").uppercase(),
-                                        fontSize = 18.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = PrimaryBlue
-                                    )
-                                }
-                                
-                                Column {
-                                    Text(
-                                        text = authState.userName ?: stringResource(R.string.guest_user),
-                                        fontSize = 16.sp,
-                                        fontWeight = FontWeight.SemiBold,
-                                        color = MaterialTheme.colorScheme.onSurface
-                                    )
-                                    Text(
-                                        text = authState.userEmail ?: stringResource(R.string.not_logged_in),
-                                        fontSize = 12.sp,
-                                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                                    )
-                                }
-                            }
-                            
-                            Icon(
-                                imageVector = Icons.Filled.ChevronRight,
-                                contentDescription = null,
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                            Text(
+                                text = (authState.userName?.take(1) ?: "G").uppercase(),
+                                fontSize = 24.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = PrimaryBlue
                             )
                         }
                         
-                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
+                        Spacer(modifier = Modifier.width(16.dp))
                         
-                        // Membership Status
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable(onClick = { onUpgradeClick(authState.tier) })
-                                .padding(16.dp),
-                            horizontalArrangement = Arrangement.SpaceBetween,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            Row(
-                                horizontalArrangement = Arrangement.spacedBy(12.dp),
-                                verticalAlignment = Alignment.CenterVertically
-                            ) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(36.dp)
-                                        .clip(RoundedCornerShape(8.dp))
-                                        .background(PrimaryBlue.copy(alpha = 0.1f)),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Filled.WorkspacePremium,
-                                        contentDescription = null,
-                                        tint = PrimaryBlue,
-                                        modifier = Modifier.size(20.dp)
-                                    )
-                                }
-                                
-                                Text(
-                                    text = stringResource(R.string.membership_type),
-                                    fontSize = 16.sp,
-                                    fontWeight = FontWeight.Medium,
-                                    color = MaterialTheme.colorScheme.onSurface
-                                )
-                            }
-                            
-                            Box(
-                                modifier = Modifier
-                                    .background(
-                                        color = if (isPremium) PrimaryBlue.copy(alpha = 0.1f) else Color.Gray.copy(alpha = 0.1f),
-                                        shape = RoundedCornerShape(50)
-                                    )
-                            ) {
-                                Text(
-                                    text = if (isPremium) stringResource(R.string.premium_plan) else stringResource(R.string.free_plan),
-                                    fontSize = 14.sp,
-                                    fontWeight = FontWeight.SemiBold,
-                                    color = if (isPremium) PrimaryBlue else Color.Gray,
-                                    modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
-                                )
-                            }
+                        Column {
+                            Text(
+                                text = authState.userName ?: stringResource(R.string.guest_user),
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = Color.White
+                            )
+                            Text(
+                                text = authState.userEmail ?: stringResource(R.string.not_logged_in),
+                                fontSize = 14.sp,
+                                color = Color.Gray
+                            )
                         }
                     }
                 }
             }
             
-            // Section: Uygulama
-            item {
-                Text(
-                    text = stringResource(R.string.application),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    letterSpacing = 1.5.sp,
-                    modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 12.dp)
-                )
-            }
-            
+            item { Spacer(modifier = Modifier.height(12.dp)) }
+
             item {
                 Surface(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533),
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
                 ) {
-                    Column {
-                        // Notifications Toggle
-                        SettingsToggleItem(
-                            icon = Icons.Filled.Notifications,
-                            title = stringResource(R.string.notifications),
-                            checked = authState.notificationsEnabled,
-                            onCheckedChange = { 
-                                scope.launch {
-                                    notificationPreferences.setNotificationsEnabled(it)
-                                    authViewModel.updateNotificationSettings(it)
-                                }
-                            }
-                        )
-                        
-                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
-                        
-                        // Currency Selection
-                        SettingsNavigationItem(
-                            icon = Icons.Filled.Payments,
-                            title = stringResource(R.string.currency),
-                            value = CurrencyFormatter.getCurrencySymbol(selectedCurrency),
-                            onClick = { showCurrencyDialog = true }
-                        )
-                        
-                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
-                        
-                        // Dark Mode Toggle
-                        SettingsToggleItem(
-                            icon = Icons.Filled.DarkMode,
-                            title = stringResource(R.string.dark_mode),
-                            checked = darkModeEnabled,
-                            onCheckedChange = { 
-                                scope.launch {
-                                    themePreferences.toggleDarkMode()
-                                }
-                            }
-                        )
-                        
-                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
-                        
-                        // Language Selection
-                        SettingsNavigationItem(
-                            icon = Icons.Filled.Language,
-                            title = stringResource(R.string.language),
-                            value = getLanguageName(currentLanguage),
-                            onClick = { showLanguageDialog = true }
-                        )
-                    }
+                    // Membership Status
+                    SettingsNavigationItem(
+                        icon = Icons.Filled.Star,
+                        iconColor = Color(0xFFFF9500), // iOS Orange
+                        title = stringResource(R.string.membership_type),
+                        subtitle = if (isPremium) stringResource(R.string.premium_plan) else stringResource(R.string.free_plan),
+                        onClick = { onUpgradeClick(authState.tier) }
+                    )
                 }
             }
             
-            // Section: Destek
+            // Section: UYGULAMA
             item {
                 Text(
-                    text = stringResource(R.string.support),
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.SemiBold,
-
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    letterSpacing = 1.5.sp,
-                    modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 12.dp)
+                    text = stringResource(R.string.application).uppercase(),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 8.dp)
                 )
             }
             
@@ -337,30 +196,144 @@ fun AppSettingsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
-                    shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outline.copy(alpha = 0.1f))
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533),
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
                 ) {
-                    Column {
+                    // Notifications Toggle
+                    SettingsToggleItem(
+                        icon = Icons.Filled.Notifications,
+                        iconColor = Color(0xFF007AFF), // iOS Blue
+                        title = stringResource(R.string.notifications),
+                        checked = authState.notificationsEnabled,
+                        onCheckedChange = { enabled -> 
+                            scope.launch {
+                                notificationPreferences.setNotificationsEnabled(enabled)
+                                authViewModel.updateNotificationSettings(enabled)
+                            }
+                        }
+                    )
+                }
+            }
+            
+            item { Spacer(modifier = Modifier.height(12.dp)) }
 
-                        // Help Center
-                        SettingsNavigationItem(
-                            icon = Icons.Filled.Help,
-                            title = stringResource(R.string.help_center),
-                            onClick = onHelpClick
-                        )
-                        
-                        Divider(color = MaterialTheme.colorScheme.outline, modifier = Modifier.padding(horizontal = 16.dp))
-                        
-                        // Privacy Policy
-                        SettingsNavigationItem(
-                            icon = Icons.Filled.Policy,
-                            title = stringResource(R.string.privacy_policy),
-                            onClick = onPrivacyClick
-                        )
-                        
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533),
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                ) {
+                    // Currency Selection
+                    SettingsNavigationItem(
+                        icon = Icons.Filled.Paid,
+                        iconColor = Color(0xFF34C759), // iOS Green
+                        title = stringResource(R.string.currency),
+                        subtitle = CurrencyFormatter.getCurrencySymbol(selectedCurrency),
+                        onClick = { showCurrencyDialog = true }
+                    )
+                }
+            }
+            
+            item { Spacer(modifier = Modifier.height(12.dp)) }
 
-                    }
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533),
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                ) {
+                    // Dark Mode Toggle
+                    SettingsToggleItem(
+                        icon = Icons.Filled.DarkMode,
+                        iconColor = Color(0xFF5856D6), // iOS Purple
+                        title = stringResource(R.string.dark_mode),
+                        checked = darkModeEnabled,
+                        onCheckedChange = { 
+                            scope.launch {
+                                themePreferences.toggleDarkMode()
+                            }
+                        }
+                    )
+                }
+            }
+            
+            item { Spacer(modifier = Modifier.height(12.dp)) }
+
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533),
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                ) {
+                    // Language Selection
+                    SettingsNavigationItem(
+                        icon = Icons.Filled.Language,
+                        iconColor = Color(0xFF007AFF), // iOS Blue
+                        title = stringResource(R.string.language),
+                        subtitle = getLanguageName(currentLanguage),
+                        onClick = { showLanguageDialog = true }
+                    )
+                }
+            }
+            
+            // Section: DESTEK
+            item {
+                Text(
+                    text = stringResource(R.string.support).uppercase(),
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Normal,
+                    color = Color.Gray,
+                    modifier = Modifier.padding(horizontal = 16.dp).padding(top = 24.dp, bottom = 8.dp)
+                )
+            }
+            
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533),
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                ) {
+                    // Help Center
+                    SettingsNavigationItem(
+                        icon = Icons.Filled.Help,
+                        iconColor = Color(0xFF007AFF),
+                        title = stringResource(R.string.help_center),
+                        onClick = onHelpClick
+                    )
+                }
+            }
+            
+            item { Spacer(modifier = Modifier.height(12.dp)) }
+
+            item {
+                Surface(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(16.dp),
+                    color = Color(0xFF1C2533),
+                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                ) {
+                    // Privacy Policy
+                    SettingsNavigationItem(
+                        icon = Icons.Filled.Policy,
+                        iconColor = Color(0xFF8E8E93),
+                        title = stringResource(R.string.privacy_policy),
+                        onClick = onPrivacyClick
+                    )
                 }
             }
             
@@ -737,9 +710,10 @@ fun getLanguageName(code: String): String {
     }
 }
 
-@Composable
+ @Composable
 fun SettingsToggleItem(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    icon: ImageVector,
+    iconColor: Color,
     title: String,
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit
@@ -752,29 +726,29 @@ fun SettingsToggleItem(
         verticalAlignment = Alignment.CenterVertically
     ) {
         Row(
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
                 modifier = Modifier
-                    .size(36.dp)
+                    .size(32.dp)
                     .clip(RoundedCornerShape(8.dp))
-                    .background(PrimaryBlue.copy(alpha = 0.1f)),
+                    .background(iconColor),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = icon,
                     contentDescription = null,
-                    tint = PrimaryBlue,
+                    tint = Color.White,
                     modifier = Modifier.size(20.dp)
                 )
             }
             
             Text(
                 text = title,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.onSurface
+                fontSize = 17.sp,
+                fontWeight = FontWeight.Normal,
+                color = Color.White
             )
         }
         
@@ -783,9 +757,9 @@ fun SettingsToggleItem(
             onCheckedChange = onCheckedChange,
             colors = SwitchDefaults.colors(
                 checkedThumbColor = Color.White,
-                checkedTrackColor = PrimaryBlue,
+                checkedTrackColor = Color(0xFF34C759), // iOS Green for switches
                 uncheckedThumbColor = Color.White,
-                uncheckedTrackColor = Color(0xFFE2E8F0)
+                uncheckedTrackColor = Color(0xFF39393D)
             )
         )
     }
@@ -793,9 +767,10 @@ fun SettingsToggleItem(
 
 @Composable
 fun SettingsNavigationItem(
-    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    icon: ImageVector,
+    iconColor: Color,
     title: String,
-    value: String? = null,
+    subtitle: String? = null,
     onClick: () -> Unit
 ) {
     Surface(
@@ -810,50 +785,47 @@ fun SettingsNavigationItem(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Row(
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 Box(
                     modifier = Modifier
-                        .size(36.dp)
+                        .size(32.dp)
                         .clip(RoundedCornerShape(8.dp))
-                        .background(PrimaryBlue.copy(alpha = 0.1f)),
+                        .background(iconColor),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
                         imageVector = icon,
                         contentDescription = null,
-                        tint = PrimaryBlue,
+                        tint = Color.White,
                         modifier = Modifier.size(20.dp)
                     )
                 }
                 
-                Text(
-                    text = title,
-                    fontSize = 16.sp,
-                    fontWeight = FontWeight.Medium,
-                    color = MaterialTheme.colorScheme.onSurface
-                )
+                Column {
+                    Text(
+                        text = title,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.Normal,
+                        color = Color.White
+                    )
+                    if (subtitle != null) {
+                        Text(
+                            text = subtitle,
+                            fontSize = 13.sp,
+                            color = Color.Gray
+                        )
+                    }
+                }
             }
             
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                if (value != null) {
-                    Text(
-                        text = value,
-                        fontSize = 14.sp,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
-                }
-                Icon(
-                    imageVector = Icons.Filled.ChevronRight,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
+            Icon(
+                imageVector = Icons.Filled.ChevronRight,
+                contentDescription = null,
+                tint = Color.Gray,
+                modifier = Modifier.size(20.dp)
+            )
         }
     }
 }
