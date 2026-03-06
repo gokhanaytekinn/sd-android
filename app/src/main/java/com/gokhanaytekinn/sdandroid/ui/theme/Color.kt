@@ -9,11 +9,11 @@ val AccentColor = Color(0xFF4CAF50)
 
 // Background colors
 val BackgroundLight = Color(0xFFF5F7F8)
-val BackgroundDark = Color(0xFF0f1923)
+val BackgroundDark = Color(0xFF0F1923)
 
 // Surface/Card colors - Dark
-val SurfaceDark = Color(0xFF1E293B)     // Proper blue-gray, matching HTML docs
-val CardDark = Color(0xFF1E293B)
+val SurfaceDark = Color(0xFF1D2631)     // Subtle contrast against 0F1923
+val CardDark = Color(0xFF1D2631)
 
 // Surface/Card colors - Light
 val CardBackground = Color(0xFFFFFFFF)

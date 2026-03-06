@@ -8,7 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -76,7 +76,7 @@ fun AppSettingsScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFF0F172A)) // Very dark blue-gray (iOS-like)
+            .background(MaterialTheme.colorScheme.background)
     ) {
         Column(
             modifier = Modifier.fillMaxSize()
@@ -114,8 +114,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
                 ) {
                     // Profile Item
                     Row(
@@ -167,12 +167,12 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = Color(0xFF0B1621),
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Membership Status
                     SettingsNavigationItem(
-                        icon = Icons.Filled.Star,
+                        icon = Icons.Outlined.Verified,
                         iconColor = Color(0xFFFF9500), // iOS Orange
                         title = stringResource(R.string.membership_type),
                         subtitle = if (isPremium) stringResource(R.string.premium_plan) else stringResource(R.string.free_plan),
@@ -198,12 +198,12 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = Color(0xFF0B1621),
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Notifications Toggle
                     SettingsToggleItem(
-                        icon = Icons.Filled.Notifications,
+                        icon = Icons.Outlined.Notifications,
                         iconColor = Color(0xFF007AFF), // iOS Blue
                         title = stringResource(R.string.notifications),
                         checked = authState.notificationsEnabled,
@@ -225,12 +225,12 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = Color(0xFF0B1621),
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Currency Selection
                     SettingsNavigationItem(
-                        icon = Icons.Filled.Paid,
+                        icon = Icons.Outlined.Payments,
                         iconColor = Color(0xFF34C759), // iOS Green
                         title = stringResource(R.string.currency),
                         subtitle = CurrencyFormatter.getCurrencySymbol(selectedCurrency),
@@ -247,12 +247,12 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = Color(0xFF0B1621),
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Dark Mode Toggle
                     SettingsToggleItem(
-                        icon = Icons.Filled.DarkMode,
+                        icon = Icons.Outlined.DarkMode,
                         iconColor = Color(0xFF5856D6), // iOS Purple
                         title = stringResource(R.string.dark_mode),
                         checked = darkModeEnabled,
@@ -273,12 +273,12 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = Color(0xFF0B1621),
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Language Selection
                     SettingsNavigationItem(
-                        icon = Icons.Filled.Language,
+                        icon = Icons.Outlined.Language,
                         iconColor = Color(0xFF007AFF), // iOS Blue
                         title = stringResource(R.string.language),
                         subtitle = getLanguageName(currentLanguage),
@@ -304,12 +304,12 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = Color(0xFF0B1621),
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Help Center
                     SettingsNavigationItem(
-                        icon = Icons.Filled.Help,
+                        icon = Icons.Outlined.HelpOutline,
                         iconColor = Color(0xFF007AFF),
                         title = stringResource(R.string.help_center),
                         onClick = onHelpClick
@@ -325,12 +325,12 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color.Transparent,
-                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
+                    color = Color(0xFF0B1621),
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Privacy Policy
                     SettingsNavigationItem(
-                        icon = Icons.Filled.Policy,
+                        icon = Icons.Outlined.Shield,
                         iconColor = Color(0xFF8E8E93),
                         title = stringResource(R.string.privacy_policy),
                         onClick = onPrivacyClick
@@ -340,63 +340,49 @@ fun AppSettingsScreen(
             
             // Logout Button
             item {
-                Spacer(modifier = Modifier.height(32.dp))
-                Button(
-                    onClick = {
-                        scope.launch {
-                            authViewModel.logout()
-                            onLogoutClick()
-                        }
-                    },
+                Spacer(modifier = Modifier.height(24.dp))
+                Surface(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .height(48.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color(0xFFFEF2F2),
-                        contentColor = Color(0xFFEF4444)
-                    ),
-                    shape = RoundedCornerShape(12.dp)
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
                 ) {
-                    Icon(
-                        imageVector = Icons.Filled.Logout,
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = stringResource(R.string.logout),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold
+                    SettingsNavigationItem(
+                        icon = Icons.Outlined.Logout,
+                        iconColor = Color(0xFFF97316), // iOS Orange
+                        title = stringResource(R.string.logout),
+                        titleColor = Color(0xFFF97316),
+                        onClick = {
+                            scope.launch {
+                                authViewModel.logout()
+                                onLogoutClick()
+                            }
+                        }
                     )
                 }
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(12.dp))
 
                 // Delete Account Button
-                Button(
-                    onClick = { showDeleteAccountDialog = true },
+                Surface(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
-                        .height(48.dp),
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = Color.Transparent,
-                        contentColor = MaterialTheme.colorScheme.error
-                    ),
-                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.error),
-                    shape = RoundedCornerShape(12.dp)
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    color = MaterialTheme.colorScheme.surface,
+                    border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
                 ) {
-                    Icon(
-                        imageVector = Icons.Filled.DeleteForever,
-                        contentDescription = null
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = stringResource(R.string.delete_account),
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.SemiBold
+                    SettingsNavigationItem(
+                        icon = Icons.Outlined.Delete,
+                        iconColor = MaterialTheme.colorScheme.error,
+                        title = stringResource(R.string.delete_account),
+                        titleColor = MaterialTheme.colorScheme.error,
+                        onClick = { showDeleteAccountDialog = true }
                     )
                 }
+
                 Text(
                     text = stringResource(R.string.version_info, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE),
                     fontSize = 12.sp,
@@ -655,7 +641,7 @@ fun LanguageOption(
         Text(name, fontSize = 16.sp)
         if (code == selectedCode) {
             Icon(
-                imageVector = Icons.Filled.Check,
+                imageVector = Icons.Outlined.Check,
                 contentDescription = null,
                 tint = PrimaryBlue
             )
@@ -682,7 +668,7 @@ fun CurrencyOption(
         Text("$name ($symbol)", fontSize = 16.sp)
         if (code == selectedCode) {
             Icon(
-                imageVector = Icons.Filled.Check,
+                imageVector = Icons.Outlined.Check,
                 contentDescription = null,
                 tint = PrimaryBlue
             )
@@ -731,20 +717,12 @@ fun SettingsToggleItem(
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Box(
-                modifier = Modifier
-                    .size(32.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(iconColor),
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    imageVector = icon,
-                    contentDescription = null,
-                    tint = Color.White,
-                    modifier = Modifier.size(20.dp)
-                )
-            }
+            Icon(
+                imageVector = icon,
+                contentDescription = null,
+                tint = iconColor,
+                modifier = Modifier.size(24.dp)
+            )
             
             Text(
                 text = title,
@@ -772,6 +750,7 @@ fun SettingsNavigationItem(
     icon: ImageVector,
     iconColor: Color,
     title: String,
+    titleColor: Color = Color.White,
     subtitle: String? = null,
     onClick: () -> Unit
 ) {
@@ -791,27 +770,19 @@ fun SettingsNavigationItem(
                 horizontalArrangement = Arrangement.spacedBy(16.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .clip(RoundedCornerShape(8.dp))
-                        .background(iconColor),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(
-                        imageVector = icon,
-                        contentDescription = null,
-                        tint = Color.White,
-                        modifier = Modifier.size(20.dp)
-                    )
-                }
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = iconColor,
+                    modifier = Modifier.size(24.dp)
+                )
                 
                 Column {
                     Text(
                         text = title,
                         fontSize = 17.sp,
                         fontWeight = FontWeight.Normal,
-                        color = Color.White
+                        color = titleColor
                     )
                     if (subtitle != null) {
                         Text(
@@ -824,7 +795,7 @@ fun SettingsNavigationItem(
             }
             
             Icon(
-                imageVector = Icons.Filled.ChevronRight,
+                imageVector = Icons.Outlined.ChevronRight,
                 contentDescription = null,
                 tint = Color.Gray,
                 modifier = Modifier.size(20.dp)
