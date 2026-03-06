@@ -376,4 +376,17 @@
     <string name="plan_yearly_premium">Jahrlich Premium</string>
     <string name="plans_header">Plan auswahlen</string>
     <string name="no_account">Kein Konto?</string>
+
+    <string name="month_1">Januar</string>
+    <string name="month_2">Februar</string>
+    <string name="month_3">März</string>
+    <string name="month_4">April</string>
+    <string name="month_5">Mai</string>
+    <string name="month_6">Juni</string>
+    <string name="month_7">Juli</string>
+    <string name="month_8">August</string>
+    <string name="month_9">September</string>
+    <string name="month_10">Oktober</string>
+    <string name="month_11">November</string>
+    <string name="month_12">Dezember</string>
 </resources>

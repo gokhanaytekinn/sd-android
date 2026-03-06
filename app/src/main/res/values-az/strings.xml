@@ -417,5 +417,18 @@
     <string name="premium_plan">Premium Plan</string>
     <string name="feature_auto_capture_premium_desc">Gizli ödənişləri dərhal tapır</string>
     <string name="feature_advanced_analytics_premium_desc">Ətraflı xərc hesabatları</string>
+
+    <string name="month_1">Yanvar</string>
+    <string name="month_2">Fevral</string>
+    <string name="month_3">Mart</string>
+    <string name="month_4">Aprel</string>
+    <string name="month_5">May</string>
+    <string name="month_6">İyun</string>
+    <string name="month_7">İyul</string>
+    <string name="month_8">Avqust</string>
+    <string name="month_9">Sentyabr</string>
+    <string name="month_10">Oktyabr</string>
+    <string name="month_11">Noyabr</string>
+    <string name="month_12">Dekabr</string>
 </resources>
 

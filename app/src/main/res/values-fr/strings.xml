@@ -412,4 +412,17 @@
     <string name="feature_unlimited_tracking_premium_desc">Ajoutez-en autant que vous voulez</string>
     <string name="feature_unlimited_tracking_title">Suivi illimité</string>
     <string name="premium_plan">Plan Premium</string>
+
+    <string name="month_1">Janvier</string>
+    <string name="month_2">Février</string>
+    <string name="month_3">Mars</string>
+    <string name="month_4">Avril</string>
+    <string name="month_5">Mai</string>
+    <string name="month_6">Juin</string>
+    <string name="month_7">Juillet</string>
+    <string name="month_8">Août</string>
+    <string name="month_9">Septembre</string>
+    <string name="month_10">Octobre</string>
+    <string name="month_11">Novembre</string>
+    <string name="month_12">Décembre</string>
 </resources>

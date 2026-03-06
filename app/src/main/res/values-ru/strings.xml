@@ -422,4 +422,17 @@
     <string name="feature_unlimited_tracking_premium_desc">Добавляйте сколько угодно</string>
     <string name="feature_unlimited_tracking_title">Безлимитное отслеживание</string>
     <string name="premium_plan">Премиум план</string>
+
+    <string name="month_1">Январь</string>
+    <string name="month_2">Февраль</string>
+    <string name="month_3">Март</string>
+    <string name="month_4">Апрель</string>
+    <string name="month_5">Май</string>
+    <string name="month_6">Июнь</string>
+    <string name="month_7">Июль</string>
+    <string name="month_8">Август</string>
+    <string name="month_9">Сентябрь</string>
+    <string name="month_10">Октябрь</string>
+    <string name="month_11">Ноябрь</string>
+    <string name="month_12">Декабрь</string>
 </resources>

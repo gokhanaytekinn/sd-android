@@ -424,4 +424,17 @@
     <string name="feature_advanced_analytics_title">Gelişmiş Analitik</string>
     <string name="feature_advanced_analytics_free_desc">Temel Analizler</string>
     <string name="feature_advanced_analytics_premium_desc">Tam İçgörüler</string>
+
+    <string name="month_1">Ocak</string>
+    <string name="month_2">Şubat</string>
+    <string name="month_3">Mart</string>
+    <string name="month_4">Nisan</string>
+    <string name="month_5">Mayıs</string>
+    <string name="month_6">Haziran</string>
+    <string name="month_7">Temmuz</string>
+    <string name="month_8">Ağustos</string>
+    <string name="month_9">Eylül</string>
+    <string name="month_10">Ekim</string>
+    <string name="month_11">Kasım</string>
+    <string name="month_12">Aralık</string>
 </resources>

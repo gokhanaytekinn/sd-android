@@ -419,4 +419,17 @@
     <string name="premium_plan">Premium reja</string>
     <string name="feature_auto_capture_premium_desc">Yashirin to\'lovlarni darhol topadi</string>
     <string name="feature_advanced_analytics_premium_desc">Batafsil xarajatlar hisoboti</string>
+
+    <string name="month_1">Yanvar</string>
+    <string name="month_2">Fevral</string>
+    <string name="month_3">Mart</string>
+    <string name="month_4">Aprel</string>
+    <string name="month_5">May</string>
+    <string name="month_6">Iyun</string>
+    <string name="month_7">Iyul</string>
+    <string name="month_8">Avgust</string>
+    <string name="month_9">Sentyabr</string>
+    <string name="month_10">Oktyabr</string>
+    <string name="month_11">Noyabr</string>
+    <string name="month_12">Dekabr</string>
 </resources>

@@ -418,5 +418,18 @@
     <string name="premium_plan">Premium Plan</string>
     <string name="feature_auto_capture_premium_desc">Gizlin tölegleri bada-bat tapýar</string>
     <string name="feature_advanced_analytics_premium_desc">Jikme-jik çykdajy hasabatlary</string>
+
+    <string name="month_1">Ýanwar</string>
+    <string name="month_2">Fewral</string>
+    <string name="month_3">Mart</string>
+    <string name="month_4">Aprel</string>
+    <string name="month_5">Maý</string>
+    <string name="month_6">Iýun</string>
+    <string name="month_7">Iýul</string>
+    <string name="month_8">Awgust</string>
+    <string name="month_9">Sentyabr</string>
+    <string name="month_10">Oktyabr</string>
+    <string name="month_11">Noyabr</string>
+    <string name="month_12">Dekabr</string>
 </resources>
 

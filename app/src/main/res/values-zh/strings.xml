@@ -419,4 +419,17 @@
     <string name="feature_unlimited_tracking_premium_desc">随心所欲添加</string>
     <string name="feature_unlimited_tracking_title">无限追踪</string>
     <string name="premium_plan">高级计划</string>
+
+    <string name="month_1">一月</string>
+    <string name="month_2">二月</string>
+    <string name="month_3">三月</string>
+    <string name="month_4">四月</string>
+    <string name="month_5">五月</string>
+    <string name="month_6">六月</string>
+    <string name="month_7">七月</string>
+    <string name="month_8">八月</string>
+    <string name="month_9">九月</string>
+    <string name="month_10">十月</string>
+    <string name="month_11">十一月</string>
+    <string name="month_12">十二月</string>
 </resources>

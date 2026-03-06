@@ -418,5 +418,18 @@
     <string name="premium_plan">Premium жоспар</string>
     <string name="feature_auto_capture_premium_desc">Жасырын төлемдерді бірден табады</string>
     <string name="feature_advanced_analytics_premium_desc">Толық шығындар есебі</string>
+
+    <string name="month_1">Қаңтар</string>
+    <string name="month_2">Ақпан</string>
+    <string name="month_3">Наурыз</string>
+    <string name="month_4">Сәуір</string>
+    <string name="month_5">Мамыр</string>
+    <string name="month_6">Маусым</string>
+    <string name="month_7">Шілде</string>
+    <string name="month_8">Тамыз</string>
+    <string name="month_9">Қыркүйек</string>
+    <string name="month_10">Қазан</string>
+    <string name="month_11">Қараша</string>
+    <string name="month_12">Желтоқсан</string>
 </resources>
 

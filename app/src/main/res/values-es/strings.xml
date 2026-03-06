@@ -404,4 +404,17 @@
     <string name="try_again">Intentar de nuevo</string>
     <string name="unlimited_subscriptions">Suscripciones ilimitadas</string>
     <string name="yearly_plan">Plan anual</string>
+
+    <string name="month_1">Enero</string>
+    <string name="month_2">Febrero</string>
+    <string name="month_3">Marzo</string>
+    <string name="month_4">Abril</string>
+    <string name="month_5">Mayo</string>
+    <string name="month_6">Junio</string>
+    <string name="month_7">Julio</string>
+    <string name="month_8">Agosto</string>
+    <string name="month_9">Septiembre</string>
+    <string name="month_10">Octubre</string>
+    <string name="month_11">Noviembre</string>
+    <string name="month_12">Diciembre</string>
 </resources>

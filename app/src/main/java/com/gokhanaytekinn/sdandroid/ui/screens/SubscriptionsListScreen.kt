@@ -156,7 +156,7 @@ fun SubscriptionsListScreen(
                             .padding(bottom = 16.dp)
                             .border(
                                 width = 1.dp,
-                                color = MaterialTheme.colorScheme.outline.copy(alpha = 0.2f),
+                                color = MaterialTheme.colorScheme.outline.copy(alpha = 1.0f),
                                 shape = RoundedCornerShape(8.dp)
                             )
                             .clip(RoundedCornerShape(8.dp))
@@ -377,7 +377,7 @@ fun TabItem(
     Box(
         modifier = modifier
             .clip(RoundedCornerShape(6.dp))
-            .background(if (selected) SuccessColor else Color.Transparent)
+            .background(if (selected) PrimaryBlue else Color.Transparent)
             .clickable(onClick = onClick)
             .padding(vertical = 8.dp),
         contentAlignment = Alignment.Center
@@ -386,7 +386,7 @@ fun TabItem(
             text = text,
             fontSize = 14.sp,
             fontWeight = FontWeight.SemiBold,
-            color = if (selected) MaterialTheme.colorScheme.background else Color(0xFF9CA3AF)
+            color = if (selected) Color.White else Color(0xFF9CA3AF)
         )
     }
 }

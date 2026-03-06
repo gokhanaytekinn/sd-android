@@ -113,8 +113,18 @@ fun AddSubscriptionScreen(
     // Day and Month Selection State
     val days = (1..31).toList()
     val months = listOf(
-        "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran",
-        "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"
+        stringResource(R.string.month_1),
+        stringResource(R.string.month_2),
+        stringResource(R.string.month_3),
+        stringResource(R.string.month_4),
+        stringResource(R.string.month_5),
+        stringResource(R.string.month_6),
+        stringResource(R.string.month_7),
+        stringResource(R.string.month_8),
+        stringResource(R.string.month_9),
+        stringResource(R.string.month_10),
+        stringResource(R.string.month_11),
+        stringResource(R.string.month_12)
     )
     
     val billingDay by viewModel.billingDay.collectAsState()
@@ -484,7 +494,12 @@ fun AddSubscriptionScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(50.dp)
-                        .background(Color.White.copy(alpha = 0.05f), RoundedCornerShape(12.dp))
+                        .background(Color.Transparent, RoundedCornerShape(12.dp))
+                        .border(
+                            width = 1.dp,
+                            color = MaterialTheme.colorScheme.outline.copy(alpha = 1.0f),
+                            shape = RoundedCornerShape(12.dp)
+                        )
                         .padding(4.dp)
                 ) {
                     val cycles = listOf(BillingCycle.MONTHLY to stringResource(R.string.monthly), BillingCycle.YEARLY to stringResource(R.string.yearly))
@@ -538,7 +553,7 @@ fun AddSubscriptionScreen(
                                 .size(40.dp)
                                 .clip(CircleShape)
                                 .background(if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.05f))
-                                .border(1.dp, if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.1f), CircleShape)
+                                .border(1.dp, if (isSelected) PrimaryBlue else MaterialTheme.colorScheme.outline.copy(alpha = 1.0f), CircleShape)
                                 .clickable { viewModel.updateBillingDay(day) },
                             contentAlignment = Alignment.Center
                         ) {
@@ -565,7 +580,7 @@ fun AddSubscriptionScreen(
                                 modifier = Modifier
                                     .clip(RoundedCornerShape(12.dp))
                                     .background(if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.05f))
-                                    .border(1.dp, if (isSelected) PrimaryBlue else Color.White.copy(alpha = 0.1f), RoundedCornerShape(12.dp))
+                                    .border(1.dp, if (isSelected) PrimaryBlue else MaterialTheme.colorScheme.outline.copy(alpha = 1.0f), RoundedCornerShape(12.dp))
                                     .clickable { viewModel.updateBillingMonth(month) }
                                     .padding(horizontal = 16.dp, vertical = 8.dp),
                                 contentAlignment = Alignment.Center
