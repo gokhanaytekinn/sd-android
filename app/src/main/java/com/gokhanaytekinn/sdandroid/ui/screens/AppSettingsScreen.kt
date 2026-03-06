@@ -114,8 +114,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937)) // Subtle iOS-style border
                 ) {
                     // Profile Item
                     Row(
@@ -167,7 +167,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF0B1621),
+                    color = Color.Transparent,
                     border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Membership Status
@@ -198,7 +198,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF0B1621),
+                    color = Color.Transparent,
                     border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Notifications Toggle
@@ -225,7 +225,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF0B1621),
+                    color = Color.Transparent,
                     border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Currency Selection
@@ -247,7 +247,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF0B1621),
+                    color = Color.Transparent,
                     border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Dark Mode Toggle
@@ -273,7 +273,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF0B1621),
+                    color = Color.Transparent,
                     border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Language Selection
@@ -304,7 +304,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF0B1621),
+                    color = Color.Transparent,
                     border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Help Center
@@ -325,7 +325,7 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF0B1621),
+                    color = Color.Transparent,
                     border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     // Privacy Policy
@@ -346,8 +346,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     SettingsNavigationItem(
                         icon = Icons.Outlined.Logout,
@@ -371,8 +371,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(12.dp),
-                    color = MaterialTheme.colorScheme.surface,
-                    border = BorderStroke(0.5.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF1C2937))
                 ) {
                     SettingsNavigationItem(
                         icon = Icons.Outlined.Delete,
