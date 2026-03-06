@@ -74,10 +74,15 @@ fun SDAndroidTheme(
         }
     }
 
+    val configuration = androidx.compose.ui.platform.LocalConfiguration.current
+    val typography = androidx.compose.runtime.remember(configuration.screenWidthDp) {
+        getTypography(configuration.screenWidthDp)
+    }
+
     CompositionLocalProvider(LocalIndication provides NoIndication) {
         MaterialTheme(
             colorScheme = colorScheme,
-            typography = Typography,
+            typography = typography,
             content = content
         )
     }
