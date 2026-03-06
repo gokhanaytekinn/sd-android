@@ -114,8 +114,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533), // Sub-surface iOS dark
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Profile Item
                     Row(
@@ -166,8 +166,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533),
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Membership Status
                     SettingsNavigationItem(
@@ -197,8 +197,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533),
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Notifications Toggle
                     SettingsToggleItem(
@@ -224,8 +224,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533),
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Currency Selection
                     SettingsNavigationItem(
@@ -246,8 +246,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533),
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Dark Mode Toggle
                     SettingsToggleItem(
@@ -272,8 +272,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533),
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Language Selection
                     SettingsNavigationItem(
@@ -303,8 +303,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533),
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Help Center
                     SettingsNavigationItem(
@@ -324,8 +324,8 @@ fun AppSettingsScreen(
                         .fillMaxWidth()
                         .padding(horizontal = 16.dp),
                     shape = RoundedCornerShape(16.dp),
-                    color = Color(0xFF1C2533),
-                    border = BorderStroke(1.dp, Color.White.copy(alpha = 0.1f))
+                    color = Color.Transparent,
+                    border = BorderStroke(0.5.dp, Color(0xFF38383A))
                 ) {
                     // Privacy Policy
                     SettingsNavigationItem(
