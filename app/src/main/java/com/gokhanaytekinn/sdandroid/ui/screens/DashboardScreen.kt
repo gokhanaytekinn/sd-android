@@ -11,7 +11,8 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.rounded.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -97,7 +98,22 @@ fun DashboardScreen(
                 }
                 
                 
-                // Search icon removed internally as requested.
+                IconButton(
+                    onClick = { /* TODO: Implement search */ },
+                    modifier = Modifier
+                        .size(44.dp)
+                        .background(
+                            color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f),
+                            shape = CircleShape
+                        )
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.Search,
+                        contentDescription = "Search",
+                        tint = MaterialTheme.colorScheme.onBackground,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
             }
             
             LazyColumn(
@@ -126,22 +142,33 @@ fun DashboardScreen(
                             color = Color.Transparent,
                             tonalElevation = 0.dp
                         ) {
-                            Column(
+                            Row(
                                 modifier = Modifier
                                     .fillMaxWidth()
-                                    .padding(24.dp)
+                                    .padding(16.dp),
+                                horizontalArrangement = Arrangement.SpaceBetween,
+                                verticalAlignment = Alignment.CenterVertically
                             ) {
+                                Column {
+                                    Text(
+                                        text = stringResource(R.string.total_monthly),
+                                        fontSize = 12.sp,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        fontWeight = FontWeight.Medium
+                                    )
+                                    Spacer(modifier = Modifier.height(4.dp))
+                                    Text(
+                                        text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
+                                        fontSize = 22.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = MaterialTheme.colorScheme.onBackground
+                                    )
+                                }
+                                
                                 Text(
-                                    text = stringResource(R.string.total_monthly),
-                                    fontSize = 14.sp,
-                                    color = Color(0xFF9CA3AF),
-                                    fontWeight = FontWeight.Medium
-                                )
-                                Spacer(modifier = Modifier.height(12.dp))
-                                Text(
-                                    text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
-                                    fontSize = 36.sp,
-                                    fontWeight = FontWeight.Black,
+                                    text = "${stats.activeCount} " + stringResource(R.string.active).lowercase(),
+                                    fontSize = 12.sp,
+                                    fontWeight = FontWeight.Medium,
                                     color = PrimaryBlue
                                 )
                             }
@@ -244,7 +271,7 @@ fun DashboardScreen(
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Icon(
-                            imageVector = Icons.Default.ArrowForward,
+                            imageVector = Icons.Outlined.ArrowForward,
                             contentDescription = null
                         )
                     }

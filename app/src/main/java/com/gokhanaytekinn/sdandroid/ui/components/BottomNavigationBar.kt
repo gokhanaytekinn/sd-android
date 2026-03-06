@@ -6,7 +6,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -74,25 +74,25 @@ fun BottomNavigationBar(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 BottomNavItem(
-                    icon = Icons.Default.Dashboard,
+                    icon = Icons.Outlined.Dashboard,
                     label = stringResource(R.string.nav_dashboard),
                     selected = currentRoute?.startsWith(Screen.Dashboard.route.split("?")[0]) == true,
                     onClick = { onNavigate(Screen.Dashboard.route) }
                 )
                 BottomNavItem(
-                    icon = Icons.Default.List,
+                    icon = Icons.Outlined.FormatListBulleted,
                     label = stringResource(R.string.subscriptions),
                     selected = currentRoute?.startsWith(Screen.SubscriptionsList.route.split("?")[0]) == true,
                     onClick = { onNavigate(Screen.SubscriptionsList.route) }
                 )
                 BottomNavItem(
-                    icon = Icons.Default.Notifications,
+                    icon = Icons.Outlined.Notifications,
                     label = stringResource(R.string.nav_upcoming),
                     selected = currentRoute?.startsWith(Screen.UpcomingSubscriptions.route.split("?")[0]) == true,
                     onClick = { onNavigate(Screen.UpcomingSubscriptions.route) }
                 )
                 BottomNavItem(
-                    icon = Icons.Default.Settings,
+                    icon = Icons.Outlined.Settings,
                     label = stringResource(R.string.nav_settings),
                     selected = currentRoute?.startsWith(Screen.AppSettings.route.split("?")[0]) == true,
                     onClick = { onNavigate(Screen.AppSettings.route) }
@@ -133,7 +133,7 @@ fun MainActionButton(
         modifier = modifier.size(56.dp)
     ) {
         Icon(
-            imageVector = Icons.Default.Add,
+            imageVector = Icons.Outlined.Add,
             contentDescription = "Add/Scan",
             modifier = Modifier
                 .size(28.dp)

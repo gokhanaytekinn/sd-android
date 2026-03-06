@@ -8,7 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -118,7 +118,7 @@ fun SubscriptionDetailsScreen(
                             modifier = Modifier.size(40.dp)
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.ArrowBack,
+                                imageVector = Icons.Outlined.ArrowBack,
                                 contentDescription = stringResource(R.string.back),
                                 tint = colorScheme.onBackground
                             )
@@ -206,7 +206,7 @@ fun SubscriptionDetailsScreen(
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
                                     Icon(
-                                        imageVector = Icons.Default.NotificationsActive,
+                                        imageVector = Icons.Outlined.NotificationsActive,
                                         contentDescription = null,
                                         tint = colorScheme.onPrimaryContainer,
                                         modifier = Modifier.size(16.dp)
@@ -375,7 +375,7 @@ fun SubscriptionDetailsScreen(
                                 shape = RoundedCornerShape(12.dp)
                             ) {
                                 Icon(
-                                    imageVector = if (sub.reminderEnabled) Icons.Default.NotificationsOff else Icons.Default.NotificationsActive,
+                                    imageVector = if (sub.reminderEnabled) Icons.Outlined.NotificationsOff else Icons.Outlined.NotificationsActive,
                                     contentDescription = null,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -400,7 +400,7 @@ fun SubscriptionDetailsScreen(
                                 shape = RoundedCornerShape(12.dp)
                             ) {
                                 Icon(
-                                    imageVector = Icons.Filled.Edit,
+                                    imageVector = Icons.Outlined.Edit,
                                     contentDescription = null,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -444,7 +444,7 @@ fun SubscriptionDetailsScreen(
                                 shape = RoundedCornerShape(12.dp)
                             ) {
                                 Icon(
-                                    imageVector = Icons.Filled.CheckCircle,
+                                    imageVector = Icons.Outlined.CheckCircle,
                                     contentDescription = null,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -483,7 +483,7 @@ fun SubscriptionDetailsScreen(
                                 shape = RoundedCornerShape(12.dp)
                             ) {
                                 Icon(
-                                    imageVector = Icons.Filled.Cancel,
+                                    imageVector = Icons.Outlined.Cancel,
                                     contentDescription = null,
                                     modifier = Modifier.size(20.dp)
                                 )
@@ -508,7 +508,7 @@ fun SubscriptionDetailsScreen(
                                 )
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.DeleteForever,
+                                    imageVector = Icons.Outlined.Delete,
                                     contentDescription = null,
                                     modifier = Modifier.size(18.dp)
                                 )
@@ -534,7 +534,7 @@ fun SubscriptionDetailsScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Icon(
-                                imageVector = Icons.Filled.People,
+                                imageVector = Icons.Outlined.People,
                                 contentDescription = null,
                                 tint = colorScheme.onSurfaceVariant,
                                 modifier = Modifier.size(20.dp)
@@ -720,7 +720,7 @@ fun ParticipantRow(
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    imageVector = Icons.Default.Person,
+                    imageVector = Icons.Outlined.Person,
                     contentDescription = null,
                     modifier = Modifier.size(16.dp),
                     tint = colorScheme.onSurfaceVariant
@@ -748,9 +748,9 @@ fun ParticipantRow(
             horizontalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             val (icon, tint) = when (participant.status) {
-                "ACCEPTED" -> Icons.Default.CheckCircle to Color(0xFF4CAF50)
-                "REJECTED" -> Icons.Default.Cancel to colorScheme.error
-                else -> Icons.Default.Pending to colorScheme.onSurfaceVariant
+                "ACCEPTED" -> Icons.Outlined.CheckCircle to Color(0xFF4CAF50)
+                "REJECTED" -> Icons.Outlined.Cancel to colorScheme.error
+                else -> Icons.Outlined.Pending to colorScheme.onSurfaceVariant
             }
 
             Icon(
@@ -766,7 +766,7 @@ fun ParticipantRow(
                     modifier = Modifier.size(32.dp)
                 ) {
                     Icon(
-                        imageVector = Icons.Default.DeleteOutline,
+                        imageVector = Icons.Outlined.Delete,
                         contentDescription = "Remove",
                         tint = colorScheme.error,
                         modifier = Modifier.size(20.dp)

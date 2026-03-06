@@ -11,7 +11,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -100,7 +100,7 @@ fun SubscriptionsListScreen(
                                     .background(MaterialTheme.colorScheme.onSurface.copy(alpha = 0.05f))
                             ) {
                                 Icon(
-                                    imageVector = Icons.Default.Search,
+                                    imageVector = Icons.Outlined.Search,
                                     contentDescription = stringResource(R.string.nav_search),
                                     tint = MaterialTheme.colorScheme.onSurface
                                 )
@@ -206,37 +206,42 @@ fun SubscriptionsListScreen(
                                     .fillMaxWidth()
                                     .border(
                                         width = 1.dp,
-                                        color = MaterialTheme.colorScheme.outline.copy(alpha = 0.1f),
+                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.1f),
                                         shape = RoundedCornerShape(12.dp)
                                     ),
                                 shape = RoundedCornerShape(12.dp),
                                 color = Color.Transparent
                             ) {
-                                Row(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(16.dp),
-                                    horizontalArrangement = Arrangement.SpaceBetween,
-                                    verticalAlignment = Alignment.CenterVertically
-                                ) {
-                                    Column {
+                                    Row(
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(16.dp),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Column {
+                                            Text(
+                                                text = stringResource(R.string.total_monthly),
+                                                fontSize = 12.sp,
+                                                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                                fontWeight = FontWeight.Medium
+                                            )
+                                            Spacer(modifier = Modifier.height(4.dp))
+                                            Text(
+                                                text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
+                                                fontSize = 22.sp,
+                                                fontWeight = FontWeight.Bold,
+                                                color = MaterialTheme.colorScheme.onBackground
+                                            )
+                                        }
+                                        
                                         Text(
-                                            text = stringResource(R.string.total_monthly).uppercase(),
-                                            fontSize = 10.sp,
+                                            text = "${stats.activeCount} " + stringResource(R.string.active).lowercase(),
+                                            fontSize = 12.sp,
                                             fontWeight = FontWeight.Medium,
-                                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                                            letterSpacing = 1.sp
-                                        )
-                                        Spacer(modifier = Modifier.height(8.dp))
-                                        Text(
-                                            text = CurrencyFormatter.formatAmount(stats.totalMonthlyCost, selectedCurrency),
-                                            fontSize = 24.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            color = MaterialTheme.colorScheme.onBackground
+                                            color = PrimaryBlue
                                         )
                                     }
-                                    
-                                }
                             }
                         }
                     }

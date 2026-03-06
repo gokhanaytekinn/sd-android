@@ -14,7 +14,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -197,7 +197,7 @@ fun AddSubscriptionScreen(
                         .background(Color.White.copy(alpha = 0.05f), CircleShape)
                 ) {
                     Icon(
-                        imageVector = Icons.Default.ArrowBack,
+                        imageVector = Icons.Outlined.ArrowBack,
                         contentDescription = stringResource(R.string.back),
                         tint = MaterialTheme.colorScheme.onBackground
                     )
@@ -268,11 +268,11 @@ fun AddSubscriptionScreen(
                     
                     val getCategoryIcon: (String?) -> androidx.compose.ui.graphics.vector.ImageVector = { cat ->
                         when (cat) {
-                            "category_streaming" -> Icons.Default.PlayArrow
-                            "category_gaming" -> Icons.Default.Star
-                            "category_software" -> Icons.Default.Build
-                            "category_other" -> Icons.Default.List
-                            else -> Icons.Default.List
+                            "category_streaming" -> Icons.Outlined.PlayArrow
+                            "category_gaming" -> Icons.Outlined.Star
+                            "category_software" -> Icons.Outlined.Build
+                            "category_other" -> Icons.Outlined.FormatListBulleted
+                            else -> Icons.Outlined.FormatListBulleted
                         }
                     }
                     
@@ -441,7 +441,7 @@ fun AddSubscriptionScreen(
                                 shape = RoundedCornerShape(12.dp),
                                 readOnly = true,
                                 isError = currencyError != null,
-                                trailingIcon = { Icon(Icons.Default.ArrowDropDown, contentDescription = null) },
+                                trailingIcon = { Icon(Icons.Outlined.ArrowDropDown, contentDescription = null) },
                                 colors = OutlinedTextFieldDefaults.colors(
                                     focusedBorderColor = PrimaryBlue,
                                     unfocusedBorderColor = Color.White.copy(alpha = 0.1f),
@@ -650,7 +650,7 @@ fun AddSubscriptionScreen(
                                 emailInput = ""
                             }
                         }) {
-                            Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add))
+                            Icon(Icons.Outlined.Add, contentDescription = stringResource(R.string.add))
                         }
                     },
                     colors = OutlinedTextFieldDefaults.colors(
@@ -695,16 +695,16 @@ fun AddSubscriptionScreen(
                             
                             if (status != null) {
                                 val (icon, tint) = when (status) {
-                                    "ACCEPTED" -> Icons.Default.CheckCircle to Color(0xFF4CAF50)
-                                    "REJECTED" -> Icons.Default.Cancel to MaterialTheme.colorScheme.error
-                                    else -> Icons.Default.Pending to Color.Gray
+                                    "ACCEPTED" -> Icons.Outlined.CheckCircle to Color(0xFF4CAF50)
+                                    "REJECTED" -> Icons.Outlined.Cancel to MaterialTheme.colorScheme.error
+                                    else -> Icons.Outlined.Pending to Color.Gray
                                 }
                                 Icon(icon, contentDescription = status, tint = tint, modifier = Modifier.size(16.dp))
                             }
                         }
                         
                         IconButton(onClick = { viewModel.removeJointEmail(email) }, modifier = Modifier.size(24.dp)) {
-                            Icon(Icons.Default.Close, contentDescription = stringResource(R.string.remove), tint = Color.Gray, modifier = Modifier.size(16.dp))
+                            Icon(Icons.Outlined.Close, contentDescription = stringResource(R.string.remove), tint = Color.Gray, modifier = Modifier.size(16.dp))
                         }
                     }
                 }
