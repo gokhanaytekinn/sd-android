@@ -591,13 +591,6 @@ fun AddSubscriptionScreen(
                 ) {
                     Column {
                         Text(
-                            text = stringResource(R.string.reminder),
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
                             text = stringResource(R.string.reminder_desc),
                             fontSize = 12.sp,
                             color = Color.Gray
