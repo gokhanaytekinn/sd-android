@@ -63,7 +63,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                         language = user?.language ?: "tr",
                         tier = user?.tier ?: 1
                     )
-                    premiumPreferences.setPremium(user?.tier == 2)
+                    premiumPreferences.setPremium((user?.tier ?: 1) >= 2)
                     // Sync local language to backend if they differ
                     syncLanguageIfNeeded()
                 } else {
@@ -251,7 +251,7 @@ class AuthViewModel(context: Context) : ViewModel() {
                     language = user?.language ?: "tr",
                     tier = user?.tier ?: 1
                 )
-                premiumPreferences.setPremium(user?.tier == 2)
+                premiumPreferences.setPremium((user?.tier ?: 1) >= 2)
                 syncLanguageIfNeeded()
                 onSuccess()
             } else {
